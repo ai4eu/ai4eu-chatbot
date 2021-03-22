@@ -1,4 +1,10 @@
 conda create -n "ai4eu-chat" python=3.7.9
 
 pip install deeppavlov
-#pip install deeppavlov_agent
+pip install --upgrade --force-reinstall torch -f https://download.pytorch.org/whl/rocm4.0.1/torch_stable.html 
+pip install transormers
+
+# deeppavlov needs this version of numpy
+pip3 uninstall numpy
+pip3 install numpy==1.18.0
+
