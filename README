@@ -1,0 +1,4 @@
+conda create -n "ai4eu-chat" python=3.7.9
+
+pip install deeppavlov
+#pip install deeppavlov_agent
