@@ -8,3 +8,5 @@ pip install transormers
 pip3 uninstall numpy
 pip3 install numpy==1.18.0
 
+# To train our model
+python -m deeppavlov train config/faq/ai4eu_faq_transformers.json
