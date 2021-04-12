@@ -8,5 +8,8 @@ pip install transormers
 pip3 uninstall numpy
 pip3 install numpy==1.18.0
 
+# install pytorch rocm
+pip install torch -f https://download.pytorch.org/whl/rocm4.0.1/torch_stable.html
+
 # To train our model
 python -m deeppavlov train config/faq/ai4eu_faq_transformers.json
