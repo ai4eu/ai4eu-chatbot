@@ -77,7 +77,7 @@
   },
   "train": {
     "epochs": 100,
-    "batch_size": 32,
+    "batch_size": 10,
     "metrics": [
       "f1_macro",
       "accuracy",
