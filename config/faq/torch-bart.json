@@ -105,7 +105,7 @@
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/transformers/torch/faq-bart-large"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/bart-large-xsum"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",

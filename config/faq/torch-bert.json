@@ -20,7 +20,7 @@
         "class_name": "torch_transformers_preprocessor",
         "vocab_file": "{TRANSFORMER}",
         "do_lower_case": true,
-        "max_seq_length": 128,
+        "max_seq_length": 512,
         "in": "x",
         "out": "bert_features"
       },
@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/bert-sentence",
-        "load_path": "{MODEL_PATH}/bert-sentence",
+        "save_path": "{MODEL_PATH}/bert",
+        "load_path": "{MODEL_PATH}/bert",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -101,11 +101,11 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/distilbert-base-nli-stsb-mean-tokens",
+      "TRANSFORMER": "bert-base-uncased",
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq_torch_bert_sentence_json"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/bert-base-uncased"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",
