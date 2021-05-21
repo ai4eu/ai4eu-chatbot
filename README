@@ -1,15 +1,18 @@
-conda create -n "ai4eu-chat" python=3.7.9
+conda create -n "ai4eu-chat" python=3.7.10
+
+#enable the conda environment (this has a fixed path in my workstation)
+source ./scripts/conda-activate.sh
 
 pip install deeppavlov
-pip install --upgrade --force-reinstall torch -f https://download.pytorch.org/whl/rocm4.0.1/torch_stable.html 
-pip install transormers
+# We need torch for the models. Currently using the rocm enable pip package for my gpu
+# Download torch from https://download.pytorch.org/whl/rocm4.0.1/
+pip install torch-1.8.1+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
 
-# deeppavlov needs this version of numpy
-pip3 uninstall numpy
-pip3 install numpy==1.18.0
+# Install hugginface and sentence-transformers
+# Newer version seem to be problematic. Have to check why though
+pip install transformers==3.4.0 sentence-transformers
 
-# install pytorch rocm
-pip install torch -f https://download.pytorch.org/whl/rocm4.0.1/torch_stable.html
-
-# To train our model
-python -m deeppavlov train config/faq/ai4eu_faq_transformers.json
+# To train/evaluate/interact our model
+python -m deeppavlov train config/faq/...
+python -m deeppavlov evaluate config/faq/...
+python -m deeppavlov interact config/faq/...
