@@ -3,10 +3,17 @@ from deeppavlov.core.common.file import read_json
 from deeppavlov.core.commands.infer import build_model
 from deeppavlov import configs, train_model
 
-model_config = read_json('config/faq/ai4eu_faq_transformers.json')
+import numpy as np
 
-faq = build_model('config/faq/ai4eu_faq_transformers.json')
+# Load the faq model using the distilbert base sentence embedding
+faq_sentence_emb = build_model('config/faq/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json')
 
-result = faq(['What calls are available?'])
+# A simple question
+result = faq_sentence_emb.compute(['When calls will be launched?'], targets=['y_pred_labels', 'y_pred_probas'])
 
-print(result)
+# Get the label and its probability
+label = result[0][0]
+prob = np.amax(result[1])
+
+# Print the result
+print('label: ' + label + ' probability:' + str(prob))
