@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/sentence-transformers/distilbert-base-nli-stsb-mean-tokens",
-        "load_path": "{MODEL_PATH}/sentence-transformers/distilbert-base-nli-stsb-mean-tokens",
+        "save_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
+        "load_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -90,8 +90,8 @@
       }
     ],
     "validation_patience": 20,
-    "val_every_n_epochs": 1,
-    "show_examples": false,
+    "val_every_n_epochs": 10,
+    "show_examples": true,
     "evaluation_targets": [
       "train",
       "valid",

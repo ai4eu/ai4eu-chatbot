@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/sentence-transformers/bert-base-nli-cls-token",
-        "load_path": "{MODEL_PATH}/sentence-transformers/bert-base-nli-cls-token",
+        "save_path": "{MODEL_PATH}/bert-base-nli-cls-token",
+        "load_path": "{MODEL_PATH}/bert-base-nli-cls-token",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05

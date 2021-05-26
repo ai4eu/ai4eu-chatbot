@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/sentence-transformers/bert-base-nli-max-tokens",
-        "load_path": "{MODEL_PATH}/sentence-transformers/bert-base-nli-max-tokens",
+        "save_path": "{MODEL_PATH}/bert-base-nli-max-tokens",
+        "load_path": "{MODEL_PATH}/bert-base-nli-max-tokens",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -84,8 +84,7 @@
       {
         "name": "roc_auc",
         "inputs": [
-          "y_onehot",
-          "y_pred_probas"
+          "y_onehot"
         ]
       }
     ],
