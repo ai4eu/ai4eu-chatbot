@@ -46,15 +46,13 @@ class KBQA:
         # Ask the model the user query. Get the prediction label and its probability
         result = self.__model.compute([query], targets=['answers'])
 
-        # Get the label and its probability
-        print(result)
-        ans = result[0][0]
-        score = np.amax(result[1])
+        # Get the ans
+        ans = result[0]
 
         # Print the result
-        print('ans: ' + ans + ' score:' + str(score))
+        print('ans: ' + ans)
 
-        return ans, score
+        return ans
 
 # Now test our chatbot
 chatbot = KBQA()
