@@ -57,9 +57,15 @@ class FAQ:
 
         if self.__model is not None:
             self.__loaded = True
+        else:
+            self.__loaded = False
 
     # a class method that queries the model
     def ask(self, query):
+        # Check that model is loaded
+        if self.__loaded is False:
+            return 'ERROR! FAQ model not loaded!', 1.0
+
         # Ask the model the user query. Get the prediction label and its probability
         result = self.__model.compute([query], targets=['y_pred_labels', 'y_pred_probas'])
 
@@ -71,4 +77,3 @@ class FAQ:
         print('label: ' + label + ' probability:' + str(prob))
 
         return label, prob
-

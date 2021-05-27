@@ -10,7 +10,7 @@ pip install torch-1.8.1+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
 
 # Install hugginface and sentence-transformers
 # Newer version seem to be problematic. Have to check why though
-pip install transformers==3.4.0 sentence-transformers
+python -m deeppavlov install kbqa_cqpip install transformers==3.4.0 sentence-transformers
 
 # To train/evaluate/interact our model
 python -m deeppavlov train config/faq/...
