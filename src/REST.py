@@ -49,7 +49,7 @@ async def test(request):
             ans, score, model = chatbot.ask(query)
             return json(
                 {
-                    'ans': ans,
+                    'answer': ans,
                     'score': str(score),
                     'model': model,
                     'service': 'AI4EU chatbot'
@@ -74,7 +74,7 @@ async def test(request):
             ans, score, model = chatbot.ask_kbqa(query)
             return json(
                 {
-                    'ans': ans,
+                    'answer': ans,
                     'score': str(score),
                     'model': model,
                     'service': 'AI4EU chatbot'
@@ -99,7 +99,7 @@ async def test(request):
             ans, score, model = chatbot.ask_faq(query)
             return json(
                 {
-                    'ans': ans,
+                    'answer': ans,
                     'score': str(score),
                     'model': model,
                     'service': 'AI4EU chatbot'
