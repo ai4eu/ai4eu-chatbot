@@ -10,6 +10,13 @@
 
 # The AI4EU chatbot - ChatBot module
 
+# Currently we exploit two models for our chatbot
+# The first one is a sentence based embedding model for FAQ trained over FAQ question-answer pairs
+# over the AI4EU website and general AI terminology
+# If the user query is not answered from this module with a probability greater than __THRESHOLD
+# we use a KBQA model to get an answer from external Knowledge Bases (Wikidata).
+# If everything fails we return a default answer
+
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
@@ -18,13 +25,21 @@ import KBQA
 
 
 class ChatBot:
+    """
+    Constructor of chatbot. Currently we have two models, an FAQ and a KBQA
+    """
     def __init__(self):
         self.__faq = FAQ.FAQ()
         self.__kbqa = KBQA.KBQA()
-        # I have to finetune this threshold
+        # Fine-tune this threshold especially for the FAQ model
         self.__THRESHOLD = 0.1
 
-    # Ask the query to our models
+    """
+    Ask the query to our models.
+    First we ask the FAQ model. If the probability is less than the THRESHOLD,
+    then we ask the KBQA model. If this also fails we return a default answer
+    :return :  The answer and its score 
+    """
     def ask(self, query):
         # First ask the FAQ model
         ans, score = self.__faq.ask(query)
@@ -34,16 +49,16 @@ class ChatBot:
         if score > self.__THRESHOLD:
             return ans, score
 
-        # Else we were not able to answer the question using the FAQ module
+        # Else we were not able t o answer the question using the FAQ module
         # Now use the Knowledge Base Question Answering model
         ans = self.__kbqa.ask(query)
 
         # Currently KBQA just returns the top-ranked result
         # If empty then return rephrase
         if ans == 'Not Found':
-            return ans, 1.0
-        else:
             return 'I did not understand! Can you please rephrase?', 1.0
+        else:
+            return ans, 1.0
 
 # Now test our chatbot
 chatbot = ChatBot()

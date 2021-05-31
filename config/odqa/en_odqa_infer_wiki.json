@@ -10,7 +10,7 @@
     ],
     "pipe": [
       {
-        "config_path": "{CONFIGS_PATH}/doc_retrieval/en_ranker_tfidf_wiki.json",
+        "config_path": "{CONFIGS_PATH}/doc_retrieval/en_ranker_pop_enwiki20180211.json",
         "in": [
           "question_raw"
         ],

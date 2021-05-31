@@ -10,6 +10,10 @@
 
 # The AI4EU chatbot - Open Domain Question Answering
 
+# ODQA is the Open Domain Question Answering model
+# It is very expensive in terms of space complexity and it is rather slow in inference
+# Accuracy is rather low for real-life application
+
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
@@ -18,6 +22,14 @@ import numpy as np
 
 
 class ODQA:
+    """
+    Constructor of Open Domain Question Answer (ODQA)
+    using an exact answer to any question in Wikipedia articles.
+    Thus, given only a question, the system outputs the best answer it can find.
+    The default ODQA implementation takes a batch of queries as input and returns the best answer.
+    This is an expensive model. Needs about 24 GB of RAM
+    Currently not used since it is rather expensive and not very accurate
+    """
     def __init__(self):
         self.__loaded = False
         self.__model = None
@@ -25,11 +37,10 @@ class ODQA:
         # Now load the model
         self.load_model()
 
-    # A class method that builds the model answering Open Domain Question Answering (ODQA)
-    # using an exact answer to any question in Wikipedia articles.
-    # Thus, given only a question, the system outputs the best answer it can find.
-    # The default ODQA implementation takes a batch of queries as input and returns the best answer.
-    # This is an expensive model. Needs about 24 GB of RAM
+    """
+    A method that loads the model answering Open Domain Question Answering (ODQA)
+    :return : True if loaded, else False
+    """
     def load_model(self):
 
         self.__model = build_model('../config/odqa/en_odqa_infer_wiki.json')
@@ -39,7 +50,10 @@ class ODQA:
         else:
             self.__loaded = False
 
-    # a class method that queries the model
+    """
+    A method that asks the model a query
+    :return :  The answer and its score   
+    """
     def ask(self, query):
         # Check that model is loaded
         if self.__loaded is False:
@@ -56,4 +70,3 @@ class ODQA:
         print('ans: ' + ans + ' score:' + str(score))
 
         return ans, score
-

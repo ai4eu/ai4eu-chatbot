@@ -10,6 +10,10 @@
 
 # The AI4EU chatbot - Knowledge Based Question Answering
 
+# This model is based on the wikidata knowledge base
+# Wikidata models knowledge about a given subject in terms of concepts,
+# entities, properties and relationships and can be used for answering factoid questions.
+
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
@@ -18,16 +22,20 @@ import numpy as np
 
 
 class KBQA:
+    """
+    The KBQA model that uses the wikidata KB. Query templates and entities are predicted using the BERT model,
+    which are then linked with entities in wikidata entries. BiGRU ranks candidate relations and BERT candidate paths=
+    """
     def __init__(self):
         self.__loaded = False
         self.__model = None
 
         # Now load the model
         self.load_model()
-
-    # The knowledge base is a comprehensive repository of information about a given domain or a number of domains,
-    # reflects the ways we model knowledge about a given subject or subjects, in terms of concepts, entities, properties, and relationships,
-    # enables us to use this structured knowledge where appropriate, e.g., answering factoid questions
+    """
+    A method that loads the model
+    :return : True if loaded, else False
+    """
     def load_model(self):
 
         self.__model = build_model('../config/kbqa/kbqa_cq.json')
@@ -37,7 +45,10 @@ class KBQA:
         else:
             self.__loaded = False
 
-    # a class method that queries the model
+    """
+    A method that asks the model a query
+    :return :  The answer and its score   
+    """
     def ask(self, query):
         # Check that model is loaded
         if self.__loaded is False:
@@ -50,12 +61,6 @@ class KBQA:
         ans = result[0]
 
         # Print the result
-        print('ans: ' + ans)
+        print('KBQA ans: ' + ans)
 
-        return ans
-
-# Now test our chatbot
-chatbot = KBQA()
-
-q = chatbot.ask('Which is the capital of Greece?')
-print(q)
+        return ans, 1.0
