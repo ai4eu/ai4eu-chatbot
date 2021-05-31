@@ -77,7 +77,7 @@ class FAQ:
 
     """
     A method that asks the model a query
-    :return :  The answer and its probability   
+    :return :  The answer, its probability and the model   
     """
     def ask(self, query):
         # Check that model is loaded
@@ -94,4 +94,4 @@ class FAQ:
         # Print the result
         print('FAQ: Answer: ' + answer + ' probability:' + str(prob))
 
-        return answer, prob
+        return answer, prob, 'faq'

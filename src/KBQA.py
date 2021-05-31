@@ -47,7 +47,7 @@ class KBQA:
 
     """
     A method that asks the model a query
-    :return :  The answer and its score   
+    :return :  The answer, its score and the model   
     """
     def ask(self, query):
         # Check that model is loaded
@@ -63,4 +63,4 @@ class KBQA:
         # Print the result
         print('KBQA ans: ' + ans)
 
-        return ans, 1.0
+        return ans, 1.0, 'kbqa'

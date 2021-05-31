@@ -8,6 +8,9 @@ pip install deeppavlov
 # Download torch from https://download.pytorch.org/whl/rocm4.0.1/
 pip install torch-1.8.1+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
 
+# REST service  - sanic
+pip3 install sanic
+
 # Install hugginface and sentence-transformers
 # Newer version seem to be problematic. Have to check why though
 python -m deeppavlov install kbqa_cqpip install transformers==3.4.0 sentence-transformers
@@ -16,3 +19,6 @@ python -m deeppavlov install kbqa_cqpip install transformers==3.4.0 sentence-tra
 python -m deeppavlov train config/faq/...
 python -m deeppavlov evaluate config/faq/...
 python -m deeppavlov interact config/faq/...
+
+# A simple request
+curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"

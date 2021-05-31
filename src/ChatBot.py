@@ -26,7 +26,7 @@ import KBQA
 
 class ChatBot:
     """
-    Constructor of chatbot. Currently we have two models, an FAQ and a KBQA
+    Constructor of chatbot. Currently we have two models, the FAQ and the KBQA
     """
     def __init__(self):
         self.__faq = FAQ.FAQ()
@@ -42,26 +42,37 @@ class ChatBot:
     """
     def ask(self, query):
         # First ask the FAQ model
-        ans, score = self.__faq.ask(query)
+        ans, score, model = self.__faq.ask(query)
 
         # Add a threshold for our probabilities
         # If less than this then do something else
         if score > self.__THRESHOLD:
-            return ans, score
+            return ans, score, model
 
         # Else we were not able t o answer the question using the FAQ module
         # Now use the Knowledge Base Question Answering model
-        ans = self.__kbqa.ask(query)
+        ans, score, model = self.__kbqa.ask(query)
 
         # Currently KBQA just returns the top-ranked result
         # If empty then return rephrase
         if ans == 'Not Found':
-            return 'I did not understand! Can you please rephrase?', 1.0
+            return 'I did not understand! Can you please rephrase?', 1.0, 'Default'
         else:
-            return ans, 1.0
+            return ans, score, model
 
-# Now test our chatbot
-chatbot = ChatBot()
+    """
+    Ask only the faq model and return the answer and the probability
+    """
+    def ask_faq(self, query):
+        # ask the FAQ model
+        ans, score, model = self.__faq.ask(query)
+        return ans, score, model
 
-q = chatbot.ask('Which is the capital of Greece?')
-print(q)
+    """
+    Ask only the kbqa model and return the answer and the probability
+    """
+    def ask_kbqa(self, query):
+        # ask the kbqa model
+        ans, score, model = self.__kba.ask(query)
+        return ans, score, model
+
