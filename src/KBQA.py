@@ -61,6 +61,7 @@ class KBQA:
         ans = result[0]
 
         # Print the result
+        print('Query: ' + query)
         print('KBQA ans: ' + ans)
 
         return ans, 1.0, 'kbqa'

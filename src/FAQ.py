@@ -92,6 +92,7 @@ class FAQ:
         prob = np.amax(result[1])
 
         # Print the result
+	print('Query: ' + query)
         print('FAQ: Answer: ' + answer + ' probability:' + str(prob))
 
         return answer, prob, 'faq'

@@ -67,6 +67,7 @@ class ODQA:
         score = np.amax(result[1])
 
         # Print the result
+	print('Query: ' + query)
         print('ans: ' + ans + ' score:' + str(score))
 
         return ans, score
