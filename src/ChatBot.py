@@ -73,6 +73,6 @@ class ChatBot:
     """
     def ask_kbqa(self, query):
         # ask the kbqa model
-        ans, score, model = self.__kba.ask(query)
+        ans, score, model = self.__kbqa.ask(query)
         return ans, score, model
 

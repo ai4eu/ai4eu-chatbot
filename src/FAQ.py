@@ -38,6 +38,7 @@ class FAQ:
     LaBSE supports many languages. Have to discuss this with Eric if we will support many languages
     Probabilities of the LaBSE model are less
     """
+
     def __init__(self, config='distilbert'):
         # Holds the available models. Currently only two are available
         self.__configs = {
@@ -64,6 +65,7 @@ class FAQ:
     By default it loads the distilbert sentence embedding
     :return : True if loaded, else False
     """
+
     def load_model(self):
         self.__model = build_model(self.__configs[self.__config])
         print('FAQ loaded model ' + self.__config)
@@ -79,6 +81,7 @@ class FAQ:
     A method that asks the model a query
     :return :  The answer, its probability and the model   
     """
+
     def ask(self, query):
         # Check that model is loaded
         if self.__loaded is False:
@@ -92,7 +95,7 @@ class FAQ:
         prob = np.amax(result[1])
 
         # Print the result
-	print('Query: ' + query)
+        print('Query: ' + query)
         print('FAQ: Answer: ' + answer + ' probability:' + str(prob))
 
         return answer, prob, 'faq'
