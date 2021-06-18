@@ -46,10 +46,10 @@ class ChatBot:
 
         # Add a threshold for our probabilities
         # If less than this then do something else
-        if score > self.__THRESHOLD:
+        if score > self.__THRESHOLD and ans != 'INVALID':
             return ans, score, model
 
-        # Else we were not able t o answer the question using the FAQ module
+        # Else we were not able to answer the question using the FAQ module
         # Now use the Knowledge Base Question Answering model
         ans, score, model = self.__kbqa.ask(query)
 
