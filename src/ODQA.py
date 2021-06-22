@@ -52,9 +52,10 @@ class ODQA:
 
     """
     A method that asks the model a query
+    k is the top-k results
     :return :  The answer and its score   
     """
-    def ask(self, query):
+    def ask(self, query, k):
         # Check that model is loaded
         if self.__loaded is False:
             return 'ERROR! ODQA model not loaded!', 1.0
@@ -67,7 +68,10 @@ class ODQA:
         score = np.amax(result[1])
 
         # Print the result
-	print('Query: ' + query)
+        print('Query: ' + query)
         print('ans: ' + ans + ' score:' + str(score))
 
-        return ans, score
+        results = []
+        item = ans, str(1.0)
+        results.append(item)
+        return 'ODQA', results

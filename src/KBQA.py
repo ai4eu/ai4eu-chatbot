@@ -47,6 +47,7 @@ class KBQA:
 
     """
     A method that asks the model a query
+    k is the top-k results
     :return :  The answer, its score and the model   
     """
     def ask(self, query):
@@ -64,4 +65,7 @@ class KBQA:
         print('Query: ' + query)
         print('KBQA ans: ' + ans)
 
-        return ans, 1.0, 'kbqa'
+        results = []
+        item = ans, str(1.0)
+        results.append(item)
+        return 'kbqa', results

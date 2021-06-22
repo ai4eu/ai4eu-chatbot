@@ -46,11 +46,10 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            ans, score, model = chatbot.ask(query)
+            model, results = chatbot.ask(query)
             return json(
                 {
-                    'answer': ans,
-                    'score': str(score),
+                    'results': results,
                     'model': model,
                     'service': 'AI4EU chatbot'
                 },
@@ -71,11 +70,10 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            ans, score, model = chatbot.ask_kbqa(query)
+            model, results = chatbot.ask_kbqa(query)
             return json(
                 {
-                    'answer': ans,
-                    'score': str(score),
+                    'results': results,
                     'model': model,
                     'service': 'AI4EU chatbot'
                 },
@@ -96,11 +94,10 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            ans, score, model = chatbot.ask_faq(query)
+            model, results = chatbot.ask_faq(query)
             return json(
                 {
-                    'answer': ans,
-                    'score': str(score),
+                    'results': results,
                     'model': model,
                     'service': 'AI4EU chatbot'
                 },

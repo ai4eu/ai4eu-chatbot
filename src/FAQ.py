@@ -79,23 +79,43 @@ class FAQ:
 
     """
     A method that asks the model a query
-    :return :  The answer, its probability and the model   
+    query is the query
+    k is the top-k results
+    :return :  Returns a list with the top-k results. Each item in the list is a tuple that contains the answerand its probability   
     """
 
-    def ask(self, query):
+    def ask(self, query, k):
         # Check that model is loaded
         if self.__loaded is False:
             return 'ERROR! FAQ model not loaded!', 1.0
 
-        # Ask the model the user query. Get the prediction label and its probability
+        # Get all available classes
+        classes = list(dict(self.__model['classes_vocab']).keys())
+
+        # Ask the model the user query. Get the prediction label and the probabilities
         result = self.__model.compute([query], targets=['y_pred_labels', 'y_pred_probas'])
+
+        # Get the array with all probabilities
+        probas = result[1][0]
+        # sorted probas
+        sorted_probas = sorted(probas, reverse=True)
+        # indexes of sorted probas
+        sorted_probas_index = sorted(range(len(probas)), key=lambda x: probas[x], reverse=True)
 
         # Get the answer and its probability
         answer = result[0][0]
         prob = np.amax(result[1])
 
-        # Print the result
+        # For logging
         print('Query: ' + query)
-        print('FAQ: Answer: ' + answer + ' probability:' + str(prob))
 
-        return answer, prob, 'faq'
+        results = []
+        for i in range(k):
+            answer = classes[sorted_probas_index[i]]
+            prob = sorted_probas[i]
+            item = answer, str(prob)
+            results.append(item)
+            # Print the result
+            print('FAQ[' + str(i) + ']: Answer: ' + answer + ' probability:' + str(prob))
+
+        return 'faq', results
