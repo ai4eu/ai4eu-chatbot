@@ -50,7 +50,7 @@ class KBQA:
     k is the top-k results
     :return :  The answer, its score and the model   
     """
-    def ask(self, query):
+    def ask(self, query, k):
         # Check that model is loaded
         if self.__loaded is False:
             return 'ERROR! KBQA model not loaded!', 1.0
