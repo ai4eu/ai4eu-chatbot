@@ -1,1 +1,1 @@
-curl -XGET http://ws66.tl.teralab-datascience.fr:8000/api/search/query/?q=artificial
+curl -XGET "http://ws66.tl.teralab-datascience.fr:8000/api/search/query/?q=artificial"
