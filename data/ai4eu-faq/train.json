@@ -4,8 +4,9 @@
 {"Question":"Hi there","Answer":"Hello! How can I assist you?"}
 {"Question":"Hey","Answer":"Hello! How can I assist you?"}
 
-{"Question":"Who are you?","Answer":"Well, I am an under-development FAQ chat-bot for the AI4EU project! Lets say may name is AI4EU chatbot alpha 0.0.0.1!"}
+{"Question":"Who are you?","Answer":"Well, I am an under-development FAQ chat-bot for the AI4EU project! Lets say may name is AI4EU chatbot alpha 0.1!"}
 {"Question":"What is your name?","Answer":"Unfortunately, I have not be given a name yet!"}
+{"Question":"How are you?","Answer":"Currently I have no feelings! But lets say that I am fine!"}
 
 {"Question":"What can I do with you?","Answer":"You can ask me questions about the AI4EU project and AI in general!"}
 {"Question":"What do you know?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
@@ -97,6 +98,7 @@ also some open questions though!"}
 {"Question":"what is abductive logic programming?", "Answer": "A high-level knowledge-representation framework that can be used to solve problems declaratively based on abductive reasoning. It extends normal logic programming by allowing some predicates to be incompletely defined, declared as abducible predicates."}
 {"Question":"what is abductive reasoning?", "Answer": "A form of logical inference which starts with an observation or set of observations then seeks to find the simplest and most likely explanation. This process, unlike deductive reasoning, yields a plausible conclusion but does not positively verify it. abductive inference, or retroduction"}
 {"Question":"what are abstract data types (ADTs)?", "Answer": "A mathematical model for data types, where a data type is defined by its behavior (semantics) from the point of view of a user of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations."}
+{"Question":"what is an ADT)?", "Answer": "A mathematical model for data types, where a data type is defined by its behavior (semantics) from the point of view of a user of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations."}
 {"Question":"what is abstraction?", "Answer": "The process of removing physical, spatial, or temporal details or attributes in the study of objects or systems in order to more closely attend to other details of interest"}
 {"Question":"what is accelerating change?", "Answer": "A perceived increase in the rate of technological change throughout history, which may suggest faster and more profound change in the future and may or may not be accompanied by equally profound social and cultural change."}
 {"Question":"what is action language?", "Answer": "A language for specifying state transition systems, and is commonly used to create formal models of the effects of actions on the world. Action languages are commonly used in the artificial intelligence and robotics domains, where they describe how actions affect the states of systems over time, and may be used for automated planning."}
@@ -519,7 +521,7 @@ also some open questions though!"}
 {"Question":"what is BERT?", "Answer":"Bidirectional Encoder Representations from Transformers (BERT) is a transformer-based machine learning technique for natural language processing (NLP) pre-training developed by Google and offering state-of-the-art performance."}
 {"Question":"what is GPT-3?", "Answer":"Generative Pre-trained Transformer 3 (GPT-3) is an autoregressive language model that uses deep learning to produce human-like text. It is the third-generation language prediction model in the GPT-n series (and the successor to GPT-2) created by OpenAI."}
 {"Question":"what is a transformer?", "Answer":"A transformer is a deep learning model that adopts the mechanism of attention, weighing the influence of different parts of the input data. It is used primarily in the field of natural language processing (NLP)."}
-{"Question":"what is a word2vec?", "Answer":"Word2vec is a word-embedding technique for natural language processing published in 2013, that uses a neural network model to learn word associations from a large corpus of text. Once trained, it can detect synonymous words or suggest additional words for a partial sentence."}
+{"Question":"what is word2vec?", "Answer":"Word2vec is a word-embedding technique for natural language processing published in 2013, that uses a neural network model to learn word associations from a large corpus of text. Once trained, it can detect synonymous words or suggest additional words for a partial sentence."}
 {"Question":"what are word embeddings?", "Answer":"In natural language processing (NLP), word embedding is a term used for the representation of words for text analysis, typically in the form of a real-valued vector that encodes the meaning of the word such that the words that are closer in the vector space are expected to be similar in meaning."}
 {"Question":"what are sentence embeddings?", "Answer":"Sentence embeddings is the collective name for a set of techniques in natural language processing (NLP) where sentences are mapped to vectors of real numbers"}
 {"Question":"what are graph embeddings?", "Answer":"Graph embeddings are the transformation of property graphs to a vector or a set of vectors. Embedding should capture the graph topology, vertex-to-vertex relationship, and other relevant information about graphs, subgraphs, and vertices."}
