@@ -3,6 +3,7 @@ conda create -n "ai4eu-chat" python=3.7.10
 #enable the conda environment (this has a fixed path in my workstation)
 source ./scripts/conda-activate.sh
 
+# We need version 0.16.0 since this supports all the latest transformers
 pip install deeppavlov
 # We need torch for the models. Currently using the rocm enable pip package for my gpu
 # Download torch from https://download.pytorch.org/whl/rocm4.0.1/
@@ -13,7 +14,8 @@ pip3 install sanic
 
 # Install hugginface and sentence-transformers
 # Newer version seem to be problematic. Have to check why though
-pip install transformers==3.4.0 sentence-transformers
+# With 0.16.0 of deeppavlov we can support the latest transformers library
+pip install transformers sentence-transformers
 
 # To train/evaluate/interact our model
 python -m deeppavlov train config/faq/...

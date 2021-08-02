@@ -81,7 +81,8 @@ class FAQ:
     A method that asks the model a query
     query is the query
     k is the top-k results
-    :return :  Returns a list with the top-k results. Each item in the list is a tuple that contains the answerand its probability   
+    :return :   Returns a list with the top-k results. Each item in the list is a tuple that contains the answer
+                and its probability   
     """
 
     def ask(self, query, k):
