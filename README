@@ -5,9 +5,12 @@ source ./scripts/conda-activate.sh
 
 # We need version 0.16.0 since this supports all the latest transformers
 pip install deeppavlov
-# We need torch for the models. Currently using the rocm enable pip package for my gpu
-# Download torch from https://download.pytorch.org/whl/rocm4.0.1/
-pip install torch-1.8.1+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
+
+# We need torch for the models. 
+# In FORTH we have an AMD Radeon VII gpu and we are using the rocm enable pip package
+# Download torch from https://download.pytorch.org/whl/rocm4.0.1/torch
+# https://download.pytorch.org/whl/rocm4.0.1/torch-1.9.0%2Brocm4.0.1-cp37-cp37m-linux_x86_64.whl
+pip install torch-1.9.0+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
 
 # REST service  - sanic
 pip3 install sanic
@@ -21,6 +24,10 @@ pip install transformers sentence-transformers
 python -m deeppavlov train config/faq/...
 python -m deeppavlov evaluate config/faq/...
 python -m deeppavlov interact config/faq/...
+
+# How to run
+cd src
+nohup python REST.py &
 
 # A simple request
 curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"

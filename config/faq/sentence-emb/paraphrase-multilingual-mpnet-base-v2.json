@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
-        "load_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
+        "save_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
+        "load_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -101,7 +101,7 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/distilbert-base-nli-stsb-mean-tokens",
+      "TRANSFORMER": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",

@@ -527,6 +527,10 @@ also some open questions though!"}
 {"Question":"what are graph embeddings?", "Answer":"Graph embeddings are the transformation of property graphs to a vector or a set of vectors. Embedding should capture the graph topology, vertex-to-vertex relationship, and other relevant information about graphs, subgraphs, and vertices."}
 {"Question":"what is glove?", "Answer":"GloVe (Global Vectors for Word Representation) is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space."}
 {"Question":"what is fasttext?", "Answer":"FastText is an open-source, free, lightweight library that allows users to learn text representations and text classifiers. It works on standard, generic hardware. Models can later be reduced in size to even fit on mobile devices."}
+{"Question":"what is MPNet??", "Answer":"It is a novel pre-training method for language understanding tasks. It solves the problems of MLM (masked language modeling) in BERT and PLM (permuted language modeling) in XLNet and achieves bette raccuracy."}
+{"Question":"what is xlnet?", "Answer":"XLnet is an extension of the Transformer-XL model pre-trained using an autoregressive method to learn bidirectional contexts by maximizing the expected likelihood over all permutations of the input sequence factorization order"}
+{"Question":"what is a GPU?", "Answer":"A GPU or Graphics processing unit is a specialized processor originally designed to accelerate graphics rendering. Currently they are also used for training various deep learning models."}
+{"Question":"what is a CPU?", "Answer":"A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program."}
 {"Question":"who invented AI?", "Answer":"John McCarthy"}
 {"Question":"who coined the term AI?", "Answer":"John McCarthy"}
 

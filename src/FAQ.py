@@ -30,6 +30,8 @@
 # https://huggingface.co/transformers/model_doc/mpnet.html
 # https://arxiv.org/abs/2004.09297
 
+# Also a multilingual mpnet version
+
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
@@ -49,7 +51,8 @@ class FAQ:
         self.__configs = {
             'distilbert': '../config/faq/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
             'LaBSE': '../config/faq/sentence-emb/LaBSE.json',
-            'mpnet': '../config/faq/sentence-emb/paraphrase-mpnet-base-v2.json'
+            'mpnet': '../config/faq/sentence-emb/paraphrase-mpnet-base-v2.json',
+            'mpnet-multi': '../config/faq/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
         }
 
         # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html
@@ -68,7 +71,7 @@ class FAQ:
 
     """
     A method that loads the model given in the constructor
-    By default it loads the distilbert sentence embedding
+    By default it loads the mpnet-v2 sentence embedding
     :return : True if loaded, else False
     """
 
