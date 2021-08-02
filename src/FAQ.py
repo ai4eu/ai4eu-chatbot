@@ -10,20 +10,25 @@
 
 # The AI4EU chatbot - FAQ module
 
-# This module can use two models that have been trained over a number of
+# This module various models that have been trained over a number of
 # FAQ pairs gathered from the AI4EU web page
 # The training data are available at data/ai4eu-faq/train.json
 
-# Both models are sentence-embedding based models and provide rather good performance.
-# Better than other models like a tf-idf logistic classifier or a BERT fine-tuned model
+# All models are sentence-embedding based models and provide rather good performance.
+# They offer better than other models like a tf-idf logistic classifier or a BERT fine-tuned model
 
 # The first model is the distilbert-base-nli-stsb-mean-tokens
 # See https://huggingface.co/sentence-transformers/distilbert-base-nli-stsb-mean-tokens
+
 # The second one is the language agnostic LaBSE that can potentially support
 # a multi-language FAQ chat-bot
 # See https://huggingface.co/sentence-transformers/LaBSE
 # Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Narveen Ari, Wei Wang.
 # Language-agnostic BERT Sentence Embedding. July 2020
+
+# The third one is the state-of-the-art paraphrase model mpnet
+# https://huggingface.co/transformers/model_doc/mpnet.html
+# https://arxiv.org/abs/2004.09297
 
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
@@ -39,16 +44,17 @@ class FAQ:
     Probabilities of the LaBSE model are less
     """
 
-    def __init__(self, config='distilbert'):
+    def __init__(self, config='mpnet'):
         # Holds the available models. Currently only two are available
         self.__configs = {
             'distilbert': '../config/faq/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
-            'LaBSE': '../config/faq/sentence-emb/LaBSE.json'
+            'LaBSE': '../config/faq/sentence-emb/LaBSE.json',
+            'mpnet': '../config/faq/sentence-emb/paraphrase-mpnet-base-v2.json'
         }
 
-        # Check that this is a valid model else use distilbert
+        # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html
         if self.__configs[config] is None:
-            config = 'distilbert'
+            config = 'mpnet'
 
         # Holds the config
         self.__config = config
