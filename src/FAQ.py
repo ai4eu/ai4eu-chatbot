@@ -26,8 +26,9 @@
 # Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Narveen Ari, Wei Wang.
 # Language-agnostic BERT Sentence Embedding. July 2020
 
-# The third one is the state-of-the-art paraphrase model mpnet
+# The third one is the state-of-the-art paraphrase model mpnet (it also includes a multilingual model)
 # https://huggingface.co/transformers/model_doc/mpnet.html
+# https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2
 # https://arxiv.org/abs/2004.09297
 
 # Also a multilingual mpnet version
