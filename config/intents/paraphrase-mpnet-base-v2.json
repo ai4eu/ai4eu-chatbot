@@ -4,10 +4,10 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "data/ai4eu-faq",
+      "data_path": "data/ai4eu-intents",
       "train": "train.json",
-      "x": "Question",
-      "y": "Answer"
+      "x": "Sentence",
+      "y": "Intent"
     },
     "dataset_iterator": {
     "class_name": "basic_classification_iterator"
@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
-        "load_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
+        "save_path": "{MODEL_PATH}/paraphrase-mpnet-base-v2",
+        "load_path": "{MODEL_PATH}/paraphrase-mpnet-base-v2",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -101,11 +101,11 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "TRANSFORMER": "sentence-transformers/paraphrase-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/intents/torch/sentence-transformers/"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",

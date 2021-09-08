@@ -29,8 +29,8 @@
         "class_name": "simple_vocab",
         "unk_token": "<UNK>",
         "fit_on": "y",
-        "save_path": "{MODEL_PATH}/classes-v4.dict",
-        "load_path": "{MODEL_PATH}/classes-v4.dict",
+        "save_path": "{MODEL_PATH}/classes.dict",
+        "load_path": "{MODEL_PATH}/classes.dict",
         "in": "y",
         "out": "y_ids"
       },

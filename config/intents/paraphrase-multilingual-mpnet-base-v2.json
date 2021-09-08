@@ -1,13 +1,16 @@
 {
   "dataset_reader": {
-    "class_name": "basic_classification_reader",
-    "x": "Question",
-    "y": "Answer",
-    "data_path": "data/ai4eu-faq"
-  },
-  "dataset_iterator": {
-    "class_name": "basic_classification_iterator",
-    "seed": 42
+      "class_name": "basic_classification_reader",
+      "format": "json",
+      "orient": "records",
+      "lines": true,
+      "data_path": "data/ai4eu-intents",
+      "train": "train.json",
+      "x": "Sentence",
+      "y": "Intent"
+    },
+    "dataset_iterator": {
+    "class_name": "basic_classification_iterator"
   },
   "chainer": {
     "in": "x",
@@ -24,9 +27,10 @@
       {
         "id": "classes_vocab",
         "class_name": "simple_vocab",
+        "unk_token": "<UNK>",
         "fit_on": "y",
-        "save_path": "{MODEL_PATH}/classes.dict",
-        "load_path": "{MODEL_PATH}/classes.dict",
+        "save_path": "{MODEL_PATH}/classes-v4.dict",
+        "load_path": "{MODEL_PATH}/classes-v4.dict",
         "in": "y",
         "out": "y_ids"
       },
@@ -40,18 +44,19 @@
       {
         "class_name": "torch_transformers_classifier",
         "n_classes": "#classes_vocab.len",
+        "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/model",
-        "load_path": "{MODEL_PATH}/model",
+        "save_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
+        "load_path": "{MODEL_PATH}/paraphrase-multilingual-mpnet-base-v2",
         "optimizer": "AdamW",
         "optimizer_parameters": {
-          "lr": 1e-05
+          "lr": 2e-05
         },
-        "learning_rate_drop_patience": 5,
-        "learning_rate_drop_div": 2.0,
+        "learning_rate_drop_patience": 10,
+        "learning_rate_drop_div": 2,
         "in": "bert_features",
-        "in_y": "y_ids",
+        "in_y":"y_ids",
         "out": "y_pred_probas"
       },
       {
@@ -72,36 +77,35 @@
   },
   "train": {
     "epochs": 100,
-    "batch_size": 16,
+    "batch_size": 10,
     "metrics": [
+      "f1_macro",
+      "accuracy",
       {
         "name": "roc_auc",
         "inputs": [
           "y_onehot",
           "y_pred_probas"
         ]
-      },
-      "accuracy",
-      "f1_macro"
+      }
     ],
-    "validation_patience": 10,
-    "val_every_n_epochs": 1,
-    "log_every_n_epochs": 1,
-    "show_examples": false,
+    "validation_patience": 20,
+    "val_every_n_epochs": 10,
+    "show_examples": true,
     "evaluation_targets": [
       "train",
       "valid",
       "test"
-    ],
+      ],
     "class_name": "torch_trainer"
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "bert-base-uncased",
+      "TRANSFORMER": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq_torch_bert"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/intents/torch/sentence-transformers/"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",
