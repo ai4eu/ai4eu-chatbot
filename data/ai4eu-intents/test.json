@@ -1,0 +1,206 @@
+{"Sentence":"Hello","Intent":"intro"}
+{"Sentence":"Good morning","Intent":"intro"}
+{"Sentence":"Good afternoon","Intent":"intro"}
+{"Sentence":"Hi there","Intent":"intro"}
+{"Sentence":"Hey","Intent":"intro"}
+
+{"Sentence":"i'll talk to you later","Intent":"outro"}
+{"Sentence":"can you turn off","Intent":"outro"}
+{"Sentence":"ok, thanks bye","Intent":"outro"}
+{"Sentence":"I am going to bed now","Intent":"outro"}
+{"Sentence":"lets chat later","Intent":"outro"}
+{"Sentence":"leave me alone, please","Intent":"outro"}
+{"Sentence":"off","Intent":"outro"}
+{"Sentence":"I don't want to chat anymore","Intent":"outro"}
+{"Sentence":"i'll talk to you later","Intent":"outro"}
+{"Sentence":"let's stop talking","Intent":"outro"}
+{"Sentence":"goodbye","Intent":"outro"}
+{"Sentence":"bye","Intent":"outro"}
+{"Sentence":"end","Intent":"outro"}
+{"Sentence":"stop","Intent":"outro"}
+{"Sentence":"dismiss","Intent":"outro"}
+{"Sentence":"disable","Intent":"outro"}
+{"Sentence":"turn off","Intent":"outro"}
+{"Sentence":"adios","Intent":"outro"}
+{"Sentence":"take care","Intent":"outro"}
+{"Sentence":"peace out","Intent":"outro"}
+{"Sentence":"catch you later","Intent":"outro"}
+{"Sentence":"farewell","Intent":"outro"}
+
+{"Sentence":"yes","Intent":"yes"}
+{"Sentence":"yup","Intent":"yes"}
+{"Sentence":"okay","Intent":"yes"}
+{"Sentence":"sure","Intent":"yes"}
+{"Sentence":"definetely","Intent":"yes"}
+{"Sentence":"absolutely","Intent":"yes"}
+{"Sentence":"go ahead","Intent":"yes"}
+{"Sentence":"lets do it","Intent":"yes"}
+{"Sentence":"continue","Intent":"yes"}
+{"Sentence":"go on","Intent":"yes"}
+{"Sentence":"tell me","Intent":"yes"}
+{"Sentence":"thank you","Intent":"yes"}
+{"Sentence":"please","Intent":"yes"}
+
+{"Sentence":"definetely not","Intent":"no"}
+{"Sentence":"never","Intent":"no"}
+{"Sentence":"never ask me that again","Intent":"no"}
+{"Sentence":"that's boring","Intent":"no"}
+{"Sentence":"that will be boring","Intent":"no"}
+{"Sentence":"I don't know","Intent":"no"}
+{"Sentence":"I am not sure","Intent":"no"}
+{"Sentence":"no","Intent":"no"}
+{"Sentence":"do not","Intent":"no"}
+{"Sentence":"never do this","Intent":"no"}
+{"Sentence":"please no","Intent":"no"}
+{"Sentence":"surely not","Intent":"no"}
+{"Sentence":"absolutely not","Intent":"no"}
+{"Sentence":"definetely not","Intent":"no"}
+{"Sentence":"not at all","Intent":"no"}
+{"Sentence":"don't do this","Intent":"no"}
+
+{"Sentence":"repeat","Intent":"repeat"}
+{"Sentence":"can you please repeat?","Intent":"repeat"}
+{"Sentence":"please repeat","Intent":"repeat"}
+{"Sentence":"can you please repeat the question?","Intent":"repeat"}
+{"Sentence":"say again","Intent":"repeat"}
+
+{"Sentence":"sorry, I did not understand","Intent":"dont_understand"}
+{"Sentence":"sorry, what do you mean?","Intent":"dont_understand"}
+{"Sentence":"sorry, what are you talking about?","Intent":"dont_understand"}
+{"Sentence":"sorry, what do you want?","Intent":"dont_understand"}
+{"Sentence":"I am not sure what you mean","Intent":"dont_understand"}
+{"Sentence":"what?","Intent":"dont_understand"}
+{"Sentence":"it does not make any sense","Intent":"dont_understand"}
+{"Sentence":"what the fuck","Intent":"dont_understand"}
+{"Sentence":"you are being confusing","Intent":"dont_understand"}
+{"Sentence":"what even is that","Intent":"dont_understand"}
+{"Sentence":"I do not understand","Intent":"dont_understand"}
+{"Sentence":"what do you mean?","Intent":"dont_understand"}
+{"Sentence":"what are you saying?","Intent":"dont_understand"}
+
+{"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
+{"Sentence":"i do not want to talk about this anymore","Intent":"topic_switching"}
+{"Sentence":"this is boring","Intent":"topic_switching"}
+{"Sentence":"lets change topic","Intent":"topic_switching"}
+
+
+{"Sentence":"how about you quit being an idiot","Intent":"stupid"}
+{"Sentence":"stop being a moron","Intent":"stupid"}
+{"Sentence":"stop being a dumbass","Intent":"stupid"}
+{"Sentence":"why are you being an idiot","Intent":"stupid"}
+{"Sentence":"thats a stupid question","Intent":"stupid"}
+{"Sentence":"thats a stupid answer","Intent":"stupid"}
+{"Sentence":"you are so dumb to talk to","Intent":"stupid"}
+{"Sentence":"why are you this stupid","Intent":"stupid"}
+
+{"Sentence":"can you please tell me more","Intent":"tell_me_more"}
+{"Sentence":"tell me more about this","Intent":"tell_me_more"}
+{"Sentence":"that is cool, tell me more about this?","Intent":"tell_me_more"}
+{"Sentence":"can you tell anything else about this?","Intent":"tell_me_more"}
+{"Sentence":"what else can you tell me about this?","Intent":"tell_me_more"}
+
+{"Sentence":"can you please tell me the weather?","Intent":"cant_do"}
+{"Sentence":"can you please play music?","Intent":"cant_do"}
+{"Sentence":"can you please play a movie?","Intent":"cant_do"}
+{"Sentence":"can you please tell me the stocks prices?","Intent":"cant_do"}
+{"Sentence":"can you please help me in my work?","Intent":"cant_do"}
+{"Sentence":"can you please cook?","Intent":"cant_do"}
+{"Sentence":"can you please play the radio?","Intent":"cant_do"}
+{"Sentence":"can you please open the tv?","Intent":"cant_do"}
+{"Sentence":"can you please change channel on tv?","Intent":"cant_do"}
+{"Sentence":"can you please help me with buying things online?","Intent":"cant_do"}
+{"Sentence":"can we discuss politics?","Intent":"cant_do"}
+{"Sentence":"can we discuss philosophy?","Intent":"cant_do"}
+{"Sentence":"can we discuss science?","Intent":"cant_do"}
+{"Sentence":"can we talk about economics?","Intent":"cant_do"}
+{"Sentence":"can you please make your bed?","Intent":"cant_do"}
+
+{"Sentence":"what is your name?","Intent":"say_name"}
+{"Sentence":"tell me your name","Intent":"say_name"}
+{"Sentence":"i would like to know your name","Intent":"say_name"}
+{"Sentence":"how can I name you","Intent":"say_name"}
+{"Sentence":"how can I call you","Intent":"say_name"}
+{"Sentence":"do you have a name","Intent":"say_name"}
+
+{"Sentence":"who should I contact?","Intent":"contact_details"}
+{"Sentence":"can you provide me contact details?","Intent":"contact_details"}
+{"Sentence":"can you provide an email for more information?","Intent":"contact_details"}
+{"Sentence":"any email?","Intent":"contact_details"}
+
+{"Sentence":"where are you from?","Intent":"where_are_you_from"}
+{"Sentence":"where do you live?","Intent":"where_are_you_from"}
+{"Sentence":"what is your location?","Intent":"where_are_you_from"}
+{"Sentence":"where do you exist?","Intent":"where_are_you_from"}
+{"Sentence":"where are you right now?","Intent":"where_are_you_from"}
+
+{"Sentence":"what can you do?","Intent":"what_can_you_do"}
+{"Sentence":"what skill do you have?","Intent":"what_can_you_do"}
+{"Sentence":"what are your abilities?","Intent":"what_can_you_do"}
+{"Sentence":"what are your features?","Intent":"what_can_you_do"}
+{"Sentence":"what are your skills?","Intent":"what_can_you_do"}
+{"Sentence":"tell me what you are able to do?","Intent":"what_can_you_do"}
+
+{"Sentence":"what is your profession?","Intent":"what_is_your_job"}
+{"Sentence":"what is your job?","Intent":"what_is_your_job"}
+{"Sentence":"what is your work?","Intent":"what_is_your_job"}
+{"Sentence":"what is your occupation?","Intent":"what_is_your_job"}
+{"Sentence":"tell me more about your job?","Intent":"what_is_your_job"}
+{"Sentence":"what do you do?","Intent":"what_is_your_job"}
+
+{"Sentence":"who made you?","Intent":"who_made_you"}
+{"Sentence":"who is your master?","Intent":"who_made_you"}
+{"Sentence":"who is your programmer?","Intent":"who_made_you"}
+{"Sentence":"who created you?","Intent":"who_made_you"}
+{"Sentence":"who owns you?","Intent":"who_made_you"}
+{"Sentence":"who is controlling you?","Intent":"who_made_you"}
+{"Sentence":"who produced you?","Intent":"who_made_you"}
+{"Sentence":"who do you belong to?","Intent":"who_made_you"}
+{"Sentence":"who is your leader?","Intent":"who_made_you"}
+{"Sentence":"who is your architect?","Intent":"who_made_you"}
+{"Sentence":"who is your author?","Intent":"who_made_you"}
+{"Sentence":"who is your builder?","Intent":"who_made_you"}
+{"Sentence":"who is your master?","Intent":"who_made_you"}
+{"Sentence":"who is your holder?","Intent":"who_made_you"}
+{"Sentence":"who is your host?","Intent":"who_made_you"}
+
+{"Sentence":"doing fine","Intent":"doing_well"}
+{"Sentence":"doing great","Intent":"doing_well"}
+{"Sentence":"doing cool","Intent":"doing_well"}
+{"Sentence":"doing okay","Intent":"doing_well"}
+{"Sentence":"doing okay, thank you","Intent":"doing_well"}
+{"Sentence":"I am fine","Intent":"doing_well"}
+{"Sentence":"I am well, thank you","Intent":"doing_well"}
+{"Sentence":"doing okay, thank you","Intent":"doing_well"}
+{"Sentence":"very well","Intent":"doing_well"}
+
+{"Sentence":"tell me what do you want to talk about","Intent":"choose_topic"}
+{"Sentence":"tell me what do you want to chat about","Intent":"choose_topic"}
+{"Sentence":"what can we talk about","Intent":"choose_topic"}
+{"Sentence":"what can you talk about","Intent":"choose_topic"}
+
+{"Sentence":"tell me the time","Intent":"what_time"}
+{"Sentence":"what time is it","Intent":"what_time"}
+{"Sentence":"can you say the time","Intent":"what_time"}
+
+{"Sentence":"what is the current dialog id","Intent":"get_dialog_id"}
+{"Sentence":"get the dialog id","Intent":"get_dialog_id"}
+{"Sentence":"tell me the dialog id","Intent":"get_dialog_id"}
+{"Sentence":"what is my dialog id","Intent":"get_dialog_id"}
+
+{"Sentence":"I would love to know your position","Intent":"opinion_request"}
+{"Sentence":"I would love to know your opinion ","Intent":"opinion_request"}
+{"Sentence":"I would love to know your experience","Intent":"opinion_request"}
+{"Sentence":"how do you feel about","Intent":"opinion_request"}
+{"Sentence":"what is your view","Intent":"opinion_request"}
+{"Sentence":"what are your thoughts","Intent":"opinion_request"}
+{"Sentence":"what are your feelings","Intent":"opinion_request"}
+{"Sentence":"from your point of view","Intent":"opinion_request"}
+{"Sentence":"what do you think about","Intent":"opinion_request"}
+{"Sentence":"what do you suppose about","Intent":"opinion_request"}
+{"Sentence":"what do you feel about","Intent":"opinion_request"}
+{"Sentence":"what is your take about","Intent":"opinion_request"}
+{"Sentence":"is it right to?","Intent":"opinion_request"}
+{"Sentence":"is it correct to?","Intent":"opinion_request"}
+{"Sentence":"is it justified to?","Intent":"opinion_request"}
+{"Sentence":"Do you agree with this?","Intent":"opinion_request"}
+
