@@ -17,21 +17,29 @@
 # All models are sentence-embedding based models and provide rather good performance.
 # They offer better than other models like a tf-idf logistic classifier or a BERT fine-tuned model
 
-# The first model is the distilbert-base-nli-stsb-mean-tokens
-# See https://huggingface.co/sentence-transformers/distilbert-base-nli-stsb-mean-tokens
+# Used the best models from https://www.sbert.net/docs/pretrained_models.html
 
-# The second one is the language agnostic LaBSE that can potentially support
-# a multi-language FAQ chat-bot
-# See https://huggingface.co/sentence-transformers/LaBSE
-# Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Narveen Ari, Wei Wang.
-# Language-agnostic BERT Sentence Embedding. July 2020
+# The default model we are using is the all-mpnet-base-v2, which is the best one in many tasks
+# although a bit slow
+# https://huggingface.co/sentence-transformers/all-mpnet-base-v2
 
-# The third one is the state-of-the-art paraphrase model mpnet (it also includes a multilingual model)
+# The state-of-the-art paraphrase model mpnet (it also includes a multilingual model)
 # https://huggingface.co/transformers/model_doc/mpnet.html
 # https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2
 # https://arxiv.org/abs/2004.09297
 
 # Also a multilingual mpnet version
+
+# The faster microsoft/MiniLM-L12-H384-uncased (problem with dp 0.16.0)
+# https://huggingface.co/microsoft/MiniLM-L12-H384-uncased
+
+# distilbert-base-nli-stsb-mean-tokens (problem with dp 0.16.0)
+# See https://huggingface.co/sentence-transformers/distilbert-base-nli-stsb-mean-tokens
+
+# The language agnostic LaBSE that can potentially support a multi-language FAQ chat-bot
+# See https://huggingface.co/sentence-transformers/LaBSE
+# Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Narveen Ari, Wei Wang.
+# Language-agnostic BERT Sentence Embedding. July 2020
 
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
@@ -47,9 +55,12 @@ class FAQ:
     Probabilities of the LaBSE model are less
     """
 
-    def __init__(self, config='mpnet'):
+    def __init__(self, config='all-mpnet'):
         # Holds the available models. Currently only two are available
         self.__configs = {
+            'all-mpnet': '../config/faq/sentence-emb/all-mpnet-base-v2.json',
+            'MiniLM-12': '../config/faq/sentence-emb/MiniLM-L12-H384-uncased.json',
+            'MiniLM-6': '../config/faq/sentence-emb/MiniLM-L6-H384-uncased.json',
             'distilbert': '../config/faq/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
             'LaBSE': '../config/faq/sentence-emb/LaBSE.json',
             'mpnet': '../config/faq/sentence-emb/paraphrase-mpnet-base-v2.json',
@@ -58,7 +69,7 @@ class FAQ:
 
         # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html
         if self.__configs[config] is None:
-            config = 'mpnet'
+            config = 'all-mpnet'
 
         # Holds the config
         self.__config = config
