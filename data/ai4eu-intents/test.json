@@ -26,6 +26,7 @@
 {"Sentence":"peace out","Intent":"outro"}
 {"Sentence":"catch you later","Intent":"outro"}
 {"Sentence":"farewell","Intent":"outro"}
+{"Sentence":"have a good day","Intent":"outro"}
 
 {"Sentence":"yes","Intent":"yes"}
 {"Sentence":"yup","Intent":"yes"}
@@ -40,6 +41,7 @@
 {"Sentence":"tell me","Intent":"yes"}
 {"Sentence":"thank you","Intent":"yes"}
 {"Sentence":"please","Intent":"yes"}
+{"Sentence":"yes of course","Intent":"yes"}
 
 {"Sentence":"definetely not","Intent":"no"}
 {"Sentence":"never","Intent":"no"}
@@ -57,6 +59,7 @@
 {"Sentence":"definetely not","Intent":"no"}
 {"Sentence":"not at all","Intent":"no"}
 {"Sentence":"don't do this","Intent":"no"}
+{"Sentence":"no chance","Intent":"no"}
 
 {"Sentence":"repeat","Intent":"repeat"}
 {"Sentence":"can you please repeat?","Intent":"repeat"}
@@ -79,9 +82,11 @@
 {"Sentence":"what are you saying?","Intent":"dont_understand"}
 
 {"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
+{"Sentence":"that is enough","Intent":"topic_switching"}
 {"Sentence":"i do not want to talk about this anymore","Intent":"topic_switching"}
 {"Sentence":"this is boring","Intent":"topic_switching"}
 {"Sentence":"lets change topic","Intent":"topic_switching"}
+{"Sentence":"can we talk about something else?","Intent":"topic_switching"}
 
 
 {"Sentence":"how about you quit being an idiot","Intent":"stupid"}
@@ -121,6 +126,7 @@
 {"Sentence":"how can I name you","Intent":"say_name"}
 {"Sentence":"how can I call you","Intent":"say_name"}
 {"Sentence":"do you have a name","Intent":"say_name"}
+{"Sentence":"who are you","Intent":"say_name"}
 
 {"Sentence":"who should I contact?","Intent":"contact_details"}
 {"Sentence":"can you provide me contact details?","Intent":"contact_details"}

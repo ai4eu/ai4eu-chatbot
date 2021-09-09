@@ -26,6 +26,7 @@
 {"Sentence":"peace out","Intent":"outro"}
 {"Sentence":"catch you later","Intent":"outro"}
 {"Sentence":"farewell","Intent":"outro"}
+{"Sentence":"have a good day","Intent":"outro"}
 
 {"Sentence":"yes","Intent":"yes"}
 {"Sentence":"yup","Intent":"yes"}
