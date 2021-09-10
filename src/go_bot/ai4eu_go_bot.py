@@ -12,6 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# Updates for AI4EU
+
+# FOUNDATION OF RESEARCH AND TECHNOLOGY - HELLAS (FORTH-ICS)
+#
+# INFORMATION SYSTEMS LABORATORY (ISL)
+#
+# http://www.ics.forth.gr/isl
+#
+# LICENCE: TO BE ADDED
+#
+# Copyright 2021
+
+# The AI4EU chatbot - FAQ module
+
+# This module is a modified version of the deeppavlov gobot for AI4EU
+
 from logging import getLogger
 from typing import Dict, Any, List, Optional, Union, Tuple
 
@@ -20,25 +37,25 @@ import numpy as np
 from deeppavlov.core.common.registry import register
 from deeppavlov.core.models.component import Component
 from deeppavlov.core.models.nn_model import NNModel
-from deeppavlov.models.go_bot.nlg.dto.nlg_response_interface import NLGResponseInterface
-from deeppavlov.models.go_bot.nlu.dto.text_vectorization_response import TextVectorizationResponse
-from deeppavlov.models.go_bot.nlu.tokens_vectorizer import TokensVectorizer
-from deeppavlov.models.go_bot.dto.dataset_features import UtteranceDataEntry, DialogueDataEntry, \
+from .nlg.dto.nlg_response_interface import NLGResponseInterface
+from .nlu.dto.text_vectorization_response import TextVectorizationResponse
+from .nlu.tokens_vectorizer import TokensVectorizer
+from .dto.dataset_features import UtteranceDataEntry, DialogueDataEntry, \
     BatchDialoguesDataset, UtteranceFeatures, UtteranceTarget, BatchDialoguesFeatures
-from deeppavlov.models.go_bot.dto.shared_gobot_params import SharedGoBotParams
-from deeppavlov.models.go_bot.nlg.nlg_manager import NLGManagerInterface
-from deeppavlov.models.go_bot.nlu.nlu_manager import NLUManager
-from deeppavlov.models.go_bot.policy.policy_network import PolicyNetwork, PolicyNetworkParams
-from deeppavlov.models.go_bot.policy.dto.policy_prediction import PolicyPrediction
-from deeppavlov.models.go_bot.tracker.featurized_tracker import FeaturizedTracker
-from deeppavlov.models.go_bot.tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
+from .dto.shared_gobot_params import SharedGoBotParams
+from .nlg.nlg_manager import NLGManagerInterface
+from .nlu.nlu_manager import NLUManager
+from .policy.policy_network import PolicyNetwork, PolicyNetworkParams
+from .policy.dto.policy_prediction import PolicyPrediction
+from .tracker.featurized_tracker import FeaturizedTracker
+from .tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
 from pathlib import Path
 
 log = getLogger(__name__)
 
 
 # todo logging
-@register("go_bot")
+@register("ai4eu_go_bot")
 class GoalOrientedBot(NNModel):
     """
     The dialogue bot is based on  https://arxiv.org/abs/1702.03274, which
