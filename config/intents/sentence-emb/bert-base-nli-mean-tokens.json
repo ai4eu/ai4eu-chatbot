@@ -42,8 +42,9 @@
         "single_vector": true
       },
       {
-        "class_name": "torch_transformers_classifier",
+        "class_name": "src.intent_classifier.ai4eu_intent_classifier:TorchTransformersClassifierModel",
         "n_classes": "#classes_vocab.len",
+        "intents": "#classes_vocab.keys()",
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",

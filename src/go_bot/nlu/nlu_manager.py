@@ -31,7 +31,9 @@ class NLUManager(NLUManagerInterface):
         self.intent_classifier = intent_classifier
         self.intents = []
         if isinstance(self.intent_classifier, Chainer):
+            #print(self.intent_classifier)
             self.intents = self.intent_classifier.get_main_component().classes
+            #self.intents = self.intent_classifier.simple_vocab.keys()
 
         if self.debug:
             log.debug(f"AFTER {self.__class__.__name__} init(): "
@@ -46,7 +48,7 @@ class NLUManager(NLUManagerInterface):
             text: text to extract knowledge from
 
         Returns:
-            an object storing the extracted slos and intents info
+            an object storing the extracted slots and intents info
         """
         # todo meaningful type hints
         tokens = self._tokenize_single_text_entry(text)
