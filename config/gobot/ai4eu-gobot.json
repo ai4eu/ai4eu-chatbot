@@ -32,7 +32,7 @@
         "save_path": "{DOWNLOADS_PATH}/dstc2_v3/resto.sqlite"
       },
       {
-        "class_name": "go_bot",
+        "class_name": "src.go_bot.ai4eu_go_bot:GoalOrientedBot",
         "load_path": "{MODELS_PATH}/gobot_dstc2_best/model",
         "save_path": "{MODELS_PATH}/gobot_dstc2_best/model",
         "in": ["x"],
@@ -56,7 +56,7 @@
           "action_as_key": true,
           "intent_as_key": true,
           "max_num_tokens": 100,
-          "projected_align": false 
+          "projected_align": false
         },
         "word_vocab": "#token_vocab",
         "database": "#restaurant_database",
@@ -74,8 +74,7 @@
           "config_path": "config/intents/sentence-emb/all-mpnet-base-v2.json"
         },
         "embedder": {
-          "class_name": "fasttext",
-          "load_path": "{DOWNLOADS_PATH}/embeddings/wiki.en.bin"
+	"config_path": "config/embeddings/transformers_bert_preprocessor.json"
         },
         "bow_embedder": null,
         "tokenizer": {
@@ -105,7 +104,7 @@
       "valid",
       "test"
     ],
-    "class_name": "nn_trainer"
+    "class_name": "torch_trainer"
   },
   "metadata": {
     "variables": {
