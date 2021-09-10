@@ -75,7 +75,7 @@ class TorchTransformersClassifierModel(TorchModel):
                                     "betas": (0.9, 0.999),
                                     "eps": 1e-6},
 
-        self.classes = list(classes)    # holds all intents
+        self.intents = list(intents)    # holds all intents
         self.return_probas = return_probas
         self.one_hot_labels = one_hot_labels
         self.multilabel = multilabel
@@ -88,7 +88,7 @@ class TorchTransformersClassifierModel(TorchModel):
         self.is_binary = is_binary
         self.bert_config = None
         
-        print('Intents: ' + self.classes)
+        print('Intents: ', self.intents)
 
         if self.multilabel and not self.one_hot_labels:
             raise RuntimeError('Use one-hot encoded labels for multilabel classification!')

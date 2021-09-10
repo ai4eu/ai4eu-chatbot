@@ -31,9 +31,7 @@ class NLUManager(NLUManagerInterface):
         self.intent_classifier = intent_classifier
         self.intents = []
         if isinstance(self.intent_classifier, Chainer):
-            #print(self.intent_classifier)
-            self.intents = self.intent_classifier.get_main_component().classes
-            #self.intents = self.intent_classifier.simple_vocab.keys()
+            self.intents = self.intent_classifier.get_main_component().intents
 
         if self.debug:
             log.debug(f"AFTER {self.__class__.__name__} init(): "
