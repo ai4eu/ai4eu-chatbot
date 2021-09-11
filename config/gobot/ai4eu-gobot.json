@@ -74,7 +74,7 @@
           "config_path": "config/intents/sentence-emb/all-mpnet-base-v2.json"
         },
         "embedder": {
-	"config_path": "config/embeddings/transformers_bert_preprocessor.json"
+	      "config_path": "config/embeddings/sentence-embeddings/bert-sentence_multi_cased_L-12_H-768_A-12_pt.json"
         },
         "bow_embedder": null,
         "tokenizer": {
