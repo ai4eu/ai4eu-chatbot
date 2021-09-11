@@ -20,9 +20,11 @@ class TokensVectorizer:
     the TokensVectorizer class is used in the NLU part of deeppavlov go-bot pipeline.
     (for more info on NLU logic see the NLUManager --- the go-bot NLU main class)
 
-    TokensVectorizer is manages the BOW tokens encoding and tokens embedding.
+    TokensVectorizer manages the BOW tokens encoding and tokens embedding.
     Both BOW encoder and embedder are optional and have to be pre-trained:
     this class wraps their usage but not training.
+
+    For AI4EU currently we are not using a BOW embedder!
     """
 
     def __init__(self, debug, word_vocab=None, bow_embedder=None, embedder=None):
@@ -144,6 +146,6 @@ class TokensVectorizer:
             the TokensVectorRepresentationParams with embedder and BOW encoder output dimensions.
             None instead of the missing dim if BOW encoder or embedder are missing.
         """
-        embedder_dim = self.embedder.dim if self.embedder else None
+        embedder_dim = len(self.embedder.out_params) if self.embedder else None
         bow_encoder_dim = len(self.word_vocab) if self.bow_embedder else None
         return TokensVectorRepresentationParams(embedder_dim, bow_encoder_dim)
