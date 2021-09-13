@@ -243,7 +243,7 @@ class PolicyNetwork(LRScheduledTFModel):
         # multiply with batch utterance mask
         _loss_tensor = tf.multiply(_loss_tensor, self._utterance_mask)
         self._loss = tf.reduce_mean(_loss_tensor, name='loss')
-        self._loss += self.l2_reg_coef * tf.losses.get_regularization_loss()
+        self._loss += self.l2_reg_coef * tf.compat.v1.losses.get_regularization_loss()
         self._train_op = self.get_train_op(self._loss)
 
     def _add_placeholders(self) -> None:
@@ -262,7 +262,7 @@ class PolicyNetwork(LRScheduledTFModel):
         zero_state = tf.zeros([self._batch_size, self.hidden_size], dtype=tf.float32)
         _initial_state_c = tf.placeholder_with_default(zero_state, shape=[None, self.hidden_size])
         _initial_state_h = tf.placeholder_with_default(zero_state, shape=[None, self.hidden_size])
-        self._initial_state = tf.nn.rnn_cell.LSTMStateTuple(_initial_state_c, _initial_state_h)
+        self._initial_state = tf.compat.v1.nn.rnn_cell.LSTMStateTuple(_initial_state_c, _initial_state_h)
 
         if self.attention_params:
             _emb_context_shape = [None, None, self.attention_params.max_num_tokens,
