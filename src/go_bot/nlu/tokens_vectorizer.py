@@ -53,7 +53,8 @@ class TokensVectorizer:
         """
         tokens_embedded = np.array([], dtype=np.float32)
         if callable(self.embedder):
-            tokens_embedded = self.embedder([tokens], mean=mean_embeddings)[0]
+            tokens_embedded = self.embedder([tokens])[0]
+
         return tokens_embedded
 
     def bow_encode_tokens(self, tokens: List[str]) -> np.ndarray:
@@ -134,8 +135,11 @@ class TokensVectorizer:
             the padded sequence of calculated embeddings
         """
         tokens_embedded = self._embed_tokens(tokens, False)
+        print('==> AI4EU: embeddings ', tokens_embedded)
         if tokens_embedded is not None:
-            emb_context = self._pad_sequence_to_size(output_sequence_length, token_dim, tokens_embedded)
+            # No need for padding since we are using the BERT mean sentence embeddings currently
+            # emb_context = self._pad_sequence_to_size(output_sequence_length, token_dim, tokens_embedded)
+            emb_context = tokens_embedded
         else:
             emb_context = np.array([], dtype=np.float32)
         return emb_context
