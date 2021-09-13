@@ -53,7 +53,7 @@ class TokensVectorizer:
         """
         tokens_embedded = np.array([], dtype=np.float32)
         if callable(self.embedder):
-            tokens_embedded = self.embedder([tokens])[0]
+            tokens_embedded = self.embedder([tokens])
 
         return tokens_embedded
 
@@ -151,5 +151,8 @@ class TokensVectorizer:
             None instead of the missing dim if BOW encoder or embedder are missing.
         """
         embedder_dim = len(self.embedder.out_params) if self.embedder else None
+        print('==> AI4EU out_params:', self.embedder.out_params)
         bow_encoder_dim = len(self.word_vocab) if self.bow_embedder else None
-        return TokensVectorRepresentationParams(embedder_dim, bow_encoder_dim)
+        # return TokensVectorRepresentationParams(embedder_dim, bow_encoder_dim)
+        # TODO! Hard parameter for embeddings...
+        return TokensVectorRepresentationParams(768, bow_encoder_dim)

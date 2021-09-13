@@ -154,13 +154,14 @@ class GoalOrientedBot(NNModel):
         self.nlg_manager = nlg_manager
         self.data_handler = TokensVectorizer(debug, word_vocab, bow_embedder, embedder)
 
-        # todo make mor abstract
+        # todo make more abstract
         self.dialogue_state_tracker = DialogueStateTracker.from_gobot_params(tracker, self.nlg_manager,
                                                                              policy_network_params, database)
-        # todo make mor abstract
+        # todo make more abstract
         self.multiple_user_state_tracker = MultipleUserStateTrackersPool(base_tracker=self.dialogue_state_tracker)
 
         tokens_dims = self.data_handler.get_dims()
+        print('==> AI4EU Token dims: ', tokens_dims.__dict__)
         features_params = SharedGoBotParams.from_configured(self.nlg_manager, self.nlu_manager,
                                                             self.dialogue_state_tracker)
         policy_save_path = Path(save_path, self.POLICY_DIR_NAME)
