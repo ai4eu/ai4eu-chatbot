@@ -147,11 +147,15 @@ class GoalOrientedBot(NNModel):
 
         self.debug = debug
 
+        # Params of policy LSTM component
         policy_network_params = PolicyNetworkParams(hidden_size, dropout_rate, l2_reg_coef,
                                                     dense_size, attention_mechanism, network_parameters)
 
+        # Natural Language Understanding of user input. Takes the embeddings, the slot filler and the intents
         self.nlu_manager = NLUManager(tokenizer, slot_filler, intent_classifier)  # todo move to separate pipeline unit
+        # Natural Language Generation, responsible for generating the responses
         self.nlg_manager = nlg_manager
+        # Data handler is responsible for vectorizing the input utterance as an embedding
         self.data_handler = TokensVectorizer(debug, word_vocab, bow_embedder, embedder)
 
         # todo make more abstract
@@ -160,13 +164,21 @@ class GoalOrientedBot(NNModel):
         # todo make more abstract
         self.multiple_user_state_tracker = MultipleUserStateTrackersPool(base_tracker=self.dialogue_state_tracker)
 
+        # tokens embedding dimensions
         tokens_dims = self.data_handler.get_dims()
         print('==> AI4EU Token dims: ', tokens_dims.__dict__)
+
+        # Set feature params
         features_params = SharedGoBotParams.from_configured(self.nlg_manager, self.nlu_manager,
                                                             self.dialogue_state_tracker)
+        print('==> AI4EU : Number of actions', features_params.num_actions)
+        print('==> AI4EU : Number of intents', features_params.num_intents)
+        print('==> AI4EU : Number of tracker features', features_params.num_tracker_features)
+
         policy_save_path = Path(save_path, self.POLICY_DIR_NAME)
         policy_load_path = Path(load_path, self.POLICY_DIR_NAME)
 
+        # Initialize policy network
         self.policy = PolicyNetwork(policy_network_params, tokens_dims, features_params,
                                     policy_load_path, policy_save_path, **kwargs)
 
@@ -335,7 +347,7 @@ class GoalOrientedBot(NNModel):
     def _infer(self, user_utterance_text: str, user_tracker: DialogueStateTracker,
                keep_tracker_state=False) -> Tuple[BatchDialoguesFeatures, PolicyPrediction]:
         """
-        Predict the action to perform in response to given text.
+        AI4EU Predict the action to perform in response to given text.
 
         Args:
             user_utterance_text: the user input text passed to the system
