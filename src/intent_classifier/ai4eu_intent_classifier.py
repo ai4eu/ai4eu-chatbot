@@ -88,7 +88,7 @@ class TorchTransformersClassifierModel(TorchModel):
         self.is_binary = is_binary
         self.bert_config = None
         
-        print('Intents: ', self.intents)
+        print('==> AI4EU Intents classifier Intents: ', self.intents)
 
         if self.multilabel and not self.one_hot_labels:
             raise RuntimeError('Use one-hot encoded labels for multilabel classification!')
