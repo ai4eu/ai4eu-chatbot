@@ -135,7 +135,7 @@ class TokensVectorizer:
             the padded sequence of calculated embeddings
         """
         tokens_embedded = self._embed_tokens(tokens, False)
-        print('==> AI4EU: embeddings ', tokens_embedded)
+        print('==> AI4EU: embeddings shape ', tokens_embedded.shape)
         if tokens_embedded is not None:
             # No need for padding since we are using the BERT mean sentence embeddings currently
             # emb_context = self._pad_sequence_to_size(output_sequence_length, token_dim, tokens_embedded)

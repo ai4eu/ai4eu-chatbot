@@ -57,6 +57,10 @@ class NLUManager(NLUManagerInterface):
         if callable(self.intent_classifier):
             intents = self._extract_intents_from_tokenized_text_entry(tokens)
 
+        print('==> AI4EU slots', slots)
+        print('==> AI4EU intents', intents)
+        print('==> AI4EU tokens', tokens)
+
         return NLUResponse(slots, intents, tokens)
 
     def _extract_intents_from_tokenized_text_entry(self, tokens: List[str]):
