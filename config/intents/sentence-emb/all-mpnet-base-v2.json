@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "data/ai4eu-intents",
+      "data_path": "{DATA_PATH}/ai4eu-intents",
       "train": "train.json",
       "x": "Sentence",
       "y": "Intent"
@@ -106,6 +106,7 @@
       "TRANSFORMER": "sentence-transformers/all-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
+      "DATA_PATH": "data",
       "MODELS_PATH": "{ROOT_PATH}/models",
       "MODEL_PATH": "{MODELS_PATH}/ai4eu/intents/torch/sentence-transformers/"
     },

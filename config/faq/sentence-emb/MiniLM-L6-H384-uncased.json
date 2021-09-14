@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "data/ai4eu-faq",
+      "data_path": "{DATA_PATH}/ai4eu-faq",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"
@@ -103,6 +103,7 @@
     "variables": {
       "TRANSFORMER": "nreimers/MiniLM-L6-H384-uncased",
       "ROOT_PATH": "~/.deeppavlov",
+      "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
       "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"

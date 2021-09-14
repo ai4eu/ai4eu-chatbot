@@ -103,6 +103,7 @@
     "variables": {
       "TRANSFORMER": "sentence-transformers/all-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
+      "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
       "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"
