@@ -20,17 +20,16 @@
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
-import faq.FAQ
-import faq.KBQA
-
+import faq.FAQ as faq
+import faq.KBQA as kbqa
 
 class ChatBot:
     """
     Constructor of chatbot. Currently we have two models, the FAQ and the KBQA
     """
     def __init__(self):
-        self.__faq = FAQ.FAQ()
-        self.__kbqa = KBQA.KBQA()
+        self.__faq = faq.FAQ()
+        self.__kbqa = kbqa.KBQA()
         # Fine-tune this threshold especially for the FAQ model
         self.__THRESHOLD = 0.2
 

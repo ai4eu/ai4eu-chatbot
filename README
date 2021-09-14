@@ -20,6 +20,8 @@ pip3 install sanic
 # With 0.16.0 of deeppavlov we can support the latest transformers library
 pip install transformers sentence-transformers
 
+# deeppavlov supports numpy=0.18.0
+
 # To train/evaluate/interact our model
 python -m deeppavlov train config/faq/...
 python -m deeppavlov evaluate config/faq/...

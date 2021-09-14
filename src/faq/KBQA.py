@@ -48,7 +48,7 @@ class KBQA:
     """
     A method that asks the model a query
     k is the top-k results
-    :return :  The answer, its score and the model   
+    :return :  The answer, its score and the model
     """
     def ask(self, query, k):
         # Check that model is loaded

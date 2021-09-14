@@ -53,7 +53,7 @@ class ODQA:
     """
     A method that asks the model a query
     k is the top-k results
-    :return :  The answer and its score   
+    :return :  The answer and its score
     """
     def ask(self, query, k):
         # Check that model is loaded
