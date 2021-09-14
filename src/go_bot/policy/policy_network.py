@@ -107,6 +107,7 @@ class PolicyNetwork(LRScheduledTFModel):
         Returns:
             the calculated input shape of policy network
         """
+        # TODO what is this 6???
         input_size = 6 + shared_go_bot_params.num_tracker_features + shared_go_bot_params.num_actions  # todo: why 6
         if tokens_dims.bow_dim:
             input_size += tokens_dims.bow_dim
@@ -129,8 +130,8 @@ class PolicyNetwork(LRScheduledTFModel):
             return None
 
         token_size = tokens_dims.embedding_dim  # todo sync with nn params
-        action_as_key = attn.get('action_as_key', False)
-        intent_as_key = attn.get('intent_as_key', False)
+        action_as_key = attn.get('action_as_key', True)
+        intent_as_key = attn.get('intent_as_key', True)
         key_size = PolicyNetwork.calc_attn_key_size(features_params, action_as_key, intent_as_key)
 
         gobot_attn_params = GobotAttnParams(max_num_tokens=attn.get("max_num_tokens"),
