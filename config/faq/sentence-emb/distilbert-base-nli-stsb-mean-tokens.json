@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu-faq",
+      "data_path": "{DATA_PATH}/ai4eu/faq",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"

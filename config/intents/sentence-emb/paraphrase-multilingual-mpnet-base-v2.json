@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu-intents",
+      "data_path": "{DATA_PATH}/ai4eu/intents",
       "train": "train.json",
       "x": "Sentence",
       "y": "Intent"
