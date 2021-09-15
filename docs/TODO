@@ -1,0 +1,19 @@
+Done
+
+1) FAQ => Done using both all-mpnet classifier and KBQA
+2) Intents => Done using all-mpnet classifier
+3) Embeddings => Done using BERT mean sentence embeddings\
+
+TODO
+
+a) Slot-filling => identify the important slots and train the appropriate slot filling component
+
+b) State-tracker => check what we have to track for state
+
+c) API => make use of the API search from thales
+
+d) Templates for answers
+
+e) Train and evaluate the pipeline
+
+f) Integration with drupal of AI4EU
