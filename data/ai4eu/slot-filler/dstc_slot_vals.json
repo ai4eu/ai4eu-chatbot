@@ -1,0 +1,214 @@
+{
+    "assetType": {
+        "as_a_service": [
+            "as a service",
+            "XaaS"
+        ],
+        "dataset": [
+            "dataset",
+            "data set",
+            "dataaset"
+        ],
+        "docker_container": [
+            "docker",
+            "container",
+            "docker container"
+        ],
+        "executable": [
+            "executable",
+            "exe"
+        ],
+        "jupyter_notebook": [
+            "jupyter",
+            "notebook",
+            "jupyter notebook"
+        ],
+        "library": [
+            "library"
+        ],
+        "ML_model": [
+            "ML model",
+            "model"
+        ],
+        "dont_care": [
+            "any resource",
+            "any type",
+            "don't care"
+        ]
+    },
+    "technical_categories": {
+        "AI_ethics": [
+            "ethics",
+            "AI ethics"
+        ],
+        "AI_services": [
+            "AI services",
+            "services"
+        ],
+        "audio_processing": [
+            "audio",
+            "sound",
+            "speech",
+            "audio processing"
+        ],
+        "automated_reasoning": [
+            "reasoning",
+            "automated reasoning"
+        ],
+        "commonsense_reasoning": [
+            "commonsense",
+            "reasoning",
+            "commonsense reasoning"
+        ],
+        "computer_vision": [
+            "computer vision",
+            "CV",
+            "imaging",
+            "videos"
+        ],
+        "connected_and_automated_vehicles": [
+            "vehicles",
+            "automated vehicles",
+            "smart cars",
+            "connected vehicles",
+            "connected cars",
+            "connected and automated vehicles"
+        ],
+        "constraints_and_satisfiability": [
+            "constraints",
+            "satisfiability",
+            "constraints and satisfiability"
+        ],
+        "knowledge_representation": [
+            "knowledge representation",
+            "knowledge"
+        ],
+        "machine_learning": [
+            "machine learning",
+            "ML"
+        ],
+        "multi-agent_systems": [
+            "multiagent",
+            "multi-agent",
+            "multi-agent systems",
+        ],
+        "natural_language_processing": [
+            "natural language processing",
+            "NLP"
+        ],
+        "optimization": [
+            "optimization",
+            "optimisation"
+        ],
+        "philosophy_of_AI": [
+            "philosophy_of_AI",
+            "philosophy"
+        ],
+        "planning_and_scheduling": [
+            "planning",
+            "scheduling",
+            "planning_and_scheduling"
+        ],
+        "robotics_and_automation": [
+            "robotics",
+            "automation",
+            "robotics_and_automation",
+            "robots"
+        ],
+        "search": [
+            "search",
+            "searching"
+        ],
+        "dont_care": [
+            "any resource",
+            "any category",
+            "any technical category",
+            "don't care"
+        ]
+    },
+    "business_categories": {
+        "agriculture": [
+            "agriculture"
+        ],
+        "cloud_edge_infrastructure": [
+            "cloud",
+            "edge",
+            "cloud infrastructure",
+            "edge infrastructure",
+            "cloud and edge infrastructure"
+        ],
+        "cultural_heritage": [
+            "cultural",
+            "cultural heritage"
+        ],
+        "earth_observation": [
+            "earth observation",
+            "earth"
+        ],
+        "energy": [
+            "electricity",
+            "oil",
+            "energy"
+        ],
+        "healthcare": [
+            "health",
+            "healthcare",
+            "health care"
+        ],
+        "manufacturing": [
+            "manufacturing"
+        ],
+        "maritime_sector": [
+            "maritime",
+            "maritime sector"
+        ],
+        "public_services": [
+            "public services"
+        ],
+        "regional_engagement_DIHS": [
+            "DIHS",
+            "regional engagement",
+            "digital innovation hubs"
+        ],
+        "telecommunications": [
+            "telecommunications",
+            "communications"
+        ],
+        "transporations": [
+            "transporations",
+            "transporation"
+        ],
+        "dont_care": [
+            "any resource",
+            "any category",
+            "any bussiness category",
+            "don't care"
+        ]
+    },
+    "sort": {
+        "authoring": [
+            "addition"
+        ],
+        "changed": [
+            "modified"
+        ],
+        "dont_care": [
+            "any order",
+            "don't care"
+        ]
+    },
+    "order": {
+        "ascending": [
+            "ascending",
+            "asc."
+        ],
+        "descending": [
+            "descedning",
+            "desc."
+        ],
+        "dont_care": [
+            "any order",
+            "don't care"
+        ]
+    }
+}
