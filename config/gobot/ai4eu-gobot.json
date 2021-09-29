@@ -68,7 +68,7 @@
         },
         "use_action_mask": false,
         "slot_filler": {
-          "config_path": "{CONFIGS_PATH}/slot-filler/ai4eu-slot-dstc2.json"
+          "config_path": "{CONFIGS_PATH}/slot-filler/ai4eu-slot-fuzzy-dstc2.json"
         },
         "intent_classifier": {
           "config_path": "{CONFIGS_PATH}/intents/sentence-emb/all-mpnet-base-v2.json"
