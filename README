@@ -33,3 +33,12 @@ nohup python REST.py &
 
 # A simple request
 curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"
+
+
+
+
+# Models used
+
+=> Intents Classifier
+   model: all-mpnet-base-v2.json
+   For training please remove from the out the y_pred_probas
