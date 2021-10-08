@@ -210,3 +210,13 @@
 {"Sentence":"is it justified to?","Intent":"opinion_request"}
 {"Sentence":"Do you agree with this?","Intent":"opinion_request"}
 
+{"Sentence":"An FAQ","Intent":"faq_request"}
+{"Sentence":"I would like to ask an FAQ","Intent":"faq_request"}
+{"Sentence":"I would like to ask you something","Intent":"faq_request"}
+{"Sentence":"Can you please tell me something?","Intent":"faq_request"}
+{"Sentence":"Can I ask you something?","Intent":"faq_request"}
+
+{"Sentence":"I would like to explore the AI4EU resources","Intent":"resource_request"}
+{"Sentence":"I would like to find resources","Intent":"resource_request"}
+{"Sentence":"What resources are available?","Intent":"resource_request"}
+{"Sentence":"What resources do you know?","Intent":"resource_request"}
