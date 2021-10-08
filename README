@@ -42,3 +42,22 @@ curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What
 => Intents Classifier
    model: all-mpnet-base-v2.json
    For training please remove from the out the y_pred_probas
+
+   python -m deeppavlov train  config/intents/sentence-emb/all-mpnet-base-v2.json
+
+=> Sentence Embeddings
+   model: bert-sentence_multi_cased_L-12_H-768_A-12_pt.json
+   This is a model provided by deeppavlov
+
+   We just use the pretrained model -> No need for training
+
+
+=> Slot-filler just uses a fuzzy slot mapping approach
+   We could probably try to use an entity based approach in the future
+
+
+=> FAQ: It is a classifer over pairs of QA 
+   model: all-mpnet-base-v2.json (default)
+
+
+   python -m deeppavlov train  config/faq/sentence-emb/all-mpnet-base-v2.json
