@@ -210,20 +210,22 @@
 {"Sentence":"is it justified to?","Intent":"opinion_request"}
 {"Sentence":"Do you agree with this?","Intent":"opinion_request"}
 
+
+{"Sentence":"What resources are available in the platform?","Intent":"ask_resource_request"}
+{"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
+{"Sentence":"What resources are available?","Intent":"ask_resource_request"}
+{"Sentence":"I am looking for resources","Intent":"ask_resource_request"}
+{"Sentence":"I would like to find resources","Intent":"ask_resource_request"}
+{"Sentence":"What resources are available?","Intent":"ask_resource_request"}
+{"Sentence":"What resources do you know?","Intent":"ask_resource_request"}
+
 {"Sentence":"An FAQ","Intent":"faq_request"}
 {"Sentence":"I would like to ask an FAQ","Intent":"faq_request"}
 {"Sentence":"I would like to ask you something","Intent":"faq_request"}
 {"Sentence":"Can you please tell me something?","Intent":"faq_request"}
 {"Sentence":"Can I ask you something?","Intent":"faq_request"}
 
-{"Sentence":"What resources are available in the platform?","Intent":"ask_resource_request"}
-{"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
-{"Sentence":"What resources are available?","Intent":"ask_resource_request"}
-
 {"Sentence":"I would like to explore the AI4EU resources","Intent":"ai4eu_resource_request"}
-{"Sentence":"I would like to find resources","Intent":"ai4eu_resource_request"}
-{"Sentence":"What resources are available?","Intent":"ai4eu_resource_request"}
-{"Sentence":"What resources do you know?","Intent":"ai4eu_resource_request"}
 {"Sentence": "AI4EU resources","Intent":"ai4eu_resource_request"}
 {"Sentence": "resources from the AI catalogue","Intent":"ai4eu_resource_request"}
 {"Sentence":"give resources from the ai4eu catalog","Intent":"ai4eu_resource_request"}
