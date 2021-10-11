@@ -216,7 +216,32 @@
 {"Sentence":"Can you please tell me something?","Intent":"faq_request"}
 {"Sentence":"Can I ask you something?","Intent":"faq_request"}
 
-{"Sentence":"I would like to explore the AI4EU resources","Intent":"resource_request"}
-{"Sentence":"I would like to find resources","Intent":"resource_request"}
-{"Sentence":"What resources are available?","Intent":"resource_request"}
-{"Sentence":"What resources do you know?","Intent":"resource_request"}
+{"Sentence":"What resources are available in the platform?","Intent":"ask_resource_request"}
+{"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
+{"Sentence":"What resources are available?","Intent":"ask_resource_request"}
+
+{"Sentence":"I would like to explore the AI4EU resources","Intent":"ai4eu_resource_request"}
+{"Sentence":"I would like to find resources","Intent":"ai4eu_resource_request"}
+{"Sentence":"What resources are available?","Intent":"ai4eu_resource_request"}
+{"Sentence":"What resources do you know?","Intent":"ai4eu_resource_request"}
+{"Sentence": "AI4EU resources","Intent":"ai4eu_resource_request"}
+{"Sentence": "resources from the AI catalogue","Intent":"ai4eu_resource_request"}
+{"Sentence":"give resources from the ai4eu catalog","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me resources from the ai catalog","Intent":"ai4eu_resource_request"}
+{"Sentence":"datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"models","Intent":"ai4eu_resource_request"}
+{"Sentence":"ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"tutorials","Intent":"ai4eu_resource_request"}
+
+{"Sentence":"I would like to explore web resources","Intent":"web_resource_request"}
+{"Sentence":"I am interested in web resources","Intent":"web_resource_request"}
+{"Sentence":"I want to find information from the web","Intent":"web_resource_request"}
+{"Sentence":"web resources","Intent":"web_resource_request"}
+{"Sentence":"web resources please","Intent":"web_resource_request"}
+{"Sentence":"give me web resources","Intent":"web_resource_request"}
+
