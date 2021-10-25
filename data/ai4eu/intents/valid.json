@@ -81,14 +81,6 @@
 {"Sentence":"what do you mean?","Intent":"dont_understand"}
 {"Sentence":"what are you saying?","Intent":"dont_understand"}
 
-{"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
-{"Sentence":"that is enough","Intent":"topic_switching"}
-{"Sentence":"i do not want to talk about this anymore","Intent":"topic_switching"}
-{"Sentence":"this is boring","Intent":"topic_switching"}
-{"Sentence":"lets change topic","Intent":"topic_switching"}
-{"Sentence":"can we talk about something else?","Intent":"topic_switching"}
-
-
 {"Sentence":"how about you quit being an idiot","Intent":"stupid"}
 {"Sentence":"stop being a moron","Intent":"stupid"}
 {"Sentence":"stop being a dumbass","Intent":"stupid"}
@@ -179,11 +171,6 @@
 {"Sentence":"doing okay, thank you","Intent":"doing_well"}
 {"Sentence":"very well","Intent":"doing_well"}
 
-{"Sentence":"tell me what do you want to talk about","Intent":"choose_topic"}
-{"Sentence":"tell me what do you want to chat about","Intent":"choose_topic"}
-{"Sentence":"what can we talk about","Intent":"choose_topic"}
-{"Sentence":"what can you talk about","Intent":"choose_topic"}
-
 {"Sentence":"tell me the time","Intent":"what_time"}
 {"Sentence":"what time is it","Intent":"what_time"}
 {"Sentence":"can you say the time","Intent":"what_time"}
@@ -210,6 +197,17 @@
 {"Sentence":"is it justified to?","Intent":"opinion_request"}
 {"Sentence":"Do you agree with this?","Intent":"opinion_request"}
 
+{"Sentence":"tell me what do you want to talk about","Intent":"choose_topic"}
+{"Sentence":"tell me what do you want to chat about","Intent":"choose_topic"}
+{"Sentence":"what can we talk about","Intent":"choose_topic"}
+{"Sentence":"what can you talk about","Intent":"choose_topic"}
+
+{"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
+{"Sentence":"that is enough","Intent":"topic_switching"}
+{"Sentence":"i do not want to talk about this anymore","Intent":"topic_switching"}
+{"Sentence":"this is boring","Intent":"topic_switching"}
+{"Sentence":"lets change topic","Intent":"topic_switching"}
+{"Sentence":"can we talk about something else?","Intent":"topic_switching"}
 
 {"Sentence":"What resources are available in the platform?","Intent":"ask_resource_request"}
 {"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
@@ -231,14 +229,38 @@
 {"Sentence":"give resources from the ai4eu catalog","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me resources from the ai catalog","Intent":"ai4eu_resource_request"}
 {"Sentence":"datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me datasets","Intent":"ai4eu_resource_request"}
 {"Sentence":"docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me docker containers","Intent":"ai4eu_resource_request"}
 {"Sentence":"executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me executables","Intent":"ai4eu_resource_request"}
 {"Sentence":"notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me jupyter notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me libraries","Intent":"ai4eu_resource_request"}
 {"Sentence":"models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in models","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give models","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me models","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in  ML models","Intent":"ai4eu_resource_request"}
 {"Sentence":"ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in  tutorials","Intent":"ai4eu_resource_request"}
 {"Sentence":"tutorials","Intent":"ai4eu_resource_request"}
+{"Sentence":"please give me tutorials","Intent":"ai4eu_resource_request"}
+{"Sentence":"give me tutorials","Intent":"ai4eu_resource_request"}
 
 {"Sentence":"I would like to explore web resources","Intent":"web_resource_request"}
 {"Sentence":"I am interested in web resources","Intent":"web_resource_request"}
@@ -247,3 +269,20 @@
 {"Sentence":"web resources please","Intent":"web_resource_request"}
 {"Sentence":"give me web resources","Intent":"web_resource_request"}
 
+{"Sentence":"do you have any other option?","Intent":"alternatives"}
+{"Sentence":"any alternatives?","Intent":"alternatives"}
+{"Sentence":"do you have any other option?","Intent":"alternatives"}
+
+
+{"Sentence":"any option related to","Intent":"refine_web_resource"}
+{"Sentence":"anything relevant to","Intent":"refine_web_resource"}
+
+{"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
+
+{"Sentence":"can you provide the title of this resource?","Intent":"resource_title"}
+
+{"Sentence":"can you provide the content of this resource?","Intent":"resource_content"}
+
+{"Sentence":"what is the score of this resource?","Intent":"resource_score"}
+
+{"Sentence":"can you describe this resource using keywords?","Intent":"resource_keywords"}
