@@ -222,6 +222,9 @@
 {"Sentence":"I would like to ask you something","Intent":"faq_request"}
 {"Sentence":"Can you please tell me something?","Intent":"faq_request"}
 {"Sentence":"Can I ask you something?","Intent":"faq_request"}
+{"Sentence":"A frequently asked question","Intent":"faq_request"}
+{"Sentence":"An FAQ","Intent":"faq_request"}
+
 
 {"Sentence":"I would like to explore the AI4EU resources","Intent":"ai4eu_resource_request"}
 {"Sentence": "AI4EU resources","Intent":"ai4eu_resource_request"}
