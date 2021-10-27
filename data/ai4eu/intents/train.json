@@ -268,14 +268,12 @@
 {"Sentence":"web resources","Intent":"web_resource_request"}
 {"Sentence":"web resources please","Intent":"web_resource_request"}
 {"Sentence":"give me web resources","Intent":"web_resource_request"}
+{"Sentence":"I am looking general information about artificial intelligence","Intent":"web_resource_request"}
 
 {"Sentence":"do you have any other option?","Intent":"alternatives"}
 {"Sentence":"any alternatives?","Intent":"alternatives"}
-{"Sentence":"do you have any other option?","Intent":"alternatives"}
+{"Sentence":"can you please provide me another one?","Intent":"alternatives"}
 
-
-{"Sentence":"any option related to","Intent":"refine_web_resource"}
-{"Sentence":"anything relevant to","Intent":"refine_web_resource"}
 
 {"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
 
