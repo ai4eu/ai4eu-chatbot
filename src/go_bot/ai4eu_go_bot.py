@@ -110,9 +110,9 @@ class GoalOrientedBot(NNModel):
             :class:`~deeppavlov.models.classifiers.keras_classification_model.KerasClassificationModel`
             recommended).
         database: database that will be used during inference to perform
-            ``api_call_action`` actions and get ``'db_result'`` result (
+            ``ai4eu_search_api_call_action`` actions and get ``'db_result'`` result (
             :class:`~deeppavlov.core.data.sqlite_database.Sqlite3Database`
-            recommended).
+            recommended). (TODO - AI4EU use search api)
         use_action_mask: if ``True``, network output will be applied with a mask
             over allowed actions.
         debug: whether to display debug output.
@@ -432,10 +432,10 @@ class GoalOrientedBot(NNModel):
                                                 tracker_slotfilled_state)
         responses.append(resp)
 
-        if policy_prediction.predicted_action_ix == self.nlg_manager.get_api_call_action_id():
-            # tracker says we need to make an api call.
+        # AI4EU: If we need to make a call to the AI4EU search api
+        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_search_api_call_action_id():
             # we 1) perform the api call and 2) predict what to do next
-            user_tracker.make_api_call()
+            user_tracker.make_ai4eu_search_api_call()
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)

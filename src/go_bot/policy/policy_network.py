@@ -208,7 +208,7 @@ class PolicyNetwork(LRScheduledTFModel):
 
         if np.any(tracker_knowledge.tracker_prev_action):
             prev_act_id = np.argmax(tracker_knowledge.tracker_prev_action)
-            if prev_act_id == tracker_knowledge.api_call_id:
+            if prev_act_id == tracker_knowledge._ai4eu_search_api_call_id:
                 mask[prev_act_id] = 0.
 
         return mask

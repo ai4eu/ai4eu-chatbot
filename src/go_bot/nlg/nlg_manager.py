@@ -28,31 +28,31 @@ class NLGManager(NLGManagerInterface):
         template_path: file with mapping between actions and text templates
             for response generation.
         template_type: type of used response templates in string format.
-        api_call_action: label of the action that corresponds to database api call
+        ai4eu_search_api_call_action: label of the action that corresponds to ai4eu search api call
             (it must be present in your ``template_path`` file), during interaction
-            it will be used to get ``'db_result'`` from ``database``.
+            it will be used to get ``'db_result'`` from ``database``. (TODO update)
         debug: whether to display debug output.
     """
 
-    def __init__(self, template_path: Union[str, Path], template_type: str, api_call_action: str, debug=False):
+    def __init__(self, template_path: Union[str, Path], template_type: str, ai4eu_search_api_call_action: str, debug=False):
         self.debug = debug
         if self.debug:
             log.debug(f"BEFORE {self.__class__.__name__} init(): "
                       f"template_path={template_path}, template_typ e={template_type}, "
-                      f"api_call_action={api_call_action}, debug={debug}")
+                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}")
 
         template_path = expand_path(template_path)
         template_type = getattr(go_bot_templates, template_type)
         self.templates = go_bot_templates.Templates(template_type).load(template_path)
 
-        self._api_call_id = -1
-        if api_call_action is not None:
-            self._api_call_id = self.templates.actions.index(api_call_action)
+        self._ai4eu_search_api_call_id = -1
+        if ai4eu_search_api_call_action is not None:
+            self._ai4eu_search_api_call_id = self.templates.actions.index(ai4eu_search_api_call_action)
 
         if self.debug:
             log.debug(f"AFTER {self.__class__.__name__} init(): "
                       f"template_path={template_path}, template_type={template_type}, "
-                      f"api_call_action={api_call_action}, debug={debug}")
+                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}")
 
     def get_action_id(self, action_text: str) -> int:
         """
@@ -65,12 +65,12 @@ class NLGManager(NLGManagerInterface):
         """
         return self.templates.actions.index(action_text)  # todo unhandled exception when not found
 
-    def get_api_call_action_id(self) -> int:
+    def get_ai4eu_search_api_call_action_id(self) -> int:
         """
         Returns:
-            an ID corresponding to the api call action
+            an ID corresponding to the ai4eu search api call action
         """
-        return self._api_call_id
+        return self._ai4eu_search_api_call_id
 
     def decode_response(self,
                         utterance_batch_features: BatchDialoguesFeatures,
@@ -81,7 +81,7 @@ class NLGManager(NLGManagerInterface):
         action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
                                                                 tracker_slotfilled_state)
         # in api calls replace unknown slots to "dontcare"
-        if policy_prediction.predicted_action_ix == self._api_call_id:
+        if policy_prediction.predicted_action_ix == self._ai4eu_search_api_call_id:
             action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
         return action_text
 

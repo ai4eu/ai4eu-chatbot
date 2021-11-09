@@ -21,7 +21,7 @@ class NLGManagerInterface(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_api_call_action_id(self) -> int:
+    def get_ai4eu_search_api_call_action_id(self) -> int:
         """
         Returns:
             an ID corresponding to the api call action
