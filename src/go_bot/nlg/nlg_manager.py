@@ -38,7 +38,7 @@ class NLGManager(NLGManagerInterface):
         self.debug = debug
         if self.debug:
             log.debug(f"BEFORE {self.__class__.__name__} init(): "
-                      f"template_path={template_path}, template_type={template_type}, "
+                      f"template_path={template_path}, template_typ e={template_type}, "
                       f"api_call_action={api_call_action}, debug={debug}")
 
         template_path = expand_path(template_path)

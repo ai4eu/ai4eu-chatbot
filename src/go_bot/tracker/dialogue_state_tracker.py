@@ -65,7 +65,7 @@ class DialogueStateTracker(FeaturizedTracker):
 
         # region set formfilling info
         act2act_id = {a_text: nlg_manager.get_action_id(a_text) for a_text in nlg_manager.known_actions()}
-        action_id2aqd_slots_ids, action_id2req_slots_ids = DialogueStateTracker.extract_reqiured_acquired_slots_ids_mapping(
+        action_id2aqd_slots_ids, action_id2req_slots_ids = DialogueStateTracker.extract_required_acquired_slots_ids_mapping(
             act2act_id, slot_names, nlg_manager, parent_tracker)
 
         # todo why so ugly and duplicated in multiple users tracker
@@ -83,7 +83,7 @@ class DialogueStateTracker(FeaturizedTracker):
         return dialogue_state_tracker
 
     @staticmethod
-    def extract_reqiured_acquired_slots_ids_mapping(act2act_id: Dict,
+    def extract_required_acquired_slots_ids_mapping(act2act_id: Dict,
                                                     slot_names: List,
                                                     nlg_manager: NLGManagerInterface,
                                                     parent_tracker: FeaturizedTracker) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
@@ -120,6 +120,9 @@ class DialogueStateTracker(FeaturizedTracker):
                     action_id2aqd_slots_ids[act_id][slot_ix_in_tracker] = 1.
         return action_id2aqd_slots_ids, action_id2req_slots_ids
 
+    """
+    Reset state of dialogue state tracker
+    """
     def reset_state(self):
         super().reset_state()
         self.db_result = None
@@ -127,6 +130,9 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_action = np.zeros(self.n_actions, dtype=np.float32)
         self._reset_network_state()
 
+    """
+    Reset network state
+    """
     def _reset_network_state(self):
         self.network_state = (
             np.zeros([1, self.hidden_size], dtype=np.float32),
@@ -142,6 +148,9 @@ class DialogueStateTracker(FeaturizedTracker):
         self.current_db_result = context.get('db_result', None)
         self._update_db_result()
 
+    """
+    Make call to search-API 
+    """
     def make_api_call(self) -> None:
         slots = self.get_state()
         db_results = []
@@ -167,6 +176,9 @@ class DialogueStateTracker(FeaturizedTracker):
         self.current_db_result = {} if not db_results else db_results[0]
         self._update_db_result()
 
+    """
+    compute action mask
+    """
     def calc_action_mask(self) -> np.ndarray:
         mask = np.ones(self.n_actions, dtype=np.float32)
 
@@ -187,6 +199,9 @@ class DialogueStateTracker(FeaturizedTracker):
 
         return mask
 
+    """
+    compute context features
+    """
     def calc_context_features(self):
         # todo некрасиво
         current_db_result = self.current_db_result
@@ -209,10 +224,16 @@ class DialogueStateTracker(FeaturizedTracker):
         ], dtype=np.float32)
         return context_features
 
+    """
+    update result from search API
+    """
     def _update_db_result(self):
         if self.current_db_result is not None:
             self.db_result = self.current_db_result
 
+    """
+    use search API to fill in the state
+    """
     def fill_current_state_with_db_results(self) -> dict:
         slots = self.get_state()
         if self.db_result:
