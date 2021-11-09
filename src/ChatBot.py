@@ -31,7 +31,7 @@ class ChatBot:
         self.__faq = faq.FAQ()
         self.__kbqa = kbqa.KBQA()
         # Fine-tune this threshold especially for the FAQ model
-        self.__THRESHOLD = 0.2
+        self.__THRESHOLD = 0.3
 
     """
     Ask the query to our models.
