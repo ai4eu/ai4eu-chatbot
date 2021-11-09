@@ -29,6 +29,14 @@ class NLGManagerInterface(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def get_ai4eu_faq_api_call_action_id(self) -> int:
+        """
+        Returns:
+            an ID corresponding to the api call action
+        """
+        pass
+
+    @abstractmethod
     def decode_response(self,
                         utterance_batch_features: BatchDialoguesFeatures,
                         policy_prediction: PolicyPrediction,

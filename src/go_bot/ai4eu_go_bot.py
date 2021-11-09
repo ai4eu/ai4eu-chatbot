@@ -434,8 +434,31 @@ class GoalOrientedBot(NNModel):
 
         # AI4EU: If we need to make a call to the AI4EU search api
         if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_search_api_call_action_id():
-            # we 1) perform the api call and 2) predict what to do next
+            # we 1) perform the search api call and 2) predict what to do next
             user_tracker.make_ai4eu_search_api_call()
+            utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
+                                                                      keep_tracker_state=True)
+            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
+            user_tracker.network_state = policy_prediction.get_network_state()
+
+            # tracker says we need to say smth to user. we
+            # * calculate the slotfilled state:
+            #   for each slot that is relevant to dialogue we fill this slot value if possible
+            # * generate text for the predicted speech action:
+            #   using the pattern provided for the action;
+            #   the slotfilled state provides info to encapsulate to the pattern
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
+            resp = self.nlg_manager.decode_response(utterance_batch_features,
+                                                    policy_prediction,
+                                                    tracker_slotfilled_state)
+            responses.append(resp)
+
+        # AI4EU: If we need to make a call to the AI4EU faq api
+        # What is prediction ix
+        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_faq_api_call_action_id():
+            # we 1) perform the facq api call and 2) predict what to do next
+            # TODO - no need to predict in this case - Have to update - NEXT
+            user_tracker.make_ai4eu_faq_api_call()
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)

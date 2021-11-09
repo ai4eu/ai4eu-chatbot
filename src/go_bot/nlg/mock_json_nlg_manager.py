@@ -23,6 +23,7 @@ class MockJSONNLGManager(NLGManagerInterface):
     def __init__(self,
                  actions2slots_path: Union[str, Path],
                  ai4eu_search_api_call_action: str,
+                 ai4eu_faq_api_call_action: str,
                  data_path: Union[str, Path],
                  dataset_reader_class="dstc2_reader",
                  debug=False):
@@ -31,7 +32,8 @@ class MockJSONNLGManager(NLGManagerInterface):
         if self.debug:
             log.debug(f"BEFORE {self.__class__.__name__} init(): "
                       f"actions2slots_path={actions2slots_path}, "
-                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}")
+                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}, "
+                      f"ai4eu_faq_api_call_action={ai4eu_search_api_call_action}, debug={debug}")
 
         self._dataset_reader = get_model(dataset_reader_class)
 
@@ -55,23 +57,37 @@ class MockJSONNLGManager(NLGManagerInterface):
             actions_combination_tuple_id = self.action_tuples2ids[actions_combination_tuple]
             self.action_tuples_ids2slots[actions_combination_tuple_id] = actions_combination_slots
 
-        # ai4eu search api call
+        # TODO: ai4eu search api call
         self._ai4eu_search_api_call_id = -1
         if ai4eu_search_api_call_action is not None:
             ai4eu_search_api_call_action_as_tuple = (ai4eu_search_api_call_action,)
             self._ai4eu_search_api_call_id = self.action_tuples2ids[ai4eu_search_api_call_action_as_tuple]
 
+        # TODO: ai4eu faq api call
+        self._ai4eu_faq_api_call_id = -1
+        if ai4eu_faq_api_call_action is not None:
+            ai4eu_faq_api_call_action_as_tuple = (ai4eu_faq_api_call_action,)
+            self._ai4eu_faq_api_call_id = self.action_tuples2ids[ai4eu_faq_api_call_action_as_tuple]
+
         if self.debug:
             log.debug(f"AFTER {self.__class__.__name__} init(): "
                       f"actions2slots_path={actions2slots_path}, "
-                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}")
+                      f"ai4eu_search_api_call_action={ai4eu_search_api_call_action}, debug={debug}, "
+                      f"ai4eu_faq_api_call_action={ai4eu_faq_api_call_action}, debug={debug}")
 
     def get_ai4eu_search_api_call_action_id(self) -> int:
         """
         Returns:
-            an ID corresponding to the api call action
+            an ID corresponding to the AI4EU search api call action
         """
         return self._ai4eu_search_api_call_id
+
+    def get_ai4eu_faq_api_call_action_id(self) -> int:
+        """
+        Returns:
+            an ID corresponding to the AI4EU faq api call action
+        """
+        return self._ai4eu_faq_api_call_id
 
     def _extract_actions_combinations(self, dataset_path: Union[str, Path]):
         dataset_path = expand_path(dataset_path)

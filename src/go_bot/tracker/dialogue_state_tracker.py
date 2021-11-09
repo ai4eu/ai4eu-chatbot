@@ -34,6 +34,7 @@ class DialogueStateTracker(FeaturizedTracker):
         knowledge = DSTKnowledge(self.prev_action,
                                  state_features, context_features,
                                  self._ai4eu_search_api_call_id,
+                                 self._ai4eu_faq_api_call_id,
                                  self.n_actions,
                                  self.calc_action_mask())
         return knowledge
@@ -42,6 +43,7 @@ class DialogueStateTracker(FeaturizedTracker):
                  slot_names,
                  n_actions: int,
                  _ai4eu_search_api_call_id: int,
+                 _ai4eu_faq_api_call_id: int,
                  hidden_size: int,
                  database: Component = None,
                  domain_yml_path: Optional[Union[str, Path]]=None,
@@ -52,6 +54,7 @@ class DialogueStateTracker(FeaturizedTracker):
         self.database = database
         self.n_actions = n_actions
         self._ai4eu_search_api_call_id = _ai4eu_search_api_call_id
+        self._ai4eu_faq_api_call_id = _ai4eu_faq_api_call_id
         self.ffill_act_ids2req_slots_ids: Dict[int, List[int]] = dict()
         self.ffill_act_ids2aqd_slots_ids: Dict[int, List[int]] = dict()
         self.reset_state()
@@ -71,6 +74,7 @@ class DialogueStateTracker(FeaturizedTracker):
         # todo why so ugly and duplicated in multiple users tracker
         dialogue_state_tracker = DialogueStateTracker(slot_names, nlg_manager.num_of_known_actions(),
                                                       nlg_manager.get_ai4eu_search_api_call_action_id(),
+                                                      nlg_manager.get_ai4eu_faq_api_call_action_id(),
                                                       policy_network_params.hidden_size,
                                                       database,
                                                       parent_tracker.domain_yml_path,
@@ -150,8 +154,38 @@ class DialogueStateTracker(FeaturizedTracker):
 
     """
     Make call to search-API 
+    TODO: We need to update this to do not use the database but the search API
     """
     def make_ai4eu_search_api_call(self) -> None:
+        slots = self.get_state()
+        db_results = []
+        if self.database is not None:
+
+            # filter slot keys with value equal to 'dontcare' as
+            # there is no such value in database records
+            # and remove unknown slot keys (for example, 'this' in dstc2 tracker)
+            db_slots = {
+                s: v for s, v in slots.items() if v != 'dontcare' and s in self.database.keys
+            }
+
+            db_results = self.database([db_slots])[0]
+
+            # filter api results if there are more than one
+            # TODO: add sufficient criteria for database results ranking
+            if len(db_results) > 1:
+                db_results = [r for r in db_results if r != self.db_result]
+        else:
+            log.warning("No database specified.")
+
+        log.info(f"Made ai4eu search api_call with {slots}, got {len(db_results)} results.")
+        self.current_db_result = {} if not db_results else db_results[0]
+        self._update_db_result()
+
+    """
+    Make call to faq-API 
+    TODO: We need to update this, to not use the database but the FAQ 
+    """
+    def make_ai4eu_faq_api_call(self) -> None:
         slots = self.get_state()
         db_results = []
         if self.database is not None:
@@ -176,6 +210,7 @@ class DialogueStateTracker(FeaturizedTracker):
         self.current_db_result = {} if not db_results else db_results[0]
         self._update_db_result()
 
+
     """
     compute action mask
     """
@@ -185,6 +220,7 @@ class DialogueStateTracker(FeaturizedTracker):
         if np.any(self.prev_action):
             prev_act_id = np.argmax(self.prev_action)
             if prev_act_id == self._ai4eu_search_api_call_id:
+                # Here we just mask the ai4eu search api call so that we can not make consecutive api requests
                 mask[prev_act_id] = 0.
 
         for act_id in range(self.n_actions):
@@ -263,7 +299,9 @@ class MultipleUserStateTrackersPool(object):
     def new_tracker(self):
         # todo deprecated and never used?
         tracker = DialogueStateTracker(self.base_tracker.slot_names, self.base_tracker.n_actions,
-                                       self.base_tracker._ai4eu_search_api_call_id, self.base_tracker.hidden_size,
+                                       self.base_tracker._ai4eu_search_api_call_id,
+                                       self.base_tracker._ai4eu_faq_api_call_id,
+                                       self.base_tracker.hidden_size,
                                        self.base_tracker.database)
         return tracker
 
@@ -280,6 +318,7 @@ class MultipleUserStateTrackersPool(object):
             tracker_entity.slot_names,
             tracker_entity.n_actions,
             tracker_entity._ai4eu_search_api_call_id,
+            tracker_entity._ai4eu_faq_api_call_id,
             tracker_entity.hidden_size,
             tracker_entity.database,
             tracker_entity.domain_yml_path,
