@@ -1,0 +1,9 @@
+welcomemsg	Hello! How may I help you?
+intro	Hello
+outro	Bye bye!  Have a nice day!
+skills	You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform!
+reqmore	Can I help you with anything else?
+repeat	Sorry I am a bit confused; please tell me again what you are looking for.
+ai4eu_search_api_call	ai4eu_search_api_call area="#area" food="#food" pricerange="#pricerange"
+faq_request	Ok, what do you want to ask?
+ai4eu_faq_api_call	ai4eu_faq_api_call
