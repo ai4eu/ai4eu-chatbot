@@ -208,7 +208,7 @@ class PolicyNetwork(LRScheduledTFModel):
 
         if np.any(tracker_knowledge.tracker_prev_action):
             prev_act_id = np.argmax(tracker_knowledge.tracker_prev_action)
-            # TODO Check that this is correct. We only have to check for ai4eu_search_api_calls. ai4eu_faq_api_calls
+            # TODO Check that this is correct. We only have to check for ai4eu_search_api_calls. ai4eu_qa_api_calls
             # can be called as many times as we want consecutively
             if prev_act_id == tracker_knowledge._ai4eu_search_api_call_id:
                 mask[prev_act_id] = 0.

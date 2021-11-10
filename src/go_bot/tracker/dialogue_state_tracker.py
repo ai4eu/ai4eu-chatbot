@@ -24,6 +24,8 @@ from deeppavlov.models.go_bot.policy.dto.policy_network_params import PolicyNetw
 from deeppavlov.models.go_bot.tracker.dto.dst_knowledge import DSTKnowledge
 from deeppavlov.models.go_bot.tracker.featurized_tracker import FeaturizedTracker
 
+from ...ChatBot_QA import ChatBot_QA
+
 log = getLogger(__name__)
 
 
@@ -34,7 +36,7 @@ class DialogueStateTracker(FeaturizedTracker):
         knowledge = DSTKnowledge(self.prev_action,
                                  state_features, context_features,
                                  self._ai4eu_search_api_call_id,
-                                 self._ai4eu_faq_api_call_id,
+                                 self._ai4eu_qa_api_call_id,
                                  self.n_actions,
                                  self.calc_action_mask())
         return knowledge
@@ -43,7 +45,7 @@ class DialogueStateTracker(FeaturizedTracker):
                  slot_names,
                  n_actions: int,
                  _ai4eu_search_api_call_id: int,
-                 _ai4eu_faq_api_call_id: int,
+                 _ai4eu_qa_api_call_id: int,
                  hidden_size: int,
                  database: Component = None,
                  domain_yml_path: Optional[Union[str, Path]]=None,
@@ -54,7 +56,7 @@ class DialogueStateTracker(FeaturizedTracker):
         self.database = database
         self.n_actions = n_actions
         self._ai4eu_search_api_call_id = _ai4eu_search_api_call_id
-        self._ai4eu_faq_api_call_id = _ai4eu_faq_api_call_id
+        self._ai4eu_qa_api_call_id = _ai4eu_qa_api_call_id
         self.ffill_act_ids2req_slots_ids: Dict[int, List[int]] = dict()
         self.ffill_act_ids2aqd_slots_ids: Dict[int, List[int]] = dict()
         self.reset_state()
@@ -74,7 +76,7 @@ class DialogueStateTracker(FeaturizedTracker):
         # todo why so ugly and duplicated in multiple users tracker
         dialogue_state_tracker = DialogueStateTracker(slot_names, nlg_manager.num_of_known_actions(),
                                                       nlg_manager.get_ai4eu_search_api_call_action_id(),
-                                                      nlg_manager.get_ai4eu_faq_api_call_action_id(),
+                                                      nlg_manager.get_ai4eu_qa_api_call_action_id(),
                                                       policy_network_params.hidden_size,
                                                       database,
                                                       parent_tracker.domain_yml_path,
@@ -177,39 +179,28 @@ class DialogueStateTracker(FeaturizedTracker):
         else:
             log.warning("No database specified.")
 
-        log.info(f"Made ai4eu search api_call with {slots}, got {len(db_results)} results.")
+        log.info(f"Made ai4eu_search_api_call with {slots}, got {len(db_results)} results.")
         self.current_db_result = {} if not db_results else db_results[0]
         self._update_db_result()
 
     """
-    Make call to faq-API 
-    TODO: We need to update this, to not use the database but the FAQ 
+    Make call to QA-API 
+            Args:
+            user_text: the user input text passed to the system, which is currently considered the Question for QA
+            QA: the QA module that uses an FAQ and an KBQA module 
+            topk: the number of top results to return 
+
+    We return the topk results along with their probabilities
     """
-    def make_ai4eu_faq_api_call(self) -> None:
-        slots = self.get_state()
-        db_results = []
-        if self.database is not None:
+    @staticmethod
+    def make_ai4eu_qa_api_call(user_text: str, qa : ChatBot_QA, topk : int) :
+        # Ask the QA module the user request
+        model, results = qa.ask(user_text, topk)
 
-            # filter slot keys with value equal to 'dontcare' as
-            # there is no such value in database records
-            # and remove unknown slot keys (for example, 'this' in dstc2 tracker)
-            db_slots = {
-                s: v for s, v in slots.items() if v != 'dontcare' and s in self.database.keys
-            }
+        log.info(f"Made ai4eu_qa_api_call with text {slots}, got results {results} from model {model}.")
 
-            db_results = self.database([db_slots])[0]
-
-            # filter api results if there are more than one
-            # TODO: add sufficient criteria for database results ranking
-            if len(db_results) > 1:
-                db_results = [r for r in db_results if r != self.db_result]
-        else:
-            log.warning("No database specified.")
-
-        log.info(f"Made api_call with {slots}, got {len(db_results)} results.")
-        self.current_db_result = {} if not db_results else db_results[0]
-        self._update_db_result()
-
+        # return the model and the results
+        return results
 
     """
     compute action mask
@@ -300,7 +291,7 @@ class MultipleUserStateTrackersPool(object):
         # todo deprecated and never used?
         tracker = DialogueStateTracker(self.base_tracker.slot_names, self.base_tracker.n_actions,
                                        self.base_tracker._ai4eu_search_api_call_id,
-                                       self.base_tracker._ai4eu_faq_api_call_id,
+                                       self.base_tracker._ai4eu_qa_api_call_id,
                                        self.base_tracker.hidden_size,
                                        self.base_tracker.database)
         return tracker
@@ -318,7 +309,7 @@ class MultipleUserStateTrackersPool(object):
             tracker_entity.slot_names,
             tracker_entity.n_actions,
             tracker_entity._ai4eu_search_api_call_id,
-            tracker_entity._ai4eu_faq_api_call_id,
+            tracker_entity._ai4eu_qa_api_call_id,
             tracker_entity.hidden_size,
             tracker_entity.database,
             tracker_entity.domain_yml_path,

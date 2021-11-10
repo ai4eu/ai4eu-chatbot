@@ -51,6 +51,8 @@ from .tracker.featurized_tracker import FeaturizedTracker
 from .tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
 from pathlib import Path
 
+from ..ChatBot_QA import ChatBot_QA
+
 log = getLogger(__name__)
 
 
@@ -183,6 +185,12 @@ class GoalOrientedBot(NNModel):
                                     policy_load_path, policy_save_path, **kwargs)
 
         self.dialogues_cached_features = dict()
+
+        # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
+        self.QA = ChatBot_QA()
+        # The following could be parameters in the json configuration
+        self.topk = 3   # Topk results for qa module
+        self.action_probability_threshold = 1.0  # Threshold for action probabilities - Have to fine tune this
 
         self.reset()
 
@@ -413,10 +421,16 @@ class GoalOrientedBot(NNModel):
         user_tracker = self.multiple_user_state_tracker.get_or_init_tracker(user_id)
         responses = []
 
-        # todo remove duplication
+        # Policy Making -> Predict new action
 
         # predict the action to perform (e.g. response smth or call the api)
         utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker)
+
+        # We have to check the probability of the actions. If they are too low then it is better to use the QA module
+        if policy_prediction.probs[policy_prediction.predicted_action_ix] < self.action_probability_threshold:
+            policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
+            log.debug(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
+
         user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
         user_tracker.network_state = policy_prediction.get_network_state()
 
@@ -427,6 +441,7 @@ class GoalOrientedBot(NNModel):
         #   using the pattern provided for the action;
         #   the slotfilled state provides info to encapsulate to the pattern
         tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
+        # PP check response
         resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                 policy_prediction,
                                                 tracker_slotfilled_state)
@@ -454,11 +469,14 @@ class GoalOrientedBot(NNModel):
             responses.append(resp)
 
         # AI4EU: If we need to make a call to the AI4EU faq api
-        # What is prediction ix
-        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_faq_api_call_action_id():
-            # we 1) perform the facq api call and 2) predict what to do next
+        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
+            # we 1) perform the qa api call and 2) predict what to do next
             # TODO - no need to predict in this case - Have to update - NEXT
-            user_tracker.make_ai4eu_faq_api_call()
+            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self.topk)
+
+            # Log response from QA
+            log.debug(f"True response = '{candidates}'.")
+
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
