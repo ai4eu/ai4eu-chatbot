@@ -16,14 +16,14 @@
 from sanic import Sanic
 from sanic.response import json
 
-import ChatBot
+import FAQ_ChatBot
 
-app = Sanic("AI4EU chatbot service")
-chatbot = None
+app = Sanic("AI4EU QA chatbot service")
+qa_chatbot = None
 
 """
 """
-def bad_input(error, service="AI4EU chatbot"):
+def bad_input(error, service="AI4EU QA chatbot"):
     """
     Send a bad service rest answser (400)
     :param service : service name
@@ -34,7 +34,7 @@ def bad_input(error, service="AI4EU chatbot"):
                     'error': 'Wrong input: ' + error,
                     'service': service,
                 },
-                headers={'X-Served-By': 'AI4EU chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=400)
 
 
@@ -46,14 +46,14 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            model, results = chatbot.ask(query)
+            model, results = qa_chatbot.ask(query)
             return json(
                 {
                     'results': results,
                     'model': model,
-                    'service': 'AI4EU chatbot'
+                    'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -70,14 +70,14 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            model, results = chatbot.ask_kbqa(query)
+            model, results = qa_chatbot.ask_kbqa(query)
             return json(
                 {
                     'results': results,
                     'model': model,
-                    'service': 'AI4EU chatbot'
+                    'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -94,14 +94,14 @@ async def test(request):
         query = data['query']
 
         if query is not None:
-            model, results = chatbot.ask_faq(query)
+            model, results = qa_chatbot.ask_faq(query)
             return json(
                 {
                     'results': results,
                     'model': model,
-                    'service': 'AI4EU chatbot'
+                    'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -112,9 +112,9 @@ async def test(request):
 
 @app.listener('after_server_start')
 def init(sanic, loop):
-    """Before starting the service initialize the chatbot module"""
-    global chatbot
-    chatbot = ChatBot.ChatBot()
+    """Before starting the service initialize the QA chatbot module"""
+    global qa_chatbot
+    qa_chatbot = ChatBot_QA.ChatBot_QA()
 
 if __name__ == '__main__':
     app.run()

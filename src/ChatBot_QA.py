@@ -8,9 +8,9 @@
 #
 # Copyright 2021
 
-# The AI4EU chatbot - ChatBot module
+# The AI4EU QA chatbot - QA ChatBot module
 
-# Currently we exploit two models for our chatbot
+# Currently we exploit two models for our QA chatbot
 # The first one is a sentence based embedding model for FAQ trained over FAQ question-answer pairs
 # over the AI4EU website and general AI terminology
 # If the user query is not answered from this module with a probability greater than __THRESHOLD
@@ -23,9 +23,9 @@
 import faq.FAQ as faq
 import faq.KBQA as kbqa
 
-class ChatBot:
+class ChatBot_QA:
     """
-    Constructor of chatbot. Currently we have two models, the FAQ and the KBQA
+    Constructor of QA chatbot. Currently we have two models, the FAQ and the KBQA
     """
     def __init__(self):
         self.__faq = faq.FAQ()
