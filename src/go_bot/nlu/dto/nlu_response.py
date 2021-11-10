@@ -1,7 +1,7 @@
 from typing import Any, Dict, Tuple, List, Union, Optional
 
-from deeppavlov.models.go_bot.nlu.dto.nlu_response_interface import NLUResponseInterface
-from deeppavlov.models.go_bot.nlu.dto.text_vectorization_response import TextVectorizationResponse
+from .nlu_response_interface import NLUResponseInterface
+from .text_vectorization_response import TextVectorizationResponse
 
 
 class NLUResponse(NLUResponseInterface):

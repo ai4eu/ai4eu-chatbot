@@ -1,6 +1,6 @@
-from deeppavlov.models.go_bot.nlu.nlu_manager import NLUManagerInterface
-from deeppavlov.models.go_bot.nlg.nlg_manager import NLGManagerInterface
-from deeppavlov.models.go_bot.tracker.featurized_tracker import FeaturizedTracker
+from ..nlu.nlu_manager import NLUManagerInterface
+from ..nlg.nlg_manager import NLGManagerInterface
+from ..tracker.featurized_tracker import FeaturizedTracker
 
 
 # todo logging

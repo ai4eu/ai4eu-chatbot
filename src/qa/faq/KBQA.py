@@ -38,7 +38,7 @@ class KBQA:
     """
     def load_model(self):
 
-        self.__model = build_model('../config/kbqa/kbqa_cq.json')
+        self.__model = build_model('config/kbqa/kbqa_cq.json')
 
         if self.__model is not None:
             self.__loaded = True

@@ -20,8 +20,8 @@
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
-import faq.FAQ as faq
-import faq.KBQA as kbqa
+from .faq import FAQ as faq
+from .faq import KBQA as kbqa
 
 class ChatBot_QA:
     """

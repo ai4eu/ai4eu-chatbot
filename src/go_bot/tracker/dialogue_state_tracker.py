@@ -19,12 +19,12 @@ from typing import List, Union, Optional, Dict, Tuple, Any
 import numpy as np
 
 from deeppavlov.core.models.component import Component
-from deeppavlov.models.go_bot.nlg.nlg_manager import NLGManagerInterface
-from deeppavlov.models.go_bot.policy.dto.policy_network_params import PolicyNetworkParams
-from deeppavlov.models.go_bot.tracker.dto.dst_knowledge import DSTKnowledge
-from deeppavlov.models.go_bot.tracker.featurized_tracker import FeaturizedTracker
+from ..nlg.nlg_manager import NLGManagerInterface
+from ..policy.dto.policy_network_params import PolicyNetworkParams
+from ..tracker.dto.dst_knowledge import DSTKnowledge
+from ..tracker.featurized_tracker import FeaturizedTracker
 
-from ...ChatBot_QA import ChatBot_QA
+from ...qa.ChatBot_QA import ChatBot_QA
 
 log = getLogger(__name__)
 

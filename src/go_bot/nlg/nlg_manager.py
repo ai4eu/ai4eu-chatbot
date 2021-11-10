@@ -6,9 +6,9 @@ from typing import Union, List
 from deeppavlov.core.commands.utils import expand_path
 import deeppavlov.models.go_bot.nlg.templates.templates as go_bot_templates
 from deeppavlov.core.common.registry import register
-from deeppavlov.models.go_bot.dto.dataset_features import BatchDialoguesFeatures
-from deeppavlov.models.go_bot.nlg.nlg_manager_interface import NLGManagerInterface
-from deeppavlov.models.go_bot.policy.dto.policy_prediction import PolicyPrediction
+from ..dto.dataset_features import BatchDialoguesFeatures
+from .nlg_manager_interface import NLGManagerInterface
+from ..policy.dto.policy_prediction import PolicyPrediction
 
 log = getLogger(__name__)
 

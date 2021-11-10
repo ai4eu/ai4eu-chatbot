@@ -51,7 +51,7 @@ from .tracker.featurized_tracker import FeaturizedTracker
 from .tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
 from pathlib import Path
 
-from ..ChatBot_QA import ChatBot_QA
+from ..qa.ChatBot_QA import ChatBot_QA
 
 log = getLogger(__name__)
 

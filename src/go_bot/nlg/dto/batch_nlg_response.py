@@ -1,5 +1,5 @@
 from typing import Container
-from deeppavlov.models.go_bot.nlg.dto.nlg_response_interface import NLGResponseInterface
+from nlg_response_interface import NLGResponseInterface
 
 
 class BatchNLGResponse:

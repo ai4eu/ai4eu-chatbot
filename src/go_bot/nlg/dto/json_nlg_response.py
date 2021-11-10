@@ -1,4 +1,4 @@
-from deeppavlov.models.go_bot.nlg.dto.nlg_response_interface import NLGObjectResponseInterface
+from nlg_response_interface import NLGObjectResponseInterface
 
 
 class JSONNLGResponse(NLGObjectResponseInterface):

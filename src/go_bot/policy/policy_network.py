@@ -12,18 +12,18 @@ from deeppavlov.core.layers import tf_attention_mechanisms as am, tf_layers
 from tensorflow.contrib.layers import xavier_initializer as xav
 
 from deeppavlov.core.models.tf_model import LRScheduledTFModel
-from deeppavlov.models.go_bot.nlu.dto.nlu_response import NLUResponse
+from ..nlu.dto.nlu_response import NLUResponse
 
-from deeppavlov.models.go_bot.nlu.tokens_vectorizer import TokensVectorRepresentationParams
-from deeppavlov.models.go_bot.dto.dataset_features import BatchDialoguesFeatures, BatchDialoguesTargets
+from ..nlu.tokens_vectorizer import TokensVectorRepresentationParams
+from ..dto.dataset_features import BatchDialoguesFeatures, BatchDialoguesTargets
 
 # todo
-from deeppavlov.models.go_bot.dto.shared_gobot_params import SharedGoBotParams
-from deeppavlov.models.go_bot.policy.dto.attn_params import GobotAttnParams
-from deeppavlov.models.go_bot.policy.dto.digitized_policy_features import DigitizedPolicyFeatures
-from deeppavlov.models.go_bot.policy.dto.policy_network_params import PolicyNetworkParams
-from deeppavlov.models.go_bot.policy.dto.policy_prediction import PolicyPrediction
-from deeppavlov.models.go_bot.tracker.dto.dst_knowledge import DSTKnowledge
+from ..dto.shared_gobot_params import SharedGoBotParams
+from .dto.attn_params import GobotAttnParams
+from .dto.digitized_policy_features import DigitizedPolicyFeatures
+from .dto.policy_network_params import PolicyNetworkParams
+from .dto.policy_prediction import PolicyPrediction
+from ..tracker.dto.dst_knowledge import DSTKnowledge
 
 log = getLogger(__name__)
 

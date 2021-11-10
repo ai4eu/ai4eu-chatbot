@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from deeppavlov.models.go_bot.nlu.dto.nlu_response_interface import NLUResponseInterface
+from .dto.nlu_response_interface import NLUResponseInterface
 
 
 class NLUManagerInterface(metaclass=ABCMeta):

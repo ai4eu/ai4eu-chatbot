@@ -2,13 +2,14 @@ from logging import getLogger
 from typing import List
 
 from deeppavlov import Chainer
-from deeppavlov.models.go_bot.nlu.dto.nlu_response import NLUResponse
-from deeppavlov.models.go_bot.nlu.nlu_manager_interface import NLUManagerInterface
+from .dto.nlu_response import NLUResponse
+from .nlu_manager_interface import NLUManagerInterface
 
 log = getLogger(__name__)
 
 # todo add the ability to configure nlu loglevel in config (now the setting is shared across all the GO-bot)
 # todo add each method input-output logging when proper loglevel level specified
+
 
 class NLUManager(NLUManagerInterface):
     """

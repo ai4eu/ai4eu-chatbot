@@ -1,9 +1,9 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from deeppavlov.models.go_bot.dto.dataset_features import BatchDialoguesFeatures
-from deeppavlov.models.go_bot.nlg.dto.nlg_response_interface import NLGResponseInterface
-from deeppavlov.models.go_bot.policy.dto.policy_prediction import PolicyPrediction
+from ..dto.dataset_features import BatchDialoguesFeatures
+from .dto.nlg_response_interface import NLGResponseInterface
+from ..policy.dto.policy_prediction import PolicyPrediction
 
 
 class NLGManagerInterface(metaclass=ABCMeta):
