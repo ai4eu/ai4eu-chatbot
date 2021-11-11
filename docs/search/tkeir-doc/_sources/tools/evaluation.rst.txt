@@ -1,0 +1,20 @@
+**********
+Evaluation
+**********
+
+The evaluation tools allows to evaluate the search engine.
+
+================
+Evaluation tools
+================
+
+Configuration
+-------------
+
+Running the tools
+-----------------
+
+=======
+Metrics
+=======
+

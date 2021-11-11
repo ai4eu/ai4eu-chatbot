@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Operation and Management &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Security" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conception.html">Conception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ready_to_run.html">Create a ready to run application with docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Operation and Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#start-and-stop-the-services">Start and stop the services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-services">List services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stop-and-restart-service">Stop and restart service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-output-a-a-service-log">Get output a a service (log)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#check-the-service-health">Check the service health</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-life-cyle-and-release">Tools life cyle and release</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Operation and Management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/oam.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="operation-and-management">
+<h1>Operation and Management<a class="headerlink" href="#operation-and-management" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the operations and the management of T-KEIR services.</p>
+<div class="section" id="start-and-stop-the-services">
+<h2>Start and stop the services<a class="headerlink" href="#start-and-stop-the-services" title="Permalink to this headline">¶</a></h2>
+<p>All the services are embedded in a docker-compose file to run the services go in directory <strong>runtime/docker</strong> and run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker-compose -f docker-compose-tkeir.yml up
+</pre></div>
+</div>
+<div class="section" id="list-services">
+<h3>List services<a class="headerlink" href="#list-services" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker ps -a
+</pre></div>
+</div>
+<img alt="_images/tkeir-docker-ps.png" src="_images/tkeir-docker-ps.png" />
+</div>
+<div class="section" id="stop-and-restart-service">
+<h3>Stop and restart service<a class="headerlink" href="#stop-and-restart-service" title="Permalink to this headline">¶</a></h3>
+<p>To stop a service :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker stop &lt;service name&gt;
+</pre></div>
+</div>
+<p>To restart a service</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker start &lt;service name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-output-a-a-service-log">
+<h3>Get output a a service (log)<a class="headerlink" href="#get-output-a-a-service-log" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker logs --details &lt;service name&gt;
+</pre></div>
+</div>
+<img alt="_images/tkeir-docker-log.png" src="_images/tkeir-docker-log.png" />
+</div>
+</div>
+<div class="section" id="check-the-service-health">
+<h2>Check the service health<a class="headerlink" href="#check-the-service-health" title="Permalink to this headline">¶</a></h2>
+<p>You can check the health of a service by using the endpoint <strong>health</strong> of the service. The rest function will return standard http code 200
+and a json description of the running service.</p>
+<img alt="_images/docker-rest-health.png" src="_images/docker-rest-health.png" />
+</div>
+<div class="section" id="tools-life-cyle-and-release">
+<h2>Tools life cyle and release<a class="headerlink" href="#tools-life-cyle-and-release" title="Permalink to this headline">¶</a></h2>
+<p>This first release is available on Thales Inner Sources repository.
+We make a tag for each project and create release when important features and bugs fixes has been done.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="security.html" class="btn btn-neutral float-left" title="Security" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

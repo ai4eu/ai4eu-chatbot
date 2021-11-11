@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tools &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tools Overview" href="tools_overview.html" />
+    <link rel="prev" title="Create a ready to run application with docker" href="../ready_to_run.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="../_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conception.html">Conception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready_to_run.html">Create a ready to run application with docker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#content">Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html">Tools Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html">Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html">Morphosyntactic tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html">Named entity tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html">Syntactic tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html">Keywords extractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html">Cluster Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html">Embbeding processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relations_clustering.html">Relation clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html">Question and Answering (QA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html">Sentiment Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html">Zeroshot Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html">Automatic Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html">Indexer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html">Search engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oam.html">Operation and Management</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tools/tools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="content">
+<h2>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tools_overview.html">Tools Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools_overview.html#tkeir-tools">Tkeir tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools_overview.html#how-run-the-services">How run the services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools_overview.html#how-use-the-services">How use the services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools_overview.html#quick-start-docker-compose">Quick start / Docker compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools_overview.html#quick-start-example-service-by-service">Quick start / Example service by service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#converter">Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#tokenizer">Tokenizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#morphosyntactic-tagger">Morphosyntactic tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#named-entity-tagger">Named entity tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#syntactic-tagger-and-svo-extraction">Syntactic tagger and SVO Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#keyword-extraction">Keyword Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#embbeding-processing">Embbeding processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#relation-clustering">Relation clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#document-classification">Document classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#document-summary">Document summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html#document-indexing">Document indexing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="converter.html">Converter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="converter.html#converter-api">Converter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html#converter-configuration">Converter configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#configure-converter-logger">Configure converter logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#configure-converter-network">Configure converter Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#configure-converter-serialize">Configure converter Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#configure-converter-runtime">Configure converter runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html#converter-service">Converter service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html#converter-tests">Converter Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#converter-unit-tests">Converter Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html#converter-functional-tests">Converter Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tokenizer.html">Tokenizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tokenizer.html#tokenizer-api">Tokenizer API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenizer.html#tokenizer-configuration">Tokenizer configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#configure-tokenizer-logger">Configure tokenizer logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#configure-tokenizer-network">Configure tokenizer Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#configure-tokenizer-serialize">Configure tokenizer Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#configure-tokenizer-runtime">Configure tokenizer runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tokenizer.html#tokenizer-service">Tokenizer service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenizer.html#tokenizer-tests">Tokenizer Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#tokenizer-unit-tests">Tokenizer Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html#tokenizer-functional-tests">Tokenizer Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mstagger.html">Morphosyntactic tagger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-api">Morphosyntactic tagger API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-configuration">Morphosyntactic tagger configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#configure-morphosyntactic-tagger-logger">Configure Morphosyntactic tagger logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#configure-morphosyntactic-tagger-network">Configure Morphosyntactic tagger Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#configure-morphosyntactic-tagger-serialize">Configure Morphosyntactic tagger Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#configure-morphosyntactic-tagger-runtime">Configure Morphosyntactic tagger runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-service">Morphosyntactic tagger service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-tests">Morphosyntactic Tagger Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-unit-tests">Morphosyntactic Tagger Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html#morphosyntactic-tagger-functional-tests">Morphosyntactic Tagger Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nertagger.html">Named entity tagger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nertagger.html#ner-tagger-api">NER Tagger API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nertagger.html#ner-tagger-configuration">NER tagger configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#configure-ner-tagger-logger">Configure NER tagger logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#configure-ner-tagger-network">Configure NER tagger Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#configure-ner-tagger-serialize">Configure NER tagger Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#configure-ner-tagger-runtime">Configure NER tagger runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nertagger.html#ner-tagger-service">NER tagger service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nertagger.html#ner-tagger-tests">NER Tagger Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#nertagger-unit-tests">NERTagger Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html#ner-tagger-functional-tests">NER Tagger Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="syntactictagger.html">Syntactic tagger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-api">Syntactic tagger API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-configuration">Syntactic tagger configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#configure-syntactic-tagger-logger">Configure Syntactic tagger logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#configure-syntactic-tagger-network">Configure Syntactic tagger Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#configure-syntactic-tagger-serialize">Configure Syntactic tagger Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#configure-syntactic-tagger-runtime">Configure Syntactic tagger runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-service">Syntactic tagger service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-tests">Syntactic tagger Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-unit-tests">Syntactic Tagger Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html#syntactic-tagger-functional-tests">Syntactic tagger Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Keywords extractor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#keywords-extractor-api">Keywords extractor API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#keywords-extractor-configuration">Keywords extractor configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#configure-keywords-extractor-logger">Configure Keywords extractor logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#configure-keywords-extractor-network">Configure Keywords extractor Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#configure-keywords-extractor-serialize">Configure Keywords extractor Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#configure-keywords-extractor-runtime">Configure Keywords extractor runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#keywords-extractor-service">Keywords extractor service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#keywords-extractor-tests">Keywords extractor Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#keywords-unit-tests">Keywords Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html#keywords-extractor-functional-tests">Keywords extractor Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cluster_inference.html">Cluster Inference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cluster_inference.html#cluster-inference-api">Cluster Inference API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster_inference.html#cluster-inference-configuration">Cluster Inference configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#configure-cluster-inference-logger">Configure cluster inference logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#configure-cluster-inference-network">Configure cluster inference Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#configure-cluster-inference-serialize">Configure cluster inference Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#configure-cluster-inference-runtime">Configure cluster inference runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cluster_inference.html#cluster-inference-service">Cluster Inference service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster_inference.html#cluster-inference-tests">Cluster Inference Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#cluster-inference-unit-tests">Cluster Inference Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html#cluster-inference-functional-tests">Cluster Inference Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="embeddings.html">Embbeding processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="embeddings.html#embeddings-api">Embeddings API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embeddings.html#embeddings-configuration">Embeddings configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#configure-embeddings-logger">Configure Embeddings logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#configure-embeddings-network">Configure Embeddings Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#configure-embeddings-serialize">Configure Embeddings Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#configure-embeddings-runtime">Configure Embeddings runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="embeddings.html#embeddings-service">Embeddings service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embeddings.html#embeddings-tests">Embeddings Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#embeddings-unit-tests">Embeddings Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html#embeddings-functional-tests">Embeddings Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relations_clustering.html">Relation clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relations_clustering.html#relations-clustering-configuration">Relations clustering configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relations_clustering.html#configure-relations-clustering-logger">Configure Relations clustering logger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relations_clustering.html#relation-clustering-tool">Relation clustering tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qa.html">Question and Answering (QA)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qa.html#question-and-answering-api">Question and Answering API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qa.html#question-and-answering-configuration">Question and Answering configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#configure-question-and-answering-logger">Configure Question and Answering logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#configure-question-and-answering-network">Configure Question and Answering Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#configure-question-and-answering-serialize">Configure Question and Answering Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#configure-question-and-answering-runtime">Configure Question and Answering runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qa.html#question-and-answering-service">Question and Answering service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qa.html#question-and-answering-tests">Question and Answering Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#qa-unit-tests">QA Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html#qa-functional-tests">QA Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sentiment.html">Sentiment Analyzer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sentiment.html#sentiment-analyzer-api">Sentiment Analyzer API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sentiment.html#sentiment-analyzer-configuration">Sentiment Analyzer configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#configure-sentiment-classifier-logger">Configure Sentiment classifier logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#configure-sentiment-classifier-network">Configure Sentiment classifier Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#configure-sentiment-classifier-serialize">Configure Sentiment classifier Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#configure-sentiment-classifier-runtime">Configure Sentiment classifier runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sentiment.html#sentiment-analyzer-service">Sentiment Analyzer service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sentiment.html#sentiment-analyzer-tests">Sentiment Analyzer Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#sentiment-analyzer-unit-tests">Sentiment Analyzer Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html#sentiment-analyzer-functional-tests">Sentiment Analyzer Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zsl_classifier.html">Zeroshot Classifier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-api">Zeroshot Classifier API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-configuration">Zeroshot Classifier configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#configure-classifier-logger">Configure classifier logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#configure-classifier-network">Configure classifier Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#configure-classifier-serialize">Configure classifier Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#configure-classifier-runtime">Configure classifier runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-service">Zeroshot Classifier service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-tests">Zeroshot Classifier Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-unit-tests">Zeroshot Classifier Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html#zeroshot-classifier-functional-tests">Zeroshot Classifier Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summarizer.html">Automatic Summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="summarizer.html#automatic-summary-api">Automatic Summary API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summarizer.html#automatic-summary-configuration">Automatic Summary configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#configure-automatic-summary-logger">Configure Automatic Summary logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#configure-automatic-summary-network">Configure Automatic Summary Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#configure-automatic-summary-serialize">Configure Automatic Summary Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#configure-automatic-summary-runtime">Configure Automatic Summary runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="summarizer.html#automatic-summary-service">Automatic Summary service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="summarizer.html#automatic-summary-tests">Automatic Summary Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#qa-unit-tests">QA Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html#qa-functional-tests">QA Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indexing.html">Indexer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#indexer-api">Indexer API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#indexer-configuration">Indexer configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#configure-indexer-logger">Configure indexer logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#configure-indexer-network">Configure indexer Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#configure-indexer-serialize">Configure indexer Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#configure-indexer-runtime">Configure indexer runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#indexer-service">Indexer service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexing.html#indexer-tests">Indexer Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#indexer-unit-tests">Indexer Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html#indexer-functional-tests">Indexer Functional tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#pipeline-api">Pipeline API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#pipeline-configuration">Pipeline configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html#configure-pipeline-logger">Configure pipeline logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html#configure-pipeline-network">Configure pipeline Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html#configure-pipeline-serialize">Configure pipeline Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html#configure-pipeline-runtime">Configure pipeline runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#pipeline-service">Pipeline service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search_engine.html">Search engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_engine.html#index">Index</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#index-api">Index API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#indexing-configuration">Indexing configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#run-index-process">Run Index process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search_engine.html#search">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#search-api">Search API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#search-configuration">Search Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#configure-search-network">Configure Search Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#configure-search-serialize">Configure Search Serialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#configure-search-runtime">Configure Search runtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search_engine.html#run-search-engine-service">Run Search engine service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#evaluation-tools">Evaluation tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="evaluation.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evaluation.html#running-the-tools">Running the tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#metrics">Metrics</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tools_overview.html" class="btn btn-neutral float-right" title="Tools Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../ready_to_run.html" class="btn btn-neutral float-left" title="Create a ready to run application with docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

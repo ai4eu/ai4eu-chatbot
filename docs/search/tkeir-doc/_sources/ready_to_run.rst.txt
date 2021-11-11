@@ -1,0 +1,240 @@
+*********************************************
+Create a ready to run application with docker
+*********************************************
+
+This section describes the step to create a full information retrieval engine for your data based on docker architecture
+
+====================================
+Pre-requist : build the tkeir docker
+====================================
+
+
+As pre-requist you need to build or pull the tkeir docker container on each node. 
+To build T-KEIR, go into directory **searchai/runtimes/docker** and run the following command:
+
+.. code-block:: shell 
+
+    ./builddocker.sh
+
+
+==========================
+Prepare your configuration
+==========================
+
+This first step allows to design what are the services you need in your application and what are the resources used
+
+------------------------------
+Copy the default configuration
+------------------------------
+
+An easy way to start a new project is to copy the default configuration directory to create your custom application.
+Go into directory **searchai/app/project** and run the following command:
+
+.. code-block:: shell 
+
+    cp -r default custom
+
+-------------------------------------
+Configure your network infrastructure
+-------------------------------------
+
+Almost all T-KEIR tools are REST services, you have to configure the network envrionment before run these services
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Define the environment variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Depending on you infracture you have to configure you have to setup docker-compose environment variables
+Go into directory **searchai/app/project/custom/runtime/docker** (where **custom** is the directory copied from default) and edit
+**.env** file. Here services port and host are already pre-configured. You can change it, typically when services are run on different
+server, the hostname have to be change
+
+* OPENDISTRO_VERSION : version of opendistrop (1.12.0)
+* OPENDISTRO_HOST : opendistro host (0.0.0.0)
+* OPENDISTRO_DNS_HOST : dns host name of opendistro (generally used by client)
+* OPENDISTRO_PORT : opendistro port (9200)
+* SEARCHAI_DATA_PATH : the hosting path to the data that will be analyzed and indexed, take care this folder should be readable and writable from containers
+* CONVERTER_PORT : converter service port
+* TOKENIZER_PORT : tokenizer service port
+* MSTAGGER_PORT : morphosyntactic service port
+* NERTAGGER_PORT : named entities service port
+* SYNTAXTAGGER_PORT : syntax and relation service port
+* SENT_EMBEDDING_PORT : sentence embedding service port
+* TAGGER_PIPELINE_PORT  : tagging pipeline service port
+* KEYWORD_PORT : keywords extraction service port
+* AUTOMATIC_SUMMARY_PORT : automatic extractive summary port
+* SENTIMENT_ANALYSIS_PORT : sentiment analysis service port
+* CLASSIFICATION_PORT : unsupervised classification service port
+* QA_PORT : question and answering service port
+* CLUSTER_INFERENCE_HOST : semantic cluster inference port
+* SEARCH_PORT : search service port
+* INDEX_PORT : index service port
+* WEB_PORT : web access port
+* CONVERTER_HOST : converter service hostname or ip
+* TOKENIZER_HOST : tokenizer service hostname or ip
+* MSTAGGER_HOST : morpho syntactic tagger service hostname or ip
+* NERTAGGER_HOST : named entities tagger service hostname or ip
+* SYNTAXTAGGER_HOST : syntacic tagger and rule based svo extraction sevice hostname or ip
+* SENT_EMBEDDING_HOST : sentience embedding sevice host name
+* TAGGER_PIPELINE_HOST : tagger pipepline service host name
+* KEYWORD_HOST : keyword extractor service hostname or ip
+* AUTOMATIC_SUMMARY_HOST : automatic extractive service summary hostname or ip
+* SENTIMENT_ANALYSIS_HOST : sentiment analysis service hostname or ip
+* CLASSIFICATION_HOST : usupervised classification service hostname or ip
+* QA_HOST : question and answering service hostname or ip
+* CLUSTER_INFERENCE_HOST : semantic cluster inference host
+* SEARCH_HOST : search service hostname or ip
+* INDEX_HOST : indexing service hostname or ip
+* WEB_HOST : web access service hostname or ip
+* SEARCH_SSL : Search is in SSL model
+* SEARCH_SSL_NO_VERIFY : no verify certificate
+
+
+By default the hostname are setup to match with a one node environement and the network provided by docker-compose.
+
+The services can be configured with SSL access. T-KEIR comes with self-signed certificate (an we use it in this documentation), 
+but you HAVE TO create your own certificates (based on for example lets encrypt). The SSL certificate are stored into directory
+**app/ssl/** .
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Prepare your docker compose
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You have to prepare one docker by node to setup the services associated to the node. Here all the services are run in a same node. You can suppress
+unuseful services.
+
+.. literalinclude:: ../../app/projects/default/runtimes/docker/docker-compose-tkeir.yml
+    :language: yaml
+
+
+Take care with runtime, by default runtime is nvidia, on non-gpu computer suppress this runtime from docker-compose configuration file
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure your services network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Each service have a configuration file. The "network" part allows to configuration the network access to the service.
+
+The network section:
+
+.. literalinclude:: ./configuration/examples/networkconfiguration.json
+    :language: json
+
+
+The network fields:
+
+* **host** : hostname
+* **port** : port of the service
+* **associated-environement** : is the "host" and "port" associated environment variables that allows to replace the 
+    default one. This field is not mandatory.
+
+  * "host" : associated "host" environment variable
+  * "port" : associated "port" environment variable
+
+* **ssl** : ssl configuration **IN PRODUCTION IT IS MANDATORY TO USE CERTIFICATE AND KEY THAT ARE *NOT* SELF SIGNED**
+  
+  * **cert** : certificate file
+  * **key** : key file 
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Test your the health of services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This step should be done after configuration of the service it allows to test the connectivity to services.
+Each service has a "health" function allowing to make sure the service is RUN
+You can simply call the service health with a *curl* command
+
+.. code-block:: shell 
+
+    curl -X GET http://<hostname.of.the.service>/api/<service-name>/health
+
+with <service-name> in:
+
+* converter
+* tokenizer
+* mstagger
+* nertagger
+* syntactictagger
+* embeddings
+* keywordsextractor
+* clusterinfer
+* qa
+* summarizer
+* sentimentclassifier
+* zeroshotclassifier
+* pipeline
+
+If you use default docker compose file you can run from **searchai/app/bin** directory
+
+.. code-block:: shell 
+
+    ./check-service-health.sh
+
+
+-----------------------
+Configure your services
+-----------------------
+
+As it wrote in previous section you can configure network of each services.
+
+^^^^^^^^^^^^^^^^^
+Prepare resources
+^^^^^^^^^^^^^^^^^
+A pre-requist step is to configure resources. Tokenizer and NER tagger use terminological resources.
+Edit the file **searchai/app/project/custom/resources/modeling/tokenizer/en/annotation-resources.json** to add or suppress 
+file list.
+
+========================================
+Generate your volumes with configuration
+========================================
+
+Once configuration files and environments variable for network are set, you can create the services 
+volume storing models and configuation. By default volumes are already created with the "default" configuration, on a one node infrastructure it is generally suffisant.
+Go into the directory **searchai/app/bin** and run the command:
+
+
+.. code-block:: shell 
+
+    ./manager.sh init-project custom
+
+=======================
+Run your docker compose
+=======================
+
+The last action to do is to run your docker compose.
+
+
+===============================
+Indexing document with pipeline
+===============================
+
+Start to put file to index in your shared path.
+Access to pipeline docker:
+
+.. code-block:: shell 
+
+    docker exec -ti searchai_pipeline_svc bash
+
+Make sure you have access to service : 
+
+
+curl -k -XGET https://searchai_pipeline_svc:10006/api/pipeline/health | json_pp
+
+Then, for example for ORBIT csv file,  run the command:
+
+.. code-block:: shell 
+
+    python3 thot/pipeline_client.py -c /home/searchai_svc/searchai/app/projects/default/configs/pipeline.json \
+                                -t orbit-csv \
+                                -i /data/test-pipeline/ \
+                                -o /tmp -s https -nsv
+
+
+=====================
+Visualize the results
+=====================
+
+To visualize a search request you can open firefox on http:://<host of web server >:<port of web server>/search
+login: admin
+passwd: tkeiradmin

@@ -1,0 +1,148 @@
+************
+Installation
+************
+
+These tools work on \*nix and docker environment.
+
+===================
+Directory structure
+===================
+
+* **app/bin**           : scripts and tools for server execution
+* **doc**                : buildable documentation
+* **runtimes/docker**    : docker environment
+* **runtimes/k8s**       : minikube environment
+* **resources**          : contain testing resources & automatic index creation data
+* **thot**               : searchai source code
+
+
+The installation is hightly dockerized
+
+========================
+Installation Prerequists
+========================
+
+The only prerequists is docker, docker compose and sphinx doc to build the documentation.
+To build the documentation goes in doc directory and type
+  
+:code:`#> builddoc.sh`
+
+
+================
+Use docker image
+================
+
+----------------------------
+Build searchai docker image
+----------------------------
+
+You should build the docker base image. This image contains os and python dependencies and code of search ai with one netry point 
+by service
+
+Go in docker directory and run the following command:
+
+* for cuda build:
+
+:code:`#> ./builddocker.sh`
+
+* for no-cuda build:
+
+:code:`#> ./builddocker-nocuda.sh`
+
+--------------------------------------------
+Configure docker compose and directory paths
+--------------------------------------------
+
+You need to configure some path in **".env"** file in directory docker
+
+* OPENDISTRO_VERSION : version of opendistrop (1.12.0)
+* OPENDISTRO_HOST : opendistro host (0.0.0.0)
+* OPENDISTRO_DNS_HOST : dns host name of opendistro (generally used by client)
+* OPENDISTRO_PORT : opendistro port (9200)
+* SEARCHAI_DATA_PATH : the hosting path to the data that will be analyzed and indexed
+* CONVERTER_PORT : converter service port
+* TOKENIZER_PORT : tokenizer service port
+* MSTAGGER_PORT : morphosyntactic service port
+* NERTAGGER_PORT : named entities service port
+* SYNTAXTAGGER_PORT : syntax and relation service port
+* SENT_EMBEDDING_PORT : sentence embedding service port
+* TAGGER_PIPELINE_PORT  : tagging pipeline service port
+* KEYWORD_PORT : keywords extraction service port
+* AUTOMATIC_SUMMARY_PORT : automatic extractive summary port
+* SENTIMENT_ANALYSIS_PORT : sentiment analysis service port
+* CLASSIFICATION_PORT : unsupervised classification service port
+* QA_PORT : question and answering service port
+* CLUSTER_INFERENCE_HOST : semantic cluster inference port
+* SEARCH_PORT : search service port
+* INDEX_PORT : index service port
+* WEB_PORT : web access port
+* CONVERTER_HOST : converter service hostname or ip
+* TOKENIZER_HOST : tokenizer service hostname or ip
+* MSTAGGER_HOST : morpho syntactic tagger service hostname or ip
+* NERTAGGER_HOST : named entities tagger service hostname or ip
+* SYNTAXTAGGER_HOST : syntacic tagger and rule based svo extraction sevice hostname or ip
+* SENT_EMBEDDING_HOST : sentience embedding sevice host name
+* TAGGER_PIPELINE_HOST : tagger pipepline service host name
+* KEYWORD_HOST : keyword extractor service hostname or ip
+* AUTOMATIC_SUMMARY_HOST : automatic extractive service summary hostname or ip
+* SENTIMENT_ANALYSIS_HOST : sentiment analysis service hostname or ip
+* CLASSIFICATION_HOST : usupervised classification service hostname or ip
+* QA_HOST : question and answering service hostname or ip
+* CLUSTER_INFERENCE_HOST : semantic cluster inference host
+* SEARCH_HOST : search service hostname or ip
+* INDEX_HOST : indexing service hostname or ip
+* WEB_HOST : web access service hostname or ip
+* SEARCH_SSL : Search is in SSL model
+* SEARCH_SSL_NO_VERIFY : no verify certificate
+
+
+===================
+Copy or create data
+===================
+
+Searchai comes with default configuration file. 
+Nevertheless you can modify or add file. Most of them are configuration (see configuration section).
+
+--------------
+Index mappings
+--------------
+
+Index mapping is store in **RESOURCES_DIRECTORY/indices/indices_mapping**. if you create new mapping it MUST contains the same fields.
+You can freely change the analyzers.
+
+---------
+Resources
+---------
+
+The resources are stored in **RESOURCES_DIRECTORY/modeling/tokenizer/[en|fr...]**. This directory contains file with list or csv tables.
+The descriptions of these file are in **CONFIGS/annotation-resources.json**
+
+==========================
+Initialize/Load the models
+==========================
+
+When you build you docker volumes containing model and default configuration are automatically generated.
+To update the configuration you can go into directory **app/bin** and run the command:
+  
+:code:`#> ./manager.sh init-project [default|ai4eu|enronmail ...]`
+
+Take care of proxies. Please set correclty $HOME/.docker/config.json like that:
+
+.. code-block:: json
+
+  {
+    "proxies":
+    {
+      "default":
+      {
+        "httpProxy": "your_http_proxy",
+        "httpsProxy": "your_https_proxy",
+        "noProxy": "your_no_proxy,searchai_opendistro"
+      }
+    }
+  }
+
+
+Don't forget to add **searchai_opendistro** and all services in no_proxy
+
+

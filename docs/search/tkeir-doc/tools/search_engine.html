@@ -1,0 +1,2002 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Search engine &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evaluation" href="evaluation.html" />
+    <link rel="prev" title="Pipeline" href="pipeline.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="../_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conception.html">Conception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready_to_run.html">Create a ready to run application with docker</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tools.html#content">Content</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tools_overview.html">Tools Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html">Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mstagger.html">Morphosyntactic tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nertagger.html">Named entity tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syntactictagger.html">Syntactic tagger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keywords.html">Keywords extractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cluster_inference.html">Cluster Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embeddings.html">Embbeding processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relations_clustering.html">Relation clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qa.html">Question and Answering (QA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentiment.html">Sentiment Analyzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zsl_classifier.html">Zeroshot Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summarizer.html">Automatic Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexing.html">Indexer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Search engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#index">Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search">Search</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oam.html">Operation and Management</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tools.html">Tools</a> &raquo;</li>
+        
+      <li>Search engine</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tools/search_engine.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="search-engine">
+<h1>Search engine<a class="headerlink" href="#search-engine" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="index">
+<h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
+<p>Document indexing is the step allowing to store in the elastic search the document
+analyzed during the steps of tokenization, tagging, keyword extraction …</p>
+<div class="section" id="index-api">
+<h3>Index API<a class="headerlink" href="#index-api" title="Permalink to this headline">¶</a></h3>
+<dl class="http post">
+<dt id="post--api-indexing-run">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/run</span></code><a class="headerlink" href="#post--api-indexing-run" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run the indexing</strong></p>
+<p>Run the indexing according to input. It return searchai representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return the searchai doc with tokens</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – service configuration file</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – release date of the service</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service info id</p></li>
+<li><p><strong>result.content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>result.content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>result.embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>result.embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>result.embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>result.embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>result.embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>result.keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>result.keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>result.keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>result.sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>result.sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>result.sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>result.source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>result.summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>result.summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>result.title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>result.title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>result.zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>result.zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-indexing-run">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/run</span></code><a class="headerlink" href="#options--api-indexing-run" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run the indexing</strong></p>
+<p>Run the indexing according to input. It return searchai representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return the searchai doc with tokens</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – service configuration file</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – release date of the service</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service info id</p></li>
+<li><p><strong>result.content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>result.content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>result.embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>result.embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>result.embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>result.embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>result.embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>result.keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>result.keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>result.keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>result.sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>result.sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>result.sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>result.source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>result.summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>result.summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>result.title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>result.title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>result.zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>result.zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-indexing-del">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/del</span></code><a class="headerlink" href="#options--api-indexing-del" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>remove indexed document according the cache id</strong></p>
+<p>Suppress indexed according to input. It return searchai representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return the searchai doc with tokens</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – service configuration file</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – release date of the service</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service info id</p></li>
+<li><p><strong>result.content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>result.content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>result.embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>result.embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>result.embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>result.embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>result.embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>result.keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>result.keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>result.keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>result.sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>result.sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>result.sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>result.source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>result.summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>result.summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>result.title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>result.title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>result.zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>result.zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-indexing-del">
+<code class="sig-name descname"><span class="pre">GET</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/del</span></code><a class="headerlink" href="#get--api-indexing-del" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>remove indexed document according the cache id</strong></p>
+<p>Suppress indexed according to input. It return searchai representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return the searchai doc with tokens</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – service configuration file</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – release date of the service</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service info id</p></li>
+<li><p><strong>result.content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>result.content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>result.embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>result.embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>result.embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>result.embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>result.embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>result.keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>result.keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>result.keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>result.keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>result.kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>result.kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>result.kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>result.kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>result.kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>result.qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>result.sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>result.sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>result.sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>result.source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>result.summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>result.summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>result.title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>result.title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>result.title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>result.title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>result.title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>result.title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>result.title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>result.title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>result.title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>result.title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>result.title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>result.title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>result.title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>result.zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>result.zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>result.zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-indexing-health">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/health</span></code><a class="headerlink" href="#post--api-indexing-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-indexing-health">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/health</span></code><a class="headerlink" href="#options--api-indexing-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-indexing-health">
+<code class="sig-name descname"><span class="pre">GET</span> </code><code class="sig-name descname"><span class="pre">/api/indexing/health</span></code><a class="headerlink" href="#get--api-indexing-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="indexing-configuration">
+<h3>Indexing configuration<a class="headerlink" href="#indexing-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Example of Configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;logger&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;logging-file&quot;</span><span class="p">:</span> <span class="s2">&quot;test.log&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;logging-path&quot;</span><span class="p">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;logging-level&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="nt">&quot;screen&quot;</span><span class="p">:</span> <span class="s2">&quot;debug&quot;</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;indexing&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;document&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;remove-knowledge-graph-duplicates&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;elasticsearch&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;opendistro&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">9200</span><span class="p">,</span>
+                <span class="nt">&quot;use_ssl&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nt">&quot;verify_certs&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;OPENDISTRO_DNS_HOST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;OPENDISTRO_PORT&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;nms-index&quot;</span><span class="p">:{</span>
+               <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default-nms-index&quot;</span><span class="p">,</span>              
+               <span class="nt">&quot;mapping-file&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/resources/indices/indices_mapping/nms_cache_index.json&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;text-index&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default-text-index&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;mapping-file&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/resources/indices/indices_mapping/cache_index.json&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;relation-index&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default-relation-index&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;mapping-file&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/resources/indices/indices_mapping/relation_index.json&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10012</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;INDEX_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;INDEX_PORT&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;ssl&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;cert&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/ssl/certificate.crt&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/ssl/privateKey.key&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">600</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">600</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The indexing configuration is an aggreation of serialize configuration, logger (at top level).
+The the indexing configuration needs an ElasticSearch :</p>
+<ul class="simple">
+<li><p><strong>document/remove-knowledge-graph-duplicates</strong>: in the analyzed document knowledge graph items are positions wise, to avoid duplication in the index you can suppress position an thus make items uniq</p></li>
+<li><p><strong>elasticsearch/network</strong>: network configuration of E.S.</p></li>
+<li><p><strong>elasticsearch/nms-index</strong>: index containing vectors (obsolete),</p></li>
+<li><p><strong>elasticsearch/text-index</strong>: index containing analyzed textual document,</p></li>
+<li><p><strong>elasticsearch/relation-index</strong>: index containing relations (obsolete),</p></li>
+</ul>
+</div>
+<div class="section" id="run-index-process">
+<h3>Run Index process<a class="headerlink" href="#run-index-process" title="Permalink to this headline">¶</a></h3>
+<p>To run the command type simply from searchai directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 thot/searchai2index --config<span class="o">=</span>&lt;path to indexing configuration file&gt; -d &lt;directory to index&gt; -t document
+</pre></div>
+</div>
+<p>Another way is to use index service (here each document are indexed separately, with searchai2index we use bulk that is much more efficient)</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 thot/index_svc --config<span class="o">=</span>&lt;path to indexing configuration file&gt;
+</pre></div>
+</div>
+<p>It is possible to use a quick client:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 thot/index_client --config<span class="o">=</span>&lt;path to indexing configuration file&gt; -i &lt;path to searchai document&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<p>Search component can be see as a proxy to ElasticSearch (E.S.). Nonetheless, it allows to create specifc E.S
+queries based on query analysis. It also allows to manipulate ranking scores.</p>
+<div class="section" id="search-api">
+<h3>Search API<a class="headerlink" href="#search-api" title="Permalink to this headline">¶</a></h3>
+<dl class="http options">
+<dt id="options--api-searching-custom_structured_query">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/searching/custom_structured_query</span></code><a class="headerlink" href="#options--api-searching-custom_structured_query" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-searching-custom_structured_query">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/searching/custom_structured_query</span></code><a class="headerlink" href="#post--api-searching-custom_structured_query" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-searching-query_with_doc">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/searching/query_with_doc</span></code><a class="headerlink" href="#options--api-searching-query_with_doc" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run search on a document</strong></p>
+<p>run search with a full document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – document/query content</p></li>
+<li><p><strong>from</strong> (<em>integer</em>) – Start of ranked list</p></li>
+<li><p><strong>size</strong> (<em>integer</em>) – number of documents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return list of results</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>answer</strong> (<em>string</em>) – Short answer of the query [not alway present]</p></li>
+<li><p><strong>items[].content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>items[].content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>items[].embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>items[].embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>items[].embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>items[].embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>items[].embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>items[].keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>items[].keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>items[].keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>items[].sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>items[].sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>items[].sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>items[].source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>items[].summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>items[].summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>items[].title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>items[].title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>items[].zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>items[].zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – The query formulated</p></li>
+<li><p><strong>total_docs</strong> (<em>integer</em>) – total number of documents</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-searching-query_with_doc">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/searching/query_with_doc</span></code><a class="headerlink" href="#post--api-searching-query_with_doc" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run search on a document</strong></p>
+<p>run search with a full document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – document/query content</p></li>
+<li><p><strong>from</strong> (<em>integer</em>) – Start of ranked list</p></li>
+<li><p><strong>size</strong> (<em>integer</em>) – number of documents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return list of results</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>answer</strong> (<em>string</em>) – Short answer of the query [not alway present]</p></li>
+<li><p><strong>items[].content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>items[].content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>items[].embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>items[].embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>items[].embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>items[].embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>items[].embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>items[].keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>items[].keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>items[].keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>items[].sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>items[].sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>items[].sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>items[].source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>items[].summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>items[].summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>items[].title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>items[].title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>items[].zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>items[].zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – The query formulated</p></li>
+<li><p><strong>total_docs</strong> (<em>integer</em>) – total number of documents</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-searching-querying">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/searching/querying</span></code><a class="headerlink" href="#options--api-searching-querying" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run search on a document</strong></p>
+<p>run search with a simple query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – document/query content</p></li>
+<li><p><strong>from</strong> (<em>integer</em>) – Start of ranked list</p></li>
+<li><p><strong>size</strong> (<em>integer</em>) – number of documents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return list of results</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>answer</strong> (<em>string</em>) – Short answer of the query [not alway present]</p></li>
+<li><p><strong>items[].content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>items[].content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>items[].embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>items[].embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>items[].embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>items[].embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>items[].embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>items[].keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>items[].keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>items[].keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>items[].sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>items[].sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>items[].sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>items[].source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>items[].summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>items[].summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>items[].title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>items[].title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>items[].zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>items[].zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – The query formulated</p></li>
+<li><p><strong>total_docs</strong> (<em>integer</em>) – total number of documents</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-searching-querying">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/searching/querying</span></code><a class="headerlink" href="#post--api-searching-querying" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>run search on a document</strong></p>
+<p>run search with a simple query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>string</em>) – document/query content</p></li>
+<li><p><strong>from</strong> (<em>integer</em>) – Start of ranked list</p></li>
+<li><p><strong>size</strong> (<em>integer</em>) – number of documents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – return list of results</p></li>
+<li><p><a class="reference external" href="http://tools.ietf.org/html/rfc4918#section-11.2">422 Unprocessable Entity</a> – Something wrong on the request parameters</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Internal Error, and exception occured</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Response JSON Object</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>answer</strong> (<em>string</em>) – Short answer of the query [not alway present]</p></li>
+<li><p><strong>items[].content</strong> (<em>string</em>) – nested array of text representing the content of the document</p></li>
+<li><p><strong>items[].content_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].content_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].content_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].content_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].content_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].content_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].content_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].content_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].content_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].content_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].content_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].content_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].data_source</strong> (<em>string</em>) – source of the document (could be host file system, web, …</p></li>
+<li><p><strong>items[].embeddings[].content</strong> (<em>string</em>) – text of the sentence</p></li>
+<li><p><strong>items[].embeddings[].embeding[]</strong> (<em>integer</em>) – embedding feature</p></li>
+<li><p><strong>items[].embeddings[].field</strong> (<em>string</em>) – Field from which the embedding is computed (can be empty)</p></li>
+<li><p><strong>items[].embeddings[].position.length</strong> (<em>integer</em>) – length of the sentence</p></li>
+<li><p><strong>items[].embeddings[].position.start</strong> (<em>integer</em>) – start offset of the sentence</p></li>
+<li><p><strong>items[].keywords[].class_</strong> (<em>string</em>) – Cluster class</p></li>
+<li><p><strong>items[].keywords[].end</strong> (<em>integer</em>) – end offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].score</strong> (<em>number</em>) – score of keyword</p></li>
+<li><p><strong>items[].keywords[].start</strong> (<em>integer</em>) – start offset of the token of the keyword</p></li>
+<li><p><strong>items[].keywords[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].kg[].property.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].property.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].property.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].property.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].property.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].property.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].subject.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].subject.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].subject.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].subject.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].subject.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].subject.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].kg[].value.class_</strong> (<em>integer</em>) – Semantic class, comming from clustering prediction</p></li>
+<li><p><strong>items[].kg[].value.content</strong> (<em>string</em>) – Content of triple item</p></li>
+<li><p><strong>items[].kg[].value.label</strong> (<em>string</em>) – label of the content</p></li>
+<li><p><strong>items[].kg[].value.lemma_content</strong> (<em>string</em>) – Lemmatized content</p></li>
+<li><p><strong>items[].kg[].value.pos[]</strong> (<em>string</em>) – POS tag</p></li>
+<li><p><strong>items[].kg[].value.positions[]</strong> (<em>integer</em>) – Position in document</p></li>
+<li><p><strong>items[].qa[].query</strong> (<em>string</em>) – The query</p></li>
+<li><p><strong>items[].sentiment[].label</strong> (<em>string</em>) – positibe or negative</p></li>
+<li><p><strong>items[].sentiment[].score</strong> (<em>number</em>) – score of label</p></li>
+<li><p><strong>items[].sentiment[].sentence</strong> (<em>string</em>) – sentence</p></li>
+<li><p><strong>items[].source_doc_id</strong> (<em>string</em>) – uniq id of the document</p></li>
+<li><p><strong>items[].summaries[].block</strong> (<em>string</em>) – Initial data</p></li>
+<li><p><strong>items[].summaries[].summary</strong> (<em>string</em>) – Summarized data</p></li>
+<li><p><strong>items[].title</strong> (<em>string</em>) – title of document</p></li>
+<li><p><strong>items[].title_deps[].dep</strong> (<em>string</em>) – Dependency name</p></li>
+<li><p><strong>items[].title_deps[].head</strong> (<em>integer</em>) – Head position</p></li>
+<li><p><strong>items[].title_deps[].lefts[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].lemma</strong> (<em>string</em>) – lemmatized value</p></li>
+<li><p><strong>items[].title_deps[].pos</strong> (<em>string</em>) – part of speech</p></li>
+<li><p><strong>items[].title_deps[].rights[]</strong> (<em>integer</em>) – position</p></li>
+<li><p><strong>items[].title_deps[].text</strong> (<em>string</em>) – form of token</p></li>
+<li><p><strong>items[].title_morphosyntax[].lemma</strong> (<em>string</em>) – lemma of token - the form</p></li>
+<li><p><strong>items[].title_morphosyntax[].pos</strong> (<em>string</em>) – Part Of Speech</p></li>
+<li><p><strong>items[].title_ner[].end</strong> (<em>integer</em>) – end offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].label</strong> (<em>string</em>) – label of the named entity</p></li>
+<li><p><strong>items[].title_ner[].start</strong> (<em>integer</em>) – start offset of the token of the named entity</p></li>
+<li><p><strong>items[].title_ner[].text</strong> (<em>string</em>) – text of the named entity</p></li>
+<li><p><strong>items[].title_tokens[]</strong> (<em>string</em>) – a token, possibly MWE</p></li>
+<li><p><strong>items[].zero_shot_classify.content_sentences</strong> (<em>number</em>) – list fo sentences</p></li>
+<li><p><strong>items[].zero_shot_classify.document</strong> (<em>integer</em>) – label with their probabilitier</p></li>
+<li><p><strong>items[].zero_shot_classify.title_sentences</strong> (<em>integer</em>) – list of sentences</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – The query formulated</p></li>
+<li><p><strong>total_docs</strong> (<em>integer</em>) – total number of documents</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http options">
+<dt id="options--api-searching-health">
+<code class="sig-name descname"><span class="pre">OPTIONS</span> </code><code class="sig-name descname"><span class="pre">/api/searching/health</span></code><a class="headerlink" href="#options--api-searching-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-searching-health">
+<code class="sig-name descname"><span class="pre">GET</span> </code><code class="sig-name descname"><span class="pre">/api/searching/health</span></code><a class="headerlink" href="#get--api-searching-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-searching-health">
+<code class="sig-name descname"><span class="pre">POST</span> </code><code class="sig-name descname"><span class="pre">/api/searching/health</span></code><a class="headerlink" href="#post--api-searching-health" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Ask the health of the service</strong></p>
+<p>This function allows to know if the service is up and healthy. It is use by client to see if they can use it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – Service successfuly loaded</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – Service is not loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Response JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> (<em>string</em>) – configuration file path</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – service development date</p></li>
+<li><p><strong>health</strong> (<em>string</em>) – ok if service is healthy</p></li>
+<li><p><strong>info</strong> (<em>string</em>) – service uniq id</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="search-configuration">
+<h3>Search Configuration<a class="headerlink" href="#search-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Example of Configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;logger&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;logging-file&quot;</span><span class="p">:</span> <span class="s2">&quot;test.log&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;logging-path&quot;</span><span class="p">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;logging-level&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="nt">&quot;screen&quot;</span><span class="p">:</span> <span class="s2">&quot;debug&quot;</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;searching&quot;</span><span class="p">:</span> <span class="p">{</span>        
+        <span class="nt">&quot;document-index-name&quot;</span><span class="p">:</span><span class="s2">&quot;default-text-index&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;disable-document-analysis&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;aggregator&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;18888&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;engines&quot;</span><span class="p">:[</span><span class="s2">&quot;wikipedia&quot;</span><span class="p">,</span><span class="s2">&quot;github&quot;</span><span class="p">,</span><span class="s2">&quot;qwant&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;index-pipeline&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;10006&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;use-ssl&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;no-ssl-verify&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;TAGGER_PIPELINE_HOST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;TAGGER_PIPELINE_PORT&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;qa&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10011</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;QA_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;QA_PORT&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;max-ranked-doc&quot;</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span>
+            <span class="nt">&quot;use-ssl&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;no-ssl-verify&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;search-policy&quot;</span><span class="p">:{</span>            
+            <span class="nt">&quot;semantic-cluster&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;semantic-quantizer-model&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/resources/modeling/relation_names.model.pkl&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;settings&quot;</span><span class="p">:{</span>                
+                <span class="nt">&quot;basic-querying&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;uniq-word-query&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                    <span class="nt">&quot;boosted-uniq-word-query&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;cut-query&quot;</span><span class="p">:</span><span class="mi">4096</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;advanced-querying&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;use-lemma&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;use-keywords&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;use-knowledge-graph&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;use-semantic-keywords&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;use-semantic-knowledge-graph&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span> 
+                    <span class="nt">&quot;use-concepts&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                    <span class="nt">&quot;use-sentences&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;querying&quot;</span><span class="p">:{</span>
+                        <span class="nt">&quot;match-phrase-slop&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="nt">&quot;match-phrase-boosting&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span>
+                        <span class="nt">&quot;match-sentence&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;number-and-symbol-filtering&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                            <span class="nt">&quot;max-number-of-words&quot;</span><span class="p">:</span><span class="mi">30</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;match-keyword&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;number-and-symbol-filtering&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>                            
+                            <span class="nt">&quot;semantic-skip-highest-ranked-classes&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-max-boosting&quot;</span><span class="p">:</span><span class="mi">5</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;match-svo&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;semantic-use-class-triple&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-lemma-property-object&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-subject-lemma-object&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-subject-property-lemma&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-lemma-lemma-object&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-lemma-property-lemma&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                            <span class="nt">&quot;semantic-use-subject-lemma-lemma&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                            <span class="nt">&quot;semanic-max-boosting&quot;</span><span class="p">:</span><span class="mi">5</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;match-concept&quot;</span><span class="p">:{</span>
+                            <span class="nt">&quot;concept-boosting&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+                            <span class="nt">&quot;concept-pruning&quot;</span><span class="p">:</span><span class="mi">10</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;query-expansion&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;term-pruning&quot;</span><span class="p">:</span><span class="mi">128</span><span class="p">,</span>
+                    <span class="nt">&quot;suppress-number&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                    <span class="nt">&quot;keep-word-collection-thresold-under&quot;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">,</span>
+                    <span class="nt">&quot;word-boost-thresold-above&quot;</span><span class="p">:</span><span class="mf">0.25</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;scoring&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;normalize-score&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>                    
+                    <span class="nt">&quot;document-query-intersection-penalty&quot;</span><span class="p">:</span><span class="s2">&quot;by-query-size&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;run-clause-separately&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+                    <span class="nt">&quot;expand-results&quot;</span><span class="p">:</span><span class="mi">50</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;results&quot;</span><span class="p">:{</span>
+                    <span class="nt">&quot;set-highlight&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+                    <span class="nt">&quot;excludes&quot;</span><span class="p">:[]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>            
+        <span class="p">},</span>
+        <span class="nt">&quot;elasticsearch&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;searchai_opendistro&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+                <span class="nt">&quot;use_ssl&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nt">&quot;verify_certs&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;OPENDISTRO_DNS_HOST&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;OPENDISTRO_PORT&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">8000</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;SEARCH_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;SEARCH_PORT&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;ssl&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;cert&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/ssl/certificate.crt&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/ssl/privateKey.key&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;tokenizers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;segmenters&quot;</span><span class="p">:[{</span>
+            <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;resources-base-path&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/resources/modeling/tokenizer/en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;normalization-rules&quot;</span><span class="p">:</span><span class="s2">&quot;tokenizer-rules.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mwe&quot;</span><span class="p">:</span> <span class="s2">&quot;searchai_mwe.pkl&quot;</span>
+        <span class="p">}],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10001</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;TOKENIZER_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;TOKENIZER_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;morphosyntax&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;taggers&quot;</span><span class="p">:[{</span>
+            <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;resources-base-path&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/resources/modeling/tokenizer/en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mwe&quot;</span><span class="p">:</span> <span class="s2">&quot;searchai_mwe.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;pre-sentencizer&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;pre-tagging-with-concept&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;add-concept-in-knowledge-graph&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">}],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10002</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;MSTAGGER_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;MSTAGGER_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;named-entities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;label&quot;</span><span class="p">:[{</span>
+            <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;resources-base-path&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/resources/modeling/tokenizer/en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mwe&quot;</span><span class="p">:</span> <span class="s2">&quot;searchai_mwe.pkl&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;use-pre-label&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">}],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10003</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;NERTAGGER_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;NERTAGGER_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;embeddings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;models&quot;</span><span class="p">:[</span>
+        <span class="p">{</span> <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;multi&quot;</span> <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10005</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;SENT_EMBEDDING_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;SENT_EMBEDDING_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;syntax&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;taggers&quot;</span><span class="p">:[{</span>
+            <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;resources-base-path&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/configs&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;syntactic-rules&quot;</span><span class="p">:</span> <span class="s2">&quot;syntactic-rules.json&quot;</span>
+        <span class="p">}],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10004</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;SYNTAXTAGGER_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;SYNTAXTAGGER_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">20</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">},</span>
+    <span class="nt">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;extractors&quot;</span><span class="p">:[{</span>
+            <span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;resources-base-path&quot;</span><span class="p">:</span><span class="s2">&quot;/home/searchai_svc/searchai/app/projects/default/resources/modeling/tokenizer/en&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;stopwords&quot;</span><span class="p">:</span><span class="s2">&quot;en.stopwords.lst&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;use-lemma&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;use-pos&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;use-form&quot;</span><span class="p">:</span><span class="kc">false</span>            
+        <span class="p">}],</span>
+        <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">10007</span><span class="p">,</span>
+            <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;KEYWORD_HOST&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;KEYWORD_PORT&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+            <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+            <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+            <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">20</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+                <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The search configuration allows to set up the search behaviour according the query analysis. The other configuration are not specific to the service.</p>
+<ul class="simple">
+<li><p>searching/document-index-name: the name of the index where are stored the documents</p></li>
+<li><p>searching/disable-document-analysis : document analysis is not mandatory and can be disable</p></li>
+<li><p>searching/search-policy/semantic-cluster/semantic-quantizer-model : path to clustering model to use “statistical” semantic</p></li>
+<li><p>searching/search-policy/settings/basic-querying/uniq-word-query : transform query in bag of word</p></li>
+<li><p>searching/search-policy/settings/basic-querying/boosted-uniq-word-query : weigthening words according to their frequency in query</p></li>
+<li><p>searching/search-policy/settings/basic-querying/cut-query”: maximum number of uniq word with the query</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/use-lemma:use lemmatised field of index</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/use-keywords: use keywords field of index</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/use-knowledge-graph: use knowledge graph (the triple) of index</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/use-concepts: use concepts of the index</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/use-sentences: use sentence querying</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-phrase-slop: slop in match phrase clause</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-phrase-boosting: default boosting value for match phrase</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-sentence/number-and-symbol-filtering”: filter symbol andnumber from sentences</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-sentence/max-number-of-words: set the maximum length (words) in the sentence</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-keywords/match-keyword/number-and-symbol-filtering”: filter number and symbols</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-keywords/semantic-skip-highest-ranked-classes: when you use semantic class (comming from clustering) the most common classes are often irrelevant, you can skip this classes</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-keywords/semantic-max-boosting”: query boosting in match-phrase clause</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-class-triple : create query clause with all semantic classes</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-lemma-property-object”: use lemma on subject, class on property and object</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-subject-lemma-object”: use lemma on property, class on subject and object</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-subject-property-lemma”: use lemma on object, class on subject an property</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-lemma-lemma-object”: use lemma on subject and property, class on object</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-lemma-property-lemma”: use lemma on subject ad object, class on property</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semantic-use-subject-lemma-lemma”: use lemma on property and object, class on subject</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-svo/semanic-max-boosting”:no yet implement</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-concept/concept-boosting: boost concept clause</p></li>
+<li><p>searching/search-policy/settings/advanced-querying/querying/match-concept/concept-pruning: top N of concept used</p></li>
+<li><p>searching/search-policy/settings/query-expansion/term-pruning: max number of term used in expansion</p></li>
+<li><p>searching/search-policy/settings/query-expansion/suppress-number: filter number</p></li>
+<li><p>searching/search-policy/settings/query-expansion/suppress-numberkeep-word-collection-thresold-under : frequency of document where the word appear should lesser than this frequency</p></li>
+<li><p>searching/search-policy/settings/query-expansion/word-boost-thresold-above: frequency of word in the document should be greater than this number</p></li>
+<li><p>searching/search-policy/settings/scoring/normalize-score: normalize elastic search score max score max</p></li>
+<li><p>searching/search-policy/settings/scoring/document-query-intersection-penalty: document and query intersection normalized : no-normalization, by-query-size, by-union-size(jaccard)</p></li>
+<li><p>searching/search-policy/settings/scoring/run-clause-separately: clause can be run separately in this case the ranked lists are merged, or put in a uniq query</p></li>
+<li><p>searching/search-policy/settings/scoring/expand-results”: when you run clause separately and merge result it is interesting to expand result list size to cover more ranked documents</p></li>
+<li><p>searching/search-policy/settings/results/set-highlight: highlight snippets</p></li>
+<li><p>searching/search-policy/settings/resultsexcludes : excluded some fields from returned list</p></li>
+</ul>
+</div>
+<div class="section" id="configure-search-network">
+<h3>Configure Search Network<a class="headerlink" href="#configure-search-network" title="Permalink to this headline">¶</a></h3>
+<p>Example of Configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">8080</span><span class="p">,</span>
+        <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;HOST_ENVNAME&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;PORT_ENVNAME&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;ssl&quot;</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;certificate&quot;</span><span class="p">:</span><span class="s2">&quot;path/to/certificate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;path/to/key&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+ 
+</pre></div>
+</div>
+<p>The network fields:</p>
+<ul>
+<li><p><strong>host</strong> : hostname</p></li>
+<li><p><strong>port</strong> : port of the service</p></li>
+<li><dl class="simple">
+<dt><strong>associated-environement</strong><span class="classifier">is the “host” and “port” associated environment variables that allows to replace the</span></dt><dd><p>default one. This field is not mandatory.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>“host” : associated “host” environment variable</p></li>
+<li><p>“port” : associated “port” environment variable</p></li>
+</ul>
+</li>
+<li><p><strong>ssl</strong> : ssl configuration <strong>IN PRODUCTION IT IS MANDATORY TO USE CERTIFICATE AND KEY THAT ARE *NOT* SELF SIGNED</strong></p>
+<ul class="simple">
+<li><p><strong>cert</strong> : certificate file</p></li>
+<li><p><strong>key</strong> : key file</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="configure-search-serialize">
+<h3>Configure Search Serialize<a class="headerlink" href="#configure-search-serialize" title="Permalink to this headline">¶</a></h3>
+<p>Example of Configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;serialize&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;input&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;output&quot;</span><span class="p">:{</span>
+            <span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;keep-service-info&quot;</span><span class="p">:</span><span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The serialize fields:</p>
+<ul class="simple">
+<li><p><strong>input</strong> : serialize input of service</p>
+<ul>
+<li><p><strong>path</strong> : path of serialized fields</p></li>
+<li><p><strong>keep-service-info</strong> : True if serialize info is kept</p></li>
+<li><p><strong>associated-environement</strong> : is the “path” and “keep-service-info” associated environment variables that allows to replace the  default one. This field is not mandatory.</p>
+<ul>
+<li><p><strong>path</strong> : associated “path” environment variable</p></li>
+<li><p><strong>keep-service-info</strong> : associated “keep-service-info” environment variable</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>output : serialize output of service</p>
+<ul>
+<li><p><strong>path</strong> : path of serialized fields</p></li>
+<li><p><strong>keep-service-info</strong> : True if serialize info is kept</p></li>
+<li><p><strong>associated-environement</strong> : if the “path” and “keep-service-info” associated environment variables that allows to replace the  default one. This field is not mandatory.</p>
+<ul>
+<li><p><strong>path</strong> : associated “path” environment variable</p></li>
+<li><p><strong>keep-service-info</strong> : associated “keep-service-info” environment variable</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="configure-search-runtime">
+<h3>Configure Search runtime<a class="headerlink" href="#configure-search-runtime" title="Permalink to this headline">¶</a></h3>
+<p>Example of Configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;runtime&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;request-max-size&quot;</span><span class="p">:</span><span class="mi">100000000</span><span class="p">,</span>
+        <span class="nt">&quot;request-buffer-queue-size&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;keep-alive&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;keep-alive-timeout&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&quot;graceful-shutown-timeout&quot;</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span>
+        <span class="nt">&quot;request-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+        <span class="nt">&quot;response-timeout&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+        <span class="nt">&quot;workers&quot;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="p">}</span>    
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The Runtime fields:</p>
+<ul class="simple">
+<li><p><strong>request-max-size</strong> : how big a request may be (bytes)</p></li>
+<li><p><strong>request-buffer-queue-size</strong>: request streaming buffer queue size</p></li>
+<li><p><strong>request-timeout</strong> : how long a request can take to arrive (sec)</p></li>
+<li><p><strong>response-timeout</strong> : how long a response can take to process (sec)</p></li>
+<li><p><strong>keep-alive</strong>: keep-alive</p></li>
+<li><p><strong>keep-alive-timeout</strong>: how long to hold a TCP connection open (sec)</p></li>
+<li><p><strong>graceful-shutdown_timeout</strong> : how long to wait to force close non-idle connection (sec)</p></li>
+<li><p><strong>workers</strong> : number of workers for the service on a node</p></li>
+<li><p><strong>associated-environement</strong> : if one of previous field is on the associated environment variables that allows to replace the  default one. This field is not mandatory.</p>
+<ul>
+<li><p><strong>request-max-size</strong> : overwrite with environement variable</p></li>
+<li><p><strong>request-buffer-queue-size</strong>: overwrite with environement variable</p></li>
+<li><p><strong>request-timeout</strong> : overwrite with environement variable</p></li>
+<li><p><strong>response-timeout</strong> : overwrite with environement variable</p></li>
+<li><p><strong>keep-alive</strong>: overwrite with environement variable</p></li>
+<li><p><strong>keep-alive-timeout</strong>: overwrite with environement variable</p></li>
+<li><p><strong>graceful-shutdown_timeout</strong> : overwrite with environement variable</p></li>
+<li><p><strong>workers</strong> : overwrite with environement variable</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="run-search-engine-service">
+<h3>Run Search engine service<a class="headerlink" href="#run-search-engine-service" title="Permalink to this headline">¶</a></h3>
+<p>To run the command type simply from searchai directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 thot/search_svc.py --config<span class="o">=</span>&lt;path to relation configuration file&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="evaluation.html" class="btn btn-neutral float-right" title="Evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pipeline.html" class="btn btn-neutral float-left" title="Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

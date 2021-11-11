@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Create a ready to run application with docker" href="ready_to_run.html" />
+    <link rel="prev" title="Conception" href="conception.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conception.html">Conception</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-prerequists">Installation Prerequists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-docker-image">Use docker image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-searchai-docker-image">Build searchai docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-docker-compose-and-directory-paths">Configure docker compose and directory paths</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-or-create-data">Copy or create data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#index-mappings">Index mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#initialize-load-the-models">Initialize/Load the models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ready_to_run.html">Create a ready to run application with docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oam.html">Operation and Management</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>These tools work on *nix and docker environment.</p>
+<div class="section" id="directory-structure">
+<h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>app/bin</strong>           : scripts and tools for server execution</p></li>
+<li><p><strong>doc</strong>                : buildable documentation</p></li>
+<li><p><strong>runtimes/docker</strong>    : docker environment</p></li>
+<li><p><strong>runtimes/k8s</strong>       : minikube environment</p></li>
+<li><p><strong>resources</strong>          : contain testing resources &amp; automatic index creation data</p></li>
+<li><p><strong>thot</strong>               : searchai source code</p></li>
+</ul>
+<p>The installation is hightly dockerized</p>
+</div>
+<div class="section" id="installation-prerequists">
+<h2>Installation Prerequists<a class="headerlink" href="#installation-prerequists" title="Permalink to this headline">¶</a></h2>
+<p>The only prerequists is docker, docker compose and sphinx doc to build the documentation.
+To build the documentation goes in doc directory and type</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#&gt;</span> <span class="pre">builddoc.sh</span></code></p>
+</div>
+<div class="section" id="use-docker-image">
+<h2>Use docker image<a class="headerlink" href="#use-docker-image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-searchai-docker-image">
+<h3>Build searchai docker image<a class="headerlink" href="#build-searchai-docker-image" title="Permalink to this headline">¶</a></h3>
+<p>You should build the docker base image. This image contains os and python dependencies and code of search ai with one netry point
+by service</p>
+<p>Go in docker directory and run the following command:</p>
+<ul class="simple">
+<li><p>for cuda build:</p></li>
+</ul>
+<p><code class="code docutils literal notranslate"><span class="pre">#&gt;</span> <span class="pre">./builddocker.sh</span></code></p>
+<ul class="simple">
+<li><p>for no-cuda build:</p></li>
+</ul>
+<p><code class="code docutils literal notranslate"><span class="pre">#&gt;</span> <span class="pre">./builddocker-nocuda.sh</span></code></p>
+</div>
+<div class="section" id="configure-docker-compose-and-directory-paths">
+<h3>Configure docker compose and directory paths<a class="headerlink" href="#configure-docker-compose-and-directory-paths" title="Permalink to this headline">¶</a></h3>
+<p>You need to configure some path in <strong>“.env”</strong> file in directory docker</p>
+<ul class="simple">
+<li><p>OPENDISTRO_VERSION : version of opendistrop (1.12.0)</p></li>
+<li><p>OPENDISTRO_HOST : opendistro host (0.0.0.0)</p></li>
+<li><p>OPENDISTRO_DNS_HOST : dns host name of opendistro (generally used by client)</p></li>
+<li><p>OPENDISTRO_PORT : opendistro port (9200)</p></li>
+<li><p>SEARCHAI_DATA_PATH : the hosting path to the data that will be analyzed and indexed</p></li>
+<li><p>CONVERTER_PORT : converter service port</p></li>
+<li><p>TOKENIZER_PORT : tokenizer service port</p></li>
+<li><p>MSTAGGER_PORT : morphosyntactic service port</p></li>
+<li><p>NERTAGGER_PORT : named entities service port</p></li>
+<li><p>SYNTAXTAGGER_PORT : syntax and relation service port</p></li>
+<li><p>SENT_EMBEDDING_PORT : sentence embedding service port</p></li>
+<li><p>TAGGER_PIPELINE_PORT  : tagging pipeline service port</p></li>
+<li><p>KEYWORD_PORT : keywords extraction service port</p></li>
+<li><p>AUTOMATIC_SUMMARY_PORT : automatic extractive summary port</p></li>
+<li><p>SENTIMENT_ANALYSIS_PORT : sentiment analysis service port</p></li>
+<li><p>CLASSIFICATION_PORT : unsupervised classification service port</p></li>
+<li><p>QA_PORT : question and answering service port</p></li>
+<li><p>CLUSTER_INFERENCE_HOST : semantic cluster inference port</p></li>
+<li><p>SEARCH_PORT : search service port</p></li>
+<li><p>INDEX_PORT : index service port</p></li>
+<li><p>WEB_PORT : web access port</p></li>
+<li><p>CONVERTER_HOST : converter service hostname or ip</p></li>
+<li><p>TOKENIZER_HOST : tokenizer service hostname or ip</p></li>
+<li><p>MSTAGGER_HOST : morpho syntactic tagger service hostname or ip</p></li>
+<li><p>NERTAGGER_HOST : named entities tagger service hostname or ip</p></li>
+<li><p>SYNTAXTAGGER_HOST : syntacic tagger and rule based svo extraction sevice hostname or ip</p></li>
+<li><p>SENT_EMBEDDING_HOST : sentience embedding sevice host name</p></li>
+<li><p>TAGGER_PIPELINE_HOST : tagger pipepline service host name</p></li>
+<li><p>KEYWORD_HOST : keyword extractor service hostname or ip</p></li>
+<li><p>AUTOMATIC_SUMMARY_HOST : automatic extractive service summary hostname or ip</p></li>
+<li><p>SENTIMENT_ANALYSIS_HOST : sentiment analysis service hostname or ip</p></li>
+<li><p>CLASSIFICATION_HOST : usupervised classification service hostname or ip</p></li>
+<li><p>QA_HOST : question and answering service hostname or ip</p></li>
+<li><p>CLUSTER_INFERENCE_HOST : semantic cluster inference host</p></li>
+<li><p>SEARCH_HOST : search service hostname or ip</p></li>
+<li><p>INDEX_HOST : indexing service hostname or ip</p></li>
+<li><p>WEB_HOST : web access service hostname or ip</p></li>
+<li><p>SEARCH_SSL : Search is in SSL model</p></li>
+<li><p>SEARCH_SSL_NO_VERIFY : no verify certificate</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="copy-or-create-data">
+<h2>Copy or create data<a class="headerlink" href="#copy-or-create-data" title="Permalink to this headline">¶</a></h2>
+<p>Searchai comes with default configuration file.
+Nevertheless you can modify or add file. Most of them are configuration (see configuration section).</p>
+<div class="section" id="index-mappings">
+<h3>Index mappings<a class="headerlink" href="#index-mappings" title="Permalink to this headline">¶</a></h3>
+<p>Index mapping is store in <strong>RESOURCES_DIRECTORY/indices/indices_mapping</strong>. if you create new mapping it MUST contains the same fields.
+You can freely change the analyzers.</p>
+</div>
+<div class="section" id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>The resources are stored in <strong>RESOURCES_DIRECTORY/modeling/tokenizer/[en|fr…]</strong>. This directory contains file with list or csv tables.
+The descriptions of these file are in <strong>CONFIGS/annotation-resources.json</strong></p>
+</div>
+</div>
+<div class="section" id="initialize-load-the-models">
+<h2>Initialize/Load the models<a class="headerlink" href="#initialize-load-the-models" title="Permalink to this headline">¶</a></h2>
+<p>When you build you docker volumes containing model and default configuration are automatically generated.
+To update the configuration you can go into directory <strong>app/bin</strong> and run the command:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#&gt;</span> <span class="pre">./manager.sh</span> <span class="pre">init-project</span> <span class="pre">[default|ai4eu|enronmail</span> <span class="pre">...]</span></code></p>
+<p>Take care of proxies. Please set correclty $HOME/.docker/config.json like that:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;proxies&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;default&quot;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;httpProxy&quot;</span><span class="p">:</span> <span class="s2">&quot;your_http_proxy&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;httpsProxy&quot;</span><span class="p">:</span> <span class="s2">&quot;your_https_proxy&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;noProxy&quot;</span><span class="p">:</span> <span class="s2">&quot;your_no_proxy,searchai_opendistro&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Don’t forget to add <strong>searchai_opendistro</strong> and all services in no_proxy</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ready_to_run.html" class="btn btn-neutral float-right" title="Create a ready to run application with docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="conception.html" class="btn btn-neutral float-left" title="Conception" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

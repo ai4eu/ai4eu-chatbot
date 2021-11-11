@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Create a ready to run application with docker &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tools" href="tools/tools.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conception.html">Conception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a ready to run application with docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requist-build-the-tkeir-docker">Pre-requist : build the tkeir docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-your-configuration">Prepare your configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#copy-the-default-configuration">Copy the default configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-your-network-infrastructure">Configure your network infrastructure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#define-the-environment-variables">Define the environment variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-your-docker-compose">Prepare your docker compose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-your-services-network">Configure your services network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-your-the-health-of-services">Test your the health of services</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-your-services">Configure your services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-resources">Prepare resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-your-volumes-with-configuration">Generate your volumes with configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-your-docker-compose">Run your docker compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indexing-document-with-pipeline">Indexing document with pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-the-results">Visualize the results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oam.html">Operation and Management</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Create a ready to run application with docker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ready_to_run.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-a-ready-to-run-application-with-docker">
+<h1>Create a ready to run application with docker<a class="headerlink" href="#create-a-ready-to-run-application-with-docker" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the step to create a full information retrieval engine for your data based on docker architecture</p>
+<div class="section" id="pre-requist-build-the-tkeir-docker">
+<h2>Pre-requist : build the tkeir docker<a class="headerlink" href="#pre-requist-build-the-tkeir-docker" title="Permalink to this headline">¶</a></h2>
+<p>As pre-requist you need to build or pull the tkeir docker container on each node.
+To build T-KEIR, go into directory <strong>searchai/runtimes/docker</strong> and run the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./builddocker.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-your-configuration">
+<h2>Prepare your configuration<a class="headerlink" href="#prepare-your-configuration" title="Permalink to this headline">¶</a></h2>
+<p>This first step allows to design what are the services you need in your application and what are the resources used</p>
+<div class="section" id="copy-the-default-configuration">
+<h3>Copy the default configuration<a class="headerlink" href="#copy-the-default-configuration" title="Permalink to this headline">¶</a></h3>
+<p>An easy way to start a new project is to copy the default configuration directory to create your custom application.
+Go into directory <strong>searchai/app/project</strong> and run the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp -r default custom
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-your-network-infrastructure">
+<h3>Configure your network infrastructure<a class="headerlink" href="#configure-your-network-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>Almost all T-KEIR tools are REST services, you have to configure the network envrionment before run these services</p>
+<div class="section" id="define-the-environment-variables">
+<h4>Define the environment variables<a class="headerlink" href="#define-the-environment-variables" title="Permalink to this headline">¶</a></h4>
+<p>Depending on you infracture you have to configure you have to setup docker-compose environment variables
+Go into directory <strong>searchai/app/project/custom/runtime/docker</strong> (where <strong>custom</strong> is the directory copied from default) and edit
+<strong>.env</strong> file. Here services port and host are already pre-configured. You can change it, typically when services are run on different
+server, the hostname have to be change</p>
+<ul class="simple">
+<li><p>OPENDISTRO_VERSION : version of opendistrop (1.12.0)</p></li>
+<li><p>OPENDISTRO_HOST : opendistro host (0.0.0.0)</p></li>
+<li><p>OPENDISTRO_DNS_HOST : dns host name of opendistro (generally used by client)</p></li>
+<li><p>OPENDISTRO_PORT : opendistro port (9200)</p></li>
+<li><p>SEARCHAI_DATA_PATH : the hosting path to the data that will be analyzed and indexed, take care this folder should be readable and writable from containers</p></li>
+<li><p>CONVERTER_PORT : converter service port</p></li>
+<li><p>TOKENIZER_PORT : tokenizer service port</p></li>
+<li><p>MSTAGGER_PORT : morphosyntactic service port</p></li>
+<li><p>NERTAGGER_PORT : named entities service port</p></li>
+<li><p>SYNTAXTAGGER_PORT : syntax and relation service port</p></li>
+<li><p>SENT_EMBEDDING_PORT : sentence embedding service port</p></li>
+<li><p>TAGGER_PIPELINE_PORT  : tagging pipeline service port</p></li>
+<li><p>KEYWORD_PORT : keywords extraction service port</p></li>
+<li><p>AUTOMATIC_SUMMARY_PORT : automatic extractive summary port</p></li>
+<li><p>SENTIMENT_ANALYSIS_PORT : sentiment analysis service port</p></li>
+<li><p>CLASSIFICATION_PORT : unsupervised classification service port</p></li>
+<li><p>QA_PORT : question and answering service port</p></li>
+<li><p>CLUSTER_INFERENCE_HOST : semantic cluster inference port</p></li>
+<li><p>SEARCH_PORT : search service port</p></li>
+<li><p>INDEX_PORT : index service port</p></li>
+<li><p>WEB_PORT : web access port</p></li>
+<li><p>CONVERTER_HOST : converter service hostname or ip</p></li>
+<li><p>TOKENIZER_HOST : tokenizer service hostname or ip</p></li>
+<li><p>MSTAGGER_HOST : morpho syntactic tagger service hostname or ip</p></li>
+<li><p>NERTAGGER_HOST : named entities tagger service hostname or ip</p></li>
+<li><p>SYNTAXTAGGER_HOST : syntacic tagger and rule based svo extraction sevice hostname or ip</p></li>
+<li><p>SENT_EMBEDDING_HOST : sentience embedding sevice host name</p></li>
+<li><p>TAGGER_PIPELINE_HOST : tagger pipepline service host name</p></li>
+<li><p>KEYWORD_HOST : keyword extractor service hostname or ip</p></li>
+<li><p>AUTOMATIC_SUMMARY_HOST : automatic extractive service summary hostname or ip</p></li>
+<li><p>SENTIMENT_ANALYSIS_HOST : sentiment analysis service hostname or ip</p></li>
+<li><p>CLASSIFICATION_HOST : usupervised classification service hostname or ip</p></li>
+<li><p>QA_HOST : question and answering service hostname or ip</p></li>
+<li><p>CLUSTER_INFERENCE_HOST : semantic cluster inference host</p></li>
+<li><p>SEARCH_HOST : search service hostname or ip</p></li>
+<li><p>INDEX_HOST : indexing service hostname or ip</p></li>
+<li><p>WEB_HOST : web access service hostname or ip</p></li>
+<li><p>SEARCH_SSL : Search is in SSL model</p></li>
+<li><p>SEARCH_SSL_NO_VERIFY : no verify certificate</p></li>
+</ul>
+<p>By default the hostname are setup to match with a one node environement and the network provided by docker-compose.</p>
+<p>The services can be configured with SSL access. T-KEIR comes with self-signed certificate (an we use it in this documentation),
+but you HAVE TO create your own certificates (based on for example lets encrypt). The SSL certificate are stored into directory
+<strong>app/ssl/</strong> .</p>
+</div>
+<div class="section" id="prepare-your-docker-compose">
+<h4>Prepare your docker compose<a class="headerlink" href="#prepare-your-docker-compose" title="Permalink to this headline">¶</a></h4>
+<p>You have to prepare one docker by node to setup the services associated to the node. Here all the services are run in a same node. You can suppress
+unuseful services.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.2&#39;</span>
+
+<span class="c1"># declare volume names</span>
+<span class="c1"># each volume is associated to a service, the configuration</span>
+<span class="c1"># and the models are copied in the volumes</span>
+<span class="nt">volumes</span><span class="p">:</span>
+  <span class="nt">volume_theresis_tkeir_converter</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_tokenizer</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_mstagger</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_nertagger</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_syntactictagger</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_keywordextractor</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_clusterinfer</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>        
+  <span class="nt">volume_theresis_tkeir_embeddings</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_zeroshotclassifier</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_sentiment</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_qa</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_summarizer</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_search</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_test</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_searchai2index</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_pipeline</span><span class="p">:</span>
+    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">volume_theresis_tkeir_web</span><span class="p">:</span>
+      <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  
+<span class="c1"># declare services</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="c1"># Opendistro is AWS elastic search</span>
+  <span class="c1"># we run it with 8Go RAM and disable security (TKEIR tool does not manage yet security for Opendistro)</span>
+  <span class="c1"># we expose port 9200 and 9300</span>
+  <span class="c1"># opendistro is in the same network than other services : searchai_net, and the hostname will be searchai_opendistro</span>
+  <span class="c1"># If you have already an opendistro run on you network you can suppress or comment this service but you have</span>
+  <span class="c1"># to setup properly the OPENDISTRO_HOST and OPENDISTRO_DNS_HOST in .env file</span>
+  <span class="nt">searchai_opendistro</span><span class="p">:</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_opendistro</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opendistro/</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">OPENDISTRO_VERSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${OPENDISTRO_VERSION}</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;9200:9200&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;9300:9300&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${SEARCHAI_DATA_PATH}/share/index:/usr/share/elasticsearch/data:rw</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;ES_JAVA_OPTS=-Xmx8g</span><span class="nv"> </span><span class="s">-Xms8g&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;http.cors.enabled=true&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;http.cors.allow-origin=*&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;discovery.type=single-node&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;opendistro_security.disabled=true&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;indices.query.bool.max_clause_count=250000&quot;</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+
+  <span class="c1"># the converter service convert input file to a TKEIR compliant document</span>
+  <span class="c1"># it&#39;s generally the first service used</span>
+  <span class="c1"># the service is no very cpu consuming</span>
+  <span class="nt">searchai_converter_svc</span><span class="p">:</span>    
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_converter_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_converter:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${CONVERTER_PORT}:${CONVERTER_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">converter</span><span class="p p-Indicator">]</span>
+  
+  <span class="c1"># The tokenizer is the first step of document analysis</span>
+  <span class="c1"># It require Multi word Expression model created during the</span>
+  <span class="c1"># setup of TKEIR environement</span>
+  <span class="c1"># Depends on : converter (take TKEIR compliant document as input)</span>
+  <span class="nt">searchai_tokenizer_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_tokenizer_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_tokenizer:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${TOKENIZER_PORT}:${TOKENIZER_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">tokenizer</span><span class="p p-Indicator">]</span>
+  
+  <span class="c1"># The Morpho syntactic tagger allows to tag tokenized document</span>
+  <span class="c1"># It&#39;s based on spacy framework</span>
+  <span class="c1"># Depends on : Tokenizer</span>
+  <span class="nt">searchai_mstagger_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_mstagger_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_mstagger:/home/searchai_svc/searchai/app:z</span>      
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${MSTAGGER_PORT}:${MSTAGGER_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">mstagger</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># The Named entities tagger extract named entities from a document</span>
+  <span class="c1"># It&#39;s based on spacy framework </span>
+  <span class="c1"># Depends on : MSTagger   </span>
+  <span class="nt">searchai_nertagger_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_nertagger_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_nertagger:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${NERTAGGER_PORT}:${NERTAGGER_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">nertagger</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># The syntactic tagger extract syntactic dependencies and Subject,Verb, Object triplet</span>
+  <span class="c1"># It&#39;s based on spacy framework and rules </span>
+  <span class="c1"># Depends on : NERTagger</span>
+  <span class="nt">searchai_syntax_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_syntax_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_syntactictagger:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${SYNTAXTAGGER_PORT}:${SYNTAXTAGGER_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">depends_on</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_opendistro</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">syntactictagger</span><span class="p p-Indicator">]</span>
+  
+  <span class="c1"># The keywords extractor extracts keywords by using RAKE algorithm on lemmas</span>
+  <span class="c1"># It&#39;s based on spacy framework and rules </span>
+  <span class="c1"># Depends on : Syntactic tagger</span>
+  <span class="nt">searchai_keywords_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_keywords_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_keywordextractor:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${KEYWORD_PORT}:${KEYWORD_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">keywordextractor</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># Infer cluster id on triplet Subject, verb, object and keywords</span>
+  <span class="c1"># depends on: Keyword extractor and embedding services</span>
+  <span class="nt">searchai_clusterinfer_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_clusterinfer_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_clusterinfer:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${CLUSTER_INFERENCE_PORT}:${CLUSTER_INFERENCE_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_HOST=${SENT_EMBEDDING_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_PORT=${SENT_EMBEDDING_PORT}</span>
+          
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">clusterinfer</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># Compute sentence embeddings</span>
+  <span class="c1"># depends on : tokenizer</span>
+  <span class="nt">searchai_embeddings_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_embeddings_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_embeddings:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${SENT_EMBEDDING_PORT}:${SENT_EMBEDDING_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">embeddings</span><span class="p p-Indicator">]</span>
+  
+
+    <span class="c1"># Run search service</span>
+  <span class="nt">searchai_search_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_search_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_search:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${SEARCH_PORT}:${SEARCH_PORT}</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOKENIZER_HOST=${TOKENIZER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOKENIZER_PORT=${TOKENIZER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MSTAGGER_HOST=${MSTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MSTAGGER_PORT=${MSTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">NERTAGGER_HOST=${NERTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">NERTAGGER_PORT=${NERTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SYNTAXTAGGER_HOST=${SYNTAXTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SYNTAXTAGGER_PORT=${SYNTAXTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_HOST=${SENT_EMBEDDING_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_PORT=${SENT_EMBEDDING_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENTIMENT_ANALYSIS_HOST=${SENTIMENT_ANALYSIS_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENTIMENT_ANALYSIS_PORT=${SENTIMENT_ANALYSIS_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLASSIFICATION_HOST=${CLASSIFICATION_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLASSIFICATION_PORT=${CLASSIFICATION_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">QA_HOST=${QA_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">QA_PORT=${QA_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TAGGER_PIPELINE_HOST=${TAGGER_PIPELINE_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TAGGER_PIPELINE_PORT=${TAGGER_PIPELINE_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">KEYWORD_HOST=${KEYWORD_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">KEYWORD_PORT=${KEYWORD_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_HOST=${SEARCH_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_PORT=${SEARCH_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">INDEX_HOST=${INDEX_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">INDEX_PORT=${INDEX_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_DNS_HOST=${OPENDISTRO_DNS_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_PORT=${OPENDISTRO_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">search</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># Run index service</span>
+  <span class="nt">searchai_index_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_index_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_searchai2index:/home/searchai_svc/searchai/app:rw</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_DNS_HOST=${OPENDISTRO_DNS_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_PORT=${OPENDISTRO_PORT}</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${INDEX_PORT}:${INDEX_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">index</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># run pipeline service</span>
+  <span class="c1"># this service run a complete pipeline from converter to indexing</span>
+  <span class="c1"># SEARCHAI_DATA_PATH is the path &quot;listen&quot; by the pipeline service</span>
+  <span class="nt">searchai_pipeline_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_pipeline_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_pipeline:/home/searchai_svc/searchai/app:rw</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${SEARCHAI_DATA_PATH}:/data:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${PIPELINE_PORT}:${PIPELINE_PORT}</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CONVERTER_HOST=${CONVERTER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CONVERTER_PORT=${CONVERTER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOKENIZER_HOST=${TOKENIZER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOKENIZER_PORT=${TOKENIZER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MSTAGGER_HOST=${MSTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MSTAGGER_PORT=${MSTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">NERTAGGER_HOST=${NERTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">NERTAGGER_PORT=${NERTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SYNTAXTAGGER_HOST=${SYNTAXTAGGER_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SYNTAXTAGGER_PORT=${SYNTAXTAGGER_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_HOST=${SENT_EMBEDDING_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENT_EMBEDDING_PORT=${SENT_EMBEDDING_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">AUTOMATIC_SUMMARY_HOST=${AUTOMATIC_SUMMARY_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">AUTOMATIC_SUMMARY_PORT=${AUTOMATIC_SUMMARY_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENTIMENT_ANALYSIS_HOST=${SENTIMENT_ANALYSIS_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SENTIMENT_ANALYSIS_PORT=${SENTIMENT_ANALYSIS_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLASSIFICATION_HOST=${CLASSIFICATION_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLASSIFICATION_PORT=${CLASSIFICATION_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PIPELINE_HOST=${PIPELINE_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PIPELINE_PORT=${PIPELINE_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">KEYWORD_HOST=${KEYWORD_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">KEYWORD_PORT=${KEYWORD_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_HOST=${SEARCH_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_PORT=${SEARCH_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLUSTER_INFERENCE_HOST=${CLUSTER_INFERENCE_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CLUSTER_INFERENCE_PORT=${CLUSTER_INFERENCE_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">INDEX_HOST=${INDEX_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">INDEX_PORT=${INDEX_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_DNS_HOST=${OPENDISTRO_DNS_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OPENDISTRO_PORT=${OPENDISTRO_PORT}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">pipeline</span><span class="p p-Indicator">]</span>
+
+  <span class="c1"># Run web interface</span>
+  <span class="nt">searchai_web_svc</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">theresis/searchai-cuda</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="s">&quot;searchai_svc:searchai_svc&quot;</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">searchai_web_svc</span>
+    <span class="nt">runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">volume_theresis_tkeir_web:/home/searchai_svc/searchai/app:z</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">${WEB_PORT}:${WEB_PORT}</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">WEB_PORT=${WEB_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_HOST=${SEARCH_HOST}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_PORT=${SEARCH_PORT}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_SSL=${SEARCH_SSL}</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">SEARCH_SSL_NO_VERIFY=${SEARCH_SSL_NO_VERIFY}</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">searchai_net</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">/home/searchai_svc/searchai/app/bin/docker_entrypoint.sh</span><span class="p p-Indicator">,</span> <span class="nv">web</span><span class="p p-Indicator">]</span>
+ 
+<span class="nt">networks</span><span class="p">:</span>
+  <span class="nt">searchai_net</span><span class="p">:</span>
+    <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</pre></div>
+</div>
+<p>Take care with runtime, by default runtime is nvidia, on non-gpu computer suppress this runtime from docker-compose configuration file</p>
+</div>
+<div class="section" id="configure-your-services-network">
+<h4>Configure your services network<a class="headerlink" href="#configure-your-services-network" title="Permalink to this headline">¶</a></h4>
+<p>Each service have a configuration file. The “network” part allows to configuration the network access to the service.</p>
+<p>The network section:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="mi">8080</span><span class="p">,</span>
+        <span class="nt">&quot;associate-environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;HOST_ENVNAME&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="s2">&quot;PORT_ENVNAME&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;ssl&quot;</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;certificate&quot;</span><span class="p">:</span><span class="s2">&quot;path/to/certificate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;path/to/key&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+ 
+</pre></div>
+</div>
+<p>The network fields:</p>
+<ul>
+<li><p><strong>host</strong> : hostname</p></li>
+<li><p><strong>port</strong> : port of the service</p></li>
+<li><dl class="simple">
+<dt><strong>associated-environement</strong><span class="classifier">is the “host” and “port” associated environment variables that allows to replace the</span></dt><dd><p>default one. This field is not mandatory.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>“host” : associated “host” environment variable</p></li>
+<li><p>“port” : associated “port” environment variable</p></li>
+</ul>
+</li>
+<li><p><strong>ssl</strong> : ssl configuration <strong>IN PRODUCTION IT IS MANDATORY TO USE CERTIFICATE AND KEY THAT ARE *NOT* SELF SIGNED</strong></p>
+<ul class="simple">
+<li><p><strong>cert</strong> : certificate file</p></li>
+<li><p><strong>key</strong> : key file</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="test-your-the-health-of-services">
+<h4>Test your the health of services<a class="headerlink" href="#test-your-the-health-of-services" title="Permalink to this headline">¶</a></h4>
+<p>This step should be done after configuration of the service it allows to test the connectivity to services.
+Each service has a “health” function allowing to make sure the service is RUN
+You can simply call the service health with a <em>curl</em> command</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl -X GET http://&lt;hostname.of.the.service&gt;/api/&lt;service-name&gt;/health
+</pre></div>
+</div>
+<p>with &lt;service-name&gt; in:</p>
+<ul class="simple">
+<li><p>converter</p></li>
+<li><p>tokenizer</p></li>
+<li><p>mstagger</p></li>
+<li><p>nertagger</p></li>
+<li><p>syntactictagger</p></li>
+<li><p>embeddings</p></li>
+<li><p>keywordsextractor</p></li>
+<li><p>clusterinfer</p></li>
+<li><p>qa</p></li>
+<li><p>summarizer</p></li>
+<li><p>sentimentclassifier</p></li>
+<li><p>zeroshotclassifier</p></li>
+<li><p>pipeline</p></li>
+</ul>
+<p>If you use default docker compose file you can run from <strong>searchai/app/bin</strong> directory</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./check-service-health.sh
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configure-your-services">
+<h3>Configure your services<a class="headerlink" href="#configure-your-services" title="Permalink to this headline">¶</a></h3>
+<p>As it wrote in previous section you can configure network of each services.</p>
+<div class="section" id="prepare-resources">
+<h4>Prepare resources<a class="headerlink" href="#prepare-resources" title="Permalink to this headline">¶</a></h4>
+<p>A pre-requist step is to configure resources. Tokenizer and NER tagger use terminological resources.
+Edit the file <strong>searchai/app/project/custom/resources/modeling/tokenizer/en/annotation-resources.json</strong> to add or suppress
+file list.</p>
+</div>
+</div>
+</div>
+<div class="section" id="generate-your-volumes-with-configuration">
+<h2>Generate your volumes with configuration<a class="headerlink" href="#generate-your-volumes-with-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Once configuration files and environments variable for network are set, you can create the services
+volume storing models and configuation. By default volumes are already created with the “default” configuration, on a one node infrastructure it is generally suffisant.
+Go into the directory <strong>searchai/app/bin</strong> and run the command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./manager.sh init-project custom
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-your-docker-compose">
+<h2>Run your docker compose<a class="headerlink" href="#run-your-docker-compose" title="Permalink to this headline">¶</a></h2>
+<p>The last action to do is to run your docker compose.</p>
+</div>
+<div class="section" id="indexing-document-with-pipeline">
+<h2>Indexing document with pipeline<a class="headerlink" href="#indexing-document-with-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Start to put file to index in your shared path.
+Access to pipeline docker:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker <span class="nb">exec</span> -ti searchai_pipeline_svc bash
+</pre></div>
+</div>
+<p>Make sure you have access to service :</p>
+<p>curl -k -XGET <a class="reference external" href="https://searchai_pipeline_svc:10006/api/pipeline/health">https://searchai_pipeline_svc:10006/api/pipeline/health</a> | json_pp</p>
+<p>Then, for example for ORBIT csv file,  run the command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 thot/pipeline_client.py -c /home/searchai_svc/searchai/app/projects/default/configs/pipeline.json <span class="se">\</span>
+                            -t orbit-csv <span class="se">\</span>
+                            -i /data/test-pipeline/ <span class="se">\</span>
+                            -o /tmp -s https -nsv
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualize-the-results">
+<h2>Visualize the results<a class="headerlink" href="#visualize-the-results" title="Permalink to this headline">¶</a></h2>
+<p>To visualize a search request you can open firefox on <a class="reference external" href="http::/">http::/</a>/&lt;host of web server &gt;:&lt;port of web server&gt;/search
+login: admin
+passwd: tkeiradmin</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tools/tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

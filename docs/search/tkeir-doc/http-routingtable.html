@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>HTTP Routing Table &mdash; T-KEIR 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+ 
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> T-KEIR
+          
+
+          
+            
+            <img src="_static/T-KEIR_logo_FIN-02.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conception.html">Conception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ready_to_run.html">Create a ready to run application with docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oam.html">Operation and Management</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">T-KEIR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>HTTP Routing Table</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+   <h1>HTTP Routing Table</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-/api"><strong>/api</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-/api"><td></td><td>
+       <strong>/api</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/cluster_inference.html#get--api-clusterinfer-health"><code class="xref">GET /api/clusterinfer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#get--api-converter-health"><code class="xref">GET /api/converter/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#get--api-converter-list-types"><code class="xref">GET /api/converter/list-types</code></a></td><td>
+       <em>Get list of managed type</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#get--api-embeddings-health"><code class="xref">GET /api/embeddings/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#get--api-indexing-del"><code class="xref">GET /api/indexing/del</code></a></td><td>
+       <em>remove indexed document according the cache id</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#get--api-indexing-health"><code class="xref">GET /api/indexing/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/keywords.html#get--api-keywordsextractor-health"><code class="xref">GET /api/keywordsextractor/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/mstagger.html#get--api-mstagger-health"><code class="xref">GET /api/mstagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/nertagger.html#get--api-nertagger-health"><code class="xref">GET /api/nertagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#get--api-qa-health"><code class="xref">GET /api/qa/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#get--api-searching-health"><code class="xref">GET /api/searching/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/sentiment.html#get--api-sentimentclassifier-health"><code class="xref">GET /api/sentimentclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/summarizer.html#get--api-summarizer-health"><code class="xref">GET /api/summarizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/syntactictagger.html#get--api-syntactictagger-health"><code class="xref">GET /api/syntactictagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/tokenizer.html#get--api-tokenizer-health"><code class="xref">GET /api/tokenizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#get--api-zeroshotclassifier-health"><code class="xref">GET /api/zeroshotclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/cluster_inference.html#post--api-clusterinfer-health"><code class="xref">POST /api/clusterinfer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/cluster_inference.html#post--api-clusterinfer-run"><code class="xref">POST /api/clusterinfer/run</code></a></td><td>
+       <em>run the clusterinfer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#post--api-converter-health"><code class="xref">POST /api/converter/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#post--api-converter-run"><code class="xref">POST /api/converter/run</code></a></td><td>
+       <em>run the converter</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#post--api-embeddings-health"><code class="xref">POST /api/embeddings/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#post--api-embeddings-run"><code class="xref">POST /api/embeddings/run</code></a></td><td>
+       <em>run the embedding extraction</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#post--api-embeddings-run_from_table"><code class="xref">POST /api/embeddings/run_from_table</code></a></td><td>
+       <em>run the embedding extraction</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-indexing-health"><code class="xref">POST /api/indexing/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-indexing-run"><code class="xref">POST /api/indexing/run</code></a></td><td>
+       <em>run the indexing</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/keywords.html#post--api-keywordsextractor-health"><code class="xref">POST /api/keywordsextractor/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/keywords.html#post--api-keywordsextractor-run"><code class="xref">POST /api/keywordsextractor/run</code></a></td><td>
+       <em>run the keyword extractor</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/mstagger.html#post--api-mstagger-health"><code class="xref">POST /api/mstagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/mstagger.html#post--api-mstagger-run"><code class="xref">POST /api/mstagger/run</code></a></td><td>
+       <em>run the morphosyntactic tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/nertagger.html#post--api-nertagger-health"><code class="xref">POST /api/nertagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/nertagger.html#post--api-nertagger-run"><code class="xref">POST /api/nertagger/run</code></a></td><td>
+       <em>run the ner tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#post--api-qa-health"><code class="xref">POST /api/qa/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#post--api-qa-run"><code class="xref">POST /api/qa/run</code></a></td><td>
+       <em>run the document qa</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#post--api-qa-run_by_sentences"><code class="xref">POST /api/qa/run_by_sentences</code></a></td><td>
+       <em>run the document qa</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-searching-custom_structured_query"><code class="xref">POST /api/searching/custom_structured_query</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-searching-health"><code class="xref">POST /api/searching/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-searching-query_with_doc"><code class="xref">POST /api/searching/query_with_doc</code></a></td><td>
+       <em>run search on a document</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#post--api-searching-querying"><code class="xref">POST /api/searching/querying</code></a></td><td>
+       <em>run search on a document</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/sentiment.html#post--api-sentimentclassifier-health"><code class="xref">POST /api/sentimentclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/sentiment.html#post--api-sentimentclassifier-run"><code class="xref">POST /api/sentimentclassifier/run</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/summarizer.html#post--api-summarizer-health"><code class="xref">POST /api/summarizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/summarizer.html#post--api-summarizer-run"><code class="xref">POST /api/summarizer/run</code></a></td><td>
+       <em>run the document summarizer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/syntactictagger.html#post--api-syntactictagger-health"><code class="xref">POST /api/syntactictagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/syntactictagger.html#post--api-syntactictagger-run"><code class="xref">POST /api/syntactictagger/run</code></a></td><td>
+       <em>run the syntactic tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/tokenizer.html#post--api-tokenizer-health"><code class="xref">POST /api/tokenizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/tokenizer.html#post--api-tokenizer-run"><code class="xref">POST /api/tokenizer/run</code></a></td><td>
+       <em>run the tokenizer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#post--api-zeroshotclassifier-health"><code class="xref">POST /api/zeroshotclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#post--api-zeroshotclassifier-run"><code class="xref">POST /api/zeroshotclassifier/run</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#post--api-zeroshotclassifier-run_with_classes"><code class="xref">POST /api/zeroshotclassifier/run_with_classes</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/cluster_inference.html#options--api-clusterinfer-health"><code class="xref">OPTIONS /api/clusterinfer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/cluster_inference.html#options--api-clusterinfer-run"><code class="xref">OPTIONS /api/clusterinfer/run</code></a></td><td>
+       <em>run the clusterinfer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#options--api-converter-health"><code class="xref">OPTIONS /api/converter/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#options--api-converter-list-types"><code class="xref">OPTIONS /api/converter/list-types</code></a></td><td>
+       <em>Get list of managed type</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/converter.html#options--api-converter-run"><code class="xref">OPTIONS /api/converter/run</code></a></td><td>
+       <em>run the converter</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#options--api-embeddings-health"><code class="xref">OPTIONS /api/embeddings/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#options--api-embeddings-run"><code class="xref">OPTIONS /api/embeddings/run</code></a></td><td>
+       <em>run the embedding extraction</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/embeddings.html#options--api-embeddings-run_from_table"><code class="xref">OPTIONS /api/embeddings/run_from_table</code></a></td><td>
+       <em>run the embedding extraction</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-indexing-del"><code class="xref">OPTIONS /api/indexing/del</code></a></td><td>
+       <em>remove indexed document according the cache id</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-indexing-health"><code class="xref">OPTIONS /api/indexing/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-indexing-run"><code class="xref">OPTIONS /api/indexing/run</code></a></td><td>
+       <em>run the indexing</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/keywords.html#options--api-keywordsextractor-health"><code class="xref">OPTIONS /api/keywordsextractor/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/keywords.html#options--api-keywordsextractor-run"><code class="xref">OPTIONS /api/keywordsextractor/run</code></a></td><td>
+       <em>run the keyword extractor</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/mstagger.html#options--api-mstagger-health"><code class="xref">OPTIONS /api/mstagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/mstagger.html#options--api-mstagger-run"><code class="xref">OPTIONS /api/mstagger/run</code></a></td><td>
+       <em>run the morphosyntactic tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/nertagger.html#options--api-nertagger-health"><code class="xref">OPTIONS /api/nertagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/nertagger.html#options--api-nertagger-run"><code class="xref">OPTIONS /api/nertagger/run</code></a></td><td>
+       <em>run the ner tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#options--api-qa-health"><code class="xref">OPTIONS /api/qa/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#options--api-qa-run"><code class="xref">OPTIONS /api/qa/run</code></a></td><td>
+       <em>run the document qa</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/qa.html#options--api-qa-run_by_sentences"><code class="xref">OPTIONS /api/qa/run_by_sentences</code></a></td><td>
+       <em>run the document qa</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-searching-custom_structured_query"><code class="xref">OPTIONS /api/searching/custom_structured_query</code></a></td><td>
+       <em>null</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-searching-health"><code class="xref">OPTIONS /api/searching/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-searching-query_with_doc"><code class="xref">OPTIONS /api/searching/query_with_doc</code></a></td><td>
+       <em>run search on a document</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/search_engine.html#options--api-searching-querying"><code class="xref">OPTIONS /api/searching/querying</code></a></td><td>
+       <em>run search on a document</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/sentiment.html#options--api-sentimentclassifier-health"><code class="xref">OPTIONS /api/sentimentclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/sentiment.html#options--api-sentimentclassifier-run"><code class="xref">OPTIONS /api/sentimentclassifier/run</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/summarizer.html#options--api-summarizer-health"><code class="xref">OPTIONS /api/summarizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/summarizer.html#options--api-summarizer-run"><code class="xref">OPTIONS /api/summarizer/run</code></a></td><td>
+       <em>run the document summarizer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/syntactictagger.html#options--api-syntactictagger-health"><code class="xref">OPTIONS /api/syntactictagger/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/syntactictagger.html#options--api-syntactictagger-run"><code class="xref">OPTIONS /api/syntactictagger/run</code></a></td><td>
+       <em>run the syntactic tagger</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/tokenizer.html#options--api-tokenizer-health"><code class="xref">OPTIONS /api/tokenizer/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/tokenizer.html#options--api-tokenizer-run"><code class="xref">OPTIONS /api/tokenizer/run</code></a></td><td>
+       <em>run the tokenizer</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#options--api-zeroshotclassifier-health"><code class="xref">OPTIONS /api/zeroshotclassifier/health</code></a></td><td>
+       <em>Ask the health of the service</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#options--api-zeroshotclassifier-run"><code class="xref">OPTIONS /api/zeroshotclassifier/run</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="tools/zsl_classifier.html#options--api-zeroshotclassifier-run_with_classes"><code class="xref">OPTIONS /api/zeroshotclassifier/run_with_classes</code></a></td><td>
+       <em>run the document classifier</em></td></tr>
+   </table>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, THALES SIX GTS FRANCE.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
