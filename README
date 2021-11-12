@@ -3,7 +3,7 @@ conda create -n "ai4eu-chat" python=3.7.10
 #enable the conda environment (this has a fixed path in my workstation)
 source ./scripts/conda-activate.sh
 
-# We need version 0.16.0 since this supports all the latest transformers
+# We need version 0.17.0 since this supports all the latest transformers
 pip install deeppavlov
 
 # We need torch for the models. 
@@ -23,9 +23,12 @@ pip install transformers sentence-transformers
 # deeppavlov supports numpy=0.18.0
 
 # To train/evaluate/interact our model
-python -m deeppavlov train config/faq/...
-python -m deeppavlov evaluate config/faq/...
-python -m deeppavlov interact config/faq/...
+python -m deeppavlov install config/...
+python -m deeppavlov train config/...
+python -m deeppavlov evaluate config/...
+python -m deeppavlov interact config/...
+
+Add also -d to the above when running for the first time, so that we can download any needed pretrained models
 
 # How to run
 cd src
