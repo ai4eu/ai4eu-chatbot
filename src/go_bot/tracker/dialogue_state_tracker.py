@@ -197,7 +197,7 @@ class DialogueStateTracker(FeaturizedTracker):
         # Ask the QA module the user request
         model, results = qa.ask(user_text, topk)
 
-        log.info(f"Made ai4eu_qa_api_call with text {slots}, got results {results} from model {model}.")
+        log.info(f"Made ai4eu_qa_api_call with text {str}, got results {results} from model {model}.")
 
         # return the model and the results
         return results

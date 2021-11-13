@@ -5,6 +5,8 @@ from deeppavlov import Chainer
 from .dto.nlu_response import NLUResponse
 from .nlu_manager_interface import NLUManagerInterface
 
+import numpy as np
+
 log = getLogger(__name__)
 
 # todo add the ability to configure nlu loglevel in config (now the setting is shared across all the GO-bot)
@@ -58,24 +60,29 @@ class NLUManager(NLUManagerInterface):
         if callable(self.intent_classifier):
             intents = self._extract_intents_from_tokenized_text_entry(tokens)
 
-        print('==> AI4EU slots', slots)
-        print('==> AI4EU intents', intents)
-        print('==> AI4EU tokens', tokens)
-
         return NLUResponse(slots, intents, tokens)
 
     def _extract_intents_from_tokenized_text_entry(self, tokens: List[str]):
         # todo meaningful type hints, relies on unannotated intent classifier
-        intent_features = self.intent_classifier([' '.join(tokens)])[1][0]
+        intents = self.intent_classifier([' '.join(tokens)])
+        print('==> AI4EU intents probs', intents)
+        intent_features = intents[1][0]
+        # check which is the intent with the biggest probability
+        max_prob = intent_features[np.argmax(intent_features)]
+        print('==> AI4EU intent', intents[0], ' with probability ', max_prob)
         return intent_features
 
     def _extract_slots_from_tokenized_text_entry(self, tokens: List[str]):
         # todo meaningful type hints, relies on unannotated slot filler
-        return self.slot_filler([tokens])[0]
+        slots = self.slot_filler([tokens])
+        print('==> AI4EU slots', slots)
+        return slots[0]
 
     def _tokenize_single_text_entry(self, text: str):
         # todo meaningful type hints, relies on unannotated tokenizer
-        return self.tokenizer([text.lower().strip()])[0]
+        tokens = self.tokenizer([text.lower().strip()])
+        print('==> AI4EU tokens', tokens)
+        return tokens[0]
 
     def num_of_known_intents(self) -> int:
         """
