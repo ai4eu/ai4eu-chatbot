@@ -426,10 +426,13 @@ class GoalOrientedBot(NNModel):
         # predict the action to perform (e.g. response smth or call the api)
         utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker)
 
-        # We have to check the probability of the actions. If they are too low then it is better to use the QA module
+        # AI4EU We have to check the probability of the actions.
+        # If they are too low then it is better to use the QA module
+        print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
         if policy_prediction.probs[policy_prediction.predicted_action_ix] < self.action_probability_threshold:
             policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
-            log.debug(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
+            print(f"Predicted actions is = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
+            print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
 
         user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
         user_tracker.network_state = policy_prediction.get_network_state()
@@ -475,7 +478,7 @@ class GoalOrientedBot(NNModel):
             candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self.topk)
 
             # Log response from QA
-            log.debug(f"True response = '{candidates}'.")
+            print(f"True response = '{candidates}'.")
 
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)

@@ -132,3 +132,10 @@ class NLGManager(NLGManagerInterface):
              the list of actions known to the NLG module
         """
         return self.templates.actions
+
+    def get_action(self, action_id: int) -> str:
+        """
+        Returns:
+             the action with id known to the NLG module
+        """
+        return self.templates.actions[action_id]
