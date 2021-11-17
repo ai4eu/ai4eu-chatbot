@@ -1,0 +1,1 @@
+{"speaker": 2, "text": "Hello, welcome to the Cambridge restaurant system. You can ask for restaurants by area, price range or food type. How may I help you?", "dialog_acts": [{"act": "welcomemsg", "slots": []}]}

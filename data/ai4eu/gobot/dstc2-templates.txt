@@ -6,4 +6,4 @@ reqmore	Can I help you with anything else?
 repeat	Sorry I am a bit confused; please tell me again what you are looking for.
 ai4eu_search_api_call	ai4eu_search_api_call area="#area" food="#food" pricerange="#pricerange"
 faq_request	Ok, what do you want to ask?
-ai4eu_qa_api_call	ai4eu_qa_api_call
+ai4eu_qa_api_call	faq

@@ -25,14 +25,7 @@
         "load_path": "{MODEL_PATH}/word.dict"
       },
       {
-        "id": "restaurant_database",
-        "class_name": "sqlite_database",
-        "table_name": "mytable",
-        "primary_keys": ["name"],
-        "save_path": "{DOWNLOADS_PATH}/dstc2_v3/resto.sqlite"
-      },
-      {
-        "class_name": "src.go_bot.ai4eu_go_bot:GoalOrientedBot",
+        "class_name": "src.go_bot.ai4eu_go_bot:AI4EUGoalOrientedBot",
         "load_path": "{MODEL_PATH}/model",
         "save_path": "{MODEL_PATH}/model",
         "in": ["x"],
@@ -59,7 +52,6 @@
           "projected_align": false
         },
         "word_vocab": "#token_vocab",
-        "database": "#restaurant_database",
         "nlg_manager": {
           "class_name": "gobot_nlg_manager",
           "template_path": "{DSTC2_DATA_PATH}/dstc2-templates.txt",
@@ -105,7 +97,7 @@
       "valid",
       "test"
     ],
-    "class_name": "torch_trainer"
+    "class_name": "nn_trainer"
   },
   "metadata": {
     "variables": {

@@ -58,7 +58,7 @@ log = getLogger(__name__)
 
 # todo logging
 @register("ai4eu_go_bot")
-class GoalOrientedBot(NNModel):
+class AI4EUGoalOrientedBot(NNModel):
     """
     The dialogue bot is based on  https://arxiv.org/abs/1702.03274, which
     introduces Hybrid Code Networks that combine an RNN with domain-specific
@@ -431,7 +431,7 @@ class GoalOrientedBot(NNModel):
         print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
         if policy_prediction.probs[policy_prediction.predicted_action_ix] < self.action_probability_threshold:
             policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
-            print(f"Predicted actions is = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
+            print(f"Predicted action is = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
             print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
 
         user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
@@ -472,7 +472,7 @@ class GoalOrientedBot(NNModel):
             responses.append(resp)
 
         # AI4EU: If we need to make a call to the AI4EU faq api
-        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
+        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
             # we 1) perform the qa api call and 2) predict what to do next
             # TODO - no need to predict in this case - Have to update - NEXT
             candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self.topk)
@@ -480,10 +480,13 @@ class GoalOrientedBot(NNModel):
             # Log response from QA
             print(f"True response = '{candidates}'.")
 
-            utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
-                                                                      keep_tracker_state=True)
-            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
-            user_tracker.network_state = policy_prediction.get_network_state()
+            # AI4EU Now get the response and go back. There is no need to make a new prediction
+            # We just report the response of the QA module
+            resp = ['ai4eu_qa_api_call', candidates[0][0]]
+
+            ###utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker, keep_tracker_state=True)
+            #user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
+            ###user_tracker.network_state = policy_prediction.get_network_state()
 
             # tracker says we need to say smth to user. we
             # * calculate the slotfilled state:
@@ -491,10 +494,10 @@ class GoalOrientedBot(NNModel):
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
-            resp = self.nlg_manager.decode_response(utterance_batch_features,
-                                                    policy_prediction,
-                                                    tracker_slotfilled_state)
+            ###tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
+            ###resp = self.nlg_manager.decode_response(utterance_batch_features,policy_prediction,tracker_slotfilled_state)
+
+            # Append the response
             responses.append(resp)
 
         return responses
