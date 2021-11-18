@@ -55,7 +55,7 @@ class FAQ:
     Probabilities of the LaBSE model are less
     """
 
-    def __init__(self, config='multi-qa'):
+    def __init__(self, config='all-mpnet'):
         # Holds the available models. Currently only two are available
         self.__configs = {
             'all-mpnet': 'config/qa-only/sentence-emb/all-mpnet-base-v2.json',
