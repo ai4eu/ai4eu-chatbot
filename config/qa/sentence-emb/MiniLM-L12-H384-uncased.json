@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu/faq",
+      "data_path": "{DATA_PATH}/ai4eu/qa",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"
@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
-        "load_path": "{MODEL_PATH}/distilbert-base-nli-stsb-mean-tokens",
+        "save_path": "{MODEL_PATH}/MiniLM-L12-H384-uncased",
+        "load_path": "{MODEL_PATH}/MiniLM-L12-H384-uncased",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -101,12 +101,12 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/distilbert-base-nli-stsb-mean-tokens",
+      "TRANSFORMER": "microsoft/MiniLM-L12-H384-uncased",
       "ROOT_PATH": "~/.deeppavlov",
       "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/qa/torch/sentence-transformers/"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",

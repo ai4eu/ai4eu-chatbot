@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu/faq",
+      "data_path": "data/ai4eu/qa-only",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"
@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/bert-base-nli-cls-token",
-        "load_path": "{MODEL_PATH}/bert-base-nli-cls-token",
+        "save_path": "{MODEL_PATH}/all-mpnet-base-v2",
+        "load_path": "{MODEL_PATH}/all-mpnet-base-v2",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -90,8 +90,8 @@
       }
     ],
     "validation_patience": 20,
-    "val_every_n_epochs": 1,
-    "show_examples": false,
+    "val_every_n_epochs": 10,
+    "show_examples": true,
     "evaluation_targets": [
       "train",
       "valid",
@@ -101,12 +101,12 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/bert-base-nli-cls-token",
+      "TRANSFORMER": "sentence-transformers/all-mpnet-base-v2",
       "ROOT_PATH": "~/.deeppavlov",
       "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/qa-only/torch/sentence-transformers/"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",

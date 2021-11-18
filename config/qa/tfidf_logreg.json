@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu/faq",
+      "data_path": "{DATA_PATH}/ai4eu/qa",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"
@@ -108,7 +108,7 @@
       "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/spacy-tfidf-logreg"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/qa/spacy-tfidf-logreg"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/spacy.txt",

@@ -58,13 +58,14 @@ class FAQ:
     def __init__(self, config='all-mpnet'):
         # Holds the available models. Currently only two are available
         self.__configs = {
-            'all-mpnet': 'config/faq/sentence-emb/all-mpnet-base-v2.json',
-            'MiniLM-12': 'config/faq/sentence-emb/MiniLM-L12-H384-uncased.json',
-            'MiniLM-6': 'config/faq/sentence-emb/MiniLM-L6-H384-uncased.json',
-            'distilbert': 'config/faq/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
-            'LaBSE': 'config/faq/sentence-emb/LaBSE.json',
-            'mpnet': 'config/faq/sentence-emb/paraphrase-mpnet-base-v2.json',
-            'mpnet-multi': 'config/faq/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
+            'all-mpnet': 'config/qa/sentence-emb/all-mpnet-base-v2.json',
+            'multi-qa': 'config/qa/sentence-emb/multi-qa-mpnet-base-dot-v1.json',
+            'MiniLM-12': 'config/qa/sentence-emb/MiniLM-L12-H384-uncased.json',
+            'MiniLM-6': 'config/qa/sentence-emb/MiniLM-L6-H384-uncased.json',
+            'distilbert': 'config/qa/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
+            'LaBSE': 'config/qa/sentence-emb/LaBSE.json',
+            'mpnet': 'config/qa/sentence-emb/paraphrase-mpnet-base-v2.json',
+            'mpnet-multi': 'config/qa/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
         }
 
         # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html

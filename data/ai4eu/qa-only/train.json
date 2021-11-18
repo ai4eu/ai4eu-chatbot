@@ -1,3 +1,9 @@
+{"Question":"Hello","Answer":"Hello! How can I assist you?"}
+{"Question":"Good morning","Answer":"Hello! How can I assist you?"}
+{"Question":"Good afternoon","Answer":"Hello! How can I assist you?"}
+{"Question":"Hi there","Answer":"Hello! How can I assist you?"}
+{"Question":"Hey","Answer":"Hello! How can I assist you?"}
+
 {"Question":"Who are you?","Answer":"Well, I am an under-development FAQ chat-bot for the AI4EU project! Lets say may name is AI4EU chatbot alpha 0.1!"}
 {"Question":"What is your name?","Answer":"Unfortunately, I have not be given a name yet!"}
 {"Question":"How are you?","Answer":"Currently I have no feelings! But lets say that I am fine!"}
@@ -19,7 +25,6 @@ also some open questions!"}
 
 {"Question":"What is your e-mail?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"How can I contact you?","Answer":"You can use the email contact@ai4eu.eu."}
-{"Question":"Who should I contact?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Who should I contact for research activities?","Answer":"You should contact the AI4EU Scientific Manager. Please use https://www.ai4eu.eu/user/alessandro-saffiotti"}
 {"Question":"Who should I contact for information regarding the Observatory?","Answer":"Please send an email to atia.cortes@bsc.es or teresa.scantamburlo@unive.it."}
 {"Question":"Do you have a facebook page?","Answer":"Yes, please visit https://www.facebook.com/ai4eu."}
@@ -28,6 +33,7 @@ also some open questions!"}
 {"Question":"Do you have a linkedin page?","Answer":"Yes, please visit https://www.linkedin.com/company/ai4eu/."}
 
 {"Question":"What are the AI4EU Web Cafe?","Answer":"The AI4EU Web Cafe provides the users with possibilities to participate virtually in live sessions with experts on specific AI domain or areas of interests. See https://www.ai4eu.eu/ai4eu-webcafes for upcoming cafes."}
+{"Question":"What are the Web Cafe?","Answer":"The AI4EU Web Cafe provides the users with possibilities to participate virtually in live sessions with experts on specific AI domain or areas of interests. See https://www.ai4eu.eu/ai4eu-webcafes for upcoming cafes."}
 {"Question":"Are recordings of the previous Web Cafés available?", "Answer": "You can find the recordings of the past AI4EU Cafes on gotostage (https://www.gotostage.com/channel/ai4eucafe) and on youtube (https://www.youtube.com/channel/UC0TvS1wLb1Qja9k-dle0cdQ)"}
 
 {"Question": "What is the AI4EU project", "Answer":  "In January 2019, the AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}

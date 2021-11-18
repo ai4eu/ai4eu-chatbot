@@ -4,7 +4,7 @@
       "format": "json",
       "orient": "records",
       "lines": true,
-      "data_path": "{DATA_PATH}/ai4eu/faq",
+      "data_path": "{DATA_PATH}/ai4eu/qa",
       "train": "train.json",
       "x": "Question",
       "y": "Answer"
@@ -47,8 +47,8 @@
         "one_hot_labels": true,
         "return_probas": true,
         "pretrained_bert": "{TRANSFORMER}",
-        "save_path": "{MODEL_PATH}/bert-base-nli-max-tokens",
-        "load_path": "{MODEL_PATH}/bert-base-nli-max-tokens",
+        "save_path": "{MODEL_PATH}/sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "load_path": "{MODEL_PATH}/sentence-transformers/paraphrase-xlm-r-multilingual-v1",
         "optimizer": "AdamW",
         "optimizer_parameters": {
           "lr": 2e-05
@@ -72,7 +72,8 @@
       }
     ],
     "out": [
-      "y_pred_labels"
+      "y_pred_labels",
+      "y_pred_probas"
     ]
   },
   "train": {
@@ -100,12 +101,12 @@
   },
   "metadata": {
     "variables": {
-      "TRANSFORMER": "sentence-transformers/bert-base-nli-max-tokens",
+      "TRANSFORMER": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
       "ROOT_PATH": "~/.deeppavlov",
       "DATA_PATH": "data",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
       "MODELS_PATH": "{ROOT_PATH}/models",
-      "MODEL_PATH": "{MODELS_PATH}/ai4eu/faq/torch/sentence-transformers/"
+      "MODEL_PATH": "{MODELS_PATH}/ai4eu/qa/torch/sentence-transformers/"
     },
     "requirements": [
       "{DEEPPAVLOV_PATH}/requirements/pytorch.txt",
