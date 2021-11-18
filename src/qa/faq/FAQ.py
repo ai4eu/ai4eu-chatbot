@@ -68,7 +68,7 @@ class FAQ:
             'mpnet-multi': 'config/qa-only/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
         }
 
-        # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html
+        # mpnet sota performance https://www.sbert.net/docs/pretrained_models.html
         if self.__configs[config] is None:
             config = 'all-mpnet'
 
