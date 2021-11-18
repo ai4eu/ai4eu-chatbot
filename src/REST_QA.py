@@ -17,14 +17,12 @@ from sanic import Sanic
 from sanic_session import Session, InMemorySessionInterface
 from sanic.response import json
 
-import uuid
-
 import qa.ChatBot_QA as bot
 
 app = Sanic("AI4EU QA chatbot service")
 
 # Manage sessions. Sessions will be alive for 10 minutes
-session = Session(app, interface=InMemorySessionInterface(expiry=600))
+session = Session(app, interface=InMemorySessionInterface(expiry=600, sessioncookie=True))
 qa_chatbot = None
 
 """
@@ -52,8 +50,9 @@ async def test(request):
         query = data['query']
 
         # interact with the session like a normal dict
+        # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
-            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+            request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
 
         if query is not None:
             model, results = qa_chatbot.ask(query)
@@ -63,7 +62,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -80,8 +79,9 @@ async def test(request):
         query = data['query']
 
         # interact with the session like a normal dict
+        # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
-            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+            request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
 
         if query is not None:
             model, results = qa_chatbot.ask_kbqa(query)
@@ -91,7 +91,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -108,8 +108,9 @@ async def test(request):
         query = data['query']
 
         # interact with the session like a normal dict
+        # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
-            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+            request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
 
         if query is not None:
             model, results = qa_chatbot.ask_faq(query)
@@ -119,7 +120,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
+                headers={'X-Served-By': 'AI4EU QA chatbot'},
                 status=200)
         else:
             return bad_input('No query field in request body json')
