@@ -43,8 +43,7 @@ python -m deeppavlov interact config/...
 Add also -d to the above when running for the first time, so that we can download any needed pretrained models
 
 # How to run
-cd src
-nohup python REST.py &
+nohup python src/RESTQA.py &
 
 # A simple request
 curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"

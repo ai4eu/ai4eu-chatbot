@@ -14,11 +14,17 @@
 # e-mail: papadako@ics.forth.gr
 
 from sanic import Sanic
+from sanic_session import Session, InMemorySessionInterface
 from sanic.response import json
 
-import FAQ_ChatBot
+import uuid
+
+import qa.ChatBot_QA as bot
 
 app = Sanic("AI4EU QA chatbot service")
+
+# Manage sessions. Sessions will be alive for 10 minutes
+session = Session(app, interface=InMemorySessionInterface(expiry=600))
 qa_chatbot = None
 
 """
@@ -45,6 +51,10 @@ async def test(request):
     if data is not None:
         query = data['query']
 
+        # interact with the session like a normal dict
+        if not request.ctx.session.get('ai4eu-session'):
+            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+
         if query is not None:
             model, results = qa_chatbot.ask(query)
             return json(
@@ -53,7 +63,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -69,6 +79,10 @@ async def test(request):
     if data is not None:
         query = data['query']
 
+        # interact with the session like a normal dict
+        if not request.ctx.session.get('ai4eu-session'):
+            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+
         if query is not None:
             model, results = qa_chatbot.ask_kbqa(query)
             return json(
@@ -77,7 +91,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -93,6 +107,10 @@ async def test(request):
     if data is not None:
         query = data['query']
 
+        # interact with the session like a normal dict
+        if not request.ctx.session.get('ai4eu-session'):
+            request.ctx.session['ai4eu-session'] = str(uuid.uuid1())
+
         if query is not None:
             model, results = qa_chatbot.ask_faq(query)
             return json(
@@ -101,7 +119,7 @@ async def test(request):
                     'model': model,
                     'service': 'AI4EU QA chatbot'
                 },
-                headers={'X-Served-By': 'AI4EU QA chatbot'},
+                headers={'X-Served-By': 'AI4EU QA chatbot', 'Cookie': 'ai4eu-session=' + request.ctx.session.get('ai4eu-session')},
                 status=200)
         else:
             return bad_input('No query field in request body json')
@@ -114,7 +132,7 @@ async def test(request):
 def init(sanic, loop):
     """Before starting the service initialize the QA chatbot module"""
     global qa_chatbot
-    qa_chatbot = ChatBot_QA.ChatBot_QA()
+    qa_chatbot = bot.ChatBot_QA()
 
 if __name__ == '__main__':
     app.run()
