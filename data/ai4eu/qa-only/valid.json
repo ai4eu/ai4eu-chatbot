@@ -8,9 +8,16 @@
 {"Question":"What is your name?","Answer":"Unfortunately, I have not be given a name yet!"}
 {"Question":"How are you?","Answer":"Currently I have no feelings! But lets say that I am fine!"}
 
-{"Question":"What can I do with you?","Answer":"You can ask me questions about the AI4EU project and AI in general!"}
+{"Question":"What can I do with you?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
+also some open questions!"}
+{"Question":"What can you do?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
+also some open questions!"}
 {"Question":"What do you know?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
-also some open questions though!"}
+also some open questions!"}
+{"Question":"How can you help me?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
+also some open questions!"}
+{"Question":"What are your capabilities?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer
+also some open questions!"}
 
 {"Question":"Who programmed you?", "Answer":"I was created by FORTH-ICS using the deeppavlov AI framework. (https://deeppavlov.ai/)"}
 {"Question":"Who developed you?","Answer":"I was created by FORTH-ICS using the deeppavlov AI framework. (https://deeppavlov.ai/)"}
@@ -26,6 +33,7 @@ also some open questions though!"}
 {"Question":"Do you have a linkedin page?","Answer":"Yes, please visit https://www.linkedin.com/company/ai4eu/."}
 
 {"Question":"What are the AI4EU Web Cafe?","Answer":"The AI4EU Web Cafe provides the users with possibilities to participate virtually in live sessions with experts on specific AI domain or areas of interests. See https://www.ai4eu.eu/ai4eu-webcafes for upcoming cafes."}
+{"Question":"What are the Web Cafe?","Answer":"The AI4EU Web Cafe provides the users with possibilities to participate virtually in live sessions with experts on specific AI domain or areas of interests. See https://www.ai4eu.eu/ai4eu-webcafes for upcoming cafes."}
 {"Question":"Are recordings of the previous Web Cafés available?", "Answer": "You can find the recordings of the past AI4EU Cafes on gotostage (https://www.gotostage.com/channel/ai4eucafe) and on youtube (https://www.youtube.com/channel/UC0TvS1wLb1Qja9k-dle0cdQ)"}
 
 {"Question": "What is the AI4EU project", "Answer":  "In January 2019, the AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}
@@ -36,6 +44,7 @@ also some open questions though!"}
 {"Question": "Who offers funding?", "Answer":  "The European Commission under the H2020 programme."}
 
 {"Question": "What are the activities of the project?", "Answer":  "The main activities of the project are: a) The creation and support of a large European ecosystem spanning the 28 countries to facilitate collaboration between all Europeans actors in AI (scientists, entrepreneurs, SMEs, Industries, funding organizations, citizens), b) The design of a European AI on-Demand Platform to support this ecosystem and share AI resources produced in European projects, including high-level services, expertise in AI research and innovation, AI components and datasets, high-powered computing resources and access to seed funding for innovative projects using the platform (see https://www.ai4eu.eu/ai4eu-platform), c) The implementation of industry-led pilots through the AI4EU platform, which demonstrates the capabilities of the platform to enable real applications and foster innovation (see https://www.ai4eu.eu/pilot-experiments for more), d) Research activities in five key interconnected AI scientific areas (Explainable AI, Physical AI ,Verifiable AI, Collaborative AI, Integrative AI), which arise from the application of AI in real-world scenarios (see https://www.ai4eu.eu/ai4eu-scientific-vision), e) The funding of SMEs and start-ups benefitting from AI resources available on the platform (cascade funding plan of €3m) to solve AI challenges and promote new solutions with AI, f) The creation of a European Ethical Observatory to ensure that European AI projects adhere to high ethical, legal, and socio-economical standards (see https://www.ai4eu.eu/ai4eu-observatory), g) The production of a comprehensive Strategic Research Innovation Agenda for Europe and h) The establishment of an AI4EU Foundation that will ensure a handover of the platform in a sustainable structure that supports the European AI community in the long run."}
+{"Question": "Are there any deliverables?", "Answer":  "You can access them at https://www.ai4eu.eu/ai4eu-project-deliverables"}
 {"Question": "Where can I find the project deliverables?", "Answer":  "You can access them at https://www.ai4eu.eu/ai4eu-project-deliverables"}
 {"Question": "How many partners are in the AI4EU project?", "Answer":  "AI4EU is a large consortium of 81 European academics, technology leaders, policymakers, companies, and businesses in AI, industries, and non-AI sectors"}
 {"Question": "How many partners collaborate in the project?", "Answer":  "AI4EU is a large consortium of 81 European academics, technology leaders, policymakers, companies, and businesses in AI, industries, and non-AI sectors"}
