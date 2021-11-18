@@ -31,6 +31,7 @@
 {"Question":"What is your e-mail?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"How can I contact you?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Any contact point?","Answer":"You can use the email contact@ai4eu.eu."}
+{"Question":"Who should I contact for more information?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Who should I contact for research activities?","Answer":"You should contact the AI4EU Scientific Manager. Please use https://www.ai4eu.eu/user/alessandro-saffiotti"}
 {"Question":"Who should I contact for information regarding the Observatory?","Answer":"Please send an email to atia.cortes@bsc.es or teresa.scantamburlo@unive.it."}
 {"Question":"Do you have a facebook page?","Answer":"Please visit https://www.facebook.com/ai4eu."}
@@ -42,8 +43,8 @@
 {"Question":"What are the Web Cafe?","Answer":"The AI4EU Web Cafe provides the users with possibilities to participate virtually in live sessions with experts on specific AI domain or areas of interests. See https://www.ai4eu.eu/ai4eu-webcafes for upcoming cafes."}
 {"Question":"Are recordings of the previous Web Cafés available?", "Answer": "You can find the recordings of the past AI4EU Cafes on gotostage (https://www.gotostage.com/channel/ai4eucafe) and on youtube (https://www.youtube.com/channel/UC0TvS1wLb1Qja9k-dle0cdQ)"}
 
-{"Question": "What is the AI4EU project", "Answer":  "In January 2019, the AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}
-{"Question": "What is the AI4EU", "Answer":  "In January 2019, the AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}
+{"Question": "What is the AI4EU project", "Answer": "The AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}
+{"Question": "What is the AI4EU", "Answer":  "The AI4EU consortium was established to build the first European Artificial Intelligence On-Demand Platform and Ecosystem with the support of the European Commission under the H2020 programme. "}
 {"Question": "When did the AI4EU project launch?", "Answer":  "In January 2019"}
 {"Question": "When did the project start?", "Answer":  "In January 2019"}
 {"Question": "Who funds the AI4EU project?", "Answer":  "The European Commission under the H2020 programme."}
@@ -511,7 +512,6 @@
 {"Question":"what is the singularity?", "Answer":"A hypothetical point in the future when technological growth becomes uncontrollable and irreversible, resulting in unfathomable changes to human civilization."}
 {"Question":"what is temporal difference learning?", "Answer":"A class of model-free reinforcement learning methods which learn by bootstrapping from the current estimate of the value function. These methods sample from the environment, like Monte Carlo methods, and perform updates based on current estimates, like dynamic programming methods."}
 {"Question":"what is the tensor network theory?", "Answer":"A theory of brain function (particularly that of the cerebellum) that provides a mathematical model of the transformation of sensory space-time coordinates into motor coordinates and vice versa by cerebellar neuronal networks. The theory was developed as a geometrization of brain function (especially of the central nervous system) using tensors."}
-{"Question":"what is TensorFlow?", "Answer":"A free and open-source software library for dataflow and differentiable programming across a range of tasks. It is a symbolic math library, and is also used for machine learning applications such as neural networks."}
 {"Question":"what is theoretical computer science?", "Answer":"A subset of general computer science and mathematics that focuses on more mathematical topics of computing and includes the theory of computation."}
 {"Question":"what is the theory of computation?", "Answer":"In theoretical computer science and mathematics, the theory of computation is the branch that deals with how efficiently problems can be solved on a model of computation, using an algorithm. The field is divided into three major branches: automata theory and languages, computability theory, and computational complexity theory, which are linked by the question: \"What are the fundamental capabilities and limitations of computers?\"."}
 {"Question":"what is Thompson sampling?", "Answer":"A heuristic for choosing actions that addresses the exploration-exploitation dilemma in the multi-armed bandit problem. It consists in choosing the action that maximizes the expected reward with respect to a randomly drawn belief."}
@@ -532,7 +532,10 @@
 
 
 
-{"Question":"what is PyTorch?", "Answer":"PyTorch is an open source machine learning library based on the Torch library, used for applications such as computer vision and natural language processing, primarily developed by Facebook's AI Research lab (FAIR)"}
+{"Question":"what is deep-pavlov?", "Answer":"Deep-pavlov is an open source conversational AI framework. See https://deeppavlov.ai"}
+{"Question":"what is PyTorch?", "Answer":"PyTorch is an open source machine learning library based on the Torch library, used for applications such as computer vision and natural language processing, primarily developed by Facebook's AI Research lab (FAIR). See https://pytorch.org/"}
+{"Question":"what is TensorFlow?", "Answer":"A free and open-source software library for dataflow and differentiable programming across a range of tasks. It is a symbolic math library, and is also used for machine learning applications such as neural networks. See https://www.tensorflow.org/"}
+{"Question":"which are the best AI accelerators?", "Answer":"For me the best are those by Cerebras, followed by those manufactured by Graphocore and Habana. Else if you are looking for something cheaper you can select the powerful GPUs from Nvidia, AMD and Intel"}
 {"Question":"what is BERT?", "Answer":"Bidirectional Encoder Representations from Transformers (BERT) is a transformer-based machine learning technique for natural language processing (NLP) pre-training developed by Google and offering state-of-the-art performance."}
 {"Question":"what is GPT-3?", "Answer":"Generative Pre-trained Transformer 3 (GPT-3) is an autoregressive language model that uses deep learning to produce human-like text. It is the third-generation language prediction model in the GPT-n series (and the successor to GPT-2) created by OpenAI."}
 {"Question":"what is a transformer?", "Answer":"A transformer is a deep learning model that adopts the mechanism of attention, weighing the influence of different parts of the input data. It is used primarily in the field of natural language processing (NLP)."}
