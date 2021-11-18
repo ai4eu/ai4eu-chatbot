@@ -12,6 +12,14 @@ pip install deeppavlov
 # https://download.pytorch.org/whl/rocm4.0.1/torch-1.9.0%2Brocm4.0.1-cp37-cp37m-linux_x86_64.whl
 pip install torch-1.9.0+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
 
+# Also for RTX 30x cards please use the following for tensorflow (needs though a python 3.8 environment)
+# This is not yet tested. I have not managed to run tensorflow in albireo
+pip install --upgrade pip
+pip install nvidia-pyindex
+pip install nvidia-tensorflow[horovod]
+pip install nvidia-tensorboard==1.15
+
+
 # REST service  - sanic
 pip3 install sanic
 
