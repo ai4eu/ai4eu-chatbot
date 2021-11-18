@@ -55,17 +55,17 @@ class FAQ:
     Probabilities of the LaBSE model are less
     """
 
-    def __init__(self, config='all-mpnet'):
+    def __init__(self, config='multi-qa'):
         # Holds the available models. Currently only two are available
         self.__configs = {
-            'all-mpnet': 'config/qa/sentence-emb/all-mpnet-base-v2.json',
-            'multi-qa': 'config/qa/sentence-emb/multi-qa-mpnet-base-dot-v1.json',
-            'MiniLM-12': 'config/qa/sentence-emb/MiniLM-L12-H384-uncased.json',
-            'MiniLM-6': 'config/qa/sentence-emb/MiniLM-L6-H384-uncased.json',
-            'distilbert': 'config/qa/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
-            'LaBSE': 'config/qa/sentence-emb/LaBSE.json',
-            'mpnet': 'config/qa/sentence-emb/paraphrase-mpnet-base-v2.json',
-            'mpnet-multi': 'config/qa/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
+            'all-mpnet': 'config/qa-only/sentence-emb/all-mpnet-base-v2.json',
+            'multi-qa': 'config/qa-only/sentence-emb/multi-qa-mpnet-base-dot-v1.json',
+            'MiniLM-12': 'config/qa-only/sentence-emb/MiniLM-L12-H384-uncased.json',
+            'MiniLM-6': 'config/qa-only/sentence-emb/MiniLM-L6-H384-uncased.json',
+            'distilbert': 'config/qa-only/sentence-emb/distilbert-base-nli-stsb-mean-tokens.json',
+            'LaBSE': 'config/qa-only/sentence-emb/LaBSE.json',
+            'mpnet': 'config/qa-only/sentence-emb/paraphrase-mpnet-base-v2.json',
+            'mpnet-multi': 'config/qa-only/sentence-emb/paraphrase-multilingual-mpnet-base-v2.json'
         }
 
         # mpnet sota perfromance https://www.sbert.net/docs/pretrained_models.html
