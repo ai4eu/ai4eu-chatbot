@@ -90,6 +90,12 @@
 {"Sentence":"you are so dumb to talk to","Intent":"stupid"}
 {"Sentence":"why are you this stupid","Intent":"stupid"}
 
+{"Sentence":"well, this is wrong","Intent":"wrong_answer"}
+{"Sentence":"wrong answer","Intent":"wrong_answer"}
+
+{"Sentence":"you are funny","Intent":"funny"}
+{"Sentence":"you are joking","Intent":"funny"}
+
 {"Sentence":"can you please tell me more","Intent":"tell_me_more"}
 {"Sentence":"tell me more about this","Intent":"tell_me_more"}
 {"Sentence":"that is cool, tell me more about this?","Intent":"tell_me_more"}
