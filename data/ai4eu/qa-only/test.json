@@ -9,6 +9,9 @@
 {"Question":"You don't know what you are talking about","Answer":"I am sorry for this!"}
 {"Question":"You are stupid","Answer":"I am doing my best"}
 {"Question":"You are an idiot","Answer":"I am doing my best"}
+{"Question":"That is funny","Answer":"I am happy that I make you happy"}
+
+{"Question":"What is the meaning of life?","Answer":"You know that I am supposed to say 42"}
 
 {"Question":"Who are you?","Answer":"Well, I am an under-development FAQ chat-bot for the AI4EU project! Lets say may name is AI4EU chatbot alpha 0.1!"}
 {"Question":"What is your name?","Answer":"Unfortunately, I have not be given a name yet!"}
