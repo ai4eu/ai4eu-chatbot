@@ -90,6 +90,12 @@
 {"Sentence":"you are so dumb to talk to","Intent":"stupid"}
 {"Sentence":"why are you this stupid","Intent":"stupid"}
 
+{"Question":"fuck you", "Answer":"bad_language"}
+{"Question":"fuck u", "Answer":"bad_language"}
+{"Question":"f*** u", "Answer":"bad_language"}
+{"Question":"asshole", "Answer":"bad_language"}
+
+
 {"Sentence":"well, this is wrong","Intent":"wrong_answer"}
 {"Sentence":"wrong answer","Intent":"wrong_answer"}
 
