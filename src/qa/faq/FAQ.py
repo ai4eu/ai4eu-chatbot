@@ -34,7 +34,7 @@
 # https://huggingface.co/microsoft/MiniLM-L12-H384-uncased
 
 # distilbert-base-nli-stsb-mean-tokens (problem with dp 0.16.0)
-# See https://huggingface.co/sentence-transformers/distilbert-base-nli-stsb-mean-tokens
+# See https://huggingface.co/sentence-transformers/distilbert-base-nli-stsb-mean-token table provides an overview of (selected) models. They have been extensively evaluated for their quality to embedded sentences (Performance Sentence Embeddings) and to embedded search queries & paragraphs (Performance Semantic Search).s
 
 # The language agnostic LaBSE that can potentially support a multi-language FAQ chat-bot
 # See https://huggingface.co/sentence-transformers/LaBSE

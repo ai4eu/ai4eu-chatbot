@@ -95,6 +95,7 @@
 {"Question":"f*** u", "Answer":"bad_language"}
 {"Question":"asshole", "Answer":"bad_language"}
 
+{"Question":"I think you are a great bot!", "Answer":"compliment"}
 
 {"Sentence":"well, this is wrong","Intent":"wrong_answer"}
 {"Sentence":"wrong answer","Intent":"wrong_answer"}
