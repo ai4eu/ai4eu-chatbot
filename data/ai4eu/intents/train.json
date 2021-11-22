@@ -182,7 +182,7 @@
 
 {"Sentence":"what is your age?","Intent":"ask_age"}
 
-{"Sentence":"how can I help you?","Intent":"how_to_help"}
+{"Sentence":"how can I help you?","Intent":"how_to_help"
 
 {"Sentence":"where can I report any problems or issues?","Intent":"report_problems"}
 
