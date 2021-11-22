@@ -59,7 +59,7 @@ class ChatBot_QA:
         # Currently KBQA just returns the top-ranked result
         # If empty then return rephrase
         if ans == 'Not Found':
-            results = ['I did not understand! Can you please rephrase?'], 1.0
+            results = ['I did not understand! Can you please rephrase?', '1.0']
             return 'Default', results
         else:
             return model, results
