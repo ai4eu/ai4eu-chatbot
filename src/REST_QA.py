@@ -17,6 +17,8 @@ from sanic import Sanic
 from sanic_session import Session, InMemorySessionInterface
 from sanic.response import json
 
+from bs4 import BeautifulSoup
+
 import qa.ChatBot_QA as bot
 
 app = Sanic("AI4EU QA chatbot service")
@@ -51,6 +53,8 @@ async def test(request):
     data = request.json
     if data is not None:
         query = data['query']
+        # Remove HTML escaped characters
+        query = str(BeautifulSoup(query, "html.parser"))
 
         f.write('==>' + query + '\n')
         # interact with the session like a normal dictυσικά)
@@ -87,6 +91,8 @@ async def test(request):
     data = request.json
     if data is not None:
         query = data['query']
+        # Remove HTML escaped characters
+        query = str(BeautifulSoup(query, "html.parser"))
 
         # interact with the session like a normal dict
         # In the future we will hold here the dialogue state of the user
@@ -116,6 +122,8 @@ async def test(request):
     data = request.json
     if data is not None:
         query = data['query']
+        # Remove HTML escaped characters
+        query = str(BeautifulSoup(query, "html.parser"))
 
         # interact with the session like a normal dict
         # In the future we will hold here the dialogue state of the user
@@ -148,4 +156,5 @@ def init(sanic, loop):
 if __name__ == '__main__':
     # This is a file where we log all queries and the answers
     f = open("queries.txt", "a")
+    # Initialized HTML parser
     app.run()
