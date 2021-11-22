@@ -57,11 +57,14 @@ async def test(request):
         query = str(BeautifulSoup(query, "html.parser"))
 
         f.write('==>' + query + '\n')
-        # interact with the session like a normal dictυσικά)
-        #
+        # interact with the session like a normal dict
         # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
             request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
+            print('==> Creating new session!')
+        else:
+            session_id = test_cookie = request.cookies.get('session')
+            print('==> Using existing session with id:' + session_id)
 
         if query is not None:
             model, results = qa_chatbot.ask(query)
@@ -98,6 +101,10 @@ async def test(request):
         # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
             request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
+            print('==> Creating new session!')
+        else:
+            session_id = test_cookie = request.cookies.get('session')
+            print('==> Using existing session with id:' + session_id)
 
         if query is not None:
             model, results = qa_chatbot.ask_kbqa(query)
@@ -129,6 +136,10 @@ async def test(request):
         # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
             request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
+            print('==> Creating new session!')
+        else:
+            session_id = test_cookie = request.cookies.get('session')
+            print('==> Using existing session with id:' + session_id)
 
         if query is not None:
             model, results = qa_chatbot.ask_faq(query)
