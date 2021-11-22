@@ -23,7 +23,10 @@ app = Sanic("AI4EU QA chatbot service")
 
 # Manage sessions. Sessions will be alive for 10 minutes
 session = Session(app, interface=InMemorySessionInterface(expiry=600, sessioncookie=True))
+# Holds the qa chatbot
 qa_chatbot = None
+# This is the file where we log all question-answer pairs
+f = None
 
 """
 """
@@ -49,13 +52,20 @@ async def test(request):
     if data is not None:
         query = data['query']
 
-        # interact with the session like a normal dict
+        f.write('==>' + query + '\n')
+        # interact with the session like a normal dictυσικά)
+        #
         # In the future we will hold here the dialogue state of the user
         if not request.ctx.session.get('ai4eu-session'):
             request.ctx.session['ai4eu-session'] = 'user-dialogue-state-UPDATE'
 
         if query is not None:
             model, results = qa_chatbot.ask(query)
+            # Log the top result
+            ans, score = results[0]
+            f.write('\t' + str(ans) + '\n')
+            f.flush()
+
             return json(
                 {
                     'results': results,
@@ -136,4 +146,6 @@ def init(sanic, loop):
     qa_chatbot = bot.ChatBot_QA()
 
 if __name__ == '__main__':
+    # This is a file where we log all queries and the answers
+    f = open("queries.txt", "a")
     app.run()
