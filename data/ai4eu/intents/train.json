@@ -3,6 +3,8 @@
 {"Sentence":"Good afternoon","Intent":"intro"}
 {"Sentence":"Hi there","Intent":"intro"}
 {"Sentence":"Hey","Intent":"intro"}
+{"Sentence":"Jo","Intent":"intro"}
+{"Sentence":"Hola","Intent":"intro"}
 
 {"Sentence":"i'll talk to you later","Intent":"outro"}
 {"Sentence":"can you turn off","Intent":"outro"}
@@ -25,6 +27,7 @@
 {"Sentence":"take care","Intent":"outro"}
 {"Sentence":"peace out","Intent":"outro"}
 {"Sentence":"catch you later","Intent":"outro"}
+{"Sentence":"see you later","Intent":"outro"}
 {"Sentence":"farewell","Intent":"outro"}
 {"Sentence":"have a good day","Intent":"outro"}
 
@@ -95,8 +98,6 @@
 {"Question":"f*** u", "Answer":"bad_language"}
 {"Question":"asshole", "Answer":"bad_language"}
 
-{"Question":"I think you are a great bot!", "Answer":"compliment"}
-
 {"Sentence":"well, this is wrong","Intent":"wrong_answer"}
 {"Sentence":"wrong answer","Intent":"wrong_answer"}
 
@@ -145,7 +146,7 @@
 {"Sentence":"where are you right now?","Intent":"where_are_you_from"}
 
 {"Sentence":"what can you do?","Intent":"what_can_you_do"}
-{"Sentence":"what skill do you have?","Intent":"what_can_you_do"}
+{"Sentence":"what skills do you have?","Intent":"what_can_you_do"}
 {"Sentence":"what are your abilities?","Intent":"what_can_you_do"}
 {"Sentence":"what are your features?","Intent":"what_can_you_do"}
 {"Sentence":"what are your skills?","Intent":"what_can_you_do"}
@@ -174,6 +175,17 @@
 {"Sentence":"who is your holder?","Intent":"who_made_you"}
 {"Sentence":"who is your host?","Intent":"who_made_you"}
 
+{"Sentence":"are you smart?","Intent":"ask_smart"}
+{"Sentence":"are you a bot?","Intent":"ask_bot"}
+
+{"Sentence":"are you human?","Intent":"ask_human"}
+
+{"Sentence":"what is your age?","Intent":"ask_age"}
+
+{"Sentence":"how can I help you?","Intent":"how_to_help"
+
+{"Sentence":"where can I report any problems or issues?","Intent":"report_problems"}
+
 {"Sentence":"doing fine","Intent":"doing_well"}
 {"Sentence":"doing great","Intent":"doing_well"}
 {"Sentence":"doing cool","Intent":"doing_well"}
@@ -183,6 +195,8 @@
 {"Sentence":"I am well, thank you","Intent":"doing_well"}
 {"Sentence":"doing okay, thank you","Intent":"doing_well"}
 {"Sentence":"very well","Intent":"doing_well"}
+
+{"Question":"I think you are a great bot!", "Answer":"compliment"}
 
 {"Sentence":"tell me the time","Intent":"what_time"}
 {"Sentence":"what time is it","Intent":"what_time"}
@@ -226,18 +240,17 @@
 {"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
 {"Sentence":"What resources are available?","Intent":"ask_resource_request"}
 {"Sentence":"I am looking for resources","Intent":"ask_resource_request"}
+{"Sentence":"I need resources","Intent":"ask_resource_request"}
 {"Sentence":"I would like to find resources","Intent":"ask_resource_request"}
 {"Sentence":"What resources are available?","Intent":"ask_resource_request"}
 {"Sentence":"What resources do you know?","Intent":"ask_resource_request"}
 
-{"Sentence":"An FAQ","Intent":"faq_request"}
-{"Sentence":"I would like to ask an FAQ","Intent":"faq_request"}
-{"Sentence":"I would like to ask you something","Intent":"faq_request"}
-{"Sentence":"Can you please tell me something?","Intent":"faq_request"}
-{"Sentence":"Can I ask you something?","Intent":"faq_request"}
-{"Sentence":"A frequently asked question","Intent":"faq_request"}
-{"Sentence":"An FAQ","Intent":"faq_request"}
-
+{"Sentence":"A Question","Intent":"qa_request"}
+{"Sentence":"I would like to ask an FAQ","Intent":"qa_request"}
+{"Sentence":"I would like to ask you something","Intent":"qa_request"}
+{"Sentence":"Can you please tell me something?","Intent":"qa_request"}
+{"Sentence":"Can I ask you something?","Intent":"qa_request"}
+{"Sentence":"A frequently asked question","Intent":"qa_request"}
 
 {"Sentence":"I would like to explore the AI4EU resources","Intent":"ai4eu_resource_request"}
 {"Sentence": "AI4EU resources","Intent":"ai4eu_resource_request"}
@@ -290,7 +303,6 @@
 {"Sentence":"any alternatives?","Intent":"alternatives"}
 {"Sentence":"can you please provide me another one?","Intent":"alternatives"}
 
-
 {"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
 
 {"Sentence":"can you provide the title of this resource?","Intent":"resource_title"}
@@ -300,3 +312,9 @@
 {"Sentence":"what is the score of this resource?","Intent":"resource_score"}
 
 {"Sentence":"can you describe this resource using keywords?","Intent":"resource_keywords"}
+
+{"Sentence":"What are the available slots?","Intent":"describe_slots"}
+{"Sentence":"What are the available asset types?","Intent":"describe_assetTypes"}
+{"Sentence":"What are the available technical categories?","Intent":"describe_technicalCategories"}
+{"Sentence":"What are the available business categories?","Intent":"describe_businessCategories"}
+
