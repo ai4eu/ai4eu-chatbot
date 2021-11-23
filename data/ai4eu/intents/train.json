@@ -99,7 +99,12 @@
 {"Sentence":"asshole", "Intent":"bad_language"}
 
 {"Sentence":"well, this is wrong","Intent":"wrong_answer"}
-{"Sentence":"wrong answer","Intent":"wrong_answer"}
+{"Sentence":"Wrong answer","Intent":"wrong_answer"}
+{"Sentence":"You are saying random things","Intent":"wrong_answer"}
+{"Sentence":"You don't know what you are talking about","Intent":"wrong_answer"}
+{"Sentence":"You are stupid","Intent":"wrong_answer"}
+{"Sentence":"You are an idiot","Intent":"wrong_answer"}
+{"Sentence":"That is funny","Intent":"wrong_answer"}
 
 {"Sentence":"you are funny","Intent":"funny"}
 {"Sentence":"you are joking","Intent":"funny"}
@@ -154,7 +159,13 @@
 {"Sentence":"how can I name you","Intent":"say_name"}
 {"Sentence":"how can I call you","Intent":"say_name"}
 {"Sentence":"do you have a name","Intent":"say_name"}
-{"Sentence":"who are you","Intent":"say_name"}
+
+{"Sentence":"who are you","Intent":"who_are_you"}
+
+{"Sentence":"How are you?","Intent":"how_are_you"}
+{"Sentence":"How do you feel?","Intent":"how_are_you"}
+{"Sentence":"Are you fine?","Intent":"how_are_you"}
+{"Sentence":"Are you ok?","Intent":"how_are_you"}
 
 {"Sentence":"who should I contact for the bot?","Intent":"contact_details"}
 {"Sentence":"can you provide me contact details?","Intent":"contact_details"}
@@ -174,13 +185,12 @@
 {"Sentence":"what are your features?","Intent":"what_can_you_do"}
 {"Sentence":"what are your skills?","Intent":"what_can_you_do"}
 {"Sentence":"tell me what you are able to do?","Intent":"what_can_you_do"}
-
-{"Sentence":"what is your profession?","Intent":"what_is_your_job"}
-{"Sentence":"what is your job?","Intent":"what_is_your_job"}
-{"Sentence":"what is your work?","Intent":"what_is_your_job"}
-{"Sentence":"what is your occupation?","Intent":"what_is_your_job"}
-{"Sentence":"tell me more about your job?","Intent":"what_is_your_job"}
-{"Sentence":"what do you do?","Intent":"what_is_your_job"}
+{"Sentence":"what is your profession?","Intent":"what_can_you_do"}
+{"Sentence":"what is your job?","Intent":"what_can_you_do"}
+{"Sentence":"what is your work?","Intent":"what_can_you_do"}
+{"Sentence":"what is your occupation?","Intent":"what_can_you_do"}
+{"Sentence":"tell me more about your job?","Intent":"what_can_you_do"}
+{"Sentence":"what do you do?","Intent":"what_can_you_do"}
 
 {"Sentence":"who made you?","Intent":"who_made_you"}
 {"Sentence":"who is your master?","Intent":"who_made_you"}
@@ -197,6 +207,10 @@
 {"Sentence":"who is your master?","Intent":"who_made_you"}
 {"Sentence":"who is your holder?","Intent":"who_made_you"}
 {"Sentence":"who is your host?","Intent":"who_made_you"}
+
+{"Sentence":"what do you think about yourself?","Intent":"self_opinion"}
+
+{"Sentence":"how can you improve?","Intent":"self_improvement"}
 
 {"Sentence":"are you smart?","Intent":"ask_smart"}
 
