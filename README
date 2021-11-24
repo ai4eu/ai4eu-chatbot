@@ -30,6 +30,9 @@ pip install transformers sentence-transformers
 
 # deeppavlov supports numpy=0.18.0
 
+# Other libraries
+
+
 # To train/evaluate/interact our model
 
 Install kbqa_cq related packages

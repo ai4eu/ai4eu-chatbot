@@ -10,6 +10,8 @@ from ..dto.dataset_features import BatchDialoguesFeatures
 from .nlg_manager_interface import NLGManagerInterface
 from ..policy.dto.policy_prediction import PolicyPrediction
 
+from datetime import datetime
+
 log = getLogger(__name__)
 
 
@@ -36,6 +38,9 @@ class NLGManager(NLGManagerInterface):
             it will be used to get ``'db_result'`` from ``database``. (TODO update)
         debug: whether to display debug output.
     """
+    # static members used for human readable dates
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     def __init__(self, template_path: Union[str, Path], template_type: str,
                  ai4eu_search_api_call_action: str, ai4eu_qa_api_call_action: str, debug=False):
@@ -116,7 +121,20 @@ class NLGManager(NLGManagerInterface):
         Returns:
             the text generated for the passed action id and slot values.
         """
-        text = self.templates.templates[action_id].generate_text(slots)
+
+        # We have some templates that we create on the fly (e.g., date and time)
+        action = self.get_action(action_id)
+
+        # Check the action and create responses appropriately
+        if action == 'tell_time':
+            now = datetime.utcnow()
+            text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
+        elif action == 'tell_date':
+            now = datetime.now()
+            text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[now.month - 1] + now.strftime(' %Y')
+        else:
+            text = self.templates.templates[action_id].generate_text(slots)
+
         return text
 
     def num_of_known_actions(self) -> int:
