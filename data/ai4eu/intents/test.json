@@ -209,6 +209,7 @@
 {"Sentence":"who is your host?","Intent":"who_made_you"}
 
 {"Sentence":"what do you think about yourself?","Intent":"self_opinion"}
+{"Sentence":"what is your purpose?","Intent":"self_opinion"}
 
 {"Sentence":"how can you improve?","Intent":"self_improvement"}
 
@@ -225,6 +226,10 @@
 {"Sentence":"tell me the time","Intent":"what_time"}
 {"Sentence":"what time is it","Intent":"what_time"}
 {"Sentence":"can you say the time","Intent":"what_time"}
+
+{"Sentence":"tell me the date","Intent":"what_date"}
+{"Sentence":"what date is it","Intent":"what_date"}
+{"Sentence":"can you say the date","Intent":"what_date"}
 
 {"Sentence":"what is the current dialog id","Intent":"debug"}
 {"Sentence":"get the dialog id","Intent":"debug"}
