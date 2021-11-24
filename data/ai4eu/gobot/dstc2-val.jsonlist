@@ -1,1 +1,6 @@
-{"speaker": 2, "text": "Hello, welcome to the Cambridge restaurant system. You can ask for restaurants by area, price range or food type. How may I help you?", "dialog_acts": [{"act": "welcomemsg", "slots": []}]}
+{"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
+{"speaker": 1, "text": "Well, what can you do?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!", "dialog_acts": [{"act": "skills", "slots": []}]}
+{"speaker": 1, "text": "Ok, bye!", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Thank you for the chat! Bye bye!", "dialog_acts": [{"act": "outro", "slots": []}]}
