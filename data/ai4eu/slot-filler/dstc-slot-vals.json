@@ -1,5 +1,5 @@
 {
-	"researchArea" : {
+    "researchArea": {
         "collaborativeAI": [
             "collaborativeAI",
             "collaborative AI"
@@ -19,8 +19,8 @@
         "verifiableAI": [
             "verifiable AI",
             "verifiableAI"
-        ],        
-	},
+        ]
+    },
     "assetType": {
         "as_a_service": [
             "as a service",
