@@ -1,56 +1,12 @@
-{"Question":"Hello","Answer":"Hello! How can I assist you?"}
-{"Question":"Good morning","Answer":"Hello! How can I assist you?"}
-{"Question":"Good afternoon","Answer":"Hello! How can I assist you?"}
-{"Question":"Hi there","Answer":"Hello! How can I assist you?"}
-{"Question":"Hey","Answer":"Hello! How can I assist you?"}
-{"Question":"Jo!","Answer":"Hello! How can I assist you?"}
-
-{"Question":"Wrong answer","Answer":"I am sorry for this!"}
-{"Question":"You are saying random things","Answer":"I am sorry for this!"}
-{"Question":"You don't know what you are talking about","Answer":"I am sorry for this!"}
-{"Question":"You are stupid","Answer":"I am doing my best"}
-{"Question":"You are an idiot","Answer":"I am doing my best"}
-{"Question":"That is funny","Answer":"I am happy that I make you happy"}
-
-{"Question":"What is the meaning of life?","Answer":"You know that I am supposed to say 42"}
-
-{"Question":"Who are you?","Answer":"Well, I am an under-development FAQ chat-bot for the AI4EU project! Lets say may name is AI4EU chatbot alpha 0.1!"}
-{"Question":"What is your name?","Answer":"Unfortunately, I have not be given a name yet!"}
-{"Question":"How are you called??","Answer":"Unfortunately, I have not be given a name yet!"}
-{"Question":"How are you?","Answer":"Currently I have no feelings! But lets say that I am fine!"}
-
-{"Question":"Are you smart?","Answer":"No, I am not smart"}
-{"Question":"Are you a human?","Answer":"No, I am not a human"}
-{"Question":"Are you a bot?","Answer":"Yes"}
-{"Question":"Are you a chatbot?","Answer":"Yes"}
-
-{"Question":"Where do you live?","Answer":"In the memory of a server called pangaia"}
-
-{"Question":"What is your age?","Answer":"I am not alive, so I have no age"}
-
-{"Question":"How can I help you?","Answer":"By asking questions you will help me evolve"}
-
-
-{"Question":"Where can I report issues and problems?","Answer":"Please send any issues to papadako@ics.forth.gr"}
-
-{"Question":"What can I do with you?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer also some open questions!"}
-{"Question":"What can you do?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer also some open questions!"}
-{"Question":"What do you know?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer also some open questions!"}
-{"Question":"How can you help me?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer also some open questions!"}
-{"Question":"What are your capabilities?","Answer":"You can ask me questions about the AI4EU project and AI in general! I might be able to answer also some open questions!"}
-
-{"Question":"Who programmed you?", "Answer":"I was created by FORTH-ICS using the deeppavlov AI framework. (https://deeppavlov.ai/)"}
-{"Question":"Who developed you?","Answer":"I was created by FORTH-ICS using the deeppavlov AI framework. (https://deeppavlov.ai/)"}
-{"Question":"Who is your creator?", "Answer":"I was created by FORTH-ICS using the deeppavlov AI framework. (https://deeppavlov.ai/)"}
-
 {"Question":"What is your e-mail?","Answer":"You can use the email contact@ai4eu.eu."}
+{"Question":"How can I contact the project?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"How can I contact you?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Any contact point?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Who should I contact for more information?","Answer":"You can use the email contact@ai4eu.eu."}
 {"Question":"Who should I contact for research activities?","Answer":"You should contact the AI4EU Scientific Manager. Please use https://www.ai4eu.eu/user/alessandro-saffiotti"}
 {"Question":"Who should I contact for information regarding the Observatory?","Answer":"Please send an email to atia.cortes@bsc.es or teresa.scantamburlo@unive.it."}
 {"Question":"Do you have a facebook page?","Answer":"Please visit https://www.facebook.com/ai4eu."}
-{"Question":"Do you have a youtube channel?","Answer":"Pplease visit https://www.youtube.com/channel/UC0TvS1wLb1Qja9k-dle0cdQ."}
+{"Question":"Do you have a youtube channel?","Answer":"Please visit https://www.youtube.com/channel/UC0TvS1wLb1Qja9k-dle0cdQ."}
 {"Question":"Do you have a twitter account?","Answer":"Please visit https://twitter.com/ai4eu."}
 {"Question":"Do you have a linkedin page?","Answer":"Please visit https://www.linkedin.com/company/ai4eu/."}
 
@@ -568,27 +524,18 @@
 {"Question":"who coined the term AI?", "Answer":"John McCarthy"}
 {"Question":"what is a neuron?", "Answer":"Neurons are information messengers. They use electrical impulses and chemical signals to transmit information between different areas of the brain, and between the brain and the rest of the nervous system"}
 
-
-
 {"Question":"what is a car?", "Answer":"INVALID"}
 {"Question":"what is an aeroplane?", "Answer":"INVALID"}
 {"Question":"what is an drone?", "Answer":"INVALID"}
 {"Question":"what is a mobile phone?", "Answer":"INVALID"}
 {"Question":"what is a mobile device?", "Answer":"INVALID"}
 
-{"Question":"Can I ask questions about AI4EU?", "Answer":"Yes, of course you can"}
-{"Question":"Can I ask questions about AI4EU resources?", "Answer":"Yes, of course you can"}
-{"Question":"Can I ask questions about artificial intelligence?", "Answer":"Yes, of course you can"}
-{"Question":"Can I ask questions about the AI4EU project?", "Answer":"Yes, of course you can"}
 
 
 
-{"Question":"fuck you", "Answer":"Be nice please!"}
-{"Question":"fuck u", "Answer":"Be nice please!"}
-{"Question":"f*** u", "Answer":"Be nice please!"}
-{"Question":"asshole", "Answer":"Be nice please!"}
 
-{"Question":"I think you are a great bot!", "Answer":"Thank you! You are very kind!"}
 
-{"Question":"Thank you", "Answer":"Bye!"}
-{"Question":"Bye", "Answer":"Bye!"}
+
+{"Question":"who is Panagiotis Papadakos?", "Answer":"He is a post-doctoral researcher in the Information Systems Laboratory of FORTH-ICS. He is the one that developed me. You can learn more about him at http://users.ics.forth.gr/~papadako/"}
+{"Question":"who is Alessandro Saffiotti?", "Answer":"He is the Scientific Manager of the AI4EU project. Please visit https://www.ai4eu.eu/user/alessandro-saffiotti for more"}
+
