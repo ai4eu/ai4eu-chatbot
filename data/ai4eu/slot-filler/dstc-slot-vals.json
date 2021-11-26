@@ -1,4 +1,26 @@
 {
+	"researchArea" : {
+        "collaborativeAI": [
+            "collaborativeAI",
+            "collaborative AI"
+        ],
+        "explainableAI": [
+            "explainableAI",
+            "explainable AI"
+        ],
+        "integrativeAI": [
+            "integrativeAI",
+            "integrative AI"
+        ],
+        "physicalAI": [
+            "physicalAI",
+            "physical AI"
+        ], 
+        "verifiableAI": [
+            "verifiable AI",
+            "verifiableAI"
+        ],        
+	},
     "assetType": {
         "as_a_service": [
             "as a service",
