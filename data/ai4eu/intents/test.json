@@ -95,6 +95,7 @@
 
 {"Sentence":"fuck you", "Intent":"bad_language"}
 {"Sentence":"fuck u", "Intent":"bad_language"}
+{"Sentence":"fck u", "Intent":"bad_language"}
 {"Sentence":"f*** u", "Intent":"bad_language"}
 {"Sentence":"asshole", "Intent":"bad_language"}
 
@@ -126,6 +127,13 @@
 {"Sentence":"very well","Intent":"doing_well"}
 
 {"Sentence":"I think you are a great bot!", "Intent":"compliment"}
+{"Sentence":"You are doing fine!", "Intent":"compliment"}
+{"Sentence":"You are doing great!", "Intent":"compliment"}
+{"Sentence":"You are excellent!", "Intent":"compliment"}
+
+{"Sentence":"Ok, I will do this!", "Intent":"support"}
+{"Sentence":"I will try!", "Intent":"support"}
+{"Sentence":"I will do my best!", "Intent":"support"}
 
 
 
@@ -179,19 +187,6 @@
 {"Sentence":"where do you exist?","Intent":"where_are_you_from"}
 {"Sentence":"where are you right now?","Intent":"where_are_you_from"}
 
-{"Sentence":"what can you do?","Intent":"what_can_you_do"}
-{"Sentence":"what skills do you have?","Intent":"what_can_you_do"}
-{"Sentence":"what are your abilities?","Intent":"what_can_you_do"}
-{"Sentence":"what are your features?","Intent":"what_can_you_do"}
-{"Sentence":"what are your skills?","Intent":"what_can_you_do"}
-{"Sentence":"tell me what you are able to do?","Intent":"what_can_you_do"}
-{"Sentence":"what is your profession?","Intent":"what_can_you_do"}
-{"Sentence":"what is your job?","Intent":"what_can_you_do"}
-{"Sentence":"what is your work?","Intent":"what_can_you_do"}
-{"Sentence":"what is your occupation?","Intent":"what_can_you_do"}
-{"Sentence":"tell me more about your job?","Intent":"what_can_you_do"}
-{"Sentence":"what do you do?","Intent":"what_can_you_do"}
-
 {"Sentence":"who made you?","Intent":"who_made_you"}
 {"Sentence":"who is your master?","Intent":"who_made_you"}
 {"Sentence":"who is your programmer?","Intent":"who_made_you"}
@@ -235,6 +230,14 @@
 {"Sentence":"get the dialog id","Intent":"debug"}
 {"Sentence":"tell me the dialog id","Intent":"debug"}
 {"Sentence":"what is my dialog id","Intent":"debug"}
+
+{"Sentence":"Can I ask questions about AI4EU?", "Intent":"can_do"}
+{"Sentence":"Can I ask questions about AI4EU resources?", "Intent":"can_do"}
+{"Sentence":"Can I ask questions about artificial intelligence?", "Intent":"can_do"}
+{"Sentence":"Can I learn about available web resources for AI?", "Intent":"can_do"}
+{"Sentence":"Can I ask questions about web resources for AI?", "Intent":"can_do"}
+{"Sentence":"Can I ask questions about AI?", "Intent":"can_do"}
+{"Sentence":"Can I ask questions about the AI4EU project?", "Intent":"can_do"}
 
 {"Sentence":"can you please tell me the weather?","Intent":"cant_do"}
 {"Sentence":"can you please play music?","Intent":"cant_do"}
@@ -292,11 +295,22 @@
 
 
 
-
-{"Sentence":"tell me what do you want to talk about","Intent":"choose_topic"}
-{"Sentence":"tell me what do you want to chat about","Intent":"choose_topic"}
-{"Sentence":"what can we talk about","Intent":"choose_topic"}
-{"Sentence":"what can you talk about","Intent":"choose_topic"}
+{"Sentence":"what can you do?","Intent":"what_can_you_do"}
+{"Sentence":"what skills do you have?","Intent":"what_can_you_do"}
+{"Sentence":"what are your abilities?","Intent":"what_can_you_do"}
+{"Sentence":"what are your features?","Intent":"what_can_you_do"}
+{"Sentence":"what are your skills?","Intent":"what_can_you_do"}
+{"Sentence":"tell me what you are able to do?","Intent":"what_can_you_do"}
+{"Sentence":"what is your profession?","Intent":"what_can_you_do"}
+{"Sentence":"what is your job?","Intent":"what_can_you_do"}
+{"Sentence":"what is your work?","Intent":"what_can_you_do"}
+{"Sentence":"what is your occupation?","Intent":"what_can_you_do"}
+{"Sentence":"tell me more about your job?","Intent":"what_can_you_do"}
+{"Sentence":"what do you do?","Intent":"what_can_you_do"}
+{"Sentence":"tell me what do you want to talk about","Intent":"what_can_you_do"}
+{"Sentence":"tell me what do you want to chat about","Intent":"what_can_you_do"}
+{"Sentence":"what can we talk about","Intent":"what_can_you_do"}
+{"Sentence":"what can you talk about","Intent":"what_can_you_do"}
 
 {"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
 {"Sentence":"that is enough","Intent":"topic_switching"}
@@ -389,4 +403,561 @@
 {"Sentence":"What are the available technical categories?","Intent":"describe_technicalCategories"}
 
 {"Sentence":"What are the available business categories?","Intent":"describe_businessCategories"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{"Sentence":"who is Panagiotis Papadakos?", "Intent":"qa_input"}
+{"Sentence":"who is Alessandro Saffiotti?", "Intent":"qa_input"}
+
+{"Sentence":"What is your e-mail?", "Intent":"qa_input"}
+{"Sentence":"How can I contact you?", "Intent":"qa_input"}
+{"Sentence":"Any contact point?", "Intent":"qa_input"}
+{"Sentence":"Who should I contact for more information?", "Intent":"qa_input"}
+{"Sentence":"Who should I contact for research activities?", "Intent":"qa_input"}
+
+{"Sentence":"Who should I contact for information regarding the Observatory?", "Intent":"qa_input"}
+{"Sentence":"Do you have a facebook page?", "Intent":"qa_input"}
+{"Sentence":"Do you have a youtube channel?", "Intent":"qa_input"}
+{"Sentence":"Do you have a twitter account?", "Intent":"qa_input"}
+{"Sentence":"Do you have a linkedin page?", "Intent":"qa_input"}
+
+{"Sentence":"What are the AI4EU Web Cafe?", "Intent":"qa_input"}
+{"Sentence":"What are the Web Cafe?", "Intent":"qa_input"}
+{"Sentence":"Are recordings of the previous Web Cafés available?", "Intent":"qa_input"}
+
+{"Sentence": "What is the AI4EU project", "Intent":"qa_input"}
+{"Sentence": "What is the AI4EU", "Intent":"qa_input"}
+{"Sentence": "When did the AI4EU project launch?", "Intent":"qa_input"}
+{"Sentence": "When did the project start?", "Intent":"qa_input"}
+{"Sentence": "Who funds the AI4EU project?", "Intent":"qa_input"}
+{"Sentence": "Who offers funding?", "Intent":"qa_input"}
+
+{"Sentence": "What are the activities of the project?", "Intent":"qa_input"}
+{"Sentence": "Are there any deliverables?", "Intent":"qa_input"}
+{"Sentence": "Where can I find the project deliverables?", "Intent":"qa_input"}
+{"Sentence": "How many partners are in the AI4EU project?", "Intent":"qa_input"}
+{"Sentence": "How many partners collaborate in the project?", "Intent":"qa_input"}
+{"Sentence": "How many participants are in the AI4EU project?", "Intent":"qa_input"}
+{"Sentence": "Who are the AI4EU partners?", "Intent":"qa_input"}
+{"Sentence": "Who participates in the AI4EU project?", "Intent":"qa_input"}
+{"Sentence": "Who are the project partners?", "Intent":"qa_input"}
+
+{"Sentence": "Where can I find information about the platform?", "Intent":"qa_input"}
+{"Sentence": "What is the aim of the AI4EU platform?", "Intent":"qa_input"}
+{"Sentence": "What are the design principles behind the platform?", "Intent":"qa_input"}
+{"Sentence": "Over which principles is the platform designed?", "Intent":"qa_input"}
+{"Sentence": "What does it mean that the platform is a service oriented web platform?", "Intent":"qa_input"}
+{"Sentence": "What does it mean that the platform is multi-disciplinary and cross-sector?", "Intent":"qa_input"}
+{"Sentence": "What does it mean that the platform is scalable and interoperable?", "Intent":"qa_input"}
+{"Sentence": "What does it mean that the platform offers curated data access?","Intent":"qa_input"}
+{"Sentence": "What does it mean that the platform is Collaborative, Social and Confidential", "Intent":"qa_input"}
+{"Sentence": "Which are the main services of the platform?", "Intent":"qa_input"}
+
+{"Sentence": "Does the project contain any pilots?", "Intent":"qa_input"}
+{"Sentence": "Which pilots are included in the project?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Citizen pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Robotics pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Industry pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Healthcare pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Media pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Agriculture pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4IoT pilot?", "Intent":"qa_input"}
+{"Sentence": "What is the AI4Cybersecurity pilot?", "Intent":"qa_input"}
+
+{"Sentence": "What is the AI4EU scientific vision?", "Intent":"qa_input"}
+{"Sentence": "What is explainable AI?", "Intent":"qa_input"}
+{"Sentence": "What is verifiable AI?", "Intent":"qa_input"}
+{"Sentence": "What is physical AI?", "Intent":"qa_input"}
+{"Sentence": "What is collaborative AI?","Intent":"qa_input"}
+{"Sentence": "What is integrative AI?", "Intent":"qa_input"}
+
+{"Sentence":"What is the AI4EU observatory?","Intent":"qa_input"}
+{"Sentence":"What sections does the AI4EU observatory include?","Intent":"qa_input"}
+
+{"Sentence":"What is the status of the platform?","Intent":"qa_input"}
+{"Sentence":"Is it possible to join the AI4EU community as an organization?","Intent":"qa_input"}
+{"Sentence":"What is the process for joining the AI4EU community as an organization?", "Intent":"qa_input"}
+{"Sentence":"What are the benefits of joining the AI4EU community as an organization?", "Intent":"qa_input"}
+{"Sentence":"How can the AI4EU platform help me staying plugged in and up to date on the AI environment in Europe?","Intent":"qa_input"}
+{"Sentence":"Can I post AI related news, events and resources on the platform ?","Intent":"qa_input"}
+{"Sentence":"Are there possibilities to have more information about courses to obtain high skill in AI on the AI4EU platform?","Intent":"qa_input"}
+{"Sentence":"When was the AI4EU Open Calls Program launched?","Intent":"qa_input"}
+{"Sentence":"What challenges will the Open Calls address?","Intent":"qa_input"}
+{"Sentence":"What are the conditions for participating in the AI4EU Open Calls Program?","Intent":"qa_input"}
+{"Sentence":"Which is the procedure for participating in the AI4EU Open Calls Program?","Intent":"qa_input"}
+{"Sentence":"Will individuals outside the AI4EU Project Consortium be eligible to the AI4EU Open Calls Program? ","Intent":"qa_input"}
+{"Sentence":"What are the forecasted grants for AI Open Calls Program projects?","Intent":"qa_input"}
+{"Sentence":"What is the Type of Open Calls in the AI4EU Program?","Intent":"qa_input"}
+
+{"Sentence": "How can the AI4EU Platform help an organization/user promoting an AI initiative?", "Intent":"qa_input"}
+{"Sentence":"what is abductive logic programming?", "Intent":"qa_input"}
+{"Sentence":"what is abductive reasoning?", "Intent":"qa_input"}
+{"Sentence":"what are abstract data types (ADTs)?", "Intent":"qa_input"}
+{"Sentence":"what is an ADT)?", "Intent":"qa_input"}
+{"Sentence":"what is abstraction?", "Intent":"qa_input"}
+{"Sentence":"what is accelerating change?", "Intent":"qa_input"}
+{"Sentence":"what is action language?", "Intent":"qa_input"}
+{"Sentence":"what is action model learning?", "Intent":"qa_input"}
+{"Sentence":"what is action selection?", "Intent":"qa_input"}
+{"Sentence":"what is activation function?", "Intent":"qa_input"}
+{"Sentence":"what is an adaptive algorithm?","Intent":"qa_input"}
+{"Sentence":"what is an adaptive network-based fuzzy inference system?", "Intent":"qa_input"}
+{"Sentence":"what is an admissible heuristic?", "Intent":"qa_input"}
+{"Sentence":"what is affective computing?", "Intent":"qa_input"}
+{"Sentence":"what is artificial emotional intelligence?","Intent":"qa_input"}
+{"Sentence":"what is emotional AI?", "Intent":"qa_input"}
+{"Sentence":"what is the agent architecture?", "Intent":"qa_input"}
+{"Sentence":"what is an AI accelerator?", "Intent":"qa_input"}
+{"Sentence":"what is AI-complete?", "Intent":"qa_input"}
+{"Sentence":"what does AI-complete mean?", "Intent":"qa_input"}
+{"Sentence":"what is an algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is algorithmic efficiency?","Intent":"qa_input"}
+{"Sentence":"what does the term algorithmic efficiency mean?", "Intent":"qa_input"}
+{"Sentence":"what is algorithmic probability?", "Intent":"qa_input"}
+{"Sentence":"what is the AlphaGo game?","Intent":"qa_input"}
+{"Sentence":"what is ambient intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is the analysis of algorithms?","Intent":"qa_input"}
+{"Sentence":"what is answer set programming (ASP)?", "Intent":"qa_input"}
+{"Sentence":"what is an anytime algorithm?","Intent":"qa_input"}
+{"Sentence":"what is an application programming interface?", "Intent":"qa_input"}
+{"Sentence":"what is an API?", "Intent":"qa_input"}
+{"Sentence":"what is approximate string matching?", "Intent":"qa_input"}
+{"Sentence":"what is the fuzzy string searching?", "Intent":"qa_input"}
+{"Sentence":"what is an approximation error?", "Intent":"qa_input"}
+{"Sentence":"what is an argumentation framework?", "Intent":"qa_input"}
+{"Sentence":"what is an argumentation system?", "Intent":"qa_input"}
+{"Sentence":"what is the artificial general intelligence?","Intent":"qa_input"}
+{"Sentence":"what is the artificial immune system?", "Intent":"qa_input"}
+{"Sentence":"what is artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is AI?", "Intent":"qa_input"}
+{"Sentence":"what is machine intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is the Artificial Intelligence Markup Language?", "Intent":"qa_input"}
+{"Sentence":"what is an artificial neural network?", "Intent":"qa_input"}
+{"Sentence":"what is a connectionist system?", "Intent":"qa_input"}
+{"Sentence":"what is the Association for the Advancement of Artificial Intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is the AAAI?", "Intent":"qa_input"}
+{"Sentence":"what is asymptotic computational complexity?", "Intent":"qa_input"}
+{"Sentence":"what is attributional calculus?", "Intent":"qa_input"}
+{"Sentence":"what is augmented reality?", "Intent":"qa_input"}
+{"Sentence":"what is the automata theory?", "Intent":"qa_input"}
+{"Sentence":"what is automated planning and scheduling?", "Intent":"qa_input"}
+{"Sentence":"what is the simply AI planning?", "Intent":"qa_input"}
+{"Sentence":"what is automated reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is autonomic computing?", "Intent":"qa_input"}
+{"Sentence":"what is an autonomous car?", "Intent":"qa_input"}
+{"Sentence":"what is a self-driving car?", "Intent":"qa_input"}
+{"Sentence":"what is a self-driving robot car?", "Intent":"qa_input"}
+{"Sentence":"what is a driverless car?", "Intent":"qa_input"}
+{"Sentence":"what is an autonomous robot?", "Intent":"qa_input"}
+{"Sentence":"what is backpropagation?", "Intent":"qa_input"}
+{"Sentence":"what is meant by backpropagation?", "Intent":"qa_input"}
+{"Sentence":"what is backpropagation through time?", "Intent":"qa_input"}
+{"Sentence":"what is backward chaining?", "Intent":"qa_input"}
+{"Sentence":"what is backward reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is a BOW model?", "Intent":"qa_input"}
+{"Sentence":"what is a bag-of-words (BOW) model?", "Intent":"qa_input"}
+{"Sentence":"what is a bag-of-words model in computer vision?", "Intent":"qa_input"}
+{"Sentence":"what is batch normalization?", "Intent":"qa_input"}
+{"Sentence":"what is Bayesian programming?", "Intent":"qa_input"}
+{"Sentence":"what is the bees algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is behavior informatics?", "Intent":"qa_input"}
+{"Sentence":"what is a behavior tree?","Intent":"qa_input"}
+{"Sentence":"what is the belief-desire-intention software model?", "Intent":"qa_input"}
+{"Sentence":"what is the bias–variance tradeoff?", "Intent":"qa_input"}
+{"Sentence":"what is big data?", "Intent":"qa_input"}
+{"Sentence":"what is the Big O notation?", "Intent":"qa_input"}
+{"Sentence":"what is a binary tree?", "Intent":"qa_input"}
+{"Sentence":"what is the blackboard system?", "Intent":"qa_input"}
+{"Sentence":"what is a Boltzmann machine?", "Intent":"qa_input"}
+{"Sentence":"what is a stochastic Hopfield network with hidden units?", "Intent":"qa_input"}
+{"Sentence":"what is the Boolean satisfiability problem?", "Intent":"qa_input"}
+{"Sentence":"what is the propositional satisfiability problem?", "Intent":"qa_input"}
+{"Sentence":"what is satisfiability?", "Intent":"qa_input"}
+{"Sentence":"what is SAT?", "Intent":"qa_input"}
+{"Sentence":"what is the brain technology?","Intent":"qa_input"}
+{"Sentence":"what is the self-learning know-how system?", "Intent":"qa_input"}
+{"Sentence":"what is the branching factor?", "Intent":"qa_input"}
+{"Sentence":"what is brute-force search?", "Intent":"qa_input"}
+{"Sentence":"what is an exhaustive search?", "Intent":"qa_input"}
+{"Sentence":"what is a capsule neural network?", "Intent":"qa_input"}
+{"Sentence":"what is a CapsNet?", "Intent":"qa_input"}
+{"Sentence":"what is a case-based reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is a chatbot?", "Intent":"qa_input"}
+{"Sentence":"what is a smartbot?","Intent":"qa_input"}
+{"Sentence":"what is a talkbot?", "Intent":"qa_input"}
+{"Sentence":"what is a chatterbot?", "Intent":"qa_input"}
+{"Sentence":"what is an IM bot?", "Intent":"qa_input"}
+{"Sentence":"what is an interactive agent?","Intent":"qa_input"}
+{"Sentence":"what is a conversational interface?", "Intent":"qa_input"}
+{"Sentence":"what is an artificial conversational entity?", "Intent":"qa_input"}
+{"Sentence":"what is cloud robotics?", "Intent":"qa_input"}
+{"Sentence":"what is cluster analysis?","Intent":"qa_input"}
+{"Sentence":"what is clustering?", "Intent":"qa_input"}
+{"Sentence":"what is Cobweb?", "Intent":"qa_input"}
+{"Sentence":"what is a cognitive architecture?", "Intent":"qa_input"}
+{"Sentence":"what is cognitive computing?", "Intent":"qa_input"}
+{"Sentence":"what is cognitive science?","Intent":"qa_input"}
+{"Sentence":"what is combinatorial optimization?","Intent":"qa_input"}
+{"Sentence":"what is a committee machine?", "Intent":"qa_input"}
+{"Sentence":"what is commonsense knowledge?", "Intent":"qa_input"}
+{"Sentence":"what is commonsense reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is computational chemistry?","Intent":"qa_input"}
+{"Sentence":"what is the computational complexity theory?", "Intent":"qa_input"}
+{"Sentence":"what is computational creativity?", "Intent":"qa_input"}
+{"Sentence":"what is artificial creativity?", "Intent":"qa_input"}
+{"Sentence":"what is mechanical creativity?", "Intent":"qa_input"}
+{"Sentence":"what is creative computing?", "Intent":"qa_input"}
+{"Sentence":"what is creative computation?", "Intent":"qa_input"}
+{"Sentence":"what is computational cybernetics?", "Intent":"qa_input"}
+{"Sentence":"what is computational humor?", "Intent":"qa_input"}
+{"Sentence":"what is computational intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is the computational learning theory?", "Intent":"qa_input"}
+{"Sentence":"what is computational linguistics?", "Intent":"qa_input"}
+{"Sentence":"what is computational mathematics?", "Intent":"qa_input"}
+{"Sentence":"what is computational neuroscience?", "Intent":"qa_input"}
+{"Sentence":"what is theoretical neuroscience?", "Intent":"qa_input"}
+{"Sentence":"what is mathematical neuroscience?", "Intent":"qa_input"}
+{"Sentence":"what is the computational number theory?", "Intent":"qa_input"}
+{"Sentence":"what is the algorithmic number theory?", "Intent":"qa_input"}
+{"Sentence":"what is a computational problem?", "Intent":"qa_input"}
+{"Sentence":"what is computational statistics?", "Intent":"qa_input"}
+{"Sentence":"what is statistical computing?","Intent":"qa_input"}
+{"Sentence":"what is the computer-automated design (CAD)?", "Intent":"qa_input"}
+{"Sentence":"what is the CAD?", "Intent":"qa_input"}
+{"Sentence":"what is computer audition?", "Intent":"qa_input"}
+{"Sentence":"what is machine listening?", "Intent":"qa_input"}
+{"Sentence":"what is computer science?", "Intent":"qa_input"}
+{"Sentence":"what is computer vision?", "Intent":"qa_input"}
+{"Sentence":"what does concept drift mean?", "Intent":"qa_input"}
+{"Sentence":"what is connectionism?", "Intent":"qa_input"}
+{"Sentence":"what is a consistent heuristic?", "Intent":"qa_input"}
+{"Sentence":"what is a constrained conditional model?", "Intent":"qa_input"}
+{"Sentence":"what is constraint logic programming?", "Intent":"qa_input"}
+{"Sentence":"what is constraint programming?", "Intent":"qa_input"}
+{"Sentence":"what is a constructed language?", "Intent":"qa_input"}
+{"Sentence":"what is a conlang?", "Intent":"qa_input"}
+{"Sentence":"what is the control theory?", "Intent":"qa_input"}
+{"Sentence":"what is a convolutional neural network (CNN)?", "Intent":"qa_input"}
+{"Sentence":"what is crossover?","Intent":"qa_input"}
+{"Sentence":"what is recombination?", "Intent":"qa_input"}
+{"Sentence":"what is the Darkforest?", "Intent":"qa_input"}
+{"Sentence":"what is the Dartmouth workshop?", "Intent":"qa_input"}
+{"Sentence":"what is data augmentation?", "Intent":"qa_input"}
+{"Sentence":"what is data fusion?", "Intent":"qa_input"}
+{"Sentence":"what is data integration?", "Intent":"qa_input"}
+{"Sentence":"what is data mining?", "Intent":"qa_input"}
+{"Sentence":"what is data science?", "Intent":"qa_input"}
+{"Sentence":"what is a data set?", "Intent":"qa_input"}
+{"Sentence":"what is a dataset?", "Intent":"qa_input"}
+{"Sentence":"what is a data warehouse?", "Intent":"qa_input"}
+{"Sentence":"what is an enterprise data warehouse?", "Intent":"qa_input"}
+{"Sentence":"what is Datalog?", "Intent":"qa_input"}
+{"Sentence":"what is a decision boundary?", "Intent":"qa_input"}
+{"Sentence":"what is a decision support system?", "Intent":"qa_input"}
+{"Sentence":"what is the decision theory?", "Intent":"qa_input"}
+{"Sentence":"what is the theory of choice?", "Intent":"qa_input"}
+{"Sentence":"what is decision tree learning?", "Intent":"qa_input"}
+{"Sentence":"what is declarative programming?", "Intent":"qa_input"}
+{"Sentence":"what is a deductive classifier?", "Intent":"qa_input"}
+{"Sentence":"what was the Deep Blue?", "Intent":"qa_input"}
+{"Sentence":"what is deep learning (DL)?", "Intent":"qa_input"}
+{"Sentence":"what is DL?","Intent":"qa_input"}
+{"Sentence":"what is deep structured learning?", "Intent":"qa_input"}
+{"Sentence":"what is the DeepMind Technologies?", "Intent":"qa_input"}
+{"Sentence":"what is default logic?", "Intent":"qa_input"}
+{"Sentence":"what is description logics?", "Intent":"qa_input"}
+{"Sentence":"what is developmental robotics?", "Intent":"qa_input"}
+{"Sentence":"what is epigenetic robotics?", "Intent":"qa_input"}
+{"Sentence":"what is a dialogue system?", "Intent":"qa_input"}
+{"Sentence":"what is a conversational agent?", "Intent":"qa_input"}
+{"Sentence":"what is dimensionality reduction?", "Intent":"qa_input"}
+{"Sentence":"what is dimension reduction?", "Intent":"qa_input"}
+{"Sentence":"what is a discrete system?", "Intent":"qa_input"}
+{"Sentence":"what is distributed artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is decentralized artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is dynamic epistemic logic?", "Intent":"qa_input"}
+{"Sentence":"what is eager learning?", "Intent":"qa_input"}
+{"Sentence":"what is the Ebert test?", "Intent":"qa_input"}
+{"Sentence":"what is an echo state network?", "Intent":"qa_input"}
+{"Sentence":"what is an embodied agent?", "Intent":"qa_input"}
+{"Sentence":"what is an interface agent?", "Intent":"qa_input"}
+{"Sentence":"what is embodied cognitive science?", "Intent":"qa_input"}
+{"Sentence":"what is error-driven learning?", "Intent":"qa_input"}
+{"Sentence":"what is ensemble averaging?","Intent":"qa_input"}
+{"Sentence":"what is ethics of artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is an evolutionary algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is an evolutionary computation?", "Intent":"qa_input"}
+{"Sentence":"what is an evolving classification function?","Intent":"qa_input"}
+{"Sentence":"what is the existential risk?", "Intent":"qa_input"}
+{"Sentence":"what is an expert system?", "Intent":"qa_input"}
+{"Sentence":"what are fast-and-frugal trees?", "Intent":"qa_input"}
+{"Sentence":"what is feature extraction?", "Intent":"qa_input"}
+{"Sentence":"what is feature learning?", "Intent":"qa_input"}
+{"Sentence":"what is feature selection?", "Intent":"qa_input"}
+{"Sentence":"what is federated learning?", "Intent":"qa_input"}
+{"Sentence":"what is first-order logic?","Intent":"qa_input"}
+{"Sentence":"what is first-order predicate calculus?", "Intent":"qa_input"}
+{"Sentence":"what is predicate logic?", "Intent":"qa_input"}
+{"Sentence":"what is a formal language?", "Intent":"qa_input"}
+{"Sentence":"what is forward chaining?", "Intent":"qa_input"}
+{"Sentence":"what is forward reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is a frame language?", "Intent":"qa_input"}
+{"Sentence":"what is a frame problem?","Intent":"qa_input"}
+{"Sentence":"what is friendly artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is friendly AI?", "Intent":"qa_input"}
+{"Sentence":"what is a fuzzy control system?","Intent":"qa_input"}
+{"Sentence":"what is fuzzy logic?", "Intent":"qa_input"}
+{"Sentence":"what is a fuzzy rule?", "Intent":"qa_input"}
+{"Sentence":"what is a fuzzy set?", "Intent":"qa_input"}
+{"Sentence":"what is game theory?","Intent":"qa_input"}
+{"Sentence":"what is general game playing?", "Intent":"qa_input"}
+{"Sentence":"what is a generative adversarial network?", "Intent":"qa_input"}
+{"Sentence":"what is a genetic algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is a genetic operator?", "Intent":"qa_input"}
+{"Sentence":"what is the glowworm swarm optimization?", "Intent":"qa_input"}
+{"Sentence":"what is a graph?", "Intent":"qa_input"}
+{"Sentence":"what is a graph database?", "Intent":"qa_input"}
+{"Sentence":"what is graph theory?", "Intent":"qa_input"}
+{"Sentence":"what is graph traversal?","Intent":"qa_input"}
+{"Sentence":"what is graph search?","Intent":"qa_input"}
+{"Sentence":"what is a heuristic?","Intent":"qa_input"}
+{"Sentence":"what is a hidden layer?", "Intent":"qa_input"}
+{"Sentence":"what is a hidden unit?", "Intent":"qa_input"}
+{"Sentence":"what is a hyper-heuristic?","Intent":"qa_input"}
+{"Sentence":"what is the IEEE ?", "Intent":"qa_input"}
+{"Sentence":"what is the IEEE Computational Intelligence Society?", "Intent":"qa_input"}
+{"Sentence":"what is incremental learning?", "Intent":"qa_input"}
+{"Sentence":"what is an inference engine?", "Intent":"qa_input"}
+{"Sentence":"whhat is information integration?", "Intent":"qa_input"}
+{"Sentence":"what is the Information Processing Language?", "Intent":"qa_input"}
+{"Sentence":"what is intelligence amplification?", "Intent":"qa_input"}
+{"Sentence":"what is cognitive augmentation?", "Intent":"qa_input"}
+{"Sentence":"what is machine augmented intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is enhanced intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is the intelligence explosion?", "Intent":"qa_input"}
+{"Sentence":"what is an intelligent agent?", "Intent":"qa_input"}
+{"Sentence":"what is intelligent control?", "Intent":"qa_input"}
+{"Sentence":"what is an intelligent personal assistant?", "Intent":"qa_input"}
+{"Sentence":"what is a virtual assistant?", "Intent":"qa_input"}
+{"Sentence":"what is a personal digital assistant?", "Intent":"qa_input"}
+{"Sentence":"what is an intrinsic motivation?", "Intent":"qa_input"}
+{"Sentence":"what is a logic tree?", "Intent":"qa_input"}
+{"Sentence":"what is the junction tree algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is a Clique Tree?", "Intent":"qa_input"}
+{"Sentence":"what is a kernel method?", "Intent":"qa_input"}
+{"Sentence":"what is the KL-ONE?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge acquisition?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge-based system?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge engineering?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge extraction?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge Interchange Format?", "Intent":"qa_input"}
+{"Sentence":"what is knowledge representation and reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is lazy learning?","Intent":"qa_input"}
+{"Sentence":"what is Lisp?", "Intent":"qa_input"}
+{"Sentence":"what is logic programming?","Intent":"qa_input"}
+{"Sentence":"what is long short-term memory (LSTM)?", "Intent":"qa_input"}
+{"Sentence":"what is machine vision?", "Intent":"qa_input"}
+{"Sentence":"what is a Markov chain?", "Intent":"qa_input"}
+{"Sentence":"what is a Markov decision process?", "Intent":"qa_input"}
+{"Sentence":"what is machine learning?", "Intent":"qa_input"}
+{"Sentence":"what is machine perception?","Intent":"qa_input"}
+{"Sentence":"what is mechanism design?", "Intent":"qa_input"}
+{"Sentence":"what is mechatronics?", "Intent":"qa_input"}
+{"Sentence":"what is mechatronic engineering?", "Intent":"qa_input"}
+{"Sentence":"what is the metabolic network reconstruction and simulation?", "Intent":"qa_input"}
+{"Sentence":"what is a metaheuristic?", "Intent":"qa_input"}
+{"Sentence":"what is model checking?", "Intent":"qa_input"}
+{"Sentence":"what is modus ponens?", "Intent":"qa_input"}
+{"Sentence":"what is modus tollens?", "Intent":"qa_input"}
+{"Sentence":"what is Monte Carlo tree search?", "Intent":"qa_input"}
+{"Sentence":"what is a multi-agent system?", "Intent":"qa_input"}
+{"Sentence":"what is a self-organized system?", "Intent":"qa_input"}
+{"Sentence":"what is multi-swarm optimization?", "Intent":"qa_input"}
+{"Sentence":"what is a mutation?", "Intent":"qa_input"}
+{"Sentence":"what is the Mycin?", "Intent":"qa_input"}
+{"Sentence":"what is a naive Bayes classifier?", "Intent":"qa_input"}
+{"Sentence":"what are naive semantics?","Intent":"qa_input"}
+{"Sentence":"what is named-entity recognition (NER)?", "Intent":"qa_input"}
+{"Sentence":"what is entity identification?", "Intent":"qa_input"}
+{"Sentence":"what is entity chunking?","Intent":"qa_input"}
+{"Sentence":"what is entity extraction?", "Intent":"qa_input"}
+{"Sentence":"what is natural language generation?","Intent":"qa_input"}
+{"Sentence":"what is the NLG?", "Intent":"qa_input"}
+{"Sentence":"what is natural language processing?","Intent":"qa_input"}
+{"Sentence":"what is NLP?", "Intent":"qa_input"}
+{"Sentence":"what is natural language programming?","Intent":"qa_input"}
+{"Sentence":"what is neural machine translation?", "Intent":"qa_input"}
+{"Sentence":"what is the neural Turing machine?", "Intent":"qa_input"}
+{"Sentence":"what is neuro-fuzzy?", "Intent":"qa_input"}
+{"Sentence":"what are neurocybernetics?", "Intent":"qa_input"}
+{"Sentence":"what is a brain–computer interface?", "Intent":"qa_input"}
+{"Sentence":"what is a neural-control interface?", "Intent":"qa_input"}
+{"Sentence":"what is a mind-machine interface?", "Intent":"qa_input"}
+{"Sentence":"what is a direct neural interface ?", "Intent":"qa_input"}
+{"Sentence":"what is a brain–machine interface?", "Intent":"qa_input"}
+{"Sentence":"what is neuromorphic engineering?", "Intent":"qa_input"}
+{"Sentence":"what is neuromorphic computing?", "Intent":"qa_input"}
+{"Sentence":"what is nondeterministic algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is nouvelle AI?", "Intent":"qa_input"}
+{"Sentence":"what is NP-completeness?", "Intent":"qa_input"}
+{"Sentence":"what is NP-hardness?","Intent":"qa_input"}
+{"Sentence":"what is the non-deterministic polynomial-time hardness?", "Intent":"qa_input"}
+{"Sentence":"what is the Occam's razor?", "Intent":"qa_input"}
+{"Sentence":"what is the Ockham's razor?", "Intent":"qa_input"}
+{"Sentence":"what is the Ocham's razor?", "Intent":"qa_input"}
+{"Sentence":"what is offline learning?", "Intent":"qa_input"}
+{"Sentence":"what is online machine learning?", "Intent":"qa_input"}
+{"Sentence":"what is ontology learning?", "Intent":"qa_input"}
+{"Sentence":"what is ontology extraction?","Intent":"qa_input"}
+{"Sentence":"what is ontology generation?", "Intent":"qa_input"}
+{"Sentence":"what is ontology acquisition?", "Intent":"qa_input"}
+{"Sentence":"what is OpenAI?", "Intent":"qa_input"}
+{"Sentence":"what is OpenCog?", "Intent":"qa_input"}
+{"Sentence":"what is Open Mind Common Sense?", "Intent":"qa_input"}
+{"Sentence":"what is open-source software?", "Intent":"qa_input"}
+{"Sentence":"what is partial order reduction?","Intent":"qa_input"}
+{"Sentence":"what is a partially observable Markov decision process?", "Intent":"qa_input"}
+{"Sentence":"what is the particle swarm optimization?", "Intent":"qa_input"}
+{"Sentence":"what is pattern recognition?", "Intent":"qa_input"}
+{"Sentence":"what is predicate logic?", "Intent":"qa_input"}
+{"Sentence":"what is first-order logic?", "Intent":"qa_input"}
+{"Sentence":"what is the first-order predicate calculus?", "Intent":"qa_input"}
+{"Sentence":"what are predictive analytics?","Intent":"qa_input"}
+{"Sentence":"what is the principal component analysis (PCA)?", "Intent":"qa_input"}
+{"Sentence":"what is the principle of rationality?", "Intent":"qa_input"}
+{"Sentence":"what is the rationality principle?", "Intent":"qa_input"}
+{"Sentence":"what is probabilistic programming?", "Intent":"qa_input"}
+{"Sentence":"what is a programming language?", "Intent":"qa_input"}
+{"Sentence":"what is the Prolog?", "Intent":"qa_input"}
+{"Sentence":"what is propositional calculus?", "Intent":"qa_input"}
+{"Sentence":"what is propositional logic?","Intent":"qa_input"}
+{"Sentence":"what is statement logic?", "Intent":"qa_input"}
+{"Sentence":"what is sentential calculus?", "Intent":"qa_input"}
+{"Sentence":"what is sentential logic?", "Intent":"qa_input"}
+{"Sentence":"what is zeroth-order logic?", "Intent":"qa_input"}
+{"Sentence":"what is the qualification problem?", "Intent":"qa_input"}
+{"Sentence":"what is quantum computing?", "Intent":"qa_input"}
+{"Sentence":"what is a query language?", "Intent":"qa_input"}
+{"Sentence":"what is the R programming language?","Intent":"qa_input"}
+{"Sentence":"what is a radial basis function network?", "Intent":"qa_input"}
+{"Sentence":"what is a random forest?", "Intent":"qa_input"}
+{"Sentence":"what is a random decision forest?", "Intent":"qa_input"}
+{"Sentence":"what is a reasoning system?", "Intent":"qa_input"}
+{"Sentence":"what is a recurrent neural network (RNN)?", "Intent":"qa_input"}
+{"Sentence":"what is reinforcement learning?", "Intent":"qa_input"}
+{"Sentence":"what is reservoir computing?", "Intent":"qa_input"}
+{"Sentence":"what is the Resource Description Framework (RDF)?", "Intent":"qa_input"}
+{"Sentence":"what is the restricted Boltzmann machine?", "Intent":"qa_input"}
+{"Sentence":"what is the Rete algorithm?", "Intent":"qa_input"}
+{"Sentence":"what are robotics?", "Intent":"qa_input"}
+{"Sentence":"what is a rule-based system?", "Intent":"qa_input"}
+{"Sentence":"what is satisfiability?", "Intent":"qa_input"}
+{"Sentence":"what is a search algorithm?", "Intent":"qa_input"}
+{"Sentence":"what is a semantic network?", "Intent":"qa_input"}
+{"Sentence":"what is a frame network?", "Intent":"qa_input"}
+{"Sentence":"what is a semantic reasoner?", "Intent":"qa_input"}
+{"Sentence":"what is a reasoning engine?", "Intent":"qa_input"}
+{"Sentence":"what is a rules engine?", "Intent":"qa_input"}
+{"Sentence":"what is a reasoner?","Intent":"qa_input"}
+{"Sentence":"what is a semantic query?", "Intent":"qa_input"}
+{"Sentence":"what are semantics?", "Intent":"qa_input"}
+{"Sentence":"what is sensor fusion?","Intent":"qa_input"}
+{"Sentence":"what is separation logic?", "Intent":"qa_input"}
+{"Sentence":"what is similarity learning?", "Intent":"qa_input"}
+{"Sentence":"what is simulated annealing?", "Intent":"qa_input"}
+{"Sentence":"what is the situated approach?", "Intent":"qa_input"}
+{"Sentence":"what is situation calculus?", "Intent":"qa_input"}
+{"Sentence":"what is the Selective Linear Definite clause resolution?", "Intent":"qa_input"}
+{"Sentence":"what is the SLD resolution?", "Intent":"qa_input"}
+{"Sentence":"what is software?", "Intent":"qa_input"}
+{"Sentence":"what is software engineering?", "Intent":"qa_input"}
+{"Sentence":"what is spatial-temporal reasoning?", "Intent":"qa_input"}
+{"Sentence":"what is SPARQL?","Intent":"qa_input"}
+{"Sentence":"what is speech recognition?", "Intent":"qa_input"}
+{"Sentence":"what is a spiking neural network (SNN)?","Intent":"qa_input"}
+{"Sentence":"what is statistical classification?", "Intent":"qa_input"}
+{"Sentence":"what is statistical relational learning?", "Intent":"qa_input"}
+{"Sentence":"what is stochastic optimization?","Intent":"qa_input"}
+{"Sentence":"what is stochastic semantic analysis?", "Intent":"qa_input"}
+{"Sentence":"what is superintelligence?", "Intent":"qa_input"}
+{"Sentence":"what is supervised learning?","Intent":"qa_input"}
+{"Sentence":"what is support-vector machines (SVMs)?", "Intent":"qa_input"}
+{"Sentence":"what is swarm intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is symbolic artificial intelligence?", "Intent":"qa_input"}
+{"Sentence":"what is synthetic intelligence?","Intent":"qa_input"}
+{"Sentence":"what is systems neuroscience?", "Intent":"qa_input"}
+{"Sentence":"what is the technological singularity?", "Intent":"qa_input"}
+{"Sentence":"what is the singularity?", "Intent":"qa_input"}
+{"Sentence":"what is temporal difference learning?","Intent":"qa_input"}
+{"Sentence":"what is the tensor network theory?", "Intent":"qa_input"}
+{"Sentence":"what is theoretical computer science?","Intent":"qa_input"}
+{"Sentence":"what is the theory of computation?", "Intent":"qa_input"}
+{"Sentence":"what is Thompson sampling?", "Intent":"qa_input"}
+{"Sentence":"what is time complexity?", "Intent":"qa_input"}
+{"Sentence":"what is transhumanism?", "Intent":"qa_input"}
+{"Sentence":"what is a transition system?", "Intent":"qa_input"}
+{"Sentence":"what is tree traversal?", "Intent":"qa_input"}
+{"Sentence":"what is a tree search?", "Intent":"qa_input"}
+{"Sentence":"what is the true quantified Boolean formula (TQBF)?","Intent":"qa_input"}
+{"Sentence":"what is the Turing test?", "Intent":"qa_input"}
+{"Sentence":"what is unsupervised learning?", "Intent":"qa_input"}
+{"Sentence":"what is a vision processing unit?", "Intent":"qa_input"}
+{"Sentence":"what is Watson?", "Intent":"qa_input"}
+{"Sentence":"what is weak AI?", "Intent":"qa_input"}
+{"Sentence":"what is narrow AI?", "Intent":"qa_input"}
+{"Sentence":"what is the World Wide Web Consortium?", "Intent":"qa_input"}
+{"Sentence":"what is the W3C?", "Intent":"qa_input"}
+
+
+
+{"Sentence":"what is deep-pavlov?", "Intent":"qa_input"}
+{"Sentence":"what is PyTorch?", "Intent":"qa_input"}
+{"Sentence":"what is TensorFlow?", "Intent":"qa_input"}
+{"Sentence":"which are the best AI accelerators?", "Intent":"qa_input"}
+{"Sentence":"what is BERT?", "Intent":"qa_input"}
+{"Sentence":"what is GPT-3?", "Intent":"qa_input"}
+{"Sentence":"what is a transformer?", "Intent":"qa_input"}
+{"Sentence":"what is word2vec?","Intent":"qa_input"}
+{"Sentence":"what are word embeddings?", "Intent":"qa_input"}
+{"Sentence":"what are sentence embeddings?", "Intent":"qa_input"}
+{"Sentence":"what are graph embeddings?", "Intent":"qa_input"}
+{"Sentence":"what is glove?", "Intent":"qa_input"}
+{"Sentence":"what is fasttext?", "Intent":"qa_input"}
+{"Sentence":"what is MPNet??","Intent":"qa_input"}
+{"Sentence":"what is xlnet?", "Intent":"qa_input"}
+{"Sentence":"what is a GPU?","Intent":"qa_input"}
+{"Sentence":"what is a CPU?","Intent":"qa_input"}
+{"Sentence":"who invented AI?","Intent":"qa_input"}
+{"Sentence":"who coined the term AI?", "Intent":"qa_input"}
+{"Sentence":"what is a neuron?","Intent":"qa_input"}
+
+
+{"Sentence":"what is a car?", "Intent":"qa_input"}
+{"Sentence":"what is an aeroplane?", "Intent":"qa_input"}
+{"Sentence":"what is an drone?", "Intent":"qa_input"}
+{"Sentence":"what is a mobile phone?", "Intent":"qa_input"}
+{"Sentence":"what is a mobile device?","Intent":"qa_input"}
+
+
+
+
+
+
 
