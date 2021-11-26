@@ -232,6 +232,7 @@
 {"Sentence":"what is my dialog id","Intent":"debug"}
 
 {"Sentence":"Can I ask questions about AI4EU?", "Intent":"can_do"}
+{"Sentence":"Can I learn more things about AI4EU?", "Intent":"can_do"}
 {"Sentence":"Can I ask questions about AI4EU resources?", "Intent":"can_do"}
 {"Sentence":"Can I ask questions about artificial intelligence?", "Intent":"can_do"}
 {"Sentence":"Can I learn about available web resources for AI?", "Intent":"can_do"}
@@ -254,6 +255,7 @@
 {"Sentence":"can we discuss science?","Intent":"cant_do"}
 {"Sentence":"can we talk about economics?","Intent":"cant_do"}
 {"Sentence":"can you please make your bed?","Intent":"cant_do"}
+{"Sentence":"can we talk about COVID-19?","Intent":"cant_do"}
 
 {"Sentence":"I would love to know your position","Intent":"opinion_request"}
 {"Sentence":"I would love to know your opinion ","Intent":"opinion_request"}
@@ -271,6 +273,7 @@
 {"Sentence":"is it correct to?","Intent":"opinion_request"}
 {"Sentence":"is it justified to?","Intent":"opinion_request"}
 {"Sentence":"Do you agree with this?","Intent":"opinion_request"}
+{"Sentence":"What is your opinion about the pandemia?","Intent":"opinion_request"}
 
 
 
