@@ -475,7 +475,7 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     tracker_slotfilled_state)
             responses.append(resp)
 
-        # AI4EU: If we need to make a call to the AI4EU faq api
+        # AI4EU: If we need to make a call to the AI4EU QA api
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
             # we 1) perform the qa api call and 2) predict what to do next
             # TODO - no need to predict in this case - Have to update - NEXT

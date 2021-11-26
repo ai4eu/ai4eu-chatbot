@@ -80,7 +80,7 @@ class NLUManager(NLUManagerInterface):
 
     def _tokenize_single_text_entry(self, text: str):
         # todo meaningful type hints, relies on unannotated tokenizer
-        tokens = self.tokenizer([text.lower().strip()])
+        tokens = self.tokenizer([text.strip()])
         print('==> AI4EU tokens', tokens)
         return tokens[0]
 
