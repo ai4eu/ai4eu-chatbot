@@ -14,24 +14,24 @@
         "class_name": "transformers_bert_embedder",
         "bert_config_path": "{BERT_PATH}/bert_config.json",
         "load_path": "{BERT_PATH}",
-        "truncate": true,
+        "truncate": false,
         "in": ["subword_tok_ids", "startofword_markers", "attention_mask"],
         "out": ["word_emb", "subword_emb", "max_emb", "mean_emb", "pooler_output"]
       }
     ],
-    "out": ["tokens", "word_emb", "subword_tokens", "subword_emb", "max_emb", "mean_emb", "pooler_output"]
+    "out": ["mean_emb"]
   },
   "train": {},
   "metadata": {
     "variables": {
       "ROOT_PATH": "~/.deeppavlov",
       "DOWNLOADS_PATH": "{ROOT_PATH}/downloads",
-      "BERT_PATH": "{DOWNLOADS_PATH}/bert_models/multi_cased_L-12_H-768_A-12_pt"
+      "BERT_PATH": "{DOWNLOADS_PATH}/bert_models/cased_L-12_H-768_A-12"
     },
     "labels": {},
     "download": [
       {
-        "url": "http://files.deeppavlov.ai/deeppavlov_data/bert/multi_cased_L-12_H-768_A-12_pt.tar.gz",
+        "url": "http://files.deeppavlov.ai/deeppavlov_data/bert/cased_L-12_H-768_A-12.zip",
         "subdir": "{DOWNLOADS_PATH}/bert_models"
       }
     ]
