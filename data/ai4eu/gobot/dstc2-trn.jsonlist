@@ -177,6 +177,19 @@
 {"speaker": 1, "text": "How can I help you?", "dialog_acts": [{"act": "request", "slots": []}]}
 {"speaker": 2, "text": "By asking me questions", "dialog_acts": [{"act": "tell_self_improve", "slots": []}]}
 
+{"speaker": 1, "text": "Can I learn more things about AI4EU?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Yes, you can", "dialog_acts": [{"act": "can_do", "slots": []}]}
+{"speaker": 1, "text": "Does the project contain any pilots?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Yes the project contains various pilots that demonstrate the exploitability of the platform, foster adoption, solve technical challenges and stimulate a vibrant partnership between research and industry. Check https://www.ai4eu.eu/pilot-experiments for more.", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "what is a dialogue system?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "A computer system intended to converse with a human with a coherent structure. Dialogue systems have employed text, speech, graphics, haptics, gestures, and other modes for communication on both the input and output channel.", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What is your name?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Unfortunately, I have not be given a name yet!", "dialog_acts": [{"act": "tell_name", "slots": []}]}
+{"speaker": 1, "text": "What are your skills?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!", "dialog_acts": [{"act": "skills", "slots": []}]}
+{"speaker": 1, "text": "Ok, bye for now!", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Thank you for the chat! Bye bye!", "dialog_acts": [{"act": "outro", "slots": []}]}
+
 {"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
 {"speaker": 1, "text": "Can I learn more things about AI4EU?", "dialog_acts": [{"act": "request", "slots": []}]}
@@ -193,3 +206,18 @@
 {"speaker": 2, "text": "Unfortunately, I have not be given a name yet!", "dialog_acts": [{"act": "tell_name", "slots": []}]}
 {"speaker": 1, "text": "Ok, bye for now!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Thank you for the chat! Bye bye!", "dialog_acts": [{"act": "outro", "slots": []}]}
+
+{"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
+{"speaker": 1, "text": "What is the aim of the AI4EU platform?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "To design a European AI on-Demand Platform to support this ecosystem and share AI resources produced in European projects, including high-level services, expertise in AI research and innovation, AI components and datasets, high-powered computing resources and access to seed funding for innovative projects using the platform (see https://www.ai4eu.eu/ai4eu-platform for more)": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What is the AI4Citizen pilot?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4Citizen will provide an AI-powered Personal Assistant for Public Services in the domain of Education. See https://www.ai4eu.eu/ai4citizen for more.": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "And who funds the project?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "The European Commission under the H2020 programme.", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What else can you do?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!", "dialog_acts": [{"act": "skills", "slots": []}]}
+{"speaker": 1, "text": "Do you have a name?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Unfortunately, I have not be given a name yet!", "dialog_acts": [{"act": "tell_name", "slots": []}]}
+{"speaker": 1, "text": "Who developed you?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "I was developed by Panagiotis Papadakos from FORTH-ICS", "dialog_acts": [{"act": "tell_creator", "slots": []}]}

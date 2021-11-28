@@ -299,6 +299,7 @@
 
 
 {"Sentence":"what can you do?","Intent":"what_can_you_do"}
+{"Sentence":"what else can you do?","Intent":"what_can_you_do"}
 {"Sentence":"what skills do you have?","Intent":"what_can_you_do"}
 {"Sentence":"what are your abilities?","Intent":"what_can_you_do"}
 {"Sentence":"what are your features?","Intent":"what_can_you_do"}
