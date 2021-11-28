@@ -210,9 +210,9 @@
 {"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
 {"speaker": 1, "text": "What is the aim of the AI4EU platform?", "dialog_acts": [{"act": "request", "slots": []}]}
-{"speaker": 2, "text": "To design a European AI on-Demand Platform to support this ecosystem and share AI resources produced in European projects, including high-level services, expertise in AI research and innovation, AI components and datasets, high-powered computing resources and access to seed funding for innovative projects using the platform (see https://www.ai4eu.eu/ai4eu-platform for more)": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 2, "text": "To design a European AI on-Demand Platform to support this ecosystem and share AI resources produced in European projects, including high-level services, expertise in AI research and innovation, AI components and datasets, high-powered computing resources and access to seed funding for innovative projects using the platform (see https://www.ai4eu.eu/ai4eu-platform for more)", "dialog_acts":[{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "What is the AI4Citizen pilot?", "dialog_acts": [{"act": "request", "slots": []}]}
-{"speaker": 2, "text": "AI4Citizen will provide an AI-powered Personal Assistant for Public Services in the domain of Education. See https://www.ai4eu.eu/ai4citizen for more.": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 2, "text": "AI4Citizen will provide an AI-powered Personal Assistant for Public Services in the domain of Education. See https://www.ai4eu.eu/ai4citizen for more.", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "And who funds the project?", "dialog_acts": [{"act": "request", "slots": []}]}
 {"speaker": 2, "text": "The European Commission under the H2020 programme.", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "What else can you do?", "dialog_acts": [{"act": "request", "slots": []}]}
