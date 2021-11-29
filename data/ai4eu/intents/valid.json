@@ -275,7 +275,10 @@
 {"Sentence":"Do you agree with this?","Intent":"opinion_request"}
 {"Sentence":"What is your opinion about the pandemia?","Intent":"opinion_request"}
 
+{"Sentence":"Do you have feelings?","Intent":"have_feelings"}
 
+{"Sentence":"Do you track my questions?","Intent":"tracking"}
+{"Sentence":"Are you logging?","Intent":"tracking"}
 
 
 
