@@ -189,8 +189,9 @@ class AI4EUGoalOrientedBot(NNModel):
         # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
         self.QA = ChatBot_QA()
         # The following could be parameters in the json configuration
-        self.topk = 3   # Topk results for qa module
-        self.action_probability_threshold = 0.1  # Threshold for action probabilities - Have to fine tune this
+        self._TOPK = 3   # Topk results for qa module
+        # Threshold for action probabilities - Have to fine tune this
+        self._THRESHOLD = 0.25
 
         self.reset()
 
@@ -432,7 +433,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # AI4EU We have to check the probability of the actions.
         # If they are too low then it is better to use the QA module
         print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
-        if policy_prediction.probs[policy_prediction.predicted_action_ix] < self.action_probability_threshold:
+        if policy_prediction.probs[policy_prediction.predicted_action_ix] < self._THRESHOLD:
             policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
             print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
 
@@ -479,7 +480,7 @@ class AI4EUGoalOrientedBot(NNModel):
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
             # we 1) perform the qa api call and 2) predict what to do next
             # TODO - no need to predict in this case - Have to update - NEXT
-            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self.topk)
+            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self._TOPK)
 
             # Log response from QA
             print(f"True response = '{candidates}'.")

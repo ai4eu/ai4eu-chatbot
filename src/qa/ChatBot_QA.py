@@ -13,7 +13,7 @@
 # Currently we exploit two models for our QA chatbot
 # The first one is a sentence based embedding model for FAQ trained over FAQ question-answer pairs
 # over the AI4EU website and general AI terminology
-# If the user query is not answered from this module with a probability greater than __THRESHOLD
+# If the user query is not answered from this module with a probability greater than _THRESHOLD
 # we use a KBQA model to get an answer from external Knowledge Bases (Wikidata).
 # If everything fails we return a default answer
 
@@ -31,7 +31,7 @@ class ChatBot_QA:
         self.__faq = faq.FAQ()
         self.__kbqa = kbqa.KBQA()
         # Fine-tune this threshold especially for the FAQ model
-        self.__THRESHOLD = 0.5 # for multi-qa and all-mpnet
+        self._THRESHOLD = 0.25 # for multi-qa and all-mpnet
 
     """
     Ask the query to our models.
@@ -48,7 +48,7 @@ class ChatBot_QA:
 
         # Add a threshold for our probabilities
         # If less than this then do something else
-        if float(score) > self.__THRESHOLD and ans != 'INVALID':
+        if float(score) > self._THRESHOLD and ans != 'INVALID':
             return model, results
 
         # Else we were not able to answer the question using the FAQ module
