@@ -52,6 +52,17 @@
 {"speaker": 1, "text": "Ok, bye for now!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Thank you for the chat! Bye bye!", "dialog_acts": [{"act": "outro", "slots": []}]}
 
+{"speaker": 1, "text": "Do you have feelings?", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "No, I do not have feelings. I am just a pipeline of deep learning models", "dialog_acts": [{"act": "have_feelings", "slots": []}]}
+
+{"speaker": 1, "text": "Can you describe your pipeline?", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Well, I am using sota NLP models like mpnet to understand your intents and the semantics of your input on top of an LSTM that tracks the state of the dialogue.", "dialog_acts": [{"act": "describe_pipeline", "slots": []}]}
+
+
+{"speaker": 1, "text": "Are you tracking my questions?", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Yes, I am just tracking the questions, since this will make me better", "dialog_acts": [{"act": "tracking", "slots": []}]}
+
+
 {"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
 {"speaker": 1, "text": "Well, what can you do?", "dialog_acts": [{"act": "request", "slots": []}]}
