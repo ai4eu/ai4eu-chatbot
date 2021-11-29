@@ -1,1 +1,1 @@
-curl -XPOST -H "Content-type: application/json" -d '{"content":"Who is Yann Lecun", "from":0,"size":5}' -k https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying
+curl -XPOST -H "Content-type: application/json" -d '{"content":"Who is Yann Lecun", "from":0,"size":2}' -k https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying
