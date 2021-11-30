@@ -33,7 +33,7 @@
         "out": ["y_predicted"],
         "main": true,
         "debug": false,
-        "learning_rate": 3e-4,
+        "learning_rate": 3e-2,
         "learning_rate_drop_patience": 10,
         "learning_rate_drop_div": 4.0,
         "momentum": 0.95,
@@ -42,7 +42,7 @@
         "dropout_rate": 0.1,
         "l2_reg_coef": 9e-4,
         "hidden_size": 128,
-        "dense_size": 128,
+        "dense_size": 256,
         "attention_mechanism": {
           "type": "general",
           "hidden_size": 32,
@@ -67,7 +67,7 @@
           "config_path": "{CONFIGS_PATH}/intents/sentence-emb/all-mpnet-base-v2.json"
         },
         "embedder": {
-	      "config_path": "{CONFIGS_PATH}/embeddings/sentence-embeddings/conversational_cased_L-12_H-768_A-12_pt.json"
+          "config_path": "{CONFIGS_PATH}/embeddings/sentence-embeddings/all-mpnet-base-v2.json"
         },
         "bow_embedder": null,
         "tokenizer": {

@@ -191,7 +191,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # The following could be parameters in the json configuration
         self._TOPK = 3   # Topk results for qa module
         # Threshold for action probabilities - Have to fine tune this
-        self._THRESHOLD = 0.25
+        self._THRESHOLD = 0.0
 
         self.reset()
 
@@ -257,6 +257,7 @@ class AI4EUGoalOrientedBot(NNModel):
 
             utterance_training_data = self.prepare_utterance_training_data(context, response)
             dialogue_training_data.append(utterance_training_data)
+
 
             # to correctly track the dialogue state
             # we inform the tracker with the ground truth response info

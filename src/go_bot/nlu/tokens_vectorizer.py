@@ -135,7 +135,7 @@ class TokensVectorizer:
             the padded sequence of calculated embeddings
         """
         tokens_embedded = self._embed_tokens(tokens, False)
-        print('==> AI4EU: embeddings shape ', tokens_embedded.shape)
+        #print('==> AI4EU: embeddings shape ', tokens_embedded.shape)
         if tokens_embedded is not None:
             # No need for padding since we are using the BERT mean sentence embeddings currently
             # emb_context = self._pad_sequence_to_size(output_sequence_length, token_dim, tokens_embedded)
@@ -151,7 +151,9 @@ class TokensVectorizer:
             None instead of the missing dim if BOW encoder or embedder are missing.
         """
         embedder_dim = len(self.embedder.out_params) if self.embedder else None
-        print('==> AI4EU out_params:', self.embedder.out_params)
+        if self.embedder is not None:
+            print('==> AI4EU embedder out_params:', self.embedder.out_params)
+            print('==> AI4EU embedder dim:', embedder_dim)
         bow_encoder_dim = len(self.word_vocab) if self.bow_embedder else None
         # return TokensVectorRepresentationParams(embedder_dim, bow_encoder_dim)
         # TODO! Hard parameter for embeddings...
