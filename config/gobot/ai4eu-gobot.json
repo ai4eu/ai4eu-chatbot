@@ -56,7 +56,8 @@
           "class_name": "gobot_nlg_manager",
           "template_path": "{DSTC2_DATA_PATH}/dstc2-templates.txt",
           "template_type": "DualTemplate",
-          "ai4eu_search_api_call_action": "ai4eu_search_api_call",
+          "ai4eu_web_search_api_call_action": "ai4eu_web_search_api_call",
+          "ai4eu_asset_search_api_call_action": "ai4eu_asset_search_api_call",
           "ai4eu_qa_api_call_action": "ai4eu_qa_api_call"
         },
         "use_action_mask": false,

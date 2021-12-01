@@ -47,6 +47,7 @@ from .nlg.nlg_manager import NLGManagerInterface
 from .nlu.nlu_manager import NLUManager
 from .policy.policy_network import PolicyNetwork, PolicyNetworkParams
 from .policy.dto.policy_prediction import PolicyPrediction
+from .search_api.search_api import SearchAPI
 from .tracker.featurized_tracker import FeaturizedTracker
 from .tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
 from pathlib import Path
@@ -112,9 +113,9 @@ class AI4EUGoalOrientedBot(NNModel):
             :class:`~deeppavlov.models.classifiers.keras_classification_model.KerasClassificationModel`
             recommended).
         database: database that will be used during inference to perform
-            ``ai4eu_search_api_call_action`` actions and get ``'db_result'`` result (
+            ``api-call`` actions and get ``'db_result'`` result (
             :class:`~deeppavlov.core.data.sqlite_database.Sqlite3Database`
-            recommended). (TODO - AI4EU use search api)
+            recommended). (TODO - AI4EU use search api - we can remove this)
         use_action_mask: if ``True``, network output will be applied with a mask
             over allowed actions.
         debug: whether to display debug output.
@@ -192,6 +193,10 @@ class AI4EUGoalOrientedBot(NNModel):
         self._TOPK = 3   # Topk results for qa module
         # Threshold for action probabilities - Have to fine tune this
         self._THRESHOLD = 0.0
+
+        # This is responsible for making requests to the search API
+        self.SAPI = SearchAPI()
+        self.QA = ChatBot_QA()
 
         self.reset()
 
@@ -456,10 +461,10 @@ class AI4EUGoalOrientedBot(NNModel):
                                                 tracker_slotfilled_state)
         responses.append(resp)
 
-        # AI4EU: If we need to make a call to the AI4EU search api
-        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_search_api_call_action_id():
+        # AI4EU: If we need to make a call to the AI4EU web search api for web resources
+        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
             # we 1) perform the search api call and 2) predict what to do next
-            user_tracker.make_ai4eu_search_api_call()
+            user_tracker.make_ai4eu_web_search_api_call()
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
@@ -476,6 +481,28 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     tracker_slotfilled_state)
             responses.append(resp)
+
+        # AI4EU: If we need to make a call to the AI4EU asset search api for web resources
+        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
+            # we 1) perform the search api call and 2) predict what to do next
+            user_tracker.make_ai4eu_asset_search_api_call()
+            utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
+                                                                      keep_tracker_state=True)
+            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
+            user_tracker.network_state = policy_prediction.get_network_state()
+
+            # tracker says we need to say smth to user. we
+            # * calculate the slotfilled state:
+            #   for each slot that is relevant to dialogue we fill this slot value if possible
+            # * generate text for the predicted speech action:
+            #   using the pattern provided for the action;
+            #   the slotfilled state provides info to encapsulate to the pattern
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
+            resp = self.nlg_manager.decode_response(utterance_batch_features,
+                                                    policy_prediction,
+                                                    tracker_slotfilled_state)
+            responses.append(resp)
+
 
         # AI4EU: If we need to make a call to the AI4EU QA api
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():

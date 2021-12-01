@@ -27,6 +27,7 @@ class ChatBot_QA:
     """
     Constructor of QA chatbot. Currently we have two models, the FAQ and the KBQA
     """
+
     def __init__(self):
         self.__faq = faq.FAQ()
         self.__kbqa = kbqa.KBQA()
