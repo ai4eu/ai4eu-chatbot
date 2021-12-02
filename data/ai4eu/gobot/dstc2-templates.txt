@@ -6,7 +6,6 @@ stupid	I am sorry for letting you down
 bad_language	Please, be nice!
 wrong_answer	I am sorry for the confusion. Can you please rephrase?
 funny	I am happy that I make you laugh!
-tell_more	PROVIDE_MORE_INFORMATION
 doing_well	That's great!
 compliment	I am really happy for this!
 tell_name	Unfortunately, I have not be given a name yet!
@@ -38,5 +37,14 @@ qa_request	Ok, what do you want to ask?
 ask_which_mode	Do you want to explore resources or make general questions about the project and AI?
 ask_which_resources	Are you looking for assets in the AI4EU catalogue or web resources?
 have_feelings	No, I do not have feelings. I am just a pipeline of deep learning models
-describe_pipeline	Well, I am using sota NLP models like mpnet to understand your intents and the semantics of your input on top of an LSTM that tracks the state of the dialogue.
+describe_pipeline	Well, I am using state-of-the-art NLP models like mpnet to understand your intents and the semantics of your input on top of an LSTM that tracks the state of the dialogue.
 tracking	Yes, I am just tracking the questions, since this will make me better
+tell_slots	The available slots for AI4EU are research areas, asset type, and technical and business categories
+tell_researchAreas	The available research areas are collaborative AI, explainable AI, integrative AI, physical AI and verifiable AI
+tell_assetTypes	The available asset types are datasets, docker containers, as as service, executables, notebooks, libraries, and ML models
+tell_technicalCategories	The technical categories include AI ethics, AI services, audio processing, automated reasoning, commonsense reasoning, computer vision, connected and automated vehicles, constraints and satisfiability, knowledge representation, machine learning, multi-agent systems, NLP, optimization, philosophy of AI, planning and scheduling, robotics and automation, and search
+tell_businessCategories	The business categories include agriculture, cloud edge infrastructure, cultural heritage, earth observation, energy, healthcare, manufacturing, maritime sector, public services, regional engagement DIHS, telecommunications and transportations
+request_researchArea	What is the research area of interest?
+request_assetType	What is the asset type that you are looking for?
+request_technicalCategory	What technical category do you want?
+request_businessCategory	What business category do you want?
