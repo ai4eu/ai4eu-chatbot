@@ -15,7 +15,7 @@
         "physicalAI": [
             "physicalAI",
             "physical AI"
-        ], 
+        ],
         "verifiableAI": [
             "verifiable AI",
             "verifiableAI"
@@ -50,7 +50,9 @@
         ],
         "ML_model": [
             "ML model",
-            "model"
+            "model",
+            "DL model"
+            "Deep Learning model"
         ],
         "dont_care": [
             "any resource",
