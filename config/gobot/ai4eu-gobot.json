@@ -68,7 +68,7 @@
           "config_path": "{CONFIGS_PATH}/intents/sentence-emb/all-mpnet-base-v2.json"
         },
         "embedder": {
-          "config_path": "{CONFIGS_PATH}/embeddings/sentence-embeddings/all-mpnet-base-v2.json"
+          "config_path": "{CONFIGS_PATH}/embeddings/sentence-emb/all-mpnet-base-v2.json"
         },
         "bow_embedder": null,
         "tokenizer": {
