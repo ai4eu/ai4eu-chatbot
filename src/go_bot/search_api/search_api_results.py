@@ -13,7 +13,7 @@
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
 
-class SearchAPIResponse:
+class SearchAPIResults:
 
     """
     Method that returns the results of a query
@@ -29,12 +29,28 @@ class SearchAPIResponse:
         return response['results']['items']
 
     """
-    Method that gets a specific item
+    Method that gets a specific item from result
     """
     @staticmethod
-    def get_item(response, index=0):
+    def get_item_from_results(response, index=0):
 
-        items = SearchAPIResponse.get_items(response)
+        items = SearchAPIResults.get_items(response)
+
+        # Something is wrong with the search api response
+        if items is None:
+            return None
+
+        if len(items) <= index:
+            print('Asking index out of array')
+            return None
+
+        return items[index]
+
+    """
+    Method that gets a specific item from items
+    """
+    @staticmethod
+    def get_item_from_items(items, index=0):
 
         # Something is wrong with the search api response
         if items is None:

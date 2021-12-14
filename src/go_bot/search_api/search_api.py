@@ -16,7 +16,7 @@
 # importing the requests library
 import requests
 
-from search_api_response import SearchAPIResponse as S_API_R
+#from search_api_response import SearchAPIResults as S_API_R
 
 
 class SearchAPI:
@@ -117,6 +117,7 @@ class SearchAPI:
 
         return json
 
+'''
 # Just trying out things
 search_api = SearchAPI()
 response = search_api.web_query('What is Yolo?', 3)
@@ -130,3 +131,4 @@ print(S_API_R.get_indexed_document(item))
 #                              business_categories='agriculture',
 #                              technical_categories='knowledge representation')
 
+'''
