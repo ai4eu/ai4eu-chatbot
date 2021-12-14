@@ -2,6 +2,7 @@ intro	Hello! How may I help you?
 outro	Thank you for the chat! Bye bye!
 repeat	REPEAT_CURRENT_STATE
 rephrase	REPHRASE
+reset   What do you want to talk about?
 stupid	I am sorry for letting you down
 bad_language	Please, be nice!
 wrong_answer	I am sorry for the confusion. Can you please rephrase?
@@ -14,9 +15,9 @@ tell_feelings	Currently I have no feelings! But lets say that I am fine!
 tell_contact_details	Please, send an email to my creator papadako@ics.forth.gr
 tell_origin	I have no origin! Currently I live in the memory of a server called pangaia
 skills	You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!
-tell_creator	I was developed by Panagiotis Papadakos from FORTH-ICS
+tell_creator	I was developed by Panagiotis Papadakos from FORTH-ICS using the deeppavlov dialogue framework
 tell_smart	No, I am not smart
-tell_bot	Yes, I am a bot 
+tell_bot	Yes, I am a bot
 tell_human	No, I am not a human
 tell_age	I have no age, since I am not alive
 tell_how_to_help	You can help by asking questions. This will help my creator to improve me
@@ -48,3 +49,4 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
+
