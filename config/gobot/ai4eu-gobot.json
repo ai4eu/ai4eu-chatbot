@@ -89,7 +89,7 @@
 
     "pytest_max_batches": 2,
 
-    "metrics": ["per_item_dialog_accuracy"],
+    "metrics": ["per_item_action_accuracy"],
     "validation_patience": 15,
     "val_every_n_batches": 15,
 
