@@ -21,10 +21,13 @@ import numpy as np
 from deeppavlov.core.models.component import Component
 from ..nlg.nlg_manager import NLGManagerInterface
 from ..policy.dto.policy_network_params import PolicyNetworkParams
+from ..search_api.search_api_results import SearchAPIResults
 from ..tracker.dto.dst_knowledge import DSTKnowledge
 from ..tracker.featurized_tracker import FeaturizedTracker
 
 from ...qa.ChatBot_QA import ChatBot_QA
+
+from ..search_api.search_api import SearchAPI
 
 log = getLogger(__name__)
 
@@ -49,25 +52,43 @@ class DialogueStateTracker(FeaturizedTracker):
                  _ai4eu_asset_search_api_call_id: int,
                  _ai4eu_qa_api_call_id: int,
                  hidden_size: int,
-                 database: Component = None,
+                 qa: ChatBot_QA,
+                 sapi: SearchAPI,
+                 topk: int = 3,
                  domain_yml_path: Optional[Union[str, Path]]=None,
                  stories_yml_path: Optional[Union[str, Path]]=None,
                  **kwargs) -> None:
         super().__init__(slot_names, domain_yml_path, stories_yml_path, **kwargs)
         self.hidden_size = hidden_size
-        self.database = database
+        self.topk = topk
+        self.sapi = sapi
+        self.qa = qa
         self.n_actions = n_actions
         self._ai4eu_web_search_api_call_id = _ai4eu_web_search_api_call_id
         self._ai4eu_asset_search_api_call_id = _ai4eu_asset_search_api_call_id
         self._ai4eu_qa_api_call_id = _ai4eu_qa_api_call_id
         self.ffill_act_ids2req_slots_ids: Dict[int, List[int]] = dict()
+        self.ffill_act_ids2aqd_slots_ids: Dict[int, List[int]] = dict()
         self.reset_state()
+
+        # The following features are used for computing the context feature vector
+        self.curr_search_item = None            # holds the current search item
+        self.curr_search_items = None           # holds the current topk items of search API results
+        self.curr_search_item_index = 0         # holds the index of current item (starts from 1)
+        self.curr_search_item_slot_state = None # holds the state used for querying
+
+        #PP I am not sure that I will use the previous query state
+        self.prev_search_item = None            # holds the active search item of the previous results
+        self.prev_search_items = None           # topk items of search API results
+        self.prev_search_item_index = 0         # index of current item
 
     @staticmethod
     def from_gobot_params(parent_tracker: FeaturizedTracker,
                           nlg_manager: NLGManagerInterface,
                           policy_network_params: PolicyNetworkParams,
-                          database: Component):
+                          qa: ChatBot_QA,
+                          sapi: SearchAPI,
+                          topk: int):
         slot_names = parent_tracker.slot_names
 
         # region set formfilling info
@@ -81,7 +102,9 @@ class DialogueStateTracker(FeaturizedTracker):
                                                       nlg_manager.get_ai4eu_asset_search_api_call_action_id(),
                                                       nlg_manager.get_ai4eu_qa_api_call_action_id(),
                                                       policy_network_params.hidden_size,
-                                                      database,
+                                                      qa,
+                                                      sapi,
+                                                      topk,
                                                       parent_tracker.domain_yml_path,
                                                       parent_tracker.stories_path)
 
@@ -97,7 +120,7 @@ class DialogueStateTracker(FeaturizedTracker):
                                                     nlg_manager: NLGManagerInterface,
                                                     parent_tracker: FeaturizedTracker) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
         """
-        get the required and acquired slots information for each known action in the -Hot Encoding form
+        get the required and acquired slots information for each known action in the 1-Hot Encoding form
         Args:
             act2act_id: the mapping of actions onto their ids
             slot_names: the names of slots known to the tracker
@@ -107,8 +130,8 @@ class DialogueStateTracker(FeaturizedTracker):
         Returns:
             the dicts providing np.array masks of required and acquired slots for each known action
         """
-        action_id2aqd_slots_ids = dict()  # aqd stands for acquired
-        action_id2req_slots_ids = dict()
+        action_id2aqd_slots_ids = dict()    # aqd stands for acquired
+        action_id2req_slots_ids = dict()    # req stands for required
         for act in nlg_manager.known_actions():
             act_id = act2act_id[act]
 
@@ -134,13 +157,19 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     def reset_state(self):
         super().reset_state()
-        self.db_result = None
-        self.current_db_result = None
+        self.curr_search_item = None
+        self.curr_search_items = None
+        self.curr_search_item_slot_state = None
+        self.curr_search_item_index = 0
+
+        self.prev_search_item = None
+        self.prev_search_items = None
+        self.prev_search_item_index = 0
         self.prev_action = np.zeros(self.n_actions, dtype=np.float32)
         self._reset_network_state()
 
     """
-    Reset network state
+    Reset network state of LSTM
     """
     def _reset_network_state(self):
         self.network_state = (
@@ -152,90 +181,121 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_action *= 0.
         self.prev_action[prev_act_id] = 1.
 
-    # todo oserikov это стоит переписать
+    # AI4EU : We are not using a ground-truth in the DSTC-2 templates based on the returned results from API calls
+    # We use only per_item_action_accuracy for our training instead of per_item_dialogue_accuracy
     def update_ground_truth_db_result_from_context(self, context: Dict[str, Any]):
-        self.current_db_result = context.get('db_result', None)
-        self._update_db_result()
+        #self.current_db_result = context.get('db_result', None)
+        #self._update_db_result()
+        return None
+
+    """
+    Update search-api results 
+    """
+    def _update_search_results(self, results) -> None:
+        if results is not None:
+            log.info(f"Made ai4eu_web_search_api_call  got {len(results)} results.")
+            # Hold the previous state
+            self.prev_search_items = self.curr_search_items
+            self.prev_search_item = self.curr_search_item
+            self.prev_search_item_index = self.curr_search_item_index
+            # Update the new state
+            self.curr_search_items = results
+            self.curr_search_item_index = 0
+            self.curr_search_item = None
+            self.curr_search_item_slot_state = self.get_state() # Hold also the state for this query
+        else:
+            log.warning("Something went wrong with the search API")
 
     """
     Make call to search-API for web resources
-    TODO: We need to update this to do not use the database but the search API
-    PP TODO!!!
+    Store the topk results to the state
     """
-    def make_ai4eu_web_search_api_call(self) -> None:
-        slots = self.get_state()
-        db_results = []
-        if self.database is not None:
+    def make_ai4eu_web_search_api_call(self, user_text: str) -> None:
+        # If we have a search API - Make the call to the API and get the results
+        if self.sapi is not None:
+            response = self.sapi.web_query(user_text, self.topk)
+            # Get the results
+            results = SearchAPIResults.get_items(response)
+            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
+            self._update_search_results(results)
+        else:
+            log.warning("No Search-API defined")
 
-            # filter slot keys with value equal to 'dontcare' as
-            # there is no such value in database records
-            # and remove unknown slot keys (for example, 'this' in dstc2 tracker)
-            db_slots = {
-                s: v for s, v in slots.items() if v != 'dontcare' and s in self.database.keys
+
+    """
+    Make call to search-API for assets using the slot values from the state
+    Store the topk results to the state
+    """
+    def make_ai4eu_asset_search_api_call(self, user_text: str) -> None:
+        # If we have a search API - Make the call to the API and get the results
+        if self.sapi is not None:
+            # Get the current slots
+            slots = self.get_state()
+
+            # slot keys currently used for the AI4EU gobot
+            valid_slots = ['researchArea', 'assetType', 'technicalCategories', 'businessCategories']
+
+            # filter slot keys with value equal to 'dontcare'
+            # also remove unknown slot keys (for example, 'this' in dstc2 tracker)
+            filtered_slots = {
+                s: v for s, v in slots.items() if v != 'dontcare' and s in valid_slots
             }
 
-            db_results = self.database([db_slots])[0]
-
-            # filter api results if there are more than one
-            # TODO: add sufficient criteria for database results ranking
-            if len(db_results) > 1:
-                db_results = [r for r in db_results if r != self.db_result]
+            # Ask the API for the results for this query
+            response = self.sapi.ai_catalogue_query(user_text, self.topk,
+                                                    research_area=filtered_slots['researchArea'],
+                                                    asset_type=filtered_slots['assetType'],
+                                                    technical_categories=filtered_slots['technicalCategories'],
+                                                    business_categories=filtered_slots['businessCategories'])
+            # Get the results
+            results = SearchAPIResults.get_items(response)
+            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
+            self._update_search_results(results)
         else:
-            log.warning("No database specified.")
+            log.warning("No Search-API defined")
 
-        log.info(f"Made ai4eu_web_search_api_call with {slots}, got {len(db_results)} results.")
-        self.current_db_result = {} if not db_results else db_results[0]
-        self._update_db_result()
-
-        """
-        Make call to search-API for assets
-        TODO: We need to update this to do not use the database but the search API
-        PP TODO!!!
-        """
-
-        def make_ai4eu_asset_search_api_call(self) -> None:
-            slots = self.get_state()
-            db_results = []
-            if self.database is not None:
-
-                # filter slot keys with value equal to 'dontcare' as
-                # there is no such value in database records
-                # and remove unknown slot keys (for example, 'this' in dstc2 tracker)
-                db_slots = {
-                    s: v for s, v in slots.items() if v != 'dontcare' and s in self.database.keys
-                }
-
-                db_results = self.database([db_slots])[0]
-
-                # filter api results if there are more than one
-                # TODO: add sufficient criteria for database results ranking
-                if len(db_results) > 1:
-                    db_results = [r for r in db_results if r != self.db_result]
-            else:
-                log.warning("No database specified.")
-
-            log.info(f"Made ai4eu_asset_search_api_call with {slots}, got {len(db_results)} results.")
-            self.current_db_result = {} if not db_results else db_results[0]
-            self._update_db_result()
 
     """
     Make call to QA-API 
             Args:
             user_text: the user input text passed to the system, which is currently considered the Question for QA
-            QA: the QA module that uses an FAQ and an KBQA module 
-            topk: the number of top results to return 
 
     We return the topk results along with their probabilities
     """
     @staticmethod
-    def make_ai4eu_qa_api_call(user_text: str, qa: ChatBot_QA, topk: int):
+    def make_ai4eu_qa_api_call(self, user_text: str):
         # Ask the QA module the user request
-        model, results = qa.ask(user_text, topk)
+        model, results = self.qa.ask(user_text, topk)
 
         log.info(f"Made ai4eu_qa_api_call with text {str}, got results {results} from model {model}.")
 
         # return the model and the results
         return results
+
+    """
+    Get the next search result
+    The index of items starts from 1
+    """
+    def get_next_search_item(self):
+        idx = self.curr_search_item_index + 1
+        # If there are more results
+        if self.curr_search_items is not None and len(self.curr_search_items) > idx:
+            self.curr_search_item = SearchAPIResults.get_item_from_items(self.curr_search_items, idx)
+            self.curr_search_item_index = idx
+        else:
+            self.curr_search_item = {}
+            if self.curr_search_items is None:
+                log.info(f"Can't get next search item. Asking for index {idx} from None curr_search_items ")
+            else:
+                log.info(f"Can't get next search item. Asking for index {idx}, "
+                     f"while the length of the search results is  {len(self.curr_search_items)}")
+
+    """
+    Get the current search result
+    The index of items starts from 1
+    """
+    def get_current_search_item(self):
+        return self.curr_search_item
 
     """
     compute action mask
@@ -264,46 +324,43 @@ class DialogueStateTracker(FeaturizedTracker):
 
     """
     compute context features
+    This is a feature vector based on the results of the search-api and the slots state
+    We consider both the previous results and the new results is available
+
     """
     def calc_context_features(self):
-        # todo некрасиво
-        current_db_result = self.current_db_result
-        db_result = self.db_result
         dst_state = self.get_state()
-
+        query_state = self.curr_search_item_slot_state
         result_matches_state = 0.
-        if current_db_result is not None:
+        # Check if the current slots match the query ones
+        if query_state is not None:
             matching_items = dst_state.items()
-            result_matches_state = all(v == db_result.get(s)
+            result_matches_state = all(v == query_state.get(s)
                                        for s, v in matching_items
                                        if v != 'dontcare') * 1.
+
+        # Now compute the context features vector
         context_features = np.array([
-            bool(current_db_result) * 1.,
-            (current_db_result == {}) * 1.,
-            (db_result is None) * 1.,
-            bool(db_result) * 1.,
-            (db_result == {}) * 1.,
-            result_matches_state
+            bool(self.curr_search_items) * 1.,          # current API results are not None
+            (self.curr_search_items == {}) * 1.,        # current API results are empty
+            (self.curr_search_item is None) * 1.,       # active API item is None
+            bool(self.curr_search_item) * 1.,           # active API item is not None
+            (self.curr_search_item == {}) * 1.,         # active API item is empty
+            self.curr_search_item_index / self.topk,    # use also the current item index (TODO what if size < topk?)
+            result_matches_state                        # if original query state matches current state
         ], dtype=np.float32)
         return context_features
 
     """
-    update result from search API
+    We hold the results of the search API in self.curr_search_items
+    Currently, we have no way to get from the search-API what slots the results satisfy
     """
-    def _update_db_result(self):
-        if self.current_db_result is not None:
-            self.db_result = self.current_db_result
-
-    """
-    use search API to fill in the state
-    """
-    def fill_current_state_with_db_results(self) -> dict:
+    def fill_current_state_with_searchAPI_results(self) -> dict:
         slots = self.get_state()
-        if self.db_result:
-            for k, v in self.db_result.items():
-                slots[k] = str(v)
+    #    if self.db_result:
+    #        for k, v in self.db_result.items():
+    #            slots[k] = str(v)
         return slots
-
 
 class MultipleUserStateTrackersPool(object):
     def __init__(self, base_tracker: DialogueStateTracker):
@@ -320,7 +377,7 @@ class MultipleUserStateTrackersPool(object):
         tracker = self._ids_to_trackers[user_id]
 
         # TODO: understand why setting current_db_result to None is necessary
-        tracker.current_db_result = None
+        #tracker.current_db_result = None
         return tracker
 
     def new_tracker(self):
@@ -330,7 +387,9 @@ class MultipleUserStateTrackersPool(object):
                                        self.base_tracker._ai4eu_asset_search_api_call_id,
                                        self.base_tracker._ai4eu_qa_api_call_id,
                                        self.base_tracker.hidden_size,
-                                       self.base_tracker.database)
+                                       self.base_tracker.qa,
+                                       self.base_tracker.sapi,
+                                       self.base_tracker.topk)
         return tracker
 
     def get_or_init_tracker(self, user_id: int):
@@ -349,7 +408,9 @@ class MultipleUserStateTrackersPool(object):
             tracker_entity._ai4eu_asset_search_api_call_id,
             tracker_entity._ai4eu_qa_api_call_id,
             tracker_entity.hidden_size,
-            tracker_entity.database,
+            tracker_entity.qa,
+            tracker_entity.sapi,
+            tracker_entity.topk,
             tracker_entity.domain_yml_path,
             tracker_entity.stories_path
         )

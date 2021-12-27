@@ -113,7 +113,8 @@ class NLGManager(NLGManagerInterface):
     def decode_response(self,
                         utterance_batch_features: BatchDialoguesFeatures,
                         policy_prediction: PolicyPrediction,
-                        tracker_slotfilled_state) -> str:
+                        tracker_slotfilled_state,
+                        current_search_item) -> str:
         # todo: docstring
 
         action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
@@ -125,7 +126,7 @@ class NLGManager(NLGManagerInterface):
             action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
         return action_text
 
-    def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict) -> str:
+    def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict, current_search_item) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
         The slotfilled state provides info to encapsulate to the pattern.
@@ -133,6 +134,7 @@ class NLGManager(NLGManagerInterface):
         Args:
             action_id: the id of action to generate text for.
             slots: the slots and their known values. usually received from dialogue state tracker.
+            current_search_item: the current focused item from the retrieved items
 
         Returns:
             the text generated for the passed action id and slot values.

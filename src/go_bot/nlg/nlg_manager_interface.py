@@ -48,7 +48,8 @@ class NLGManagerInterface(metaclass=ABCMeta):
     def decode_response(self,
                         utterance_batch_features: BatchDialoguesFeatures,
                         policy_prediction: PolicyPrediction,
-                        tracker_slotfilled_state) -> NLGResponseInterface:
+                        slots: dict,
+                        current_search_item) -> NLGResponseInterface:
         # todo: docstring
         pass
 

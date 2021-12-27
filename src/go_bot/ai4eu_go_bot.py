@@ -112,10 +112,6 @@ class AI4EUGoalOrientedBot(NNModel):
             distribution for a given utterance (
             :class:`~deeppavlov.models.classifiers.keras_classification_model.KerasClassificationModel`
             recommended).
-        database: database that will be used during inference to perform
-            ``api-call`` actions and get ``'db_result'`` result (
-            :class:`~deeppavlov.core.data.sqlite_database.Sqlite3Database`
-            recommended). (TODO - AI4EU use search api - we can remove this)
         use_action_mask: if ``True``, network output will be applied with a mask
             over allowed actions.
         debug: whether to display debug output.
@@ -141,7 +137,6 @@ class AI4EUGoalOrientedBot(NNModel):
                  embedder: Component = None,
                  slot_filler: Component = None,
                  intent_classifier: Component = None,
-                 database: Component = None,
                  use_action_mask: bool = False,
                  debug: bool = False,
                  **kwargs) -> None:
@@ -161,9 +156,12 @@ class AI4EUGoalOrientedBot(NNModel):
         # Data handler is responsible for vectorizing the input utterance as an embedding
         self.data_handler = TokensVectorizer(debug, word_vocab, bow_embedder, embedder)
 
-        # todo make more abstract
+        # Initialize the Dialogue State Tracker using data from gobot
         self.dialogue_state_tracker = DialogueStateTracker.from_gobot_params(tracker, self.nlg_manager,
-                                                                             policy_network_params, database)
+                                                                             policy_network_params,
+                                                                             self._QA,
+                                                                             self._SAPI,
+                                                                             self._TOPK)
         # todo make more abstract
         self.multiple_user_state_tracker = MultipleUserStateTrackersPool(base_tracker=self.dialogue_state_tracker)
 
@@ -187,16 +185,15 @@ class AI4EUGoalOrientedBot(NNModel):
 
         self.dialogues_cached_features = dict()
 
-        # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
-        self.QA = ChatBot_QA()
         # The following could be parameters in the json configuration
-        self._TOPK = 3   # Topk results for qa module
+        self._TOPK = 3   # Topk results for qa and search modules
         # Threshold for action probabilities - Have to fine tune this
         self._THRESHOLD = 0.0
 
+        # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
+        self._QA = ChatBot_QA()
         # This is responsible for making requests to the search API
-        self.SAPI = SearchAPI()
-        self.QA = ChatBot_QA()
+        self._SAPI = SearchAPI()
 
         self.reset()
 
@@ -297,6 +294,8 @@ class AI4EUGoalOrientedBot(NNModel):
         # we inform the tracker with these lookups info
         # just like the tracker remembers the db interaction results when real-time inference
         # todo: not obvious logic
+        # TODO PP (Check that we are not using the ground truth since there is no ground truth
+        # Search-API results are dynamic
         self.dialogue_state_tracker.update_ground_truth_db_result_from_context(utterance_context_info_dict)
 
         utterance_features = self.extract_features_from_utterance_text(text, self.dialogue_state_tracker)
@@ -419,6 +418,7 @@ class AI4EUGoalOrientedBot(NNModel):
 
         return res
 
+
     def _realtime_infer(self, user_id, user_text) -> List[NLGResponseInterface]:
         # realtime inference logic
         #
@@ -445,26 +445,21 @@ class AI4EUGoalOrientedBot(NNModel):
 
         print(f"Use action = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
 
+        # Update the action and the state for the next utterance
         user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
         user_tracker.network_state = policy_prediction.get_network_state()
 
-        # tracker says we need to say smth to user. we
-        # * calculate the slotfilled state:
-        #   for each slot that is relevant to dialogue we fill this slot value if possible
-        # * generate text for the predicted speech action:
-        #   using the pattern provided for the action;
-        #   the slotfilled state provides info to encapsulate to the pattern
-        tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
-        # PP check response
-        resp = self.nlg_manager.decode_response(utterance_batch_features,
-                                                policy_prediction,
-                                                tracker_slotfilled_state)
-        responses.append(resp)
+        # AI4EU: If we need to make a call to the AI4EU web search API for web resources or ai-catalogue assets
+        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id()\
+                or policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
 
-        # AI4EU: If we need to make a call to the AI4EU web search api for web resources
-        if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
-            # we 1) perform the search api call and 2) predict what to do next
-            user_tracker.make_ai4eu_web_search_api_call()
+            # 1) we perform the api call for a web resource or a asset
+            if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
+                user_tracker.make_ai4eu_web_search_api_call(user_text)
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
+                user_tracker.make_ai4eu_asset_search_api_call(user_text)
+
+            # 2) we predict what to do next
             utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
                                                                       keep_tracker_state=True)
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
@@ -473,42 +468,26 @@ class AI4EUGoalOrientedBot(NNModel):
             # tracker says we need to say smth to user. we
             # * calculate the slotfilled state:
             #   for each slot that is relevant to dialogue we fill this slot value if possible
+            #   unfortunately we can not make an inverse query and get the slots for a specific result
+            #   currently we are using AND semantics
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+
+            # Now prepare the response
+            # Get the first object and pass it to the nlg as the current focus of our state
+            # Since we made a new request
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state)
+                                                    tracker_slotfilled_state,
+                                                    user_tracker.get_next_search_item())
             responses.append(resp)
-
-        # AI4EU: If we need to make a call to the AI4EU asset search api for web resources
-        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
-            # we 1) perform the search api call and 2) predict what to do next
-            user_tracker.make_ai4eu_asset_search_api_call()
-            utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
-                                                                      keep_tracker_state=True)
-            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
-            user_tracker.network_state = policy_prediction.get_network_state()
-
-            # tracker says we need to say smth to user. we
-            # * calculate the slotfilled state:
-            #   for each slot that is relevant to dialogue we fill this slot value if possible
-            # * generate text for the predicted speech action:
-            #   using the pattern provided for the action;
-            #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
-            resp = self.nlg_manager.decode_response(utterance_batch_features,
-                                                    policy_prediction,
-                                                    tracker_slotfilled_state)
-            responses.append(resp)
-
-
-        # AI4EU: If we need to make a call to the AI4EU QA api
+        # AI4EU: If we need to make a call to the AI4EU QA API
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
-            # we 1) perform the qa api call and 2) predict what to do next
-            # TODO - no need to predict in this case - Have to update - NEXT
-            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self.QA, self._TOPK)
+            # just perform the qa api call
+            # either use the QA component or the KBQA
+            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self._QA, self._TOPK)
 
             # Log response from QA
             print(f"True response = '{candidates}'.")
@@ -517,20 +496,21 @@ class AI4EUGoalOrientedBot(NNModel):
             # We just report the response of the QA module
             resp = ['ai4eu_qa_api_call', candidates[0][0]]
 
-            ###utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker, keep_tracker_state=True)
-            #user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
-            ###user_tracker.network_state = policy_prediction.get_network_state()
-
+            # Append the response
+            responses.append(resp)
+        else:
             # tracker says we need to say smth to user. we
             # * calculate the slotfilled state:
             #   for each slot that is relevant to dialogue we fill this slot value if possible
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            ###tracker_slotfilled_state = user_tracker.fill_current_state_with_db_results()
-            ###resp = self.nlg_manager.decode_response(utterance_batch_features,policy_prediction,tracker_slotfilled_state)
-
-            # Append the response
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+            # PP check response
+            resp = self.nlg_manager.decode_response(utterance_batch_features,
+                                                    policy_prediction,
+                                                    tracker_slotfilled_state,
+                                                    user_tracker.get_current_search_item())
             responses.append(resp)
 
         return responses

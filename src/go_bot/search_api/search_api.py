@@ -45,11 +45,17 @@ class SearchAPI:
 
     """
     Method that returns the results of an ai_catalogue query
+    PP: TODO Check if we need to support other kind of slots
     """
-    def ai_catalogue_query(self, query, results=1, research_area=None, asset_type=None, technical_categories=None, business_categories=None):
+    def ai_catalogue_query(self, query, results=1,
+                           research_area=None,
+                           asset_type=None,
+                           technical_categories=None,
+                           business_categories=None):
         # populate the json for the search API POST request
         # Here we are also adding any values for the slots we are tracking
-        self.json = SearchAPI.__populate_ai_catalogue_query_data(query, results, research_area=research_area,
+        self.json = SearchAPI.__populate_ai_catalogue_query_data(query, results,
+                                                                 research_area=research_area,
                                                                  asset_type=asset_type,
                                                                  technical_categories=technical_categories,
                                                                  business_categories=business_categories)
@@ -78,8 +84,11 @@ class SearchAPI:
     technicalCategories or businessCategories
     """
     @staticmethod
-    def __populate_ai_catalogue_query_data(query, results=1, research_area=None, asset_type=None,
-                                           technical_categories=None, business_categories=None):
+    def __populate_ai_catalogue_query_data(query, results=1,
+                                           research_area=None,
+                                           asset_type=None,
+                                           technical_categories=None,
+                                           business_categories=None):
         # Return only results is the ai-catalog
         must = [{'wildcard': {'source_doc_id': 'https://www.ai4europe.eu/research/ai-catalog/*'}}]
         # Check what other filters we want to add
