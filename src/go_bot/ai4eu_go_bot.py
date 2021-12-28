@@ -145,6 +145,16 @@ class AI4EUGoalOrientedBot(NNModel):
 
         self.debug = debug
 
+        # The following could be parameters in the json configuration
+        self._TOPK = 3   # Topk results for qa and search modules
+        # Threshold for action probabilities - Have to fine tune this
+        self._THRESHOLD = 0.0
+
+        # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
+        self._QA = ChatBot_QA()
+        # This is responsible for making requests to the search API
+        self._SAPI = SearchAPI()
+
         # Params of policy LSTM component
         policy_network_params = PolicyNetworkParams(hidden_size, dropout_rate, l2_reg_coef,
                                                     dense_size, attention_mechanism, network_parameters)
@@ -184,16 +194,6 @@ class AI4EUGoalOrientedBot(NNModel):
                                     policy_load_path, policy_save_path, **kwargs)
 
         self.dialogues_cached_features = dict()
-
-        # The following could be parameters in the json configuration
-        self._TOPK = 3   # Topk results for qa and search modules
-        # Threshold for action probabilities - Have to fine tune this
-        self._THRESHOLD = 0.0
-
-        # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
-        self._QA = ChatBot_QA()
-        # This is responsible for making requests to the search API
-        self._SAPI = SearchAPI()
 
         self.reset()
 
