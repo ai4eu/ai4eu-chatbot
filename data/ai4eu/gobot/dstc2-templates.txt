@@ -2,7 +2,7 @@ intro	Hello! How may I help you?
 outro	Thank you for the chat! Bye bye!
 repeat	REPEAT_CURRENT_STATE
 rephrase	REPHRASE
-reset   What do you want to talk about?
+reset	What do you want to talk about?
 stupid	I am sorry for letting you down
 bad_language	Please, be nice!
 wrong_answer	I am sorry for the confusion. Can you please rephrase?
@@ -49,4 +49,3 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
-
