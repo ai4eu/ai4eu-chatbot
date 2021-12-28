@@ -465,6 +465,10 @@
 {"Sentence":"telecommunications please","Intent":"select_businessCategory"}
 {"Sentence":"transportations please","Intent":"select_businessCategory"}
 
+{"Sentence":"can we start again?","Intent":"reset"}
+{"Sentence":"reset","Intent":"reset"}
+{"Sentence":"restart","Intent":"reset"}
+{"Sentence":"forget whatever we have talked about","Intent":"reset"}
 
 
 
