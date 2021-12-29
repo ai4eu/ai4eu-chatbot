@@ -107,8 +107,9 @@ class PolicyNetwork(LRScheduledTFModel):
         Returns:
             the calculated input shape of policy network
         """
-        # TODO what is this 6???
-        input_size = 6 + shared_go_bot_params.num_tracker_features + shared_go_bot_params.num_actions  # todo: why 6
+        # TODO what is this 7???
+        # In original code it was 6 - Else I get tensor shape inconsistencies
+        input_size = 7 + shared_go_bot_params.num_tracker_features + shared_go_bot_params.num_actions
         if tokens_dims.bow_dim:
             input_size += tokens_dims.bow_dim
         if tokens_dims.embedding_dim:
@@ -117,6 +118,12 @@ class PolicyNetwork(LRScheduledTFModel):
             input_size += shared_go_bot_params.num_intents
         if attention_params is not None:
             input_size -= attention_params.token_size
+
+        print('Input size', input_size)
+        print('Bow dim: ', tokens_dims.bow_dim)
+        print('Embedding dim: ', tokens_dims.embedding_dim)
+        print('Num intents: ', shared_go_bot_params.num_intents)
+        print('Token size: ', attention_params.token_size)
 
         return input_size
 
