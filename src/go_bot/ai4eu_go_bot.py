@@ -541,10 +541,11 @@ class AI4EUGoalOrientedBot(NNModel):
             self.dialogue_state_tracker.network_state = policy_prediction.get_network_state()
 
             # todo fix naming: fill_current_state_with_db_results & update_ground_truth_db_result_from_context are alike
-            tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_db_results()
+            tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results()
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state)
+                                                    tracker_slotfilled_state,
+                                                    self.dialogue_state_tracker.get_current_search_item())
             res.append(resp)
         return res
 

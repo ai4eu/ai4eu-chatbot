@@ -46,7 +46,10 @@ class NLGManager(NLGManagerInterface):
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     def __init__(self, template_path: Union[str, Path], template_type: str,
-                 ai4eu_web_search_api_call_action: str, ai4eu_asset_search_api_call_action: str, ai4eu_qa_api_call_action: str, debug=False):
+                 ai4eu_web_search_api_call_action: str,
+                 ai4eu_asset_search_api_call_action: str,
+                 ai4eu_qa_api_call_action: str,
+                 debug=False):
         self.debug = debug
         if self.debug:
             log.debug(f"BEFORE {self.__class__.__name__} init(): "
@@ -118,7 +121,8 @@ class NLGManager(NLGManagerInterface):
         # todo: docstring
 
         action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
-                                                                tracker_slotfilled_state)
+                                                                tracker_slotfilled_state,
+                                                                current_search_item)
         # in api calls replace unknown slots to "dontcare"
         # This is only needed for the asset search call that uses the slots
         # TODO: Probably no need for this (REMOVE IT)
