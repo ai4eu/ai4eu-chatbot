@@ -31,9 +31,9 @@ tell_self_improve	By asking me questions
 tell_opinion	Unfortunately, I am not able to express opinions
 reqmore	Can I help you with anything else?
 repeat	Sorry I am a bit confused; please tell me again what you are looking for.
-ai4eu_web_search_api_call	ai4eu_web_search_api_call
-ai4eu_asset_search_api_call	ai4eu_asset_search_api_call
-ai4eu_qa_api_call	faq
+ai4eu_web_search_api_call	AI4EU_WEB_SEARCH_API_CALL
+ai4eu_asset_search_api_call	AI4EU_ASSET_SEARCH_API_CALL
+ai4eu_qa_api_call	AI4EU_QA_API_CALL
 qa_request	Ok, what do you want to ask?
 ask_which_mode	Do you want to explore resources or make general questions about the project and AI?
 ask_which_resources	Are you looking for assets in the AI4EU catalogue or web resources?
@@ -49,3 +49,9 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
+tell_resource_title	TELL_RESOURCE_TITLE
+tell_resource_content	TELL_RESOURCE_CONTENT
+tell_resource_score	TELL_RESOURCE_SCORE
+tell_resource_summary	TELL_RESOURCE_SUMMARY
+tell_resource_categories	TELL_RESOURCE_CATEGORIES
+provide_alternative	PROVIDE_ALTERNATIVE
