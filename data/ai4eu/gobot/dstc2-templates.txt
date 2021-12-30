@@ -49,9 +49,11 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
+tell_resource_source	TELL_RESOURCE_SOURCE
 tell_resource_title	TELL_RESOURCE_TITLE
 tell_resource_content	TELL_RESOURCE_CONTENT
 tell_resource_score	TELL_RESOURCE_SCORE
 tell_resource_summary	TELL_RESOURCE_SUMMARY
 tell_resource_categories	TELL_RESOURCE_CATEGORIES
+tell_too_many_resources	TELL_TOO_MANY_RESOURCES
 provide_alternative	PROVIDE_ALTERNATIVE
