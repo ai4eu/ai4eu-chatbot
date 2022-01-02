@@ -481,9 +481,11 @@ class AI4EUGoalOrientedBot(NNModel):
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     tracker_slotfilled_state,
-                                                    user_tracker.get_next_search_item())
+                                                    user_tracker.get_next_search_item(),
+                                                    false)
             responses.append(resp)
-        # AI4EU: If we need to make a call to the AI4EU QA API
+        # AI4EU: If we need to make a call to the AI4EU QA API, just call the QA component
+        # No need to generate a response from action templates
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
             # just perform the qa api call
             # either use the QA component or the KBQA
@@ -498,6 +500,23 @@ class AI4EUGoalOrientedBot(NNModel):
 
             # Append the response
             responses.append(resp)
+        # Reset state since the user asks for a reset
+        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
+            # Reset state
+            user_tracker.reset_state()
+            # tracker says we need to say smth to user. we
+            # * calculate the slotfilled state:
+            #   for each slot that is relevant to dialogue we fill this slot value if possible
+            # * generate text for the predicted speech action:
+            #   using the pattern provided for the action;
+            #   the slotfilled state provides info to encapsulate to the pattern
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+            resp = self.nlg_manager.decode_response(utterance_batch_features,
+                                                    policy_prediction,
+                                                    tracker_slotfilled_state,
+                                                    user_tracker.get_current_search_item(),
+                                                    False)
+            responses.append(resp)
         else:
             # tracker says we need to say smth to user. we
             # * calculate the slotfilled state:
@@ -510,7 +529,8 @@ class AI4EUGoalOrientedBot(NNModel):
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     tracker_slotfilled_state,
-                                                    user_tracker.get_current_search_item())
+                                                    user_tracker.get_current_search_item(),
+                                                    False)
             responses.append(resp)
 
         return responses
@@ -542,10 +562,13 @@ class AI4EUGoalOrientedBot(NNModel):
 
             # todo fix naming: fill_current_state_with_db_results & update_ground_truth_db_result_from_context are alike
             tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results()
+            # set training to true - since we are using dynamic data just consider the dummy template
+            # we want to capture correctly the triggered actions - we can't be sure about the text
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     tracker_slotfilled_state,
-                                                    self.dialogue_state_tracker.get_current_search_item())
+                                                    self.dialogue_state_tracker.get_current_search_item(),
+                                                    True)
             res.append(resp)
         return res
 

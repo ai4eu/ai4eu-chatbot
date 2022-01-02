@@ -53,7 +53,7 @@ class NLGManager(NLGManagerInterface):
         self.debug = debug
         if self.debug:
             log.debug(f"BEFORE {self.__class__.__name__} init(): "
-                      f"template_path={template_path}, template_typ e={template_type}, "
+                      f"template_path={template_path}, template_type={template_type}, "
                       f"ai4eu_web_search_api_call_action={ai4eu_web_search_api_call_action}, debug={debug}, "
                       f"ai4eu_asset_search_api_call_action={ai4eu_asset_search_api_call_action}, debug={debug}, "
                       f"ai4eu_qa_api_call_action={ai4eu_qa_api_call_action}, debug={debug}")
@@ -62,6 +62,7 @@ class NLGManager(NLGManagerInterface):
         template_type = getattr(go_bot_templates, template_type)
         self.templates = go_bot_templates.Templates(template_type).load(template_path)
 
+        # These actions are API related and are given in the gobot config json file
         self._ai4eu_web_search_api_call_id = -1
         if ai4eu_web_search_api_call_action is not None:
             self._ai4eu_web_search_api_call_id = self.templates.actions.index(ai4eu_web_search_api_call_action)
@@ -117,20 +118,23 @@ class NLGManager(NLGManagerInterface):
                         utterance_batch_features: BatchDialoguesFeatures,
                         policy_prediction: PolicyPrediction,
                         tracker_slotfilled_state,
-                        current_search_item) -> str:
+                        current_search_item,
+                        training = False) -> str:
         # todo: docstring
 
         action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
                                                                 tracker_slotfilled_state,
-                                                                current_search_item)
+                                                                current_search_item,
+                                                                training)
         # in api calls replace unknown slots to "dontcare"
         # This is only needed for the asset search call that uses the slots
+        # Hand-written actions and logic for APIs / reset / next object
         # TODO: Probably no need for this (REMOVE IT)
-        if policy_prediction.predicted_action_ix == self._ai4eu_asset_search_api_call_id:
-            action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
-        return action_text
+        #if policy_prediction.predicted_action_ix == self._ai4eu_asset_search_api_call_id:
+        #    action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
 
-    def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict, current_search_item) -> str:
+    def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict,
+                                             current_search_item,training = False) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
         The slotfilled state provides info to encapsulate to the pattern.
@@ -144,17 +148,48 @@ class NLGManager(NLGManagerInterface):
             the text generated for the passed action id and slot values.
         """
 
-        # We have some templates that we create on the fly (e.g., date and time)
+        # We have some templates that we create on the fly (e.g., API calls, focus info, date and time, etc.)
         action = self.get_action(action_id)
 
         # Check the action and create responses appropriately
-        if action == 'tell_time':
-            now = datetime.utcnow()
-            text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
-        elif action == 'tell_date':
-            now = datetime.now()
-            text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[now.month - 1] + now.strftime(' %Y')
+        # These actions are specific for our chatbot
+        # If we are training we are just using the dummy template responses for things that are dynamic
+        # Else we create the corresponding responses
+        if not training:
+            # Respond with current debugging vectors
+            if action == 'debug':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_source':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_title':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_content':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_score':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_summary':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_categories':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_too_many_resources':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'provide_alternative':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'rephrase':
+                text = self.templates.templates[action_id].generate_text(slots)
+            # Respond with current UTC time
+            elif action == 'tell_time':
+                now = datetime.utcnow()
+                text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
+            # Respond with current date
+            elif action == 'tell_date':
+                now = datetime.now()
+                text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[now.month - 1] + now.strftime(' %Y')
+            else:
+                # General case - Just use the template
+                text = self.templates.templates[action_id].generate_text(slots)
         else:
+            # General case - Just use the template
             text = self.templates.templates[action_id].generate_text(slots)
 
         return text
