@@ -218,6 +218,8 @@ class DialogueStateTracker(FeaturizedTracker):
             results = SearchAPIResults.get_items(response)
             log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             self._update_search_results(results)
+            # Activate the first item
+            self.get_first_search_item()
         else:
             log.warning("No Search-API defined")
 
@@ -251,6 +253,8 @@ class DialogueStateTracker(FeaturizedTracker):
             results = SearchAPIResults.get_items(response)
             log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             self._update_search_results(results)
+            # Activate the first item
+            self.get_first_search_item()
         else:
             log.warning("No Search-API defined")
 
