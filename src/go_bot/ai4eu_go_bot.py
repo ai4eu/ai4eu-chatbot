@@ -588,14 +588,22 @@ class AI4EUGoalOrientedBot(NNModel):
             if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id() \
                     or policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
 
-                # 1) we perform the api call for a web resource or a asset
+                # we perform the api call for a web resource or a asset
                 if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
                     self.dialogue_state_tracker.make_ai4eu_web_search_api_call(context_text)
                 elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
                     self.dialogue_state_tracker.make_ai4eu_asset_search_api_call(context_text)
             elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
-                # Reset state in tracker / should we also reset state in policy
-                self.dialogue_state_tracker.reset_state()
+                self.dialogue_state_tracker.get_next_search_item()
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_next_in_focus'):
+                # get the next element in the focus
+                self.dialogue_state_tracker.get_next_search_item()
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_first_in_focus'):
+                # get the first element
+                self.dialogue_state_tracker.get_first_search_item()
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_previous_in_focus'):
+                # get the previous element
+                self.dialogue_state_tracker.get_previous_search_item()
 
             # Get the network state
             self.dialogue_state_tracker.network_state = policy_prediction.get_network_state()

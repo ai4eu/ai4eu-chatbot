@@ -300,7 +300,7 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     def get_previous_search_item(self):
         idx = self.curr_search_item_index - 1
-        # If there are more results
+        # If the focus was not the first element
         if self.curr_search_items is not None and idx > 0:
             self.curr_search_item = SearchAPIResults.get_item_from_items(self.curr_search_items, idx)
             self.curr_search_item_index = idx
