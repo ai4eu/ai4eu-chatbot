@@ -202,7 +202,7 @@ class DialogueStateTracker(FeaturizedTracker):
             self.curr_search_items = results
             self.curr_search_item_index = 0
             self.curr_search_item = None
-            self.curr_search_item_slot_state = self.get_state() # Hold also the state for this query
+            self.curr_search_item_slot_state = self.get_state()  # Hold also the state for this query
         else:
             log.warning("Something went wrong with the search API")
 
@@ -291,6 +291,42 @@ class DialogueStateTracker(FeaturizedTracker):
                      f"while the length of the search results is  {len(self.curr_search_items)}")
 
     """
+    Get the previous search result
+    The index of items starts from 1
+    """
+    def get_previous_search_item(self):
+        idx = self.curr_search_item_index - 1
+        # If there are more results
+        if self.curr_search_items is not None and idx > 0:
+            self.curr_search_item = SearchAPIResults.get_item_from_items(self.curr_search_items, idx)
+            self.curr_search_item_index = idx
+        else:
+            self.curr_search_item = {}
+            if self.curr_search_items is None:
+                log.info(f"Can't get previous search item. Asking for index {idx} from None curr_search_items ")
+            else:
+                log.info(f"Can't get previous search item. Asking for index {idx}, "
+                     f"while the length of the search results is  {len(self.curr_search_items)}")
+
+    """
+    Get the first search result
+    The index of items starts from 1
+    """
+    def get_first_search_item(self):
+        idx = 1
+        # If there are more results
+        if self.curr_search_items is not None:
+            self.curr_search_item = SearchAPIResults.get_item_from_items(self.curr_search_items, idx)
+            self.curr_search_item_index = idx
+        else:
+            self.curr_search_item = {}
+            if self.curr_search_items is None:
+                log.info(f"Can't get the first search item. Asking for index {idx} from None curr_search_items ")
+            else:
+                log.info(f"Can't get first search item. Asking for index {idx}, "
+                     f"while the length of the search results is  {len(self.curr_search_items)}")
+
+    """
     Get the current search result
     The index of items starts from 1
     """
@@ -325,7 +361,8 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     compute context features
     This is a feature vector based on the results of the search-api and the slots state
-    We consider both the previous results and the new results is available
+    Currently we only consider the latest results from the APIs
+    We could also consider the previous one
 
     """
     def calc_context_features(self):
@@ -339,6 +376,13 @@ class DialogueStateTracker(FeaturizedTracker):
                                        for s, v in matching_items
                                        if v != 'dontcare') * 1.
 
+        # Compute current value for focus index
+        # If there are no results in focus it is zero
+        # max results are topk
+        focus_index = 0
+        if self.curr_search_items is not None and len(self.curr_search_items) is not 0:
+            focus_index = self.curr_search_item_index / len(self.curr_search_items)
+
         # Now compute the context features vector
         context_features = np.array([
             bool(self.curr_search_items) * 1.,          # current API results are not None
@@ -346,7 +390,7 @@ class DialogueStateTracker(FeaturizedTracker):
             (self.curr_search_item is None) * 1.,       # active API item is None
             bool(self.curr_search_item) * 1.,           # active API item is not None
             (self.curr_search_item == {}) * 1.,         # active API item is empty
-            self.curr_search_item_index / self.topk,    # use also the current item index (TODO what if size < topk?)
+            focus_index,                                # use also the current item index
             result_matches_state                        # if original query state matches current state
         ], dtype=np.float32)
         return context_features
@@ -354,8 +398,9 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     We hold the results of the search API in self.curr_search_items
     Currently, we have no way to get from the search-API what slots the results satisfy
+    So just return the slots and their values
     """
-    def fill_current_state_with_searchAPI_results(self) -> dict:
+    def fill_current_state_with_searchAPI_results_slots_values(self) -> dict:
         slots = self.get_state()
     #    if self.db_result:
     #        for k, v in self.db_result.items():

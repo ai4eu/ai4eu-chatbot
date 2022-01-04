@@ -260,7 +260,6 @@ class AI4EUGoalOrientedBot(NNModel):
             utterance_training_data = self.prepare_utterance_training_data(context, response)
             dialogue_training_data.append(utterance_training_data)
 
-
             # to correctly track the dialogue state
             # we inform the tracker with the ground truth response info
             # just like the tracker remembers the predicted response actions when real-time inference
@@ -296,7 +295,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # todo: not obvious logic
         # TODO PP (Check that we are not using the ground truth since there is no ground truth
         # Search-API results are dynamic
-        self.dialogue_state_tracker.update_ground_truth_db_result_from_context(utterance_context_info_dict)
+        #self.dialogue_state_tracker.update_ground_truth_db_result_from_context(utterance_context_info_dict)
 
         utterance_features = self.extract_features_from_utterance_text(text, self.dialogue_state_tracker)
 
@@ -418,7 +417,9 @@ class AI4EUGoalOrientedBot(NNModel):
 
         return res
 
-
+    # Main logic for real-time inference
+    # We have different logic for different actions, since some of them change the current focus of the state
+    # or have very specific functionality like the reset action
     def _realtime_infer(self, user_id, user_text) -> List[NLGResponseInterface]:
         # realtime inference logic
         #
@@ -473,7 +474,7 @@ class AI4EUGoalOrientedBot(NNModel):
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
 
             # Now prepare the response
             # Get the first object and pass it to the nlg as the current focus of our state
@@ -510,7 +511,24 @@ class AI4EUGoalOrientedBot(NNModel):
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
+            resp = self.nlg_manager.decode_response(utterance_batch_features,
+                                                    policy_prediction,
+                                                    tracker_slotfilled_state,
+                                                    user_tracker.get_current_search_item(),
+                                                    False)
+            responses.append(resp)
+        # Reset state since the user asks for a reset
+        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('debug'):
+            # debugging should not affect the state
+
+            # tracker says we need to say smth to user. we
+            # * calculate the slotfilled state:
+            #   for each slot that is relevant to dialogue we fill this slot value if possible
+            # * generate text for the predicted speech action:
+            #   using the pattern provided for the action;
+            #   the slotfilled state provides info to encapsulate to the pattern
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     tracker_slotfilled_state,
@@ -524,7 +542,7 @@ class AI4EUGoalOrientedBot(NNModel):
             # * generate text for the predicted speech action:
             #   using the pattern provided for the action;
             #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results()
+            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
             # PP check response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
@@ -554,14 +572,38 @@ class AI4EUGoalOrientedBot(NNModel):
             # if there already were db lookups
             # we inform the tracker with these lookups info
             # just like the tracker remembers the db interaction results when real-time inference
-            self.dialogue_state_tracker.update_ground_truth_db_result_from_context(context)
+            # PP. The original code uses the provided db data as ground-trouth
+            # In our implementation we ignore them since they come from dynamic data
+            # self.dialogue_state_tracker.update_ground_truth_db_result_from_context(context)
 
-            utterance_batch_features, policy_prediction = self._infer(context['text'], self.dialogue_state_tracker)
+            # infer things
+            context_text = context['text']
+
+            utterance_batch_features, policy_prediction = self._infer(context_text, self.dialogue_state_tracker)
             self.dialogue_state_tracker.update_previous_action(policy_prediction.predicted_action_ix)  # see above todo
+
+            # If the predicted action updates the state then we have to update the state also to include new data
+            # like the size of the response, reset of the state, moving the focus, etc.
+            # AI4EU: If we need to make a call to the AI4EU web search API for web resources or ai-catalogue assets
+            if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id() \
+                    or policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
+
+                # 1) we perform the api call for a web resource or a asset
+                if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
+                    self.dialogue_state_tracker.make_ai4eu_web_search_api_call(context_text)
+                elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
+                    self.dialogue_state_tracker.make_ai4eu_asset_search_api_call(context_text)
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
+                # Reset state in tracker / should we also reset state in policy
+                self.dialogue_state_tracker.reset_state()
+
+            # Get the network state
             self.dialogue_state_tracker.network_state = policy_prediction.get_network_state()
 
-            # todo fix naming: fill_current_state_with_db_results & update_ground_truth_db_result_from_context are alike
-            tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results()
+            # Update current searchAPI result slots / Just return the current state slots
+            tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
+
+            # Get the response
             # set training to true - since we are using dynamic data just consider the dummy template
             # we want to capture correctly the triggered actions - we can't be sure about the text
             resp = self.nlg_manager.decode_response(utterance_batch_features,
