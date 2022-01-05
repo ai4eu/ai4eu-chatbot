@@ -119,7 +119,7 @@ class NLGManager(NLGManagerInterface):
                         policy_prediction: PolicyPrediction,
                         tracker_slotfilled_state,
                         current_search_item,
-                        training = False) -> str:
+                        training=False) -> str:
         # todo: docstring
 
         action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
@@ -134,7 +134,7 @@ class NLGManager(NLGManagerInterface):
         #    action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
 
     def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict,
-                                             current_search_item,training = False) -> str:
+                                             current_search_item, training=False) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
         The slotfilled state provides info to encapsulate to the pattern.
@@ -159,6 +159,8 @@ class NLGManager(NLGManagerInterface):
             # Respond with current debugging vectors
             if action == 'debug':
                 text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_resource_description':
+                text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_resource_source':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_resource_title':
@@ -172,6 +174,8 @@ class NLGManager(NLGManagerInterface):
             elif action == 'tell_resource_categories':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_too_many_resources':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_objects_in_focus':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'provide_alternative':
                 text = self.templates.templates[action_id].generate_text(slots)
