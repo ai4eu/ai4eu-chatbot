@@ -133,11 +133,11 @@ class NLGManager(NLGManagerInterface):
         #if policy_prediction.predicted_action_ix == self._ai4eu_asset_search_api_call_id:
         #    action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
 
-    def _generate_slotfilled_text_for_action(self, action_id: int, slots: dict,
-                                             current_search_item, training=False) -> str:
+    def _generate_slotfilled_text_for_action(self, action_id: int, dialogue_state_tracker, training=False) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
-        The slotfilled state provides info to encapsulate to the pattern.
+        We need the state tracker for getting the slotfilled state that provides info to encapsulate to the patterns
+        and for getting the current focus
 
         Args:
             action_id: the id of action to generate text for.
@@ -150,6 +150,15 @@ class NLGManager(NLGManagerInterface):
 
         # We have some templates that we create on the fly (e.g., API calls, focus info, date and time, etc.)
         action = self.get_action(action_id)
+
+        # Update current searchAPI result slots / Just return the current state slots
+        # * calculate the slotfilled state:
+        #   for each slot that is relevant to dialogue we fill this slot value if possible
+        #   unfortunately we can not make an inverse query and get the slots for a specific result
+        #   currently we are using AND semantics
+        slots = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
+
+        current_search_item = self.dialogue_state_tracker.get_current_search_item()
 
         # Check the action and create responses appropriately
         # These actions are specific for our chatbot
@@ -183,12 +192,10 @@ class NLGManager(NLGManagerInterface):
                 text = self.templates.templates[action_id].generate_text(slots)
             # Respond with current UTC time
             elif action == 'tell_time':
-                now = datetime.utcnow()
-                text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
+                return self.tell_time()
             # Respond with current date
             elif action == 'tell_date':
-                now = datetime.now()
-                text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[now.month - 1] + now.strftime(' %Y')
+                return self.tell_date()
             else:
                 # General case - Just use the template
                 text = self.templates.templates[action_id].generate_text(slots)
@@ -196,6 +203,27 @@ class NLGManager(NLGManagerInterface):
             # General case - Just use the template
             text = self.templates.templates[action_id].generate_text(slots)
 
+        return text
+
+    # Provide debugging state as response
+    # We have to report the intent, the slots, the current action and the previous action with their probabilities
+    # Along with the current focus state
+    def tell_debug(self):
+        return ""
+
+    # Tell the time
+    @staticmethod
+    def tell_time():
+        now = datetime.utcnow()
+        text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
+        return text
+
+    # Tell the date
+    @staticmethod
+    def tell_date(self):
+        now = datetime.now()
+        text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[
+            now.month - 1] + now.strftime(' %Y')
         return text
 
     def num_of_known_actions(self) -> int:

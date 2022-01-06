@@ -466,24 +466,11 @@ class AI4EUGoalOrientedBot(NNModel):
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
             user_tracker.network_state = policy_prediction.get_network_state()
 
-            # tracker says we need to say smth to user. we
-            # * calculate the slotfilled state:
-            #   for each slot that is relevant to dialogue we fill this slot value if possible
-            #   unfortunately we can not make an inverse query and get the slots for a specific result
-            #   currently we are using AND semantics
-            # * generate text for the predicted speech action:
-            #   using the pattern provided for the action;
-            #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
-
-            # Now prepare the response
-            # Get the first object and pass it to the nlg as the current focus of our state
-            # Since we made a new request
+            # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state,
-                                                    user_tracker.get_next_search_item(),
-                                                    false)
+                                                    user_tracker,
+                                                    False)
             responses.append(resp)
         # AI4EU: If we need to make a call to the AI4EU QA API, just call the QA component
         # No need to generate a response from action templates
@@ -505,49 +492,17 @@ class AI4EUGoalOrientedBot(NNModel):
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
             # Reset state
             user_tracker.reset_state()
-            # tracker says we need to say smth to user. we
-            # * calculate the slotfilled state:
-            #   for each slot that is relevant to dialogue we fill this slot value if possible
-            # * generate text for the predicted speech action:
-            #   using the pattern provided for the action;
-            #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
+            # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state,
-                                                    user_tracker.get_current_search_item(),
-                                                    False)
-            responses.append(resp)
-        # Reset state since the user asks for a reset
-        elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('debug'):
-            # debugging should not affect the state
-
-            # tracker says we need to say smth to user. we
-            # * calculate the slotfilled state:
-            #   for each slot that is relevant to dialogue we fill this slot value if possible
-            # * generate text for the predicted speech action:
-            #   using the pattern provided for the action;
-            #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
-            resp = self.nlg_manager.decode_response(utterance_batch_features,
-                                                    policy_prediction,
-                                                    tracker_slotfilled_state,
-                                                    user_tracker.get_current_search_item(),
+                                                    user_tracker,
                                                     False)
             responses.append(resp)
         else:
-            # tracker says we need to say smth to user. we
-            # * calculate the slotfilled state:
-            #   for each slot that is relevant to dialogue we fill this slot value if possible
-            # * generate text for the predicted speech action:
-            #   using the pattern provided for the action;
-            #   the slotfilled state provides info to encapsulate to the pattern
-            tracker_slotfilled_state = user_tracker.fill_current_state_with_searchAPI_results_slots_values()
-            # PP check response
+            # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state,
-                                                    user_tracker.get_current_search_item(),
+                                                    user_tracker,
                                                     False)
             responses.append(resp)
 
@@ -608,16 +563,10 @@ class AI4EUGoalOrientedBot(NNModel):
             # Get the network state
             self.dialogue_state_tracker.network_state = policy_prediction.get_network_state()
 
-            # Update current searchAPI result slots / Just return the current state slots
-            tracker_slotfilled_state = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
-
-            # Get the response
-            # set training to true - since we are using dynamic data just consider the dummy template
-            # we want to capture correctly the triggered actions - we can't be sure about the text
+            # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
-                                                    tracker_slotfilled_state,
-                                                    self.dialogue_state_tracker.get_current_search_item(),
+                                                    self.dialogue_state_tracker,
                                                     True)
             res.append(resp)
         return res
