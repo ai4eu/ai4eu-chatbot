@@ -388,10 +388,15 @@ class AI4EUGoalOrientedBot(NNModel):
 
         # as for RNNs: output, hidden_state < - RNN(output, hidden_state)
         hidden_cells_state, hidden_cells_output = user_tracker.network_state[0], user_tracker.network_state[1]
+
         policy_prediction = self.policy(utterance_batch_features,
                                         hidden_cells_state,
                                         hidden_cells_output,
                                         prob=True)
+
+        # Set the vanilla utterance features to policy prediction
+        # We need them for debugging reasons
+        self.policy.set_utterance_features(utterance_features.nlu_response)
 
         return utterance_batch_features, policy_prediction
 

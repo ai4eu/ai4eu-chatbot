@@ -8,9 +8,10 @@ class NLUResponse(NLUResponseInterface):
     """
     Stores the go-bot NLU knowledge: extracted slots and intents info, embedding and bow vectors.
     """
-    def __init__(self, slots, intents, tokens):
+    def __init__(self, slots, intents, intent, tokens):
         self.slots: Union[List[Tuple[str, Any]], Dict[str, Any]] = slots
         self.intents = intents
+        self.intent = intent
         self.tokens = tokens
         self.tokens_vectorized: Optional[TextVectorizationResponse] = None
 

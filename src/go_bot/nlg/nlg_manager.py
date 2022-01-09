@@ -9,6 +9,9 @@ from deeppavlov.core.common.registry import register
 from ..dto.dataset_features import BatchDialoguesFeatures
 from .nlg_manager_interface import NLGManagerInterface
 from ..policy.dto.policy_prediction import PolicyPrediction
+from ..tracker.dialogue_state_tracker import DialogueStateTracker
+
+import numpy as np
 
 from datetime import datetime
 
@@ -117,14 +120,12 @@ class NLGManager(NLGManagerInterface):
     def decode_response(self,
                         utterance_batch_features: BatchDialoguesFeatures,
                         policy_prediction: PolicyPrediction,
-                        tracker_slotfilled_state,
-                        current_search_item,
+                        dialogue_state_tracker,
                         training=False) -> str:
         # todo: docstring
 
-        action_text = self._generate_slotfilled_text_for_action(policy_prediction.predicted_action_ix,
-                                                                tracker_slotfilled_state,
-                                                                current_search_item,
+        action_text = self._generate_slotfilled_text_for_action(policy_prediction,
+                                                                dialogue_state_tracker,
                                                                 training)
         # in api calls replace unknown slots to "dontcare"
         # This is only needed for the asset search call that uses the slots
@@ -133,20 +134,21 @@ class NLGManager(NLGManagerInterface):
         #if policy_prediction.predicted_action_ix == self._ai4eu_asset_search_api_call_id:
         #    action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
 
-    def _generate_slotfilled_text_for_action(self, action_id: int, dialogue_state_tracker, training=False) -> str:
+    def _generate_slotfilled_text_for_action(self, policy_prediction: PolicyPrediction, dialogue_state_tracker: DialogueStateTracker, training=False) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
         We need the state tracker for getting the slotfilled state that provides info to encapsulate to the patterns
         and for getting the current focus
 
         Args:
-            action_id: the id of action to generate text for.
-            slots: the slots and their known values. usually received from dialogue state tracker.
-            current_search_item: the current focused item from the retrieved items
+            policy_prediction: related info for policy prediction
+            dialogue_state_tracker: holds the current state including the slots and current search item
 
         Returns:
             the text generated for the passed action id and slot values.
         """
+        # current action id
+        action_id = policy_prediction.predicted_action_ix
 
         # We have some templates that we create on the fly (e.g., API calls, focus info, date and time, etc.)
         action = self.get_action(action_id)
@@ -158,6 +160,7 @@ class NLGManager(NLGManagerInterface):
         #   currently we are using AND semantics
         slots = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
 
+        # We also need the current search item
         current_search_item = self.dialogue_state_tracker.get_current_search_item()
 
         # Check the action and create responses appropriately
@@ -167,7 +170,7 @@ class NLGManager(NLGManagerInterface):
         if not training:
             # Respond with current debugging vectors
             if action == 'debug':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_debug(policy_prediction, dialogue_state_tracker)
             elif action == 'tell_resource_description':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_resource_source':
@@ -208,7 +211,45 @@ class NLGManager(NLGManagerInterface):
     # Provide debugging state as response
     # We have to report the intent, the slots, the current action and the previous action with their probabilities
     # Along with the current focus state
-    def tell_debug(self):
+    def tell_debug(self, policy_prediction: PolicyPrediction, dialogue_state_tracker: DialogueStateTracker):
+        text = ''
+        ### NLU DATA - predicted intent, probability, and slots
+        nlu_response = policy_prediction.get_utterance_features()
+        intents = nlu_response.intents
+        # Get the max probability
+        max_prob = intents[np.argmax(intents)]
+        intent = nlu_response.intent
+        nlu = 'Predicted Intent: ' + intent + ' with probability ' + max_prob + '\n'
+        # Also add slot-values from NLU
+        slots = nlu_response.slots
+        nlu += 'Slots: ' + slots + '\n'
+        nlu += '\n'
+        text += nlu
+
+        ### CURRENT ACTION
+        # Print the predicted action
+        action = 'Predicted action: ' + self.nlg_manager.get_action(policy_prediction.predicted_action_ix) + '\n'
+        action += 'Predicted action probability: ' + policy_prediction.probs[policy_prediction.predicted_action_ix] + '\n'
+        action += 'Predicted action: ' + self.nlg_manager.get_action(policy_prediction.predicted_action_ix) + '\n'
+        action += 'Predicted action probability: ' + policy_prediction.probs[policy_prediction.predicted_action_ix] + '\n'
+        action += '\n'
+        text += action
+
+        ### REGARDING THE FOCUS
+        current_focus_len = 'Empty'
+        if dialogue_state_tracker.curr_search_items is not None:
+            current_focus_len = len(dialogue_state_tracker.curr_search_items)
+        # Regarding the current item in focus
+        current_item_in_focus = 'Empty'
+        if dialogue_state_tracker.curr_search_item is not None:
+            current_item_title = dialogue_state_tracker.curr_search_item
+
+        focus = 'Current focus length: ' + current_focus_len + '\n'
+        focus += 'Current item title: ' + current_item_title + '\n'
+        focus += 'Current item index: ' + dialogue_state_tracker.curr_search_item_index + '\n'
+        focus += '\n'
+        text += focus
+
         return ""
 
     # Tell the time

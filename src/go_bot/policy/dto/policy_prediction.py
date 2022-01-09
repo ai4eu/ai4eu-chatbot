@@ -2,6 +2,7 @@ from typing import Tuple
 
 import numpy as np
 
+from ...nlu.dto.nlu_response import NLUResponse
 
 class PolicyPrediction:
     """
@@ -13,6 +14,13 @@ class PolicyPrediction:
         self.hidden_outs = hidden_outs
         self.cell_state = cell_state
         self.predicted_action_ix = np.argmax(probs)
+        self.utterance_features = None
 
     def get_network_state(self) -> Tuple:
         return self.cell_state, self.hidden_outs
+
+    def set_utterance_features(self, features: NLUResponse):
+        self.utterance_features = features
+
+    def get_utterance_features(self) -> NLUResponse:
+        return self.utterance_features

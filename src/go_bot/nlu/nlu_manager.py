@@ -56,11 +56,13 @@ class NLUManager(NLUManagerInterface):
         if callable(self.slot_filler):
             slots = self._extract_slots_from_tokenized_text_entry(tokens)
 
+        # Intents holds the probabilities while intent the intent name
         intents = []
+        intent = None
         if callable(self.intent_classifier):
-            intents = self._extract_intents_from_tokenized_text_entry(tokens)
+            intents, intent = self._extract_intents_from_tokenized_text_entry(tokens)
 
-        return NLUResponse(slots, intents, tokens)
+        return NLUResponse(slots, intents, intent, tokens)
 
     def _extract_intents_from_tokenized_text_entry(self, tokens: List[str]):
         # todo meaningful type hints, relies on unannotated intent classifier
@@ -69,8 +71,10 @@ class NLUManager(NLUManagerInterface):
         intent_features = intents[1][0]
         # check which is the intent with the biggest probability
         max_prob = intent_features[np.argmax(intent_features)]
+        # Return also the intent
+        intent = intents[0]
         print('==> AI4EU intent', intents[0], ' with probability ', max_prob)
-        return intent_features
+        return intent_features, intent
 
     def _extract_slots_from_tokenized_text_entry(self, tokens: List[str]):
         # todo meaningful type hints, relies on unannotated slot filler
