@@ -396,7 +396,7 @@ class AI4EUGoalOrientedBot(NNModel):
 
         # Set the vanilla utterance features to policy prediction
         # We need them for debugging reasons
-        self.policy.set_utterance_features(utterance_features.nlu_response)
+        policy_prediction.set_utterance_features(utterance_features.nlu_response)
 
         return utterance_batch_features, policy_prediction
 
