@@ -158,10 +158,10 @@ class NLGManager(NLGManagerInterface):
         #   for each slot that is relevant to dialogue we fill this slot value if possible
         #   unfortunately we can not make an inverse query and get the slots for a specific result
         #   currently we are using AND semantics
-        slots = self.dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
+        slots = dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
 
         # We also need the current search item
-        current_search_item = self.dialogue_state_tracker.get_current_search_item()
+        current_search_item = dialogue_state_tracker.get_current_search_item()
 
         # Check the action and create responses appropriately
         # These actions are specific for our chatbot

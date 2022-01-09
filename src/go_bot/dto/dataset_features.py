@@ -24,6 +24,7 @@ class UtteranceFeatures:
     attn_key: np.ndarray
     tokens_embeddings_padded: np.ndarray
     features: np.ndarray
+    nlu_response: NLUResponse
 
     def __init__(self,
                  nlu_response: NLUResponse,
@@ -35,6 +36,7 @@ class UtteranceFeatures:
         tokens_vectorized = nlu_response.tokens_vectorized  # todo proper oop
         self.tokens_embeddings_padded = tokens_vectorized.tokens_embeddings_padded
         self.features = features.concat_feats
+        self.nlu_response = nlu_response
 
 
 class UtteranceTarget:
