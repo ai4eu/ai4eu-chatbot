@@ -245,10 +245,10 @@ class DialogueStateTracker(FeaturizedTracker):
 
             # Ask the API for the results for this query
             response = self.sapi.ai_catalogue_query(user_text, self.topk,
-                                                    research_area=filtered_slots['researchArea'],
-                                                    asset_type=filtered_slots['assetType'],
-                                                    technical_categories=filtered_slots['technicalCategories'],
-                                                    business_categories=filtered_slots['businessCategories'])
+                                                    research_area=filtered_slots.get('researchArea'),
+                                                    asset_type=filtered_slots.get('assetType'),
+                                                    technical_categories=filtered_slots.get('technicalCategories'),
+                                                    business_categories=filtered_slots.get('businessCategories'))
             # Get the results
             results = SearchAPIResults.get_items(response)
             log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
