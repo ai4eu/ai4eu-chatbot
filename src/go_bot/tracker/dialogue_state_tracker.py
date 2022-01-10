@@ -214,10 +214,10 @@ class DialogueStateTracker(FeaturizedTracker):
         # If we have a search API - Make the call to the API and get the results
         if self.sapi is not None:
             response = self.sapi.web_query(user_text, self.topk)
-            # Get the results
+            # Get the results and update state
             results = SearchAPIResults.get_items(response)
-            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             self._update_search_results(results)
+            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             # Activate the first item
             self.get_first_search_item()
         else:
@@ -249,10 +249,12 @@ class DialogueStateTracker(FeaturizedTracker):
                                                     asset_type=filtered_slots.get('assetType'),
                                                     technical_categories=filtered_slots.get('technicalCategories'),
                                                     business_categories=filtered_slots.get('businessCategories'))
-            # Get the results
+            # Get the results and update state
             results = SearchAPIResults.get_items(response)
-            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             self._update_search_results(results)
+
+            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
+
             # Activate the first item
             self.get_first_search_item()
         else:
