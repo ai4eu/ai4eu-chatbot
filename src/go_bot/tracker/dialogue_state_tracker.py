@@ -217,7 +217,7 @@ class DialogueStateTracker(FeaturizedTracker):
             # Get the results and update state
             results = SearchAPIResults.get_items(response)
             self._update_search_results(results)
-            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
+            log.info(f"==> AI4EU Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
             # Activate the first item
             self.get_first_search_item()
         else:
@@ -253,7 +253,7 @@ class DialogueStateTracker(FeaturizedTracker):
             results = SearchAPIResults.get_items(response)
             self._update_search_results(results)
 
-            log.info(f"Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
+            log.info(f"==> AI4EU Made ai4eu_web_search_api_call got {len(self.curr_search_items)} results.")
 
             # Activate the first item
             self.get_first_search_item()
