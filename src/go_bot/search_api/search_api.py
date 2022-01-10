@@ -59,7 +59,7 @@ class SearchAPI:
               'Research Area: ',  research_area,
                 'Asset Type: ', asset_type,
                 'Technical Categories: ', technical_categories,
-              'Bussiness Categories: ', business_categories)
+              'Business Categories: ', business_categories)
 
         # populate the json for the search API POST request
         # Here we are also adding any values for the slots we are tracking

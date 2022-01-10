@@ -134,7 +134,12 @@ class NLGManager(NLGManagerInterface):
         #if policy_prediction.predicted_action_ix == self._ai4eu_asset_search_api_call_id:
         #    action_text = re.sub("#([A-Za-z]+)", "dontcare", action_text).lower()
 
-    def _generate_slotfilled_text_for_action(self, policy_prediction: PolicyPrediction, dialogue_state_tracker: DialogueStateTracker, training=False) -> str:
+        return action_text
+
+    def _generate_slotfilled_text_for_action(self,
+                                             policy_prediction: PolicyPrediction,
+                                             dialogue_state_tracker: DialogueStateTracker,
+                                             training=False) -> str:
         """
         Generate text for the predicted speech action using the pattern provided for the action.
         We need the state tracker for getting the slotfilled state that provides info to encapsulate to the patterns
@@ -206,6 +211,7 @@ class NLGManager(NLGManagerInterface):
             # General case - Just use the template
             text = self.templates.templates[action_id].generate_text(slots)
 
+        print('==> AI4EU Predicted response: ', text)
         return text
 
     # Provide debugging state as response

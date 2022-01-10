@@ -420,6 +420,8 @@ class AI4EUGoalOrientedBot(NNModel):
                 user_text: str
                 res.append(self._realtime_infer(user_id, user_text))
 
+        print("==> AI4EU Chatbot response: ", res, '\n')
+
         return res
 
     # Main logic for real-time inference
