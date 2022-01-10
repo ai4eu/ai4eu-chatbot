@@ -136,7 +136,7 @@ class SearchAPI:
         return json
 
 # Just trying out things
-search_api = SearchAPI()
+'''search_api = SearchAPI()
 response = search_api.web_query('What is Yolo?', 3)
 item = SearchAPIResults.get_item_from_results(response, 0)
 print(item.get_summary())
@@ -148,7 +148,7 @@ print(item.get_id())
 print(item.get_url())
 print(item.get_title())
 print(item.get_score())
-print(item.get_index())
+print(item.get_index())'''
 #search_api.ai_catalogue_query('Earth Observation dataset?', asset_type='dataset',
 #                              business_categories='agriculture',
 #                              technical_categories='knowledge representation')
