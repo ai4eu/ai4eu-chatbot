@@ -192,12 +192,13 @@ class DialogueStateTracker(FeaturizedTracker):
     Update search-api results 
     """
     def _update_search_results(self, results) -> None:
+        # Hold the previous state
+        self.prev_search_items = self.curr_search_items
+        self.prev_search_item = self.curr_search_item
+        self.prev_search_item_index = self.curr_search_item_index
+
         if results is not None:
             log.info(f"Made ai4eu_web_search_api_call  got {len(results)} results.")
-            # Hold the previous state
-            self.prev_search_items = self.curr_search_items
-            self.prev_search_item = self.curr_search_item
-            self.prev_search_item_index = self.curr_search_item_index
             # Update the new state
             self.curr_search_items = results
             self.curr_search_item_index = 0
@@ -205,6 +206,11 @@ class DialogueStateTracker(FeaturizedTracker):
             self.curr_search_item_slot_state = self.get_state()  # Hold also the state for this query
         else:
             log.warning("Something went wrong with the search API")
+            # Update the new state
+            self.curr_search_items = []
+            self.curr_search_item_index = 0
+            self.curr_search_item = None
+            self.curr_search_item_slot_state = self.get_state()  # Hold also the state for this query
 
     """
     Make call to search-API for web resources
