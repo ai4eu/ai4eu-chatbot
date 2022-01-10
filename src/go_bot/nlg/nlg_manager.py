@@ -246,9 +246,11 @@ class NLGManager(NLGManagerInterface):
         if dialogue_state_tracker.curr_search_items is not None:
             current_focus_len = len(dialogue_state_tracker.curr_search_items)
         # Regarding the current item in focus
-        current_item_in_focus = 'Empty'
+        current_item_title = 'Empty'
         if dialogue_state_tracker.curr_search_item is not None:
-            current_item_title = dialogue_state_tracker.curr_search_item
+            # Get the title of the search item in focus
+            # TODO Make a dto for search-API itemst
+            current_item_title = dialogue_state_tracker.curr_search_item.get('title')
 
         focus = 'Current focus length: ' + current_focus_len + '\n'
         focus += 'Current item title: ' + current_item_title + '\n'
@@ -256,7 +258,7 @@ class NLGManager(NLGManagerInterface):
         focus += '\n'
         text += focus
 
-        return ""
+        return text
 
     # Tell the time
     @staticmethod

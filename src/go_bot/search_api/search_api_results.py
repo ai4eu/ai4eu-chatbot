@@ -12,6 +12,8 @@
 
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
+from dto.search_item_in_focus import SearchItemInFocus
+
 
 class SearchAPIResults:
 
@@ -19,20 +21,29 @@ class SearchAPIResults:
     Method that returns the results of a query
     """
     @staticmethod
-    def get_items(response):
+    def get_items(response) -> [SearchItemInFocus]:
         # Check that we have a correct response
         if response is None \
                 or response['results'] is None \
                 or response['results']['items'] is None:
             return None
 
-        return response['results']['items']
+        results = response['results']['items']
+
+        sapi_results = []
+        for result in results:
+            sapi_result = SearchItemInFocus.with_validation(result)
+            if sapi_result is not None:
+                sapi_results.append(sapi_result)
+
+        print(sapi_results)
+        return sapi_results
 
     """
     Method that gets a specific item from result
     """
     @staticmethod
-    def get_item_from_results(response, index=0):
+    def get_item_from_results(response, index=0) -> SearchItemInFocus:
 
         items = SearchAPIResults.get_items(response)
 
@@ -51,7 +62,7 @@ class SearchAPIResults:
     We use indexing from 1 - helps in the context vector computation in state
     """
     @staticmethod
-    def get_item_from_items(items, index=1):
+    def get_item_from_items(items, index=1)-> SearchItemInFocus:
 
         # Something is wrong with the search api response
         if items is None:
@@ -62,29 +73,3 @@ class SearchAPIResults:
             return None
 
         return items[index-1]
-
-    """
-    Method that returns the source of an item in the response
-    """
-    @staticmethod
-    def get_indexed_document(item):
-
-        if item is None:
-            return None
-        elif item['_source'] is not None:
-            return item['_source']['indexed_document']
-        else:
-            return None
-
-    """
-    Method that returns the title of an item in the response
-    """
-    @staticmethod
-    def get_title(item):
-
-        if item is None:
-            return None
-        elif item['_source'] is not None and item['_source']['title']:
-            return item['_source']['title'][0]
-        else:
-            return None

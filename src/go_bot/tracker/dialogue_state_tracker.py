@@ -277,7 +277,7 @@ class DialogueStateTracker(FeaturizedTracker):
     @staticmethod
     def make_ai4eu_qa_api_call(self, user_text: str):
         # Ask the QA module the user request
-        model, results = self.qa.ask(user_text, topk)
+        model, results = self.qa.ask(user_text, self.topk)
 
         log.info(f"Made ai4eu_qa_api_call with text {str}, got results {results} from model {model}.")
 

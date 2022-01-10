@@ -16,7 +16,7 @@
 # importing the requests library
 import requests
 
-#from search_api_response import SearchAPIResults as S_API_R
+from search_api_results import SearchAPIResults
 
 
 class SearchAPI:
@@ -33,7 +33,7 @@ class SearchAPI:
     """
     Method that returns the results of a simple web query
     Takes the query and the number of results
-    Returns the response as json
+    Returns the response as dict
     """
     def web_query(self, query, results=1):
         print('Search-API make web search query for ', query)
@@ -80,7 +80,7 @@ class SearchAPI:
             'size': results,
             'content': query,
             'options': {
-                'exclude': ['summary', 'sentiment', 'categories', 'text_suggester', 'lemma_title', 'lemma_content'],
+                'exclude': ['sentiment', 'text_suggester', 'lemma_title', 'lemma_content'],
                 'disable': ['qa', 'aggregator']
             }
         }
@@ -120,7 +120,7 @@ class SearchAPI:
             'size': 3,
             'content': query,
             'options': {
-                'exclude': ['summary', 'sentiment', 'categories', 'text_suggester', 'lemma_title', 'lemma_content'],
+                'exclude': ['sentiment', 'text_suggester', 'lemma_title', 'lemma_content'],
                 'disable': ['qa', 'aggregator']
             },
             'add-clause': {
@@ -135,18 +135,20 @@ class SearchAPI:
 
         return json
 
-'''
 # Just trying out things
 search_api = SearchAPI()
 response = search_api.web_query('What is Yolo?', 3)
-item = S_API_R.get_item(response, 0)
-print(S_API_R.get_title(item))
-print(S_API_R.get_indexed_document(item))
-item = S_API_R.get_item(response, 2)
-print(S_API_R.get_title(item))
-print(S_API_R.get_indexed_document(item))
+item = SearchAPIResults.get_item_from_results(response, 0)
+print(item.get_summary())
+item = SearchAPIResults.get_item_from_results(response, 2)
+print(item.get_summary())
+print(item.get_keywords())
+print(item.get_content())
+print(item.get_id())
+print(item.get_url())
+print(item.get_title())
+print(item.get_score())
+print(item.get_index())
 #search_api.ai_catalogue_query('Earth Observation dataset?', asset_type='dataset',
 #                              business_categories='agriculture',
 #                              technical_categories='knowledge representation')
-
-'''
