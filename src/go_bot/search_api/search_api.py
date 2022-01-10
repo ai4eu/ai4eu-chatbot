@@ -36,6 +36,8 @@ class SearchAPI:
     Returns the response as json
     """
     def web_query(self, query, results=1):
+        print('Search-API make web search query for ', query)
+
         # populate the json for the search API POST request
         self.json = SearchAPI.__populate_web_query_data(query, results)
 
@@ -52,6 +54,13 @@ class SearchAPI:
                            asset_type=None,
                            technical_categories=None,
                            business_categories=None):
+
+        print('Search-API make asset search query for ', query,
+              'Research Area: ',  research_area,
+                'Asset Type: ', asset_type,
+                'Technical Categories: ', technical_categories,
+              'Bussiness Categories: ', business_categories)
+
         # populate the json for the search API POST request
         # Here we are also adding any values for the slots we are tracking
         self.json = SearchAPI.__populate_ai_catalogue_query_data(query, results,
