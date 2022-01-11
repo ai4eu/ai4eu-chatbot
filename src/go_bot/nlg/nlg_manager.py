@@ -178,7 +178,7 @@ class NLGManager(NLGManagerInterface):
                 text = self.tell_debug(policy_prediction, dialogue_state_tracker)
             elif action == 'tell_resource_description':
                 text = self.templates.templates[action_id].generate_text(slots)
-            elif action == 'tell_resource_source':
+            elif action == 'tell_resource_url':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_resource_title':
                 text = self.templates.templates[action_id].generate_text(slots)
@@ -188,13 +188,15 @@ class NLGManager(NLGManagerInterface):
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_resource_summary':
                 text = self.templates.templates[action_id].generate_text(slots)
-            elif action == 'tell_resource_categories':
-                text = self.templates.templates[action_id].generate_text(slots)
-            elif action == 'tell_too_many_resources':
+            elif action == 'tell_resource_keywords':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'tell_objects_in_focus':
                 text = self.templates.templates[action_id].generate_text(slots)
-            elif action == 'provide_alternative':
+            elif action == 'tell_next_in_focus':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_first_in_focus':
+                text = self.templates.templates[action_id].generate_text(slots)
+            elif action == 'tell_previous_in_focus':
                 text = self.templates.templates[action_id].generate_text(slots)
             elif action == 'rephrase':
                 text = self.templates.templates[action_id].generate_text(slots)
