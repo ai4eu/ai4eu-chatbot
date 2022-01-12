@@ -49,14 +49,13 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
-tell_resource_description	TELL_RESOURCE_DESCRIPTION
 tell_resource_url	TELL_RESOURCE_URL
 tell_resource_title	TELL_RESOURCE_TITLE
 tell_resource_content	TELL_RESOURCE_CONTENT
 tell_resource_score	TELL_RESOURCE_SCORE
 tell_resource_summary	TELL_RESOURCE_SUMMARY
 tell_resource_keywords	TELL_RESOURCE_KEYWORDS
-tell_objects_in_focs	TELL_OBJECTS_IN_FOCUS
+tell_current_in_focus	TELL_CURRENT_IN_FOCUS
 tell_next_in_focus	TELL_NEXT_IN_FOCUS
 tell_first_in_focus	TELL_FIRST_IN_FOCUS
 tell_previous_in_focus	TELL_PREVIOUS_IN_FOCUS
