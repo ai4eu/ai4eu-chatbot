@@ -21,6 +21,7 @@ import numpy as np
 from deeppavlov.core.models.component import Component
 from ..nlg.nlg_manager import NLGManagerInterface
 from ..policy.dto.policy_network_params import PolicyNetworkParams
+from ..search_api.dto.search_item_in_focus import SearchItemInFocus
 from ..search_api.search_api_results import SearchAPIResults
 from ..tracker.dto.dst_knowledge import DSTKnowledge
 from ..tracker.featurized_tracker import FeaturizedTracker
@@ -191,7 +192,7 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     Update search-api results 
     """
-    def _update_search_results(self, results) -> None:
+    def _update_search_results(self, results: [SearchItemInFocus]) -> None:
         # Hold the previous state
         self.prev_search_items = self.curr_search_items
         self.prev_search_item = self.curr_search_item

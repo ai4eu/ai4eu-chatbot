@@ -9,6 +9,7 @@ from deeppavlov.core.common.registry import register
 from ..dto.dataset_features import BatchDialoguesFeatures
 from .nlg_manager_interface import NLGManagerInterface
 from ..policy.dto.policy_prediction import PolicyPrediction
+from ..search_api.dto.search_item_in_focus import SearchItemInFocus
 from ..tracker.dialogue_state_tracker import DialogueStateTracker
 
 import numpy as np
@@ -166,7 +167,7 @@ class NLGManager(NLGManagerInterface):
         slots = dialogue_state_tracker.fill_current_state_with_searchAPI_results_slots_values()
 
         # We also need the current search item
-        current_search_item = dialogue_state_tracker.get_current_search_item()
+        item_in_focus = dialogue_state_tracker.get_current_search_item()
 
         # Check the action and create responses appropriately
         # These actions are specific for our chatbot
@@ -176,28 +177,47 @@ class NLGManager(NLGManagerInterface):
             # Respond with current debugging vectors
             if action == 'debug':
                 text = self.tell_debug(policy_prediction, dialogue_state_tracker)
-            elif action == 'tell_resource_description':
-                text = self.templates.templates[action_id].generate_text(slots)
+            # tell the url of the resource
             elif action == 'tell_resource_url':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_url(item_in_focus)
+            # tell the title of the resource
             elif action == 'tell_resource_title':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_title(item_in_focus)
+            # tell the content of the resource
             elif action == 'tell_resource_content':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_content(item_in_focus)
+            # tell the score of the resource
             elif action == 'tell_resource_score':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_score(item_in_focus)
+            # tell the summary of the resource
             elif action == 'tell_resource_summary':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_summary(item_in_focus)
+            # tell the keywords of the resource
             elif action == 'tell_resource_keywords':
-                text = self.templates.templates[action_id].generate_text(slots)
-            elif action == 'tell_objects_in_focus':
-                text = self.templates.templates[action_id].generate_text(slots)
+                text = self.tell_resource_keywords(item_in_focus)
+            # tell the number of objects in focus
+            elif action == 'tell_num_of_objects_in_focus':
+                # get the current items of the focus
+                items = dialogue_state_tracker.curr_search_items
+                text = self.tell_objects_in_focus(items)
+            # describe item in focus
+            elif action == 'tell_item_in_focus':
+                text = self.describe_item(item_in_focus)
+            # describe next item in focus
             elif action == 'tell_next_in_focus':
-                text = self.templates.templates[action_id].generate_text(slots)
+                # we change the item in focus in the state to the next one
+                item_in_focus = dialogue_state_tracker.get_next_search_item()
+                text = self.describe_item(item_in_focus)
+            # describe first item in focus
             elif action == 'tell_first_in_focus':
-                text = self.templates.templates[action_id].generate_text(slots)
+                # we change the item in focus to the first one
+                item_in_focus = dialogue_state_tracker.get_first_search_item()
+                text = self.describe_item(item_in_focus)
+            # describe previous item in focus
             elif action == 'tell_previous_in_focus':
-                text = self.templates.templates[action_id].generate_text(slots)
+                # we change the item in focus to the previous one
+                item_in_focus = dialogue_state_tracker.get_previous_search_item()
+                text = self.describe_item(item_in_focus)
             elif action == 'rephrase':
                 text = self.templates.templates[action_id].generate_text(slots)
             # Respond with current UTC time
@@ -251,8 +271,7 @@ class NLGManager(NLGManagerInterface):
         current_item_title = 'Empty'
         if dialogue_state_tracker.curr_search_item is not None:
             # Get the title of the search item in focus
-            # TODO Make a dto for search-API itemst
-            current_item_title = dialogue_state_tracker.curr_search_item.get('title')
+            current_item_title = dialogue_state_tracker.curr_search_item.get_title()
 
         focus = 'Current focus length: ' + current_focus_len + '\n'
         focus += 'Current item title: ' + current_item_title + '\n'
@@ -261,6 +280,134 @@ class NLGManager(NLGManagerInterface):
         text += focus
 
         return text
+
+    '''
+    Tells the title of a resource
+    '''
+    @staticmethod
+    def tell_resource_title(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_title() is None or item.get_title() is {}:
+            response = 'This resource has no title'
+        else:
+            response = 'The title of the resource is ' + item.get_title()
+
+        return response
+
+    '''
+    Tells the url of a resource
+    '''
+    @staticmethod
+    def tell_resource_url(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_url() is None or item.get_url() is {}:
+            response = 'This resource has no url'
+        else:
+            # we need to offer clickable urls
+            response = item.get_url()
+
+        return response
+
+    '''
+    Tells the content of a resource
+    '''
+    @staticmethod
+    def tell_resource_content(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_content() is None or item.get_content() is {}:
+            response = 'This resource has empty content'
+        else:
+            # we need to offer clickable urls
+            response = item.get_content()
+
+        return response
+
+    '''
+    Tells the score of a resource
+    '''
+    @staticmethod
+    def tell_resource_score(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_score() is None or item.get_score() is {}:
+            response = 'The API returned no score for this resource'
+        else:
+            response = 'The score of this resource is ' + item.get_score()
+
+        return response
+
+    '''
+    Tells the summary of a resource
+    '''
+    @staticmethod
+    def tell_resource_summary(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_score() is None or item.get_score() is {}:
+            response = 'There is no summary for this resource'
+        else:
+            response = item.get_summary()
+
+        return response
+
+    '''
+    Tells the keywords of a resource
+    '''
+    @staticmethod
+    def tell_resource_keywords(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        elif item.get_score() is None or item.get_score() is {}:
+            response = 'There are no keywords associated with this resource'
+        else:
+            keywords = item.get_keywords()
+            keywords_str = ' '.join(map(str, keywords))
+            response = 'The relevant keywords, starting from the most important one are : ' + keywords_str
+
+        return response
+
+    '''
+    Tells the number of items in focus of a resource
+    '''
+    @staticmethod
+    def tell_objects_in_focus(items: [SearchItemInFocus]) -> str:
+        response = None
+
+        if items is None or items is []:
+            response = 'There are no items in the current focus'
+        else:
+            response = 'There are ' + len(items) + ' items in the current focus'
+
+        return response
+
+    '''
+    Describes an item
+    '''
+    @staticmethod
+    def describe_item(item: SearchItemInFocus) -> str:
+        response = None
+
+        if item is None or item is {}:
+            response = 'There is no item in the current focus.'
+        else:
+            response = item.get_title() + 'is relevant. Check it at:' + item.get_url()
+
+        return response
 
     # Tell the time
     @staticmethod
