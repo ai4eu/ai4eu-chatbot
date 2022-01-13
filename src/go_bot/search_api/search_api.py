@@ -16,7 +16,7 @@
 # importing the requests library
 import requests
 
-from search_api_results import SearchAPIResults
+#from .search_api_results import SearchAPIResults
 
 
 class SearchAPI:
@@ -56,10 +56,10 @@ class SearchAPI:
                            business_categories=None):
 
         print('Search-API make asset search query for ', query,
-              'Research Area: ',  research_area,
+                'Research Area: ',  research_area,
                 'Asset Type: ', asset_type,
                 'Technical Categories: ', technical_categories,
-              'Business Categories: ', business_categories)
+                'Business Categories: ', business_categories)
 
         # populate the json for the search API POST request
         # Here we are also adding any values for the slots we are tracking

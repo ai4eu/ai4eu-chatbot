@@ -12,7 +12,7 @@
 
 # author: Papadakos Panagiotis
 # e-mail: papadako@ics.forth.gr
-from dto.search_item_in_focus import SearchItemInFocus
+from .dto.search_item_in_focus import SearchItemInFocus
 
 
 class SearchAPIResults:
