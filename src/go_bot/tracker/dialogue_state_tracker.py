@@ -275,7 +275,6 @@ class DialogueStateTracker(FeaturizedTracker):
 
     We return the topk results along with their probabilities
     """
-    @staticmethod
     def make_ai4eu_qa_api_call(self, user_text: str):
         # Ask the QA module the user request
         model, results = self.qa.ask(user_text, self.topk)

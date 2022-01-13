@@ -148,7 +148,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # The following could be parameters in the json configuration
         self._TOPK = 3   # Topk results for qa and search modules
         # Threshold for action probabilities - Have to fine tune this
-        self._THRESHOLD = 0.0
+        self._THRESHOLD = 0.3
 
         # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
         self._QA = ChatBot_QA()
@@ -484,7 +484,7 @@ class AI4EUGoalOrientedBot(NNModel):
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
             # just perform the qa api call
             # either use the QA component or the KBQA
-            candidates = user_tracker.make_ai4eu_qa_api_call(user_text, self._QA, self._TOPK)
+            candidates = user_tracker.make_ai4eu_qa_api_call(user_text)
 
             # Log response from QA
             print(f"True response = '{candidates}'.")
