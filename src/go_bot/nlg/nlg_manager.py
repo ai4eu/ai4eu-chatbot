@@ -284,8 +284,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the title of a resource
     '''
-    @staticmethod
-    def tell_resource_title(item: SearchItemInFocus) -> str:
+    def tell_resource_title(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -300,8 +299,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the url of a resource
     '''
-    @staticmethod
-    def tell_resource_url(item: SearchItemInFocus) -> str:
+    def tell_resource_url(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -317,8 +315,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the content of a resource
     '''
-    @staticmethod
-    def tell_resource_content(item: SearchItemInFocus) -> str:
+    def tell_resource_content(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -334,8 +331,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the score of a resource
     '''
-    @staticmethod
-    def tell_resource_score(item: SearchItemInFocus) -> str:
+    def tell_resource_score(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -350,8 +346,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the summary of a resource
     '''
-    @staticmethod
-    def tell_resource_summary(item: SearchItemInFocus) -> str:
+    def tell_resource_summary(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -366,8 +361,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the keywords of a resource
     '''
-    @staticmethod
-    def tell_resource_keywords(item: SearchItemInFocus) -> str:
+    def tell_resource_keywords(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -384,8 +378,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Tells the number of items in focus of a resource
     '''
-    @staticmethod
-    def tell_objects_in_focus(items: [SearchItemInFocus]) -> str:
+    def tell_objects_in_focus(self, items: [SearchItemInFocus]) -> str:
         response = None
 
         if items is None or items is []:
@@ -398,8 +391,7 @@ class NLGManager(NLGManagerInterface):
     '''
     Describes an item
     '''
-    @staticmethod
-    def describe_item(item: SearchItemInFocus) -> str:
+    def describe_item(self, item: SearchItemInFocus) -> str:
         response = None
 
         if item is None or item is {}:
@@ -410,14 +402,12 @@ class NLGManager(NLGManagerInterface):
         return response
 
     # Tell the time
-    @staticmethod
-    def tell_time():
+    def tell_time(self):
         now = datetime.utcnow()
         text = 'The time is ' + now.strftime('%H:%M:%S') + ' UTC'
         return text
 
     # Tell the date
-    @staticmethod
     def tell_date(self):
         now = datetime.now()
         text = 'Today is ' + self.days[now.weekday()] + now.strftime(', %d ') + self.months[
