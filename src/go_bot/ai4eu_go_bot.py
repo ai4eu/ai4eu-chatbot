@@ -442,7 +442,7 @@ class AI4EUGoalOrientedBot(NNModel):
         utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker)
 
         # Hold probability
-        prob = policy_prediction.probs[policy_prediction.predicted_action_ix]
+        prob = float(policy_prediction.probs[policy_prediction.predicted_action_ix])
 
         # predicted action label
         pred_label = self.nlg_manager.get_action(policy_prediction.predicted_action_ix)
@@ -489,7 +489,7 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append((resp, prob, pred_label, used_label))
+            responses.append((resp, float(prob), pred_label, used_label, float(1.0)))
 
         # AI4EU: If we need to make a call to the AI4EU QA API, just call the QA component
         # No need to generate a response from action templates
@@ -508,7 +508,7 @@ class AI4EUGoalOrientedBot(NNModel):
             qa_ans_prob = candidates[0][1]
 
             # Append the response
-            responses.append((resp, prob, pred_label, used_label, qa_ans_prob))
+            responses.append((resp, float(prob), pred_label, used_label, float(qa_ans_prob)))
 
         # Reset state since the user asks for a reset
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
@@ -519,14 +519,14 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append((resp, prob, pred_label, used_label))
+            responses.append((resp, float(prob), pred_label, used_label, float(1.0)))
         else:
             # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append((resp, prob, pred_label, used_label))
+            responses.append((resp, float(prob), pred_label, used_label, float(1.0)))
 
         return responses
 
