@@ -208,31 +208,5 @@
             "any bussiness category",
             "don't care"
         ]
-    },
-    "sort": {
-        "authoring": [
-            "addition"
-        ],
-        "changed": [
-            "modified"
-        ],
-        "dont_care": [
-            "any order",
-            "don't care"
-        ]
-    },
-    "order": {
-        "ascending": [
-            "ascending",
-            "asc."
-        ],
-        "descending": [
-            "descedning",
-            "desc."
-        ],
-        "dont_care": [
-            "any order",
-            "don't care"
-        ]
     }
 }
