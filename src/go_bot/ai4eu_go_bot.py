@@ -293,7 +293,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # we inform the tracker with these lookups info
         # just like the tracker remembers the db interaction results when real-time inference
         # todo: not obvious logic
-        # TODO PP (Check that we are not using the ground truth since there is no ground truth
+        # We are not using the ground truth since there is no ground truth
         # Search-API results are dynamic
         #self.dialogue_state_tracker.update_ground_truth_db_result_from_context(utterance_context_info_dict)
 
@@ -448,8 +448,8 @@ class AI4EUGoalOrientedBot(NNModel):
         # If they are too low then it is better to use the QA module
         print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
         if policy_prediction.probs[policy_prediction.predicted_action_ix] < self._THRESHOLD:
-            policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
             print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
+            policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
 
         print(f"Use action = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
 
