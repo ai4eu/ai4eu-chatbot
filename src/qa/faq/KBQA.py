@@ -14,7 +14,7 @@
 # Wikidata models knowledge about a given subject in terms of concepts,
 # entities, properties and relationships and can be used for answering factoid questions.
 
-# author: Papadakos Panagiotis
+# author: Panagiotis Papadakos
 # e-mail: papadako@ics.forth.gr
 
 from deeppavlov import configs, build_model

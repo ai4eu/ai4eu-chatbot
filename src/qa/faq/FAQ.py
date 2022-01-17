@@ -10,7 +10,7 @@
 
 # The AI4EU chatbot - FAQ module
 
-# This module various models that have been trained over a number of
+# This module uses various models that have been trained over a number of
 # FAQ pairs gathered from the AI4EU web page
 # The training data are available at data/ai4eu-faq/train.json
 
@@ -41,7 +41,7 @@
 # Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Narveen Ari, Wei Wang.
 # Language-agnostic BERT Sentence Embedding. July 2020
 
-# author: Papadakos Panagiotis
+# author: Panagiotis Papadakos
 # e-mail: papadako@ics.forth.gr
 
 from deeppavlov.core.commands.infer import build_model
