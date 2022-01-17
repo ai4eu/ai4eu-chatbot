@@ -441,15 +441,26 @@ class AI4EUGoalOrientedBot(NNModel):
         # predict the action to perform (e.g. response something or call any of the QA or search APIs)
         utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker)
 
+        # Hold probability
+        prob = policy_prediction.probs[policy_prediction.predicted_action_ix]
+
+        # predicted action label
+        pred_label = self.nlg_manager.get_action(policy_prediction.predicted_action_ix)
+
+        # used action label
+        used_label = self.nlg_manager.get_action(policy_prediction.predicted_action_ix)
+
         # Print the predicted action
-        print(f"Predicted action is = '{self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
+        print(f"Predicted action is = '{pred_label}'")
 
         # AI4EU We have to check the probability of the actions.
         # If they are too low then it is better to use the QA module
-        print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
+        print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'"
+              f" with probability '{prob}'")
         if policy_prediction.probs[policy_prediction.predicted_action_ix] < self._THRESHOLD:
             print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
             policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
+            used_label = self.nlg_manager.get_action(policy_prediction.predicted_action_ix)
 
         print(f"Use action = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
 
@@ -478,7 +489,8 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append(resp)
+            responses.append((resp, prob, pred_label, used_label))
+
         # AI4EU: If we need to make a call to the AI4EU QA API, just call the QA component
         # No need to generate a response from action templates
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_qa_api_call_action_id():
@@ -493,8 +505,11 @@ class AI4EUGoalOrientedBot(NNModel):
             # We just report the response of the QA module
             resp = ['ai4eu_qa_api_call', candidates[0][0]]
 
+            qa_ans_prob = candidates[0][1]
+
             # Append the response
-            responses.append(resp)
+            responses.append((resp, prob, pred_label, used_label, qa_ans_prob))
+
         # Reset state since the user asks for a reset
         elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('reset'):
             # Reset state
@@ -504,14 +519,14 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append(resp)
+            responses.append((resp, prob, pred_label, used_label))
         else:
             # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
                                                     policy_prediction,
                                                     user_tracker,
                                                     False)
-            responses.append(resp)
+            responses.append((resp, prob, pred_label, used_label))
 
         return responses
 
@@ -575,6 +590,9 @@ class AI4EUGoalOrientedBot(NNModel):
                                                     policy_prediction,
                                                     self.dialogue_state_tracker,
                                                     True)
+
+            # PP Was not sure how to change NLGResponseInterface for training
+            # So just use the response text in training to keep things as originally developed
             res.append(resp)
         return res
 
