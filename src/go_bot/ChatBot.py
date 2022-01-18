@@ -82,7 +82,7 @@ class AI4EUChatbot:
 
         # Get the answer and all its metadata
         # Make it an array of responses, where each response is an array with the response and all metadata
-        # {"results":["Yes, you can!",0.31225526332855225,"can_do","can_do",1.0],"model":"ai4eu-gobot","service":"AI4EU Goal-oriented ChatBot"}
+        #{"results":[["Yes, you can!",0.31225526332855225,"can_do","can_do",1.0]],"model":"ai4eu-gobot","service":"AI4EU Goal-oriented ChatBot"}
         cleaned = [x for xs in result[0] for x in xs]
 
         # overwrite the first element with the clean version
