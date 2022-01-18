@@ -81,11 +81,10 @@ class AI4EUChatbot:
         result = self.__model.compute([query], targets=['y_predicted'])
 
         # Get the answer and all its metadata
-        # the answer
+        # Make it an array of responses, where each response is an array with the response and all metadata
+        # {"results":["Yes, you can!",0.31225526332855225,"can_do","can_do",1.0],"model":"ai4eu-gobot","service":"AI4EU Goal-oriented ChatBot"}
+        cleaned = [x for xs in result[0] for x in xs]
 
-        print(result)
-
-        # Print the result
-        #print('Chatbot[' + str(i) + ']: Answer: ' + answer + ' probability:' + str(prob))
-
-        return self.__config, result[0]
+        # overwrite the first element with the clean version
+        result[0] = cleaned
+        return self.__config, result

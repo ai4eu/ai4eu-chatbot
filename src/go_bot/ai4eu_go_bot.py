@@ -503,7 +503,7 @@ class AI4EUGoalOrientedBot(NNModel):
 
             # AI4EU Now get the response and go back. There is no need to make a new prediction
             # We just report the response of the QA module
-            resp = ['ai4eu_qa_api_call', candidates[0][0]]
+            resp = candidates[0][0]
 
             qa_ans_prob = candidates[0][1]
 

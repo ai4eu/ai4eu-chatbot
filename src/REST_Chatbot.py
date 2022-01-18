@@ -69,7 +69,7 @@ async def test(request):
         if query is not None:
             model, results = chatbot.ask(query)
             # Log the top result
-            ans = results[0]
+            ans = results
             f.write('\t' + str(ans) + '\n')
             f.flush()
 

@@ -34,7 +34,7 @@ f = None
 """
 def bad_input(error, service="AI4EU QA chatbot"):
     """
-    Send a bad service rest answser (400)
+    Send a bad service rest answer (400)
     :param service : service name
     :return : json like structure of the error
     """
