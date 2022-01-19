@@ -230,6 +230,9 @@
 {"Sentence":"get the dialog id","Intent":"debug"}
 {"Sentence":"tell me the dialog id","Intent":"debug"}
 {"Sentence":"what is my dialog id","Intent":"debug"}
+{"Sentence":"tell debug info","Intent":"debug"}
+{"Sentence":"give me debug info","Intent":"debug"}
+{"Sentence":"show debug","Intent":"debug"}
 
 {"Sentence":"Can I ask questions about AI4EU?", "Intent":"can_do"}
 {"Sentence":"Can I learn more things about AI4EU?", "Intent":"can_do"}
@@ -349,39 +352,66 @@
 {"Sentence": "resources from the AI catalogue","Intent":"ai4eu_resource_request"}
 {"Sentence":"give resources from the ai4eu catalog","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me resources from the ai catalog","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for ai catalog resources","Intent":"ai4eu_resource_request"}
 {"Sentence":"datasets","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me datasets","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want datasets","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for datasets","Intent":"ai4eu_resource_request"}
 {"Sentence":"docker containers","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me docker containers","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want docker containers","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for docker containers","Intent":"ai4eu_resource_request"}
 {"Sentence":"executables","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me executables","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want executables","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for executables","Intent":"ai4eu_resource_request"}
 {"Sentence":"notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"I am interested in notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me notebooks","Intent":"ai4eu_resource_request"}
-{"Sentence":"jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"jupyter notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me jupyter notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want jupyter notebooks","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for jupyter notebooks","Intent":"ai4eu_resource_request"}
 {"Sentence":"libraries","Intent":"ai4eu_resource_request"}
 {"Sentence":"I am interested in libraries","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give libraries","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want libraries","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for libraries","Intent":"ai4eu_resource_request"}
 {"Sentence":"models","Intent":"ai4eu_resource_request"}
 {"Sentence":"I am interested in models","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give models","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want models","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for models","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give ML models","Intent":"ai4eu_resource_request"}
-{"Sentence":"I am interested in  ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am interested in ML models","Intent":"ai4eu_resource_request"}
 {"Sentence":"ML models","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want ML models","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for ML models","Intent":"ai4eu_resource_request"}
 {"Sentence":"I am interested in  tutorials","Intent":"ai4eu_resource_request"}
 {"Sentence":"tutorials","Intent":"ai4eu_resource_request"}
 {"Sentence":"please give me tutorials","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me tutorials","Intent":"ai4eu_resource_request"}
+{"Sentence":"I am looking for tutorials","Intent":"ai4eu_resource_request"}
+{"Sentence":"I want tutorials","Intent":"ai4eu_resource_request"}
+{"Sentence":"search for tutorials","Intent":"ai4eu_resource_request"}
 
 {"Sentence":"I would like to explore web resources","Intent":"web_resource_request"}
 {"Sentence":"I am interested in web resources","Intent":"web_resource_request"}
@@ -390,20 +420,28 @@
 {"Sentence":"web resources please","Intent":"web_resource_request"}
 {"Sentence":"give me web resources","Intent":"web_resource_request"}
 {"Sentence":"I am looking general information about artificial intelligence","Intent":"web_resource_request"}
+{"Sentence":"please search for web resources","Intent":"web_resource_request"}
+{"Sentence":"search for web resources","Intent":"web_resource_request"}
 
 {"Sentence":"do you have any other option?","Intent":"alternatives"}
 {"Sentence":"any alternatives?","Intent":"alternatives"}
+{"Sentence":"any other?","Intent":"alternatives"}
 {"Sentence":"can you please provide me another one?","Intent":"alternatives"}
 
 {"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
+{"Sentence":"give me a summary","Intent":"resource_summary"}
 
 {"Sentence":"can you provide the title of this resource?","Intent":"resource_title"}
+{"Sentence":"give me its title","Intent":"resource_title"}
 
 {"Sentence":"can you provide the content of this resource?","Intent":"resource_content"}
+{"Sentence":"give me its content","Intent":"resource_content"}
 
 {"Sentence":"what is the score of this resource?","Intent":"resource_score"}
+{"Sentence":"give me its score","Intent":"resource_score"}
 
 {"Sentence":"can you describe this resource using keywords?","Intent":"resource_keywords"}
+{"Sentence":"give me its keywords","Intent":"resource_keywords"}
 
 {"Sentence":"What are the available slots?","Intent":"ask_slots"}
 {"Sentence":"What are the available facets for resources?","Intent":"ask_slots"}
@@ -411,13 +449,20 @@
 {"Sentence":"What are the available attributes for assets?","Intent":"ask_slots"}
 
 {"Sentence":"What are the available research areas?","Intent":"ask_researchAreas"}
+{"Sentence":"tell research areas?","Intent":"ask_researchAreas"}
+{"Sentence":"give me research areas?","Intent":"ask_researchAreas"}
 
 {"Sentence":"What are the available asset types?","Intent":"ask_assetTypes"}
+{"Sentence":"tell asset types?","Intent":"ask_assetTypes"}
+{"Sentence":"give me asset types?","Intent":"ask_assetTypes"}
 
 {"Sentence":"What are the available technical categories?","Intent":"ask_technicalCategories"}
+{"Sentence":"tell technical categories?","Intent":"ask_technicalCategories"}
+{"Sentence":"give me technical categories?","Intent":"ask_technicalCategories"}
 
 {"Sentence":"What are the available business categories?","Intent":"ask_businessCategories"}
-
+{"Sentence":"tell business categories?","Intent":"ask_businessCategories"}
+{"Sentence":"give me business categories?","Intent":"ask_businessCategories"}
 
 {"Sentence":"I am interested in collaborative AI","Intent":"select_researchArea"}
 {"Sentence":"explainable AI resources please","Intent":"select_researchArea"}
@@ -449,7 +494,7 @@
 {"Sentence":"I need resources for optimization","Intent":"select_technicalCategory"}
 {"Sentence":"I want to explore resources related to the philosophy of AI","Intent":"select_technicalCategory"}
 {"Sentence":"I would like resources related to planning and scheduling","Intent":"select_technicalCategory"}
-{"Sentence":"I would like resources for robotics and automation","Intent":"select_technicalCategory"}
+{"Sentence":"I want robotics and automation resources","Intent":"select_technicalCategory"}
 {"Sentence":"I would like resources for search","Intent":"select_technicalCategory"}
 
 {"Sentence":"I am interested in the agriculture bussiness category","Intent":"select_businessCategory"}
@@ -469,6 +514,7 @@
 {"Sentence":"reset","Intent":"reset"}
 {"Sentence":"restart","Intent":"reset"}
 {"Sentence":"forget whatever we have talked about","Intent":"reset"}
+{"Sentence":"forget everything","Intent":"reset"}
 
 
 
