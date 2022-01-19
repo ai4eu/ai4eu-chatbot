@@ -26,7 +26,7 @@ path_root = Path(__file__).parents[2]
 sys.path.append(str(path_root))
 print(sys.path)
 
-from  src.go_bot import ai4eu_go_bot
+from src.go_bot import ai4eu_go_bot
 
 class AI4EUChatbot:
 

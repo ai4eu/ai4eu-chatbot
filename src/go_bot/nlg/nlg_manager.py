@@ -240,26 +240,24 @@ class NLGManager(NLGManagerInterface):
     # We have to report the intent, the slots, the current action and the previous action with their probabilities
     # Along with the current focus state
     def tell_debug(self, policy_prediction: PolicyPrediction, dialogue_state_tracker: DialogueStateTracker):
-        text = ''
+        text = '\n'
         ### NLU DATA - predicted intent, probability, and slots
         nlu_response = policy_prediction.get_utterance_features()
         intents = nlu_response.intents
         # Get the max probability
         max_prob = intents[np.argmax(intents)]
         intent = nlu_response.intent
-        nlu = 'Predicted Intent: ' + intent + ' with probability ' + max_prob + '\n'
+        nlu = 'Predicted Intent: ' + str(intent) + ' with probability ' + str(max_prob) + '\n'
         # Also add slot-values from NLU
         slots = nlu_response.slots
-        nlu += 'Slots: ' + slots + '\n'
+        nlu += 'Slots: ' + str(slots) + '\n'
         nlu += '\n'
         text += nlu
 
         ### CURRENT ACTION
         # Print the predicted action
-        action = 'Predicted action: ' + self.nlg_manager.get_action(policy_prediction.predicted_action_ix) + '\n'
-        action += 'Predicted action probability: ' + policy_prediction.probs[policy_prediction.predicted_action_ix] + '\n'
-        action += 'Predicted action: ' + self.nlg_manager.get_action(policy_prediction.predicted_action_ix) + '\n'
-        action += 'Predicted action probability: ' + policy_prediction.probs[policy_prediction.predicted_action_ix] + '\n'
+        action = 'Predicted action: ' + self.get_action(policy_prediction.predicted_action_ix) + '\n'
+        action += 'Predicted action probability: ' + str(policy_prediction.probs[policy_prediction.predicted_action_ix]) + '\n'
         action += '\n'
         text += action
 
@@ -275,7 +273,7 @@ class NLGManager(NLGManagerInterface):
 
         focus = 'Current focus length: ' + current_focus_len + '\n'
         focus += 'Current item title: ' + current_item_title + '\n'
-        focus += 'Current item index: ' + dialogue_state_tracker.curr_search_item_index + '\n'
+        focus += 'Current item index: ' + str(dialogue_state_tracker.curr_search_item_index) + '\n'
         focus += '\n'
         text += focus
 

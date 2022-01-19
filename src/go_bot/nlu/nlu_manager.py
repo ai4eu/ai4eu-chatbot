@@ -72,7 +72,7 @@ class NLUManager(NLUManagerInterface):
         # check which is the intent with the biggest probability
         max_prob = intent_features[np.argmax(intent_features)]
         # Return also the intent
-        intent = intents[0]
+        intent = intents[0][0]
         print('==> AI4EU intent', intents[0], ' with probability ', max_prob)
         return intent_features, intent
 
