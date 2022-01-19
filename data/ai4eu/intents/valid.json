@@ -1118,13 +1118,5 @@
 {"Sentence":"what is a mobile phone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile device?", "Intent":"qa_input"}
 
-{"Sentence":"Can I ask questions about AI4EU?", "Intent":"qa_input"}
-{"Sentence":"Can I ask questions about AI4EU resources?", "Intent":"qa_input"}
-{"Sentence":"Can I ask questions about artificial intelligence?", "Intent":"qa_input"}
-{"Sentence":"Can I ask questions about the AI4EU project?", "Intent":"qa_input"}
-
-
-
-
 
 
