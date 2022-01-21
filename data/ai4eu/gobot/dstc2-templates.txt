@@ -2,7 +2,7 @@ intro	Hello! How may I help you?
 outro	Thank you for the chat! Bye bye!
 repeat	REPEAT_CURRENT_STATE
 rephrase	REPHRASE
-reset	What do you want to talk about?
+reset	Ok, I have just reset my state. What do you want to talk about?
 stupid	I am sorry for letting you down
 bad_language	Please, be nice!
 wrong_answer	I am sorry for the confusion. Can you please rephrase?
@@ -14,7 +14,6 @@ describe_self	Well, I am an under-development chatbot for the AI4EU project
 tell_feelings	Currently I have no feelings! But lets say that I am fine!
 tell_contact_details	Please, send an email to my creator papadako@ics.forth.gr
 tell_origin	I have no origin! Currently I live in the memory of a server called pangaia
-skills	You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!
 tell_creator	I was developed by Panagiotis Papadakos from FORTH-ICS using the deeppavlov dialogue framework
 tell_smart	No, I am not smart
 tell_bot	Yes, I am a bot
@@ -31,10 +30,12 @@ tell_self_improve	By asking me questions
 tell_opinion	Unfortunately, I am not able to express opinions
 reqmore	Can I help you with anything else?
 repeat	Sorry I am a bit confused; please tell me again what you are looking for.
+skills	You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!
+topic_switch	Lets talk about something else. What do you have in mind?
 ai4eu_web_search_api_call	AI4EU_WEB_SEARCH_API_CALL
 ai4eu_asset_search_api_call	AI4EU_ASSET_SEARCH_API_CALL
 ai4eu_qa_api_call	AI4EU_QA_API_CALL
-qa_request	Ok, what do you want to ask?
+qa_request	Ok, what is the question?
 ask_which_mode	Do you want to explore resources or make general questions about the project and AI?
 ask_which_resources	Are you looking for assets in the AI4EU catalogue or web resources?
 have_feelings	No, I do not have feelings. I am just a pipeline of deep learning models
@@ -49,6 +50,7 @@ request_researchArea	What is the research area of interest?
 request_assetType	What is the asset type that you are looking for?
 request_technicalCategory	What technical category do you want?
 request_businessCategory	What business category do you want?
+tell_resource_options	I can tell you its url, title, content, score, summary, and its keywords
 tell_resource_url	TELL_RESOURCE_URL
 tell_resource_title	TELL_RESOURCE_TITLE
 tell_resource_content	TELL_RESOURCE_CONTENT
