@@ -206,17 +206,23 @@
 {"Sentence":"what do you think about yourself?","Intent":"self_opinion"}
 {"Sentence":"what is your purpose?","Intent":"self_opinion"}
 
-{"Sentence":"how can you improve?","Intent":"self_improvement"}
-
 {"Sentence":"are you smart?","Intent":"ask_smart"}
+{"Sentence":"are you stupid?","Intent":"ask_smart"}
 
 {"Sentence":"are you a bot?","Intent":"ask_bot"}
+{"Sentence":"are you a deep-learning model?","Intent":"ask_bot"}
+{"Sentence":"are you a program?","Intent":"ask_bot"}
+{"Sentence":"are you an artificial intelligence bot?","Intent":"ask_bot"}
+{"Sentence":"are you AI?","Intent":"ask_bot"}
 
 {"Sentence":"are you human?","Intent":"ask_human"}
+{"Sentence":"is there a person answering the questions?","Intent":"ask_human"}
 
 {"Sentence":"what is your age?","Intent":"ask_age"}
+{"Sentence":"how old are you?","Intent":"ask_age"}
 
-{"Sentence":"how can I help you?","Intent":"how_to_help"}
+{"Sentence":"how can I help you?","Intent":"self_improvement"}
+{"Sentence":"how can you improve?","Intent":"self_improvement"}
 
 {"Sentence":"tell me the time","Intent":"what_time"}
 {"Sentence":"what time is it","Intent":"what_time"}
@@ -279,8 +285,11 @@
 {"Sentence":"What is your opinion about the pandemia?","Intent":"opinion_request"}
 
 {"Sentence":"Do you have feelings?","Intent":"have_feelings"}
+{"Sentence":"Are you happy?","Intent":"have_feelings"}
+{"Sentence":"Are you sad?","Intent":"have_feelings"}
 
 {"Sentence":"Describe your pipeline","Intent":"describe_pipeline"}
+{"Sentence":"How do you work?","Intent":"describe_pipeline"}
 
 {"Sentence":"Do you track my questions?","Intent":"tracking"}
 {"Sentence":"Are you logging?","Intent":"tracking"}
@@ -324,12 +333,12 @@
 {"Sentence":"what can we talk about","Intent":"what_can_you_do"}
 {"Sentence":"what can you talk about","Intent":"what_can_you_do"}
 
-{"Sentence":"that's enough, lets talk about something else","Intent":"topic_switching"}
-{"Sentence":"that is enough","Intent":"topic_switching"}
-{"Sentence":"i do not want to talk about this anymore","Intent":"topic_switching"}
-{"Sentence":"this is boring","Intent":"topic_switching"}
-{"Sentence":"lets change topic","Intent":"topic_switching"}
-{"Sentence":"can we talk about something else?","Intent":"topic_switching"}
+{"Sentence":"that's enough, lets talk about something else","Intent":"topic_switch"}
+{"Sentence":"that is enough","Intent":"topic_switch"}
+{"Sentence":"i do not want to talk about this anymore","Intent":"topic_switch"}
+{"Sentence":"this is boring","Intent":"topic_switch"}
+{"Sentence":"lets change topic","Intent":"topic_switch"}
+{"Sentence":"can we talk about something else?","Intent":"topic_switch"}
 
 {"Sentence":"What resources are available in the platform?","Intent":"ask_resource_request"}
 {"Sentence":"What resources can I find?","Intent":"ask_resource_request"}
@@ -430,7 +439,6 @@
 
 {"Sentence":"what can you say about the resource?","Intent":"resource_options"}
 {"Sentence":"what do you know about this resource?","Intent":"resource_options"}
-
 
 {"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
 {"Sentence":"give me a summary","Intent":"resource_summary"}
