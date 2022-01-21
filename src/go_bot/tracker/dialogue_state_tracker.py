@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from logging import getLogger
+import logging
 from pathlib import Path
 from typing import List, Union, Optional, Dict, Tuple, Any
 
@@ -288,7 +289,7 @@ class DialogueStateTracker(FeaturizedTracker):
     Get the next search result
     The index of items starts from 1
     """
-    def get_next_search_item(self):
+    def get_next_search_item(self) -> SearchItemInFocus:
         idx = self.curr_search_item_index + 1
         # If there are more results
         if self.curr_search_items is not None and len(self.curr_search_items) > idx:
@@ -302,11 +303,13 @@ class DialogueStateTracker(FeaturizedTracker):
                 log.info(f"Can't get next search item. Asking for index {idx}, "
                      f"while the length of the search results is  {len(self.curr_search_items)}")
 
+        return self.curr_search_item
+
     """
     Get the previous search result
     The index of items starts from 1
     """
-    def get_previous_search_item(self):
+    def get_previous_search_item(self)  -> SearchItemInFocus:
         idx = self.curr_search_item_index - 1
         # If the focus was not the first element
         if self.curr_search_items is not None and idx > 0:
@@ -320,11 +323,13 @@ class DialogueStateTracker(FeaturizedTracker):
                 log.info(f"Can't get previous search item. Asking for index {idx}, "
                      f"while the length of the search results is  {len(self.curr_search_items)}")
 
+        return self.curr_search_item
+
     """
     Get the first search result
     The index of items starts from 1
     """
-    def get_first_search_item(self):
+    def get_first_search_item(self)  -> SearchItemInFocus:
         idx = 1
         # If there are more results
         if self.curr_search_items is not None:
@@ -338,11 +343,33 @@ class DialogueStateTracker(FeaturizedTracker):
                 log.info(f"Can't get first search item. Asking for index {idx}, "
                      f"while the length of the search results is  {len(self.curr_search_items)}")
 
+        return self.curr_search_item
+
+    """
+    Get the second search result
+    The index of items starts from 1
+    """
+    def get_second_search_item(self) -> SearchItemInFocus:
+        idx = 2
+        # If there are more results
+        if self.curr_search_items is not None:
+            self.curr_search_item = SearchAPIResults.get_item_from_items(self.curr_search_items, idx)
+            self.curr_search_item_index = idx
+        else:
+            self.curr_search_item = {}
+            if self.curr_search_items is None:
+                log.info(f"Can't get the second search item. Asking for index {idx} from None curr_search_items ")
+            else:
+                log.info(f"Can't get second search item. Asking for index {idx}, "
+                     f"while the length of the search results is  {len(self.curr_search_items)}")
+
+        return self.curr_search_item
+
     """
     Get the current search result
     The index of items starts from 1
     """
-    def get_current_search_item(self):
+    def get_current_search_item(self) -> SearchItemInFocus:
         return self.curr_search_item
 
     """

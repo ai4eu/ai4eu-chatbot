@@ -36,7 +36,7 @@ class SearchAPIResults:
             if sapi_result is not None:
                 sapi_results.append(sapi_result)
 
-        print(sapi_results)
+        # print(sapi_results)
         return sapi_results
 
     """

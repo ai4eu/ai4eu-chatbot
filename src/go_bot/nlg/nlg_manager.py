@@ -208,10 +208,16 @@ class NLGManager(NLGManagerInterface):
                 # we change the item in focus in the state to the next one
                 item_in_focus = dialogue_state_tracker.get_next_search_item()
                 text = self.describe_item(item_in_focus)
-            # describe first item in focus
-            elif action == 'tell_first_in_focus':
+            # describe first item in focus when we have the tell_first_in_focus_action
+            # or whenever we have a search API call
+            elif action == 'tell_first_in_focus' or action == 'ai4eu_web_search_api_call':
                 # we change the item in focus to the first one
                 item_in_focus = dialogue_state_tracker.get_first_search_item()
+                text = self.describe_item(item_in_focus)
+            # describe second item in focus
+            elif action == 'tell_second_in_focus':
+                # we change the item in focus to the second one
+                item_in_focus = dialogue_state_tracker.get_second_search_item()
                 text = self.describe_item(item_in_focus)
             # describe previous item in focus
             elif action == 'tell_previous_in_focus':
@@ -395,7 +401,9 @@ class NLGManager(NLGManagerInterface):
         if item is None or item is {}:
             response = 'There is no item in the current focus.'
         else:
-            response = item.get_title() + 'is relevant. Check it at:' + item.get_url()
+            print(item.get_title())
+            print(item.get_url())
+            response = item.get_title() + ' is relevant. Check it at: ' + item.get_url()
 
         return response
 

@@ -148,7 +148,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # The following could be parameters in the json configuration
         self._TOPK = 3   # Topk results for qa and search modules
         # Threshold for action probabilities - Have to fine tune this
-        self._THRESHOLD = 0.3
+        self._THRESHOLD = 0.01
 
         # AI4EU Initialize the ChatBot_QA -> One instance for all user sessions
         self._QA = ChatBot_QA()
@@ -455,8 +455,7 @@ class AI4EUGoalOrientedBot(NNModel):
 
         # AI4EU We have to check the probability of the actions.
         # If they are too low then it is better to use the QA module
-        print(f"Probability of predicted action = '{policy_prediction.probs[policy_prediction.predicted_action_ix]}'"
-              f" with probability '{prob}'")
+        print(f"Probability of predicted action = '{prob}'")
         if policy_prediction.probs[policy_prediction.predicted_action_ix] < self._THRESHOLD:
             print(f"Fall-back to QA since prob is = '{ policy_prediction.probs[policy_prediction.predicted_action_ix]}'")
             policy_prediction.predicted_action_ix = self.nlg_manager.get_ai4eu_qa_api_call_action_id()
@@ -472,17 +471,18 @@ class AI4EUGoalOrientedBot(NNModel):
         if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id()\
                 or policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
 
-            # 1) we perform the api call for a web resource or a asset
+            # 1) we perform the api call for a web resource or an ai4eu asset
             if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
                 user_tracker.make_ai4eu_web_search_api_call(user_text)
             elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
                 user_tracker.make_ai4eu_asset_search_api_call(user_text)
 
             # 2) we predict what to do next
-            utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
-                                                                      keep_tracker_state=True)
-            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
-            user_tracker.network_state = policy_prediction.get_network_state()
+            # For now just assume that we are going to describe the resource and we are not going to predict another action
+            # utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker,
+            #                                                          keep_tracker_state=True)
+            #user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
+            #user_tracker.network_state = policy_prediction.get_network_state()
 
             # Prepare the response
             resp = self.nlg_manager.decode_response(utterance_batch_features,
@@ -578,6 +578,9 @@ class AI4EUGoalOrientedBot(NNModel):
             elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_first_in_focus'):
                 # get the first element
                 self.dialogue_state_tracker.get_first_search_item()
+            elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_second_in_focus'):
+                # get the second element
+                self.dialogue_state_tracker.get_second_search_item()
             elif policy_prediction.predicted_action_ix == self.nlg_manager.get_action_id('tell_previous_in_focus'):
                 # get the previous element
                 self.dialogue_state_tracker.get_previous_search_item()

@@ -8,9 +8,8 @@ class SearchItemInFocus:
         self.index = response.get('_index')
         self.id = response.get('_id')
         self.type = response.get('_type')
-        self.url = source.get('_source_doc_id')
+        self.url = source.get('source_doc_id')
         self.content = source.get('content')
-        self.title = source.get('title')
 
         # Get summary - is an array of summaries
         summaries = source.get('summary')
@@ -18,7 +17,16 @@ class SearchItemInFocus:
             self.summary = 'Unfortunately there is no summary for this resource'
         else:
             # get the first one
-            self.summary = source.get('summary')[0]
+            self.summary = source.get('summary')[0].get('summary')
+
+        # Get title - is an array of title
+        titles = source.get('title')
+        if titles is None or len(titles) is 0:
+            self.title = 'Untitled'
+        else:
+            # get the first one
+            self.title = source.get('title')[0]
+
 
         # Get keywords from categories
         self.keywords = self._get_top_keywords(source.get('category'))
