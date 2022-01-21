@@ -428,6 +428,10 @@
 {"Sentence":"any other?","Intent":"alternatives"}
 {"Sentence":"can you please provide me another one?","Intent":"alternatives"}
 
+{"Sentence":"what can you say about the resource?","Intent":"resource_options"}
+{"Sentence":"what do you know about this resource?","Intent":"resource_options"}
+
+
 {"Sentence":"can you provide a summary of this resource?","Intent":"resource_summary"}
 {"Sentence":"give me a summary","Intent":"resource_summary"}
 
@@ -1117,3 +1121,9 @@
 {"Sentence":"what is an drone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile phone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile device?", "Intent":"qa_input"}
+
+
+
+
+
+
