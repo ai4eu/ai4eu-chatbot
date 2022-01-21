@@ -455,72 +455,73 @@
 {"Sentence":"can you describe this resource using keywords?","Intent":"resource_keywords"}
 {"Sentence":"give me its keywords","Intent":"resource_keywords"}
 
-{"Sentence":"What are the available slots?","Intent":"ask_slots"}
-{"Sentence":"What are the available facets for resources?","Intent":"ask_slots"}
-{"Sentence":"What are the available facets for assets?","Intent":"ask_slots"}
-{"Sentence":"What are the available attributes for assets?","Intent":"ask_slots"}
+{"Sentence":"What are the available slots?","Intent":"ask_asset_slots"}
+{"Sentence":"What parameters are searchable for ai catalogue resources?","Intent":"ask_asset_slots"}
+{"Sentence":"What are the available facets for resources?","Intent":"ask_asset_slots"}
+{"Sentence":"What are the available facets for assets?","Intent":"ask_asset_slots"}
+{"Sentence":"What are the available attributes for assets?","Intent":"ask_asset_slots"}
 
-{"Sentence":"What are the available research areas?","Intent":"ask_researchAreas"}
-{"Sentence":"tell research areas?","Intent":"ask_researchAreas"}
-{"Sentence":"give me research areas?","Intent":"ask_researchAreas"}
+{"Sentence":"What are the available research areas?","Intent":"ask_asset_researchAreas"}
+{"Sentence":"tell research areas?","Intent":"ask_asset_researchAreas"}
+{"Sentence":"give me research areas?","Intent":"ask_asset_researchAreas"}
 
-{"Sentence":"What are the available asset types?","Intent":"ask_assetTypes"}
-{"Sentence":"tell asset types?","Intent":"ask_assetTypes"}
-{"Sentence":"give me asset types?","Intent":"ask_assetTypes"}
+{"Sentence":"What are the available asset types?","Intent":"ask_asset_assetTypes"}
+{"Sentence":"tell asset types?","Intent":"ask_asset_assetTypes"}
+{"Sentence":"give me asset types?","Intent":"ask_asset_assetTypes"}
 
 {"Sentence":"What are the available technical categories?","Intent":"ask_technicalCategories"}
 {"Sentence":"tell technical categories?","Intent":"ask_technicalCategories"}
 {"Sentence":"give me technical categories?","Intent":"ask_technicalCategories"}
 
-{"Sentence":"What are the available business categories?","Intent":"ask_businessCategories"}
-{"Sentence":"tell business categories?","Intent":"ask_businessCategories"}
-{"Sentence":"give me business categories?","Intent":"ask_businessCategories"}
+{"Sentence":"What are the available business categories?","Intent":"ask_asset_businessCategories"}
+{"Sentence":"tell business categories?","Intent":"ask_asset_businessCategories"}
+{"Sentence":"give me business categories?","Intent":"ask_asset_businessCategories"}
 
-{"Sentence":"I am interested in collaborative AI","Intent":"select_researchArea"}
-{"Sentence":"explainable AI resources please","Intent":"select_researchArea"}
-{"Sentence":"I need integrative AI","Intent":"select_researchArea"}
-{"Sentence":"I would like physical AI assets","Intent":"select_researchArea"}
-{"Sentence":"The research area is verifiable AI","Intent":"select_researchArea"}
+{"Sentence":"I am interested in collaborative AI","Intent":"select_asset_researchArea"}
+{"Sentence":"explainable AI resources please","Intent":"select_asset_researchArea"}
+{"Sentence":"I need integrative AI","Intent":"select_asset_researchArea"}
+{"Sentence":"I would like physical AI assets","Intent":"select_asset_researchArea"}
+{"Sentence":"The research area is verifiable AI","Intent":"select_asset_researchArea"}
 
-{"Sentence":"I am interested in datasets","Intent":"select_assetType"}
-{"Sentence":"docker containers resources please","Intent":"select_assetType"}
-{"Sentence":"I need resources provided as a service","Intent":"select_assetType"}
-{"Sentence":"I would like executables","Intent":"select_assetType"}
-{"Sentence":"The asset type should be jupyter notebooks","Intent":"select_assetType"}
-{"Sentence":"I am interested in libraries","Intent":"select_assetType"}
-{"Sentence":"I want to explore ML models","Intent":"select_assetType"}
+{"Sentence":"I am interested in datasets","Intent":"select_asset_assetType"}
+{"Sentence":"docker containers resources please","Intent":"select_asset_assetType"}
+{"Sentence":"I need resources provided as a service","Intent":"select_asset_assetType"}
+{"Sentence":"I would like executables","Intent":"select_asset_assetType"}
+{"Sentence":"The asset type should be jupyter notebooks","Intent":"select_asset_assetType"}
+{"Sentence":"I am interested in libraries","Intent":"select_asset_assetType"}
+{"Sentence":"I want to explore ML models","Intent":"select_asset_assetType"}
 
-{"Sentence":"I am interested in AI ethics resources","Intent":"select_technicalCategory"}
-{"Sentence":"AI services resources please","Intent":"select_technicalCategory"}
-{"Sentence":"I need audio processing resources","Intent":"select_technicalCategory"}
-{"Sentence":"I would like automated reasoning","Intent":"select_technicalCategory"}
-{"Sentence":"The technical category should be commonsense reasoning","Intent":"select_technicalCategory"}
-{"Sentence":"I am interested in computer vision resources","Intent":"select_technicalCategory"}
-{"Sentence":"I would like resources related to connected and automated vehicles","Intent":"select_technicalCategory"}
-{"Sentence":"I am interested in connected and automated vehicles","Intent":"select_technicalCategory"}
-{"Sentence":"I would like resources for constraints and satisfiability","Intent":"select_technicalCategory"}
-{"Sentence":"The technical category should about knowledge representation","Intent":"select_technicalCategory"}
-{"Sentence":"I need machine learning resources","Intent":"select_technicalCategory"}
-{"Sentence":"I need resources for multi-agent systems","Intent":"select_technicalCategory"}
-{"Sentence":"I am looking for NLP resources","Intent":"select_technicalCategory"}
-{"Sentence":"I need resources for optimization","Intent":"select_technicalCategory"}
-{"Sentence":"I want to explore resources related to the philosophy of AI","Intent":"select_technicalCategory"}
-{"Sentence":"I would like resources related to planning and scheduling","Intent":"select_technicalCategory"}
-{"Sentence":"I want robotics and automation resources","Intent":"select_technicalCategory"}
-{"Sentence":"I would like resources for search","Intent":"select_technicalCategory"}
+{"Sentence":"I am interested in AI ethics resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"AI services resources please","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I need audio processing resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I would like automated reasoning","Intent":"select_asset_technicalCategory"}
+{"Sentence":"The technical category should be commonsense reasoning","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I am interested in computer vision resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I would like resources related to connected and automated vehicles","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I am interested in connected and automated vehicles","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I would like resources for constraints and satisfiability","Intent":"select_asset_technicalCategory"}
+{"Sentence":"The technical category should about knowledge representation","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I need machine learning resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I need resources for multi-agent systems","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I am looking for NLP resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I need resources for optimization","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I want to explore resources related to the philosophy of AI","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I would like resources related to planning and scheduling","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I want robotics and automation resources","Intent":"select_asset_technicalCategory"}
+{"Sentence":"I would like resources for search","Intent":"select_asset_technicalCategory"}
 
-{"Sentence":"I am interested in the agriculture bussiness category","Intent":"select_businessCategory"}
-{"Sentence":"cloud edge infrastructure resources please","Intent":"select_businessCategory"}
-{"Sentence":"I need cultural heritage resources","Intent":"select_businessCategory"}
-{"Sentence":"I would like earth observation","Intent":"select_businessCategory"}
-{"Sentence":"The business category should be energy","Intent":"select_businessCategory"}
-{"Sentence":"I am interested in healthcare resources","Intent":"select_businessCategory"}
-{"Sentence":"I would like resources related to manufacturing","Intent":"select_businessCategory"}
-{"Sentence":"I am interested for the maritime sector","Intent":"select_businessCategory"}
-{"Sentence":"I would like resources related to public services","Intent":"select_businessCategory"}
-{"Sentence":"I need regional engagement resources","Intent":"select_businessCategory"}
-{"Sentence":"telecommunications please","Intent":"select_businessCategory"}
-{"Sentence":"transportations please","Intent":"select_businessCategory"}
+{"Sentence":"I am interested in the agriculture bussiness category","Intent":"select_asset_businessCategory"}
+{"Sentence":"cloud edge infrastructure resources please","Intent":"select_asset_businessCategory"}
+{"Sentence":"I need cultural heritage resources","Intent":"select_asset_businessCategory"}
+{"Sentence":"I would like earth observation","Intent":"select_asset_businessCategory"}
+{"Sentence":"The business category should be energy","Intent":"select_asset_businessCategory"}
+{"Sentence":"I am interested in healthcare resources","Intent":"select_asset_businessCategory"}
+{"Sentence":"I would like resources related to manufacturing","Intent":"select_asset_businessCategory"}
+{"Sentence":"I am interested for the maritime sector","Intent":"select_asset_businessCategory"}
+{"Sentence":"I would like resources related to public services","Intent":"select_asset_businessCategory"}
+{"Sentence":"I need regional engagement resources","Intent":"select_asset_businessCategory"}
+{"Sentence":"telecommunications please","Intent":"select_asset_businessCategory"}
+{"Sentence":"transportations please","Intent":"select_asset_businessCategory"}
 
 {"Sentence":"can we start again?","Intent":"reset"}
 {"Sentence":"reset","Intent":"reset"}
