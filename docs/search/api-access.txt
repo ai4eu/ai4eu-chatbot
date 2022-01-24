@@ -3,10 +3,10 @@ curl -XPOST -H "Content-type: application/json" -d '{"content":"Who is Yann Lecu
 curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
 { 
   "from":0,
-  "size":5,
+  "size":1,
   "content":"Is there a dataset from Earth Observation ?",
   "options":{
-    "exclude":["summary","sentiment","categories","text_suggester","lemma_title","lemma_content"],
+    "exclude":["sentiment","text_suggester","lemma_title","lemma_content"],
     "disable":["qa","aggregator"]    
   },
   "add-clause":{
