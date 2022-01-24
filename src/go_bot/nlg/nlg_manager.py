@@ -291,9 +291,9 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_title(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_title() is None or item.get_title() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_title():
             response = 'This resource has no title'
         else:
             response = 'The title of the resource is ' + item.get_title()
@@ -306,9 +306,9 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_url(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_url() is None or item.get_url() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_url():
             response = 'This resource has no url'
         else:
             # we need to offer clickable urls
@@ -322,9 +322,9 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_content(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_content() is None or item.get_content() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_content():
             response = 'This resource has empty content'
         else:
             # we need to offer clickable urls
@@ -338,9 +338,9 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_score(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_score() is None or item.get_score() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_score():
             response = 'The API returned no score for this resource'
         else:
             response = 'The score of this resource is ' + item.get_score()
@@ -353,9 +353,9 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_summary(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_score() is None or item.get_score() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_score():
             response = 'There is no summary for this resource'
         else:
             response = item.get_summary()
@@ -368,12 +368,13 @@ class NLGManager(NLGManagerInterface):
     def tell_resource_keywords(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
-        elif item.get_score() is None or item.get_score() is {}:
+        if not item:
+            response = 'There is no item in the current focus'
+        elif not item.get_keywords():
             response = 'There are no keywords associated with this resource'
         else:
             keywords = item.get_keywords()
+            print(' The keywords are ', keywords)
             keywords_str = ' '.join(map(str, keywords))
             response = 'The relevant keywords, starting from the most important one are : ' + keywords_str
 
@@ -385,7 +386,7 @@ class NLGManager(NLGManagerInterface):
     def tell_objects_in_focus(self, items: [SearchItemInFocus]) -> str:
         response = None
 
-        if items is None or items is []:
+        if not items:
             response = 'There are no items in the current focus'
         else:
             response = 'There are ' + len(items) + ' items in the current focus'
@@ -398,12 +399,11 @@ class NLGManager(NLGManagerInterface):
     def describe_item(self, item: SearchItemInFocus) -> str:
         response = None
 
-        if item is None or item is {}:
-            response = 'There is no item in the current focus.'
+        if not item:
+            response = 'There is no item in the current focus'
         else:
-            print(item.get_title())
-            print(item.get_url())
-            response = item.get_title() + ' is relevant. Check it at: ' + item.get_url()
+            item.print()
+            response = 'You might be interested in ' + item.get_title() + '. Check it at: ' + item.get_url()
 
         return response
 

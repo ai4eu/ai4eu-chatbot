@@ -342,6 +342,7 @@ class DialogueStateTracker(FeaturizedTracker):
             else:
                 log.info(f"Can't get first search item. Asking for index {idx}, "
                      f"while the length of the search results is  {len(self.curr_search_items)}")
+            self.curr_search_item_index = 0
 
         return self.curr_search_item
 
@@ -362,6 +363,7 @@ class DialogueStateTracker(FeaturizedTracker):
             else:
                 log.info(f"Can't get second search item. Asking for index {idx}, "
                      f"while the length of the search results is  {len(self.curr_search_items)}")
+            self.curr_search_item_index = 0
 
         return self.curr_search_item
 
