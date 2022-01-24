@@ -4,7 +4,7 @@ curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.terala
 { 
   "from":0,
   "size":1,
-  "content":"Is there a dataset from Earth Observation ?",
+  "content":"deep learning resources ?",
   "options":{
     "exclude":["sentiment","text_suggester","lemma_title","lemma_content"],
     "disable":["qa","aggregator"]    
@@ -24,10 +24,10 @@ curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.terala
   }
 }'
 
-curl -k -XPOST --header "content-Type: application/json" "https://localhost:8000/api/searching/querying" -d'
+curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
 { 
   "from":0,
-  "size":5,
+  "size":1,
   "content":"What is YOLO ?",
   "options":{
     "exclude":["summary","sentiment","categories","text_suggester","lemma_title","lemma_content"],
@@ -48,10 +48,10 @@ curl -k -XPOST --header "content-Type: application/json" "https://localhost:8000
   }
 }'
 
-curl -k -XPOST --header "content-Type: application/json" "https://localhost:8000/api/searching/querying" -d'
+curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
 { 
   "from":0,
-  "size":5,
+  "size":1,
   "content":"What is VSAM ?",
   "options":{
     "exclude":["summary","sentiment","categories","text_suggester","lemma_title","lemma_content"],

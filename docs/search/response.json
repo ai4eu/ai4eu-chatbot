@@ -7906,52 +7906,52 @@
 							"should": [{
 								"match": {
 									"content": {
-										"query": "dataset Earth Observation"
+										"query": "deep learning resources"
 									}
 								}
 							}, {
 								"match": {
 									"content": {
-										"query": "dataset Earth Observation",
+										"query": "deep learning resources",
 										"operator": "and"
 									}
 								}
 							}, {
 								"match": {
 									"lemma_content": {
-										"query": "dataset Earth Observation"
+										"query": "deep learne resource"
 									}
 								}
 							}, {
 								"match": {
 									"lemma_content": {
-										"query": "dataset Earth Observation",
+										"query": "deep learne resource",
 										"operator": "and"
 									}
 								}
 							}, {
 								"match": {
 									"title": {
-										"query": "dataset Earth Observation"
+										"query": "deep learning resources"
 									}
 								}
 							}, {
 								"match": {
 									"title": {
-										"query": "dataset Earth Observation",
+										"query": "deep learning resources",
 										"operator": "and"
 									}
 								}
 							}, {
 								"match": {
 									"lemma_title": {
-										"query": "dataset Earth Observation"
+										"query": "deep learne resource"
 									}
 								}
 							}, {
 								"match": {
 									"lemma_title": {
-										"query": "dataset Earth Observation",
+										"query": "deep learne resource",
 										"operator": "and"
 									}
 								}
@@ -7975,7 +7975,7 @@
 													"query": {
 														"match_phrase": {
 															"kg.subject.content": {
-																"query": "earth observation",
+																"query": "deep learne resource",
 																"boost": 0.5,
 																"slop": 1
 															}
