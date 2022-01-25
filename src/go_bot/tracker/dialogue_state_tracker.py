@@ -20,6 +20,8 @@ from typing import List, Union, Optional, Dict, Tuple, Any
 import numpy as np
 
 from deeppavlov.core.models.component import Component
+
+from .chatbot_mode import ChatMode
 from ..nlg.nlg_manager import NLGManagerInterface
 from ..policy.dto.policy_network_params import PolicyNetworkParams
 from ..search_api.dto.search_item_in_focus import SearchItemInFocus
@@ -83,6 +85,9 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_search_item = None            # holds the active search item of the previous results
         self.prev_search_items = None           # topk items of search API results
         self.prev_search_item_index = 0         # index of current item
+
+        # PP here we store the current dialogue mode
+        self.mode = ChatMode.DEFAULT
 
     @staticmethod
     def from_gobot_params(parent_tracker: FeaturizedTracker,
@@ -168,6 +173,10 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_search_items = None
         self.prev_search_item_index = 0
         self.prev_action = np.zeros(self.n_actions, dtype=np.float32)
+
+        # set mode to default
+        self.mode = ChatMode.DEFAULT
+
         self._reset_network_state()
 
     """
@@ -184,11 +193,17 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_action[prev_act_id] = 1.
 
     # AI4EU : We are not using a ground-truth in the DSTC-2 templates based on the returned results from API calls
-    # We use only per_item_action_accuracy for our training instead of per_item_dialogue_accuracy
+    # We basically use per_item_action_accuracy for our training instead of per_item_dialogue_accuracy
+    # Based on the preconfigured template responses
     def update_ground_truth_db_result_from_context(self, context: Dict[str, Any]):
         #self.current_db_result = context.get('db_result', None)
         #self._update_db_result()
         return None
+
+    # set the mode of the state - when we get specific intents
+    def set_mode(self, mode: ChatMode):
+        print('Set mode: ', mode)
+        self.mode = mode
 
     """
     Update search-api results 
@@ -402,9 +417,8 @@ class DialogueStateTracker(FeaturizedTracker):
     """
     compute context features
     This is a feature vector based on the results of the search-api and the slots state
-    Currently we only consider the latest results from the APIs
-    We could also consider the previous one
-
+    Currently we only consider the latest results from the APIs (we can also consider the previous one)
+    We are also using a one-hot vector for DEFAULT, QA, WEB, and ASSET mode based on the intents
     """
     def calc_context_features(self):
         dst_state = self.get_state()
@@ -431,9 +445,14 @@ class DialogueStateTracker(FeaturizedTracker):
             (self.curr_search_item is None) * 1.,       # active API item is None
             bool(self.curr_search_item) * 1.,           # active API item is not None
             (self.curr_search_item == {}) * 1.,         # active API item is empty
+            (self.mode == ChatMode.DEFAULT) * 1.,       # mode is DEFAULT
+            (self.mode == ChatMode.QA) * 1.,            # mode is QA
+            (self.mode == ChatMode.WEB) * 1.,           # mode is WEB
+            (self.mode == ChatMode.ASSET) * 1.,         # mode is ASSET
             focus_index,                                # use also the current item index
             result_matches_state                        # if original query state matches current state
         ], dtype=np.float32)
+
         return context_features
 
     """

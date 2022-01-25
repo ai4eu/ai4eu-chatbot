@@ -10,15 +10,19 @@ class SharedGoBotParams:
     num_actions: int
     num_intents: int
     num_tracker_features: int
+    num_context_features: int
 
-    def __init__(self, num_actions: int, num_intents: int, num_tracker_features: int):
+
+    def __init__(self, num_actions: int, num_intents: int, num_tracker_features: int, num_context_features: int):
         self.num_actions = num_actions
         self.num_intents = num_intents
         self.num_tracker_features = num_tracker_features
+        self.num_context_features = num_context_features
 
     @staticmethod
     def from_configured(nlg_manager: NLGManagerInterface, nlu_manager: NLUManagerInterface, tracker: FeaturizedTracker):
         """builds the params object given some GO-bot units that are already configured"""
         return SharedGoBotParams(nlg_manager.num_of_known_actions(),
                                  nlu_manager.num_of_known_intents(),
-                                 tracker.num_features)
+                                 tracker.num_features,
+                                 tracker.num_context)

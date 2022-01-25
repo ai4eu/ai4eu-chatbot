@@ -50,8 +50,13 @@ class FeaturizedTracker(TrackerInterface):
         return len(self.slot_names)
 
     @property
+    # TODO check if this is correct
     def num_features(self) -> int:
         return self.state_size * 3 + 3
+
+    @property
+    def num_context(self) -> int:
+        return 11   # Magic number (see size of context array in calc_context_features in dialogue_state_tracker)
 
     def update_state(self, nlu_response: NLUResponse):
         slots = nlu_response.slots

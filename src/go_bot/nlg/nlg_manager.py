@@ -10,6 +10,7 @@ from ..dto.dataset_features import BatchDialoguesFeatures
 from .nlg_manager_interface import NLGManagerInterface
 from ..policy.dto.policy_prediction import PolicyPrediction
 from ..search_api.dto.search_item_in_focus import SearchItemInFocus
+from ..tracker.chatbot_mode import ChatMode
 from ..tracker.dialogue_state_tracker import DialogueStateTracker
 
 import numpy as np
@@ -246,7 +247,21 @@ class NLGManager(NLGManagerInterface):
     # We have to report the intent, the slots, the current action and the previous action with their probabilities
     # Along with the current focus state
     def tell_debug(self, policy_prediction: PolicyPrediction, dialogue_state_tracker: DialogueStateTracker):
-        text = '\n'
+        text = ''
+
+        mode = dialogue_state_tracker.mode
+
+        if mode is ChatMode.QA:
+            state = 'Mode: QA'
+        elif mode is ChatMode.WEB:
+            state = 'Mode: WEB'
+        elif mode is ChatMode.ASSET:
+            state = 'Mode: ASSET'
+        else:
+            state = 'Mode: DEFAULT'
+
+        text += state + '\n'
+
         ### NLU DATA - predicted intent, probability, and slots
         nlu_response = policy_prediction.get_utterance_features()
         intents = nlu_response.intents

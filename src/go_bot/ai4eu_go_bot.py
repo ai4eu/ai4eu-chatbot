@@ -48,6 +48,7 @@ from .nlu.nlu_manager import NLUManager
 from .policy.policy_network import PolicyNetwork, PolicyNetworkParams
 from .policy.dto.policy_prediction import PolicyPrediction
 from .search_api.search_api import SearchAPI
+from .tracker.chatbot_mode import ChatMode
 from .tracker.featurized_tracker import FeaturizedTracker
 from .tracker.dialogue_state_tracker import DialogueStateTracker, MultipleUserStateTrackersPool
 from pathlib import Path
@@ -167,7 +168,8 @@ class AI4EUGoalOrientedBot(NNModel):
         self.data_handler = TokensVectorizer(debug, word_vocab, bow_embedder, embedder)
 
         # Initialize the Dialogue State Tracker using data from gobot
-        self.dialogue_state_tracker = DialogueStateTracker.from_gobot_params(tracker, self.nlg_manager,
+        self.dialogue_state_tracker = DialogueStateTracker.from_gobot_params(tracker,
+                                                                             self.nlg_manager,
                                                                              policy_network_params,
                                                                              self._QA,
                                                                              self._SAPI,
@@ -180,7 +182,8 @@ class AI4EUGoalOrientedBot(NNModel):
         print('==> AI4EU Token dims: ', tokens_dims.__dict__)
 
         # Set feature params
-        features_params = SharedGoBotParams.from_configured(self.nlg_manager, self.nlu_manager,
+        features_params = SharedGoBotParams.from_configured(self.nlg_manager,
+                                                            self.nlu_manager,
                                                             self.dialogue_state_tracker)
         print('==> AI4EU : Number of actions', features_params.num_actions)
         print('==> AI4EU : Number of intents', features_params.num_intents)
@@ -347,6 +350,16 @@ class AI4EUGoalOrientedBot(NNModel):
             tokens_aggregated_embedding,
             tokens_embeddings_padded))
         # endregion text BOW-encoding and embedding | todo: to nlu
+
+        # Change mode of bot based on specific intents
+        # i.e. recognize when we are in QA, WEB, or ASSET mode
+        print('INTENT!!! ', nlu_response.intent)
+        if nlu_response.intent == 'qa_input':
+            tracker.set_mode(ChatMode.QA)
+        elif nlu_response.intent == 'web_resource_request':
+            tracker.set_mode(ChatMode.WEB)
+        elif nlu_response.intent == 'ai4eu_resource_request':
+            tracker.set_mode(ChatMode.ASSET)
 
         if not keep_tracker_state:
             tracker.update_state(nlu_response)
