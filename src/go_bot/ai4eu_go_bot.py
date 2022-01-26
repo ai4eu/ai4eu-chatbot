@@ -353,7 +353,6 @@ class AI4EUGoalOrientedBot(NNModel):
 
         # Change mode of bot based on specific intents
         # i.e. recognize when we are in QA, WEB, or ASSET mode
-        print('INTENT!!! ', nlu_response.intent)
         if nlu_response.intent == 'qa_input':
             tracker.set_mode(ChatMode.QA)
         elif nlu_response.intent == 'web_resource_request':
