@@ -73,7 +73,6 @@ class DialogueStateTracker(FeaturizedTracker):
         self._ai4eu_qa_api_call_id = _ai4eu_qa_api_call_id
         self.ffill_act_ids2req_slots_ids: Dict[int, List[int]] = dict()
         self.ffill_act_ids2aqd_slots_ids: Dict[int, List[int]] = dict()
-        self.reset_state()
 
         # The following features are used for computing the context feature vector
         self.curr_search_item = None            # holds the current search item
@@ -86,8 +85,13 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_search_items = None           # topk items of search API results
         self.prev_search_item_index = 0         # index of current item
 
+        self.prev_action = np.zeros(self.n_actions, dtype=np.float32)
+
         # PP here we store the current dialogue mode
         self.mode = ChatMode.DEFAULT
+
+        # call reset for initializing also inherited class Featureiz
+        self.reset_state()
 
     @staticmethod
     def from_gobot_params(parent_tracker: FeaturizedTracker,
@@ -172,6 +176,7 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_search_item = None
         self.prev_search_items = None
         self.prev_search_item_index = 0
+
         self.prev_action = np.zeros(self.n_actions, dtype=np.float32)
 
         # set mode to default
