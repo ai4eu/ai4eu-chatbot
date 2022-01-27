@@ -360,6 +360,10 @@ class AI4EUGoalOrientedBot(NNModel):
         elif nlu_response.intent == 'ai4eu_resource_request':
             tracker.set_mode(ChatMode.ASSET)
 
+        # If we are just debugging do not update the state of tracker
+        if nlu_response.intent == 'debug':
+            keep_tracker_state = True
+
         if not keep_tracker_state:
             tracker.update_state(nlu_response)
 
@@ -475,9 +479,11 @@ class AI4EUGoalOrientedBot(NNModel):
 
         print(f"Use action = '{ self.nlg_manager.get_action(policy_prediction.predicted_action_ix)}'")
 
-        # Update the action and the state for the next utterance
-        user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
-        user_tracker.network_state = policy_prediction.get_network_state()
+        # Update the action and the state for the next utterance for all actions
+        # But do not update things for debug
+        if pred_label != 'debug':
+            user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
+            user_tracker.network_state = policy_prediction.get_network_state()
 
         # AI4EU: If we need to make a call to the AI4EU web search API for web resources or ai-catalogue assets
         if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id()\
