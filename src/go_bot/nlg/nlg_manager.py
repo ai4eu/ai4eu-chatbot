@@ -418,7 +418,7 @@ class NLGManager(NLGManagerInterface):
             response = 'There is no item in the current focus'
         else:
             item.print()
-            response = 'You might be interested in ' + item.get_title() + '. Check it at: ' + item.get_url()
+            response = 'You might be interested in "' + item.get_title() + '". Check it at: ' + item.get_url()
 
         return response
 
