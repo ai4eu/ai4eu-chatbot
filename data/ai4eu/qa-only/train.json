@@ -92,18 +92,23 @@
 {"Question": "What is integrative AI?", "Answer":  "Integrative AI systems can combine different requirements and methods into one AI system. You can check https://www.ai4europe.eu/research/simple-guide-integrative-ai if you are interested"}
 
 {"Question": "Where can I find AI Assets, libraries, datasets and containers in the platform?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "Give me the link for the ai catalogue?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "Give me the link for the AI4EU assets?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
 
 {"Question": "What are research bundles?", "Answer":  "A research bundle collects in a single place all the assets (code, data, tutorials, examples, ...) produced by a project and is published on the AI on-demand platform"}
 {"Question": "Where can I find research bundles?", "Answer":  "Please check https://www.ai4europe.eu/research/research-bundles"}
+{"Question": "Give me the link for research bundles?", "Answer":  "Please check https://www.ai4europe.eu/research/research-bundles"}
 
 {"Question": "What is the AI Education Space?", "Answer":"It aims at providing a central access point to education resources in Europe related to Artificial Intelligence. We target all levels of education, from basic AI literacy for all, to courses for university students, and to reskilling of workers. Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog for more"}
 {"Question": "Where can I find, browse, search and access all the AI education resources currently indexed in the AI4EU AI-on-demand platform?", "Answer":"Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog"}
 {"Question": "Where can I find distant and onsite courses, and tutorials for AI?", "Answer":"Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog"}
 {"Question": "Where can I find, browse, search and access all the AI education resources currently indexed in the AI4EU AI-on-demand platform?", "Answer":"Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog"}
+{"Question": "Give me the link for educational material", "Answer":"Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog"}
 {"Question": "Where can I publish my own educational resources in the platform?", "Answer":"Please visit the educational catalogue https://www.ai4europe.eu/education/education-catalog"}
 {"Question": "Who should I contact for anything related to educational content?", "Answer":"Please send an email to johan.axelsson@oru.se and ulrika.franzen@oru.se"}
 {"Question": "Where can I find more information about AI European Education Initiatives?", "Answer":"Please visit the AI Education Initiatives page https://www.ai4europe.eu/education/education-initiatives"}
 {"Question": "Where can I find news related to the AI education domain?", "Answer":"Please visit https://www.ai4europe.eu/news-and-events/news?category=6#edit-category"}
+
 
 
 {"Question":"What are the working Groups (WGS) in the AI4EU project?","Answer":"Working Groups (WGs) are semi-organised groups which gather people both within and outside the AI4EU project. They aim to create a common space for reflection on Ethical, Legal, Social, Economic and Legal issues of AI (ELSEC AI) leveraging the contributions of experts from different fields and sectors. Participation is free and voluntary. Please visit https://www.ai4europe.eu/working-groups for more"}
