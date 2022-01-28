@@ -89,6 +89,7 @@ class DialogueStateTracker(FeaturizedTracker):
 
         # PP here we store the current dialogue mode
         self.mode = ChatMode.DEFAULT
+        self.mode = ChatMode.DEFAULT
 
         # call reset for initializing also inherited class Featureiz
         self.reset_state()
@@ -185,6 +186,22 @@ class DialogueStateTracker(FeaturizedTracker):
         self._reset_network_state()
 
     """
+    Reset state of dialogue state tracker only related to current focus of the user
+    """
+    def reset_focus_state(self):
+        self.curr_search_item = None
+        self.curr_search_items = None
+        self.curr_search_item_slot_state = None
+        self.curr_search_item_index = 0
+
+        self.prev_search_item = None
+        self.prev_search_items = None
+        self.prev_search_item_index = 0
+
+        self._reset_network_state()
+
+
+    """
     Reset network state of LSTM
     """
     def _reset_network_state(self):
@@ -207,6 +224,9 @@ class DialogueStateTracker(FeaturizedTracker):
 
     # set the mode of the state - when we get specific intents
     def set_mode(self, mode: ChatMode):
+        # TODO I have to evaluate what are the implications of reset the focus state
+        # Currently the bot will lose all previous information about slots
+        self.reset_focus_state()
         print('Set mode: ', mode)
         self.mode = mode
 

@@ -374,7 +374,7 @@ class AI4EUGoalOrientedBot(NNModel):
         return UtteranceFeatures(nlu_response, tracker_knowledge, digitized_policy_features)
 
     def _infer(self, user_utterance_text: str, user_tracker: DialogueStateTracker,
-               keep_tracker_state=False) -> Tuple[BatchDialoguesFeatures, PolicyPrediction]:
+               keep_tracker_state=False) -> Tuple[BatchDialoguesFeatures, PolicyPrediction, str]:
         """
         AI4EU Predict the action to perform in response to given text.
 
@@ -386,10 +386,13 @@ class AI4EUGoalOrientedBot(NNModel):
                                 the api call action
 
         Returns:
-            the features data object containing features fed to the model on inference and the model's prediction info
+            the features data object containing features fed to the model on inference and the model's prediction info and the intent
         """
         utterance_features = self.extract_features_from_utterance_text(user_utterance_text, user_tracker,
                                                                        keep_tracker_state)
+
+        # Get also the intent in the response - intent is the 3 field in the NLUResponse response
+        intent = utterance_features.nlu_response.intent
 
         utterance_data_entry = UtteranceDataEntry.from_features(utterance_features)
 
@@ -414,7 +417,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # We need them for debugging reasons
         policy_prediction.set_utterance_features(utterance_features.nlu_response)
 
-        return utterance_batch_features, policy_prediction
+        return utterance_batch_features, policy_prediction, intent
 
     def __call__(self, batch: Union[List[List[dict]], List[str]],
                  user_ids: Optional[List] = None) -> Union[List[NLGResponseInterface],
@@ -455,7 +458,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # Policy Making -> Predict new action
 
         # predict the action to perform (e.g. response something or call any of the QA or search APIs)
-        utterance_batch_features, policy_prediction = self._infer(user_text, user_tracker)
+        utterance_batch_features, policy_prediction, intent = self._infer(user_text, user_tracker)
 
         # Hold probability
         prob = float(policy_prediction.probs[policy_prediction.predicted_action_ix])
@@ -481,9 +484,18 @@ class AI4EUGoalOrientedBot(NNModel):
 
         # Update the action and the state for the next utterance for all actions
         # But do not update things for debug
-        if pred_label != 'debug':
+
+        # If the captured intent is either debug or reset we do not care about the predicted action
+        # Just do what they have to do
+        if intent != 'debug' and intent != 'reset':
             user_tracker.update_previous_action(policy_prediction.predicted_action_ix)
             user_tracker.network_state = policy_prediction.get_network_state()
+        else:
+            # Make sure that we use the debug or reset action based on the intent and ignore the predicted action
+            if intent == 'debug':
+                policy_prediction.predicted_action_ix = self.nlg_manager.get_action_id('debug')
+            elif intent == 'reset':
+                policy_prediction.predicted_action_ix = self.nlg_manager.get_action_id('reset')
 
         # AI4EU: If we need to make a call to the AI4EU web search API for web resources or ai-catalogue assets
         if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id()\
@@ -557,6 +569,7 @@ class AI4EUGoalOrientedBot(NNModel):
         res = []
         self.dialogue_state_tracker.reset_state()
         for context in contexts:
+            # PP TODO What about reset and debug?
             if context.get('prev_resp_act') is not None:
                 # if there already were responses to user
                 # we inform the tracker with these responses info
@@ -574,8 +587,17 @@ class AI4EUGoalOrientedBot(NNModel):
             # infer things
             context_text = context['text']
 
-            utterance_batch_features, policy_prediction = self._infer(context_text, self.dialogue_state_tracker)
-            self.dialogue_state_tracker.update_previous_action(policy_prediction.predicted_action_ix)  # see above todo
+            utterance_batch_features, policy_prediction, intent = self._infer(context_text, self.dialogue_state_tracker)
+
+            # If debug or reset ignore it as action
+            if intent != 'debug' and intent != 'reset':
+                self.dialogue_state_tracker.update_previous_action(policy_prediction.predicted_action_ix)  # see above todo
+            else:
+                # Make sure that we use the debug or reset action based on the intent and ignore the predicted action
+                if intent == 'debug':
+                    policy_prediction.predicted_action_ix = self.nlg_manager.get_action_id('debug')
+                elif intent == 'reset':
+                    policy_prediction.predicted_action_ix = self.nlg_manager.get_action_id('reset')
 
             # If the predicted action updates the state then we have to update the state also to include new data
             # like the size of the response, reset of the state, moving the focus, etc.
