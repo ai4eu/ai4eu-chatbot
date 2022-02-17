@@ -26,9 +26,9 @@ class SearchAPI:
     Using JSON as a serialization format
     """
     def __init__(self):
-        self._SEARCH_API_ENDPOINT = 'https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying'
+        self._SEARCH_API_ENDPOINT = 'https://search.ai4eu.eu:8443/search/1.0/api/searching/querying'
         self.json = None
-        self.headers = {'Content-type': 'application/json'}
+        self.headers = {'Content-type': 'application/json', 'apikey': 'ai4eu-7f906a41-ba45-4aae-9bc7-c1282ec6a23c'}
 
     """
     Method that returns the results of a simple web query
