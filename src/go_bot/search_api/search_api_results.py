@@ -48,7 +48,7 @@ class SearchAPIResults:
         items = SearchAPIResults.get_items(response)
 
         # Something is wrong with the search api response
-        if items is None:
+        if items is None or len(items) == 0:
             return None
 
         if len(items) <= index:
@@ -65,7 +65,7 @@ class SearchAPIResults:
     def get_item_from_items(items, index=1) -> SearchItemInFocus:
 
         # Something is wrong with the search api response
-        if items is None:
+        if items is None or len(items) == 0:
             return None
 
         if len(items) <= index:
