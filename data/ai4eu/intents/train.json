@@ -500,6 +500,12 @@
 {"Sentence":"I am interested in libraries","Intent":"select_asset_assetType"}
 {"Sentence":"I want to explore ML models","Intent":"select_asset_assetType"}
 
+{"Sentence":"Please clear slots","Intent":"clear_slots"}
+{"Sentence":"restart slots","Intent":"clear_slots"}
+{"Sentence":"clear slots","Intent":"clear_slots"}
+{"Sentence":"forget slots","Intent":"clear_slots"}
+
+
 {"Sentence":"I am interested in AI ethics resources","Intent":"select_asset_technicalCategory"}
 {"Sentence":"AI services resources please","Intent":"select_asset_technicalCategory"}
 {"Sentence":"I need audio processing resources","Intent":"select_asset_technicalCategory"}
