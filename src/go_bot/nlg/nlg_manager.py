@@ -213,7 +213,7 @@ class NLGManager(NLGManagerInterface):
             # or whenever we have a search API call
             elif action == 'tell_first_in_focus' \
                     or action == 'ai4eu_web_search_api_call'\
-                    or action == 'ai4eu_asset_search_api_call_action':
+                    or action == 'ai4eu_asset_search_api_call':
                 # we change the item in focus to the first one
                 item_in_focus = dialogue_state_tracker.get_first_search_item()
                 text = self.describe_item(item_in_focus)
