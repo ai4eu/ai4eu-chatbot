@@ -285,7 +285,7 @@ class NLGManager(NLGManagerInterface):
         text += action
 
         ### REGARDING THE FOCUS
-        current_focus_len = 'Empty'
+        current_focus_len = 0
         if dialogue_state_tracker.curr_search_items:
             current_focus_len = len(dialogue_state_tracker.curr_search_items)
         # Regarding the current item in focus
@@ -294,7 +294,7 @@ class NLGManager(NLGManagerInterface):
             # Get the title of the search item in focus
             current_item_title = dialogue_state_tracker.curr_search_item.get_title()
 
-        focus = 'Current focus length: ' + current_focus_len + '\n'
+        focus = 'Current focus length: ' + str(current_focus_len) + '\n'
         focus += 'Current item title: ' + current_item_title + '\n'
         focus += 'Current item index: ' + str(dialogue_state_tracker.curr_search_item_index) + '\n'
         focus += '\n'
