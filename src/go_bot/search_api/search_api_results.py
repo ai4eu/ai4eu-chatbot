@@ -43,7 +43,7 @@ class SearchAPIResults:
     Method that gets a specific item from result
     """
     @staticmethod
-    def get_item_from_results(response, index=0) -> SearchItemInFocus:
+    def get_item_from_results(response, index=1) -> SearchItemInFocus:
 
         items = SearchAPIResults.get_items(response)
 
@@ -52,7 +52,7 @@ class SearchAPIResults:
             return None
 
         if len(items) <= index:
-            print('Asking index out of array')
+            print('Asking index out of array ', index)
             return None
 
         return items[index]
@@ -62,14 +62,14 @@ class SearchAPIResults:
     We use indexing from 1 - helps in the context vector computation in state
     """
     @staticmethod
-    def get_item_from_items(items, index=1)-> SearchItemInFocus:
+    def get_item_from_items(items, index=1) -> SearchItemInFocus:
 
         # Something is wrong with the search api response
         if items is None:
             return None
 
         if len(items) <= index:
-            print('Asking index out of array')
+            print('Asking index out of array ', index)
             return None
 
         return items[index-1]
