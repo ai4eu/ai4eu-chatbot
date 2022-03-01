@@ -64,6 +64,15 @@
 {"Sentence":"don't do this","Intent":"no"}
 {"Sentence":"no chance","Intent":"no"}
 
+{"Sentence":"anything","Intent":"anything"}
+{"Sentence":"whatever","Intent":"anything"}
+{"Sentence":"any result","Intent":"anything"}
+{"Sentence":"all","Intent":"anything"}
+{"Sentence":"everything","Intent":"anything"}
+{"Sentence":"any available","Intent":"anything"}
+{"Sentence":"any","Intent":"anything"}
+{"Sentence":"dont care","Intent":"anything"}
+
 {"Sentence":"repeat","Intent":"repeat"}
 {"Sentence":"can you please repeat?","Intent":"repeat"}
 {"Sentence":"please repeat","Intent":"repeat"}
