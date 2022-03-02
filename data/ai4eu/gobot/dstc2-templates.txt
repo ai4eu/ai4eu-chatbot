@@ -63,3 +63,4 @@ tell_second_in_focus	TELL_SECOND_IN_FOCUS
 tell_previous_in_focus	TELL_PREVIOUS_IN_FOCUS
 tell_num_of_objects_in_focus	TELL_NUM_OF_OBJECTS_IN_FOCUS
 clear_slots	I cleared the slots. Anything else?
+about_what	About what?
