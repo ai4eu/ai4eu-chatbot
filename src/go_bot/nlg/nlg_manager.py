@@ -242,6 +242,9 @@ class NLGManager(NLGManagerInterface):
             # Respond with current date
             elif action == 'tell_date':
                 return self.tell_date()
+            elif action == 'clear_slots':
+                dialogue_state_tracker.clear_slots()
+                text = self.templates.templates[action_id].generate_text(slots)
             else:
                 # General case - Just use the template
                 text = self.templates.templates[action_id].generate_text(slots)

@@ -260,7 +260,9 @@ class FeaturizedTracker(TrackerInterface):
                                   for act, forms in action2forms.items()}
         return actions2required_slots, actions2acquired_slots
 
-    def _get_form_acquired_slots(self, form: Dict) -> List[str]:
+    def _get_form_acquired_slots(self, form:  the form, return the slots that are acquired with this form
+        Args:
+            form: form to extract acquired slots fromDict) -> List[str]:
         """
         given the form, return the slots that are acquired with this form
         Args:

@@ -91,7 +91,7 @@ class DialogueStateTracker(FeaturizedTracker):
         self.mode = ChatMode.DEFAULT
         self.mode = ChatMode.DEFAULT
 
-        # call reset for initializing also inherited class Featureiz
+        # call reset for initializing also inherited class Featurized
         self.reset_state()
 
     @staticmethod
@@ -184,6 +184,12 @@ class DialogueStateTracker(FeaturizedTracker):
         self.mode = ChatMode.DEFAULT
 
         self._reset_network_state()
+
+    """
+    Reset the slots in the featurized tracker
+    """
+    def clear_slots(self):
+        super.reset_state()
 
     """
     Reset state of dialogue state tracker only related to current focus of the user
