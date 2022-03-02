@@ -1,6 +1,6 @@
-curl -XPOST -H "Content-type: application/json" -d '{"content":"Who is Yann Lecun", "from":0,"size":2}' -k https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying
+curl -XPOST -H "Content-type: application/json" -d '{"content":"Who is Yann Lecun", "from":0,"size":2}' -k https://search.ai4eu.eu:8443/search/1.0/api/searching/querying
 
-curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
+curl -k -XPOST --header "content-Type: application/json" "https://search.ai4eu.eu:8443/search/1.0/api/searching/querying" -d'
 { 
   "from":0,
   "size":1,
@@ -24,7 +24,7 @@ curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.terala
   }
 }'
 
-curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
+curl -k -XPOST --header "content-Type: application/json" "https://search.ai4eu.eu:8443/search/1.0/api/searching/querying" -d'
 { 
   "from":0,
   "size":1,
@@ -48,7 +48,7 @@ curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.terala
   }
 }'
 
-curl -k -XPOST --header "content-Type: application/json" "https://ws66.tl.teralab-datascience.fr:8000/api/searching/querying" -d'
+curl -k -XPOST --header "content-Type: application/json" "https://search.ai4eu.eu:8443/search/1.0/api/searching/querying" -d'
 { 
   "from":0,
   "size":1,
