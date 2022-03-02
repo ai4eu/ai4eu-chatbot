@@ -210,13 +210,20 @@ class NLGManager(NLGManagerInterface):
                 item_in_focus = dialogue_state_tracker.get_next_search_item()
                 text = self.describe_item(item_in_focus)
             # describe first item in focus when we have the tell_first_in_focus_action
-            # or whenever we have a search API call
-            elif action == 'tell_first_in_focus' \
-                    or action == 'ai4eu_web_search_api_call'\
-                    or action == 'ai4eu_asset_search_api_call':
+            elif action == 'tell_first_in_focus':
                 # we change the item in focus to the first one
                 item_in_focus = dialogue_state_tracker.get_first_search_item()
                 text = self.describe_item(item_in_focus)
+            # describe first item in focus when we have a search API call
+            # if first item is none then the current focus is empty
+            elif action == 'ai4eu_web_search_api_call'\
+                    or action == 'ai4eu_asset_search_api_call':
+                # we change the item in focus to the first one
+                item_in_focus = dialogue_state_tracker.get_first_search_item()
+                if item_in_focus is None:
+                    text = 'There are no results. Please try to rephrase'
+                else:
+                    text = self.describe_item(item_in_focus)
             # describe second item in focus
             elif action == 'tell_second_in_focus':
                 # we change the item in focus to the second one
