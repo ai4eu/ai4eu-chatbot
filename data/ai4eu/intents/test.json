@@ -505,6 +505,9 @@
 {"Sentence":"clear slots","Intent":"clear_slots"}
 {"Sentence":"forget slots","Intent":"clear_slots"}
 
+{"Sentence":"Just give me a result","Intent":"make_query"}
+{"Sentence":"give me a result","Intent":"make_query"}
+{"Sentence":"say results","Intent":"make_query"}
 
 {"Sentence":"I am interested in AI ethics resources","Intent":"select_asset_technicalCategory"}
 {"Sentence":"AI services resources please","Intent":"select_asset_technicalCategory"}
