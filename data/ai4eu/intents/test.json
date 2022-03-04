@@ -367,6 +367,7 @@
 
 {"Sentence":"I would like to explore the AI4EU resources","Intent":"ai4eu_resource_request"}
 {"Sentence": "AI4EU resources","Intent":"ai4eu_resource_request"}
+{"Sentence": "I would like to explore assets","Intent":"ai4eu_resource_request"}
 {"Sentence": "resources from the AI catalogue","Intent":"ai4eu_resource_request"}
 {"Sentence":"give resources from the ai4eu catalog","Intent":"ai4eu_resource_request"}
 {"Sentence":"give me resources from the ai catalog","Intent":"ai4eu_resource_request"}
