@@ -40,7 +40,7 @@ ai4eu_qa_api_call	AI4EU_QA_API_CALL
 more_details	Ok, what exactly are you looking for?
 ask_which_mode	Do you want to explore resources or make general questions about the project and AI?
 ask_which_resources	Are you looking for assets in the AI4EU catalogue or web resources?
-tell_slots	The available slots for AI4EU assets are research areas, asset type, and technical and business categories
+tell_slots	You can select values for the following slots for AI4EU assets: research areas, asset type, and technical and business categories
 tell_researchAreas	The available research areas are collaborative AI, explainable AI, integrative AI, physical AI and verifiable AI
 tell_assetTypes	The available asset types are datasets, docker containers, as as service, executables, notebooks, libraries, and ML models
 tell_technicalCategories	The technical categories include AI ethics, AI services, audio processing, automated reasoning, commonsense reasoning, computer vision, connected and automated vehicles, constraints and satisfiability, knowledge representation, machine learning, multi-agent systems, NLP, optimization, philosophy of AI, planning and scheduling, robotics and automation, and search
@@ -63,4 +63,4 @@ tell_second_in_focus	TELL_SECOND_IN_FOCUS
 tell_previous_in_focus	TELL_PREVIOUS_IN_FOCUS
 tell_num_of_objects_in_focus	TELL_NUM_OF_OBJECTS_IN_FOCUS
 clear_slots	I cleared the slots. Anything else?
-about_what	About what?
+about_what	About what topic?
