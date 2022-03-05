@@ -24,6 +24,7 @@ class SearchAPIResults:
     def get_items(response) -> [SearchItemInFocus]:
         # Check that we have a correct response
         if response is None \
+                or 'results' not in response.keys() \
                 or response['results'] is None \
                 or response['results']['items'] is None:
             return None

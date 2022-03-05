@@ -220,8 +220,8 @@ class NLGManager(NLGManagerInterface):
                     or action == 'ai4eu_asset_search_api_call':
                 # we change the item in focus to the first one
                 item_in_focus = dialogue_state_tracker.get_first_search_item()
-                if item_in_focus is None:
-                    text = 'There are no results. Please try to rephrase'
+                if not item_in_focus:
+                    text = 'There are no results. Please try to rephrase!'
                 else:
                     text = self.describe_item(item_in_focus)
             # describe second item in focus
@@ -319,7 +319,7 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not item:
-            response = 'There is no item in the current focus'
+            response = 'There is no item in the current focus!'
         elif not item.get_title():
             response = 'This resource has no title'
         else:
@@ -334,7 +334,7 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not item:
-            response = 'There is no item in the current focus'
+            response = 'There is no item in the current focus!'
         elif not item.get_url():
             response = 'This resource has no url'
         else:
@@ -381,9 +381,9 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not item:
-            response = 'There is no item in the current focus'
+            response = 'There is no item in the current focus!'
         elif not item.get_score():
-            response = 'There is no summary for this resource'
+            response = 'There is no summary for this resource!'
         else:
             response = item.get_summary()
 
@@ -396,7 +396,7 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not item:
-            response = 'There is no item in the current focus'
+            response = 'There is no item in the current focus!'
         elif not item.get_keywords():
             response = 'There are no keywords associated with this resource'
         else:
@@ -414,7 +414,7 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not items:
-            response = 'There are no items in the current focus'
+            response = 'There are no items in the current focus!'
         else:
             response = 'There are ' + len(items) + ' items in the current focus'
 
@@ -427,7 +427,7 @@ class NLGManager(NLGManagerInterface):
         response = None
 
         if not item:
-            response = 'There is no item in the current focus'
+            response = 'There is no item in the current focus!'
         else:
             item.print()
             response = 'You might be interested in \"' + item.get_title() + '\". Check it at: ' + item.get_url()

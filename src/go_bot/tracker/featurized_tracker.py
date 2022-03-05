@@ -59,6 +59,10 @@ class FeaturizedTracker(TrackerInterface):
         return 11   # Magic number (see size of context array in calc_context_features in dialogue_state_tracker)
 
     def update_state(self, nlu_response: NLUResponse):
+        # hold the previous state
+        prev_state = self.get_state()
+
+        # get the new slots
         slots = nlu_response.slots
 
         if isinstance(slots, list):
@@ -68,7 +72,10 @@ class FeaturizedTracker(TrackerInterface):
             for slot, value in self._filter(slots.items()):
                 self.history.append((slot, value))
 
-        prev_state = self.get_state()
+        # Print history
+        print('==> AI4EU Slots History:', self.history)
+
+        # compute the feature array based on the current slots
         bin_feats = self._binary_features()
         diff_feats = self._diff_features(prev_state)
         new_feats = self._new_features(prev_state)
@@ -82,12 +89,15 @@ class FeaturizedTracker(TrackerInterface):
             np.sum(new_feats))
         )
 
+    """
+    Iterate over the slots and return a dict with slot values
+    No more than one value per slot (the latest)
+    """
     def get_state(self):
-        # lasts = {}
-        # for slot, value in self.history:
-        #     lasts[slot] = value
-        # return lasts
-        return dict(self.history)
+        lasts = {}
+        for slot, value in self.history:
+            lasts[slot] = value
+        return lasts
 
     def reset_state(self):
         self.history = []
