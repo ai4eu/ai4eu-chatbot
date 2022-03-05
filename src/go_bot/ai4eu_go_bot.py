@@ -516,6 +516,15 @@ class AI4EUGoalOrientedBot(NNModel):
                     # The search-API will fail for empty queries with a 500
                     # if there are no slots and the focus will be none
                     query = " ".join(slots.values())
+
+                    # clean up the values of the slots
+                    # since they are concatenated with _ or have AI as a suffix
+                    # TODO Have to clean up
+                    query = query.replace('_', ' ')
+                    if query.endswith('AI'):
+                        query = query[:-2]
+                        query = query + ' AI'
+
                     # if query is not empty
                     if query.strip():
                         user_tracker.make_ai4eu_asset_search_api_call(query)
