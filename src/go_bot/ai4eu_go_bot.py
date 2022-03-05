@@ -452,6 +452,7 @@ class AI4EUGoalOrientedBot(NNModel):
         # we have the pool of trackers, each one tracks the dialogue with its own user
         # (1 to 1 mapping: each user has his own tracker and vice versa)
 
+        # Get the tracker for this user
         user_tracker = self.multiple_user_state_tracker.get_or_init_tracker(user_id)
         responses = []
 
@@ -505,7 +506,21 @@ class AI4EUGoalOrientedBot(NNModel):
             if policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_web_search_api_call_action_id():
                 user_tracker.make_ai4eu_web_search_api_call(user_text)
             elif policy_prediction.predicted_action_ix == self.nlg_manager.get_ai4eu_asset_search_api_call_action_id():
-                user_tracker.make_ai4eu_asset_search_api_call(user_text)
+                # we might have a case where the user does not give a query but just requests for a result
+                # in this case just use the slot values as user text
+                # in the future search-API will also support some kind of wildcard query '*' that returns all results
+                if intent == 'anything' or intent == 'make_query':
+                    # get all slots and concatenate their values
+                    slots = user_tracker.get_state()
+                    # get all values from the slots and send the query
+                    # The search-API will fail for empty queries with a 500
+                    # if there are no slots and the focus will be none
+                    query = " ".join(slots.values())
+                    # if query is not empty
+                    if query.strip():
+                        user_tracker.make_ai4eu_asset_search_api_call(query)
+                else:
+                    user_tracker.make_ai4eu_asset_search_api_call(user_text)
 
             # 2) we predict what to do next
             # For now just assume that we are going to describe the resource and we are not going to predict another action
