@@ -104,8 +104,12 @@
 {"Question": "What is integrative AI?", "Answer":  "Integrative AI systems can combine different requirements and methods into one AI system. You can check https://www.ai4europe.eu/research/simple-guide-integrative-ai if you are interested"}
 
 {"Question": "Where can I find AI Assets, libraries, datasets and containers in the platform?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
-{"Question": "Give me the link for the ai catalogue?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
-{"Question": "Give me the link for the AI4EU assets?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "Give me the link for the ai catalogue", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "Give me the link for the AI4EU assets", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "Where can I find resources?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "page of resources?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "webpage of resources?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Question": "link of resources?", "Answer":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
 
 {"Question": "What are research bundles?", "Answer":  "A research bundle collects in a single place all the assets (code, data, tutorials, examples, ...) produced by a project and is published on the AI on-demand platform"}
 {"Question": "Where can I find research bundles?", "Answer":  "Please check https://www.ai4europe.eu/research/research-bundles"}

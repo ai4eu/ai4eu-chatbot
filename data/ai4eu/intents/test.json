@@ -647,6 +647,9 @@
 {"Sentence": "Where can I find AI Assets, libraries, datasets and containers in the platform?", "Intent":  "qa_input"}
 {"Sentence": "Give me the link for the ai catalogue?", "Intent":  "qa_input"}
 {"Sentence": "Give me the link for the AI4EU assets?", "Intent":  "qa_input"}
+{"Sentence": "page of resources?", "Intent":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Sentence": "webpage of resources?", "Intent":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
+{"Sentence": "link of resources?", "Intent":  "Please use the AI catalog https://www.ai4europe.eu/research/ai-catalog"}
 
 {"Sentence": "What are research bundles?", "Intent":  "qa_input"}
 {"Sentence": "Where can I find research bundles?", "Intent":  "qa_input"}
