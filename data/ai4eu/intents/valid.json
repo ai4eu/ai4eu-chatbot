@@ -587,8 +587,8 @@
 
 {"Sentence": "What are the activities of the project?", "Intent":"qa_input"}
 {"Sentence": "Where can I find the project deliverables?", "Intent":"qa_input"}
-{"Sentence": "Are there any deliverables?", "Intent":"qa_input"}
 {"Sentence": "Give me deliverables", "Intent":"qa_input"}
+{"Sentence": "Are there any deliverables?", "Intent":"qa_input"}
 {"Sentence": "How many partners are in the AI4EU project?", "Intent":"qa_input"}
 {"Sentence": "How many partners collaborate in the project?", "Intent":"qa_input"}
 {"Sentence": "How many participants are in the AI4EU project?", "Intent":"qa_input"}
@@ -660,12 +660,13 @@
 {"Sentence": "What is the AI Education Space?", "Intent":  "qa_input"}
 {"Sentence": "Where can I find, browse, search and access all the AI education resources currently indexed in the AI4EU AI-on-demand platform?", "Intent":  "qa_input"}
 {"Sentence": "Where can I find distant and onsite courses, and tutorials for AI?", "Intent":  "qa_input"}
-{"Sentence": "Where can I find, browse, search and access all the AI education resources currently indexed in the AI4EU AI-on-demand platform?", "Intent":  "qa_input"}
+{"Sentence": "Where can I find educational material", "Intent":  "qa_input"}
 {"Sentence": "Give me the link for educational material", "Intent":  "qa_input"}
 {"Sentence": "Where can I publish my own educational resources in the platform?", "Intent":  "qa_input"}
 {"Sentence": "Who should I contact for anything related to educational content?", "Intent":  "qa_input"}
 {"Sentence": "Where can I find more information about AI European Education Initiatives?", "Intent":  "qa_input"}
 {"Sentence": "Where can I find news related to the AI education domain?", "Intent":  "qa_input"}
+
 
 
 {"Sentence":"What are the working Groups (WGS) in the AI4EU project?","Intent":"qa_input"}
