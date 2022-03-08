@@ -91,6 +91,12 @@ In order to run the chatbot you will need the following packages
     ```sh
     pip install sanic
     ```
+- **BeautifulSoup4**
+
+    We also need BeautifulSoup4 for HTML formatting reasons
+    ```sh
+    pip install beautifulsoup4
+    ```
 
 #### Building and installing the models
 Before running the chatbot you will need to train the various models over the datasets that are provided in the repository
