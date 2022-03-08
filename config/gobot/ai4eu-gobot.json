@@ -78,7 +78,7 @@
         },
         "tracker": {
           "class_name": "featurized_tracker",
-          "slot_names": ["researchArea", "assetType", "technicalCategories", "bussinessCategories"]
+          "slot_names": ["researchArea", "assetType", "technicalCategories", "businessCategories"]
         }
       }
     ]
