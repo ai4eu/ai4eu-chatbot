@@ -587,6 +587,7 @@
 
 {"Sentence": "What are the activities of the project?", "Intent":"qa_input"}
 {"Sentence": "Where can I find the project deliverables?", "Intent":"qa_input"}
+{"Sentence": "Give me deliverables", "Intent":"qa_input"}
 {"Sentence": "Are there any deliverables?", "Intent":"qa_input"}
 {"Sentence": "How many partners are in the AI4EU project?", "Intent":"qa_input"}
 {"Sentence": "How many partners collaborate in the project?", "Intent":"qa_input"}
