@@ -72,7 +72,7 @@ In order to run the chatbot you will need the following packages
     ```
 - **tensorflow**
 
-    We also need tensorflow 1.15 for some components. For RTX 30x cards please use the following for tensorflow (needs though a python 3.8 environment)
+    We also need tensorflow 1.15 for some components. For RTX 30x cards please use the following for tensorflow (needs a python 3.8 environment)
     ```sh
     pip install nvidia-pyindex
     pip install nvidia-tensorflow[horovod]
