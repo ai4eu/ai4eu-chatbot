@@ -89,7 +89,6 @@ class DialogueStateTracker(FeaturizedTracker):
 
         # PP here we store the current dialogue mode
         self.mode = ChatMode.DEFAULT
-        self.mode = ChatMode.DEFAULT
 
         # call reset for initializing also inherited class Featurized
         self.reset_state()
@@ -189,7 +188,7 @@ class DialogueStateTracker(FeaturizedTracker):
     Reset the slots in the featurized tracker
     """
     def clear_slots(self):
-        super.reset_state()
+        super().reset_state()
 
     """
     Reset state of dialogue state tracker only related to current focus of the user
@@ -221,8 +220,8 @@ class DialogueStateTracker(FeaturizedTracker):
         self.prev_action[prev_act_id] = 1.
 
     # AI4EU : We are not using a ground-truth in the DSTC-2 templates based on the returned results from API calls
-    # We basically use per_item_action_accuracy for our training instead of per_item_dialogue_accuracy
-    # Based on the preconfigured template responses
+    # We basically use per_item_dialogue_accuracy but on top of the preconfigured templates
+    # We wanted to use per_item_action_accuracy metric but it was not working
     def update_ground_truth_db_result_from_context(self, context: Dict[str, Any]):
         #self.current_db_result = context.get('db_result', None)
         #self._update_db_result()
@@ -230,11 +229,13 @@ class DialogueStateTracker(FeaturizedTracker):
 
     # set the mode of the state - when we get specific intents
     def set_mode(self, mode: ChatMode):
-        # TODO I have to evaluate what are the implications of reset the focus state
+        # TODO I have to evaluate what are the implications of resetting the focus state
         # Currently the bot will lose all previous information about slots
         self.reset_focus_state()
         print('Set mode: ', mode)
         self.mode = mode
+        # also clear slots - remove any information from previous mode utterances
+        self.clear_slots()
 
     """
     Update search-api results 

@@ -8,6 +8,8 @@ from deeppavlov.core.commands.utils import expand_path
 from deeppavlov.core.common.file import read_yaml
 from deeppavlov.core.common.registry import register
 from deeppavlov.dataset_readers.md_yaml_dialogs_reader import DomainKnowledge, MD_YAML_DialogsDatasetReader
+
+from .chatbot_mode import ChatMode
 from ..nlu.dto.nlu_response import NLUResponse
 from ..tracker.dto.tracker_knowledge_interface import TrackerKnowledgeInterface
 from ..tracker.tracker_interface import TrackerInterface
@@ -58,19 +60,21 @@ class FeaturizedTracker(TrackerInterface):
     def num_context(self) -> int:
         return 11   # Magic number (see size of context array in calc_context_features in dialogue_state_tracker)
 
-    def update_state(self, nlu_response: NLUResponse):
+    def update_state(self, nlu_response: NLUResponse, mode: ChatMode):
         # hold the previous state
         prev_state = self.get_state()
 
-        # get the new slots
-        slots = nlu_response.slots
+        # only update state slot history if we are in asset mode
+        if mode == ChatMode.ASSET:
+            # get the new slots
+            slots = nlu_response.slots
 
-        if isinstance(slots, list):
-            self.history.extend(self._filter(slots))
+            if isinstance(slots, list):
+                self.history.extend(self._filter(slots))
 
-        elif isinstance(slots, dict):
-            for slot, value in self._filter(slots.items()):
-                self.history.append((slot, value))
+            elif isinstance(slots, dict):
+                for slot, value in self._filter(slots.items()):
+                    self.history.append((slot, value))
 
         # Print history
         print('==> AI4EU Slots History:', self.history)

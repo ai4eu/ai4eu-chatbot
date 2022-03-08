@@ -365,7 +365,7 @@ class AI4EUGoalOrientedBot(NNModel):
             keep_tracker_state = True
 
         if not keep_tracker_state:
-            tracker.update_state(nlu_response)
+            tracker.update_state(nlu_response, tracker.mode)
 
         tracker_knowledge = tracker.get_current_knowledge()
 
