@@ -5,7 +5,7 @@ The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr
 
 ## Features
 The chatbot is provided as a REST service and supports the following tasks:
-- **Question-Anwser (QA)**
+- **Question-Answering (QA)**
   - Domain specific QA about the AI4EU project and general AI questions (e.g., "what is AI4EU?", "what are transformers?" )
   - Open-domain QA using the pretrained deeppavlov wikidata KBQA model (e.g., "who is Seymour Cray?")
 - **Exploration of web resources** indexed by the AI4EU platform 
@@ -14,6 +14,8 @@ The chatbot is provided as a REST service and supports the following tasks:
   - Uses the Search-API of the AI4EU project
 
 ## Architecture
+
+![ai4eu-chatbot architecture](docs/architecture.jpg?raw=true "Title")
 
 ## Deep learning models used
 
