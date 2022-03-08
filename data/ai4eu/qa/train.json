@@ -594,6 +594,7 @@
 {"Question":"who coined the term AI?", "Answer":"John McCarthy"}
 {"Question":"what is a neuron?", "Answer":"Neurons are information messengers. They use electrical impulses and chemical signals to transmit information between different areas of the brain, and between the brain and the rest of the nervous system"}
 
+{"Question":"What is the meaning of life?","Answer":"You know that I am supposed to say 42"}
 
 
 {"Question":"what is a car?", "Answer":"INVALID"}
@@ -601,8 +602,11 @@
 {"Question":"what is an drone?", "Answer":"INVALID"}
 {"Question":"what is a mobile phone?", "Answer":"INVALID"}
 {"Question":"what is a mobile device?", "Answer":"INVALID"}
+{"Question":"who is Seymour Cray?", "Answer":"INVALID"}
+{"Question":"who is Bill Clinton?", "Answer":"INVALID"}
+{"Question":"what is the capital of Greece?", "Answer":"INVALID"}
+{"Question":"which is the fastest car in the world?", "Answer":"INVALID"}
 
 
 
 
-{"Question":"What is the meaning of life?","Answer":"You know that I am supposed to say 42"}

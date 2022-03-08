@@ -163,8 +163,6 @@
 {"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "Where can I find AI related assets in the platform??", "dialog_acts": [{"act": "request", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
-{"speaker": 1, "text": "Where can I find AI related assets in the platform??", "dialog_acts": [{"act": "request", "slots": []}]}
-{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "Where can I find educational material in the platform??", "dialog_acts": [{"act": "request", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "Thank you! Bye", "dialog_acts": [{"act": "request", "slots": []}]}
@@ -185,7 +183,7 @@
 {"speaker": 1, "text": "I would like to look for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Are you looking for assets in the AI4EU catalogue or web resources?", "dialog_acts": [{"act": "ask_which_resources", "slots": []}]}
 {"speaker": 1, "text": "web resources", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "Ok, what exactly are you looking for??", "dialog_acts": [{"act": "more_details", "slots": []}]}
+{"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "I am looking for NLP resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_WEB_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_web_search_api_call", "slots": []}]}
 {"speaker": 1, "text": "Can you provide a summary for this resource?", "dialog_acts": [{"act": "request", "slots": []}]}
@@ -224,9 +222,7 @@
 {"speaker": 1, "text": "I am looking for AI related resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Are you looking for assets in the AI4EU catalogue or web resources?", "dialog_acts": [{"act": "ask_which_resources", "slots": []}]}
 {"speaker": 1, "text": "web resources please", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "Ok, what exactly are you looking for??", "dialog_acts": [{"act": "more_details", "slots": []}]}
-{"speaker": 1, "text": "I am looking for deep learning resources", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "Ok, what exactly are you looking for??", "dialog_acts": [{"act": "more_details", "slots": []}]}
+{"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "I am looking for deep learning resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_WEB_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_web_search_api_call", "slots": []}]}
 {"speaker": 1, "text": "What information can you provide for each resource?", "dialog_acts": [{"act": "request", "slots": []}]}
@@ -249,7 +245,7 @@
 {"speaker": 1, "text": "Hello?", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
 {"speaker": 1, "text": "I am looking for web resources", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "Ok, what exactly are you looking for??", "dialog_acts": [{"act": "more_details", "slots": []}]}
+{"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "I am looking for deep learning related pages", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_WEB_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_web_search_api_call", "slots": []}]}
 {"speaker": 1, "text": "Tell me its keywords", "dialog_acts": [{"act": "request", "slots": []}]}
@@ -312,7 +308,7 @@
 {"speaker": 1, "text": "I would like Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "What is the research area of interest?", "dialog_acts": [{"act": "request_researchArea", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Just give me results", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Speech recognition", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
@@ -321,7 +317,7 @@
 {"speaker": 1, "text": "I would like Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "What is the research area of interest?", "dialog_acts": [{"act": "request_researchArea", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Just give me results", "dialog_acts": [{"act": "inform", "slots": []}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Anything", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
@@ -330,7 +326,7 @@
 {"speaker": 1, "text": "I would like Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "What is the research area of interest?", "dialog_acts": [{"act": "request_researchArea", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Just give me results", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Anything", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
@@ -358,13 +354,13 @@
 {"speaker": 1, "text": "I am looking for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Developed by Fraunhofer", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
 {"speaker": 1, "text": "Hello", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
-{"speaker": 1, "text": "I am looking for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 1, "text": "I am looking for assets", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "developed by Fraunhofer", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": []}]}
@@ -385,7 +381,7 @@
 {"speaker": 1, "text": "I am looking for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Related to search", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
@@ -394,7 +390,7 @@
 {"speaker": 1, "text": "I am looking for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 1, "text": "Developed by Fraunhofer", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
@@ -404,7 +400,7 @@
 {"speaker": 1, "text": "I am looking for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
 {"speaker": 1, "text": "Resources related to AI ethics", "dialog_acts": [{"act": "inform", "slots": [["technicalCategories", "AI_ethics"]]}]}
-{"speaker": 2, "text": "About what topic?", "dialog_acts": [{"act": "about_what", "slots": [["technicalCategories", "AI_ethics"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["technicalCategories", "AI_ethics"]]}]}
 {"speaker": 1, "text": "About face detection", "dialog_acts": [{"act": "inform", "slots": [["technicalCategories", "AI_ethics"]]}]}
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["technicalCategories", "AI_ethics"]]}]}
 {"speaker": 1, "text": "Can we please reset the slots", "dialog_acts": [{"act": "inform", "slots": [["technicalCategories", "AI_ethics"]]}]}
@@ -615,3 +611,52 @@
 {"speaker": 2, "text": "To design a European AI on-Demand Platform to support this ecosystem and share AI resources produced in European projects, including high-level services, expertise in AI research and innovation, AI components and datasets, high-powered computing resources and access to seed funding for innovative projects using the platform (see https://www.ai4eu.eu/ai4eu-platform for more)", "dialog_acts":[{"act": "ai4eu_qa_api_call", "slots": []}]}
 {"speaker": 1, "text": "Ok, bye for now!", "dialog_acts": [{"act": "inform", "slots": []}]}
 {"speaker": 2, "text": "Thank you for the chat! Bye bye!", "dialog_acts": [{"act": "outro", "slots": []}]}
+
+{"speaker": 1, "text": "Hi there!", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Hello! How may I help you?", "dialog_acts": [{"act": "intro", "slots": []}]}
+{"speaker": 1, "text": "Who are you?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Well, I am an under-development chatbot for the AI4EU project", "dialog_acts": [{"act": "describe_self", "slots": []}]}
+{"speaker": 1, "text": "What can you do?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "You can ask me questions about the AI4EU project and AI in general! I can also help you find resources in the platform! I might also be able to answer some general questions!", "dialog_acts": [{"act": "skills", "slots": []}]}
+{"speaker": 1, "text": "What is AI4EU?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "Where can I explore AI4EU assets?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What are transformers?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What is pytorch?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "Who is Seymour Cray?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "What is the capital of France?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_QA_API_CALL", "dialog_acts": [{"act": "ai4eu_qa_api_call", "slots": []}]}
+{"speaker": 1, "text": "Great, can we change topic now?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Lets talk about something else. What do you have in mind?", "dialog_acts": [{"act": "topic_switch", "slots": []}]}
+{"speaker": 1, "text": "I would like to look for resources", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Are you looking for assets in the AI4EU catalogue or web resources?", "dialog_acts": [{"act": "ask_which_resources", "slots": []}]}
+{"speaker": 1, "text": "web resources", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "Ok, what exactly are you looking for?", "dialog_acts": [{"act": "more_details", "slots": []}]}
+{"speaker": 1, "text": "I am looking for NLP resources", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_WEB_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_web_search_api_call", "slots": []}]}
+{"speaker": 1, "text": "Can you provide a summary for this resource?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "TELL_RESOURCE_SUMMARY", "dialog_acts": [{"act": "tell_resource_summary", "slots": []}]}
+{"speaker": 1, "text": "What else can you say about this resource?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "I can tell you its url, title, content, score, summary, and its keywords", "dialog_acts": [{"act": "tell_resource_options", "slots": []}]}
+{"speaker": 1, "text": "Can you give its keywords?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "TELL_RESOURCE_KEYWORDS", "dialog_acts": [{"act": "tell_resource_keywords", "slots": []}]}
+{"speaker": 1, "text": "Can you tell me the second available?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "TELL_SECOND_IN_FOCUS", "dialog_acts": [{"act": "tell_second_in_focus", "slots": []}]}
+{"speaker": 1, "text": "Can we change topic again?", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "Lets talk about something else. What do you have in mind?", "dialog_acts": [{"act": "topic_switch", "slots": []}]}
+{"speaker": 1, "text": "I am looking for Docker containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": []}]}
+{"speaker": 1, "text": "developed by Fraunhofer", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": []}]}
+{"speaker": 1, "text": "Can you provide a summary for this resource?", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "TELL_RESOURCE_SUMMARY", "dialog_acts": [{"act": "tell_resource_summary", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "any other option?", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "TELL_NEXT_IN_FOCUS", "dialog_acts": [{"act": "tell_next_in_focus", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "Can you give its keywords?", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "TELL_RESOURCE_KEYWORDS", "dialog_acts": [{"act": "tell_resource_keywords", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "Thank you! Really helpful", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "I am really happy for this!", "dialog_acts": [{"act": "compliment", "slots": [["assetType", "docker_container"]]}]}

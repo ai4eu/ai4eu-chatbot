@@ -341,6 +341,7 @@
 {"Sentence":"tell me what do you want to chat about","Intent":"what_can_you_do"}
 {"Sentence":"what can we talk about","Intent":"what_can_you_do"}
 {"Sentence":"what can you talk about","Intent":"what_can_you_do"}
+{"Sentence":"how can you help me","Intent":"what_can_you_do"}
 
 {"Sentence":"that's enough, lets talk about something else","Intent":"topic_switch"}
 {"Sentence":"that is enough","Intent":"topic_switch"}
@@ -1159,9 +1160,9 @@
 {"Sentence":"what is an drone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile phone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile device?", "Intent":"qa_input"}
-
-
-
-
+{"Sentence":"who is Seymour Cray?", "Answer":"qa_input"}
+{"Sentence":"who is Bill Clinton?", "Answer":"qa_input"}
+{"Sentence":"what is the capital of Greece?", "Answer":"qa_input"}
+{"Sentence":"which is the fastest car in the world?", "Answer":"qa_input"}
 
 
