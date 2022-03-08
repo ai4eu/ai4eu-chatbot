@@ -5,30 +5,44 @@ The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr
 
 ## Features
 The chatbot is provided as a REST service and supports the following tasks:
-- Question-Anwser (QA)
--- Domain specific QA about the AI4EU project and general AI questions (e.g., "what is AI4EU?", "what are transformers?" )
--- Open-domain QA using the pretrained deeppavlov wikidata KBQA model (e.g., "who is Seymour Cray?")
-- Exploration of web resources indexed by the AI4EU platform
--- Uses the Search-API of the AI4EU project
-- Exploration of the available assets in the [AI4EU Asset Catalogue](https://www.ai4europe.eu/research/ai-catalog)
--- Uses the Search-API of the AI4EU project
+- **Question-Anwser (QA)**
+  - Domain specific QA about the AI4EU project and general AI questions (e.g., "what is AI4EU?", "what are transformers?" )
+  - Open-domain QA using the pretrained deeppavlov wikidata KBQA model (e.g., "who is Seymour Cray?")
+- **Exploration of web resources** indexed by the AI4EU platform 
+  - Uses the Search-API of the AI4EU project
+- **Exploration of AI4EU assets** available in the [AI4EU Asset Catalogue](https://www.ai4europe.eu/research/ai-catalog)
+  - Uses the Search-API of the AI4EU project
 
 ## Architecture
 
 ## Deep learning models used
 
-- Sentence Embeddings
+- **Sentence Embeddings**
+
    Uses the [bert-sentence_multi_cased_L-12_H-768_A-12_pt](https://github.com/deepmipt/DeepPavlov/blob/master/deeppavlov/configs/embedder/bert_sentence_embedder.json) model provided by deeppavlov. We just use the pretrained model so there is no need for training
 
-- Slot-filler just uses a fuzzy slot mapping approach
+- **Slot-filler**
 
-- Question-Answering
+  Just uses a fuzzy slot mapping approach
+
+- **Question-Answering**
+
     Uses a fine-tuned model over the sentence embeddings [Microsoft mpnet-base](https://huggingface.co/microsoft/mpnet-base) model. The model configuration is provided at [config/qa/sentence-emb/all-mpnet-base-v2.json](https://github.com/ai4eu/ai4eu-chatbot/blob/main/config/qa/sentence-emb/all-mpnet-base-v2.json)
 
-- Intents Classifier
+- **Intents Classifier**
+
    Uses a fine-tuned model over the sentence embeddings [Microsoft mpnet-base](https://huggingface.co/microsoft/mpnet-base) model. The model configuration is provided at [config/intents/sentence-emb/all-mpnet-base-v2.json](https://github.com/ai4eu/ai4eu-chatbot/blob/main/config/intents/sentence-emb/all-mpnet-base-v2.json)
 
 For more information about sentence-embedding models and their performance, visit https://www.sbert.net/docs/pretrained_models.html
+
+In addition you will need to install the wikidata kbqa_cq model and the bert sentence embeddigns model using the following commands
+```sh
+python -m deeppavlov install kbqa_cq -d
+python -m deeppavlvo install bert_sentence_embedder -d
+```
+
+Add also -d to the above when running for the first time, so that it will  download any needed pretrained models
+
 ## Installation
 Initially create a conda environment using the following command:
 ```sh
@@ -41,30 +55,36 @@ source ./scripts/conda-activate.sh
 
 In order to run the chatbot you will need the following packages
 
-- deeppavlov
-    We need version 0.17.0
+- **deeppavlov**
+
+    We need version 0.17.1
     ```sh
     pip install deeppavlov==0.17.1
     ```
 
-- pytorch
-    We need torch for the models. Since the development was done on an AMD Radeon VII gpu we used the rocm enabled pip package which can be downloaded from https://download.pytorch.org/whl/rocm4.0.1/torch-1.9.0%2Brocm4.0.1-cp37-cp37m-linux_x86_64.whl
+- **pytorch**
+
+    We need pytorch for the models. Since the development was done on an AMD Radeon VII gpu we used the rocm enabled pip package which can be downloaded from https://download.pytorch.org/whl/rocm4.0.1/torch-1.9.0%2Brocm4.0.1-cp37-cp37m-linux_x86_64.whl
     ```sh
     pip install torch-1.9.0+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
     ```
-- tensorflow
+- **tensorflow**
+
     We also need tensorflow 1.15 for some components. For RTX 30x cards please use the following for tensorflow (needs though a python 3.8 environment)
     ```sh
     pip install nvidia-pyindex
     pip install nvidia-tensorflow[horovod]
     pip install nvidia-tensorboard==1.15
     ```
-- hugging face libraries for transformers transformers (4.6.0) and sentence-transformers (2.0.0)
-    ```sh
-    pip install transformers==4.6.0
-    pip install sentence-transformers==2.0.0
-    ```
-- sanic
+- **hugging face** libraries for transformers 
+
+  transformers (4.6.0) and sentence-transformers (2.0.0)
+  ```sh
+      pip install transformers==4.6.0
+      pip install sentence-transformers==2.0.0
+  ```
+- **sanic**
+
     The REST service is provided using sanic
     ```sh
     pip install sanic
@@ -72,15 +92,15 @@ In order to run the chatbot you will need the following packages
 
 #### Building and installing the models
 Before running the chatbot you will need to train the various models over the datasets that are provided in the repository
-- QA model
+- **QA model**
     ```sh
     python -m deeppavlov train  config/qa/sentence-emb/all-mpnet-base-v2.json
     ```
-- Intents model
+- **Intents model**
     ```sh
     python -m deeppavlov train  config/intents/sentence-emb/all-mpnet-base-v2.json
     ```
-- goal-oriented bot model
+- **Goal-oriented bot model**
     ```sh
     python -m deeppavlov train  config/gobot/ai4eu-gobot.json
     ```
@@ -102,16 +122,6 @@ The service is currently deployed at FORTH's premises. You can make queries to t
 ```sh
     curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"
 ```
-
-In addition you will need to install the wikidata kbqa_cq model and the bert sentence embeddigns model using the following commands
-```sh
-python -m deeppavlov install kbqa_cq -d
-python -m deeppavlvo install bert_sentence_embedder -d
-```
-
-
-
-Add also -d to the above when running for the first time, so that it will  download any needed pretrained models
 
 ## Development
 
