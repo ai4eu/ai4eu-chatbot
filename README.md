@@ -1,7 +1,7 @@
 # ai4eu-chatbot
 ## A user friendly chatbot for the AI4EU platform
 
-The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project. The chatbot was developed using the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework, and it is a multi-task goal oriented chatbot.
+The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project. The chatbot was developed using the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework, and it is a multi-task goal oriented chatbot. The goal was to allow the users of the platform to ask questions about the project and explore the available resources using free text.
 
 ## Features
 The chatbot is provided as a REST service and supports the following tasks:
