@@ -130,5 +130,6 @@ The chatbot was developed by [Panagiotis Papadakos](mailto:papadako@ics.forth.gr
 ## License
 
 Original deeppavlov code under Apache License, Version 2.0
+
 FORTH's contributions are under EUPL
 
