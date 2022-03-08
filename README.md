@@ -44,20 +44,20 @@ In order to run the chatbot you will need the following packages
 - deeppavlov
     We need version 0.17.0
     ```sh
-        pip install deeppavlov==0.17.1
+    pip install deeppavlov==0.17.1
     ```
 
 - pytorch
     We need torch for the models. Since the development was done on an AMD Radeon VII gpu we used the rocm enabled pip package which can be downloaded from https://download.pytorch.org/whl/rocm4.0.1/torch-1.9.0%2Brocm4.0.1-cp37-cp37m-linux_x86_64.whl
     ```sh
-        pip install torch-1.9.0+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
+    pip install torch-1.9.0+rocm4.0.1-cp37-cp37m-linux_x86_64.whl
     ```
 - tensorflow
     We also need tensorflow 1.15 for some components. For RTX 30x cards please use the following for tensorflow (needs though a python 3.8 environment)
     ```sh
-        pip install nvidia-pyindex
-        pip install nvidia-tensorflow[horovod]
-        pip install nvidia-tensorboard==1.15
+    pip install nvidia-pyindex
+    pip install nvidia-tensorflow[horovod]
+    pip install nvidia-tensorboard==1.15
     ```
 - hugging face libraries for transformers transformers (4.6.0) and sentence-transformers (2.0.0)
     ```sh
@@ -67,22 +67,22 @@ In order to run the chatbot you will need the following packages
 - sanic
     The REST service is provided using sanic
     ```sh
-        pip3 install sanic
+    pip install sanic
     ```
 
 #### Building and installing the models
 Before running the chatbot you will need to train the various models over the datasets that are provided in the repository
 - QA model
     ```sh
-       python -m deeppavlov train  config/qa/sentence-emb/all-mpnet-base-v2.json
+    python -m deeppavlov train  config/qa/sentence-emb/all-mpnet-base-v2.json
     ```
 - Intents model
     ```sh
-       python -m deeppavlov train  config/intents/sentence-emb/all-mpnet-base-v2.json
+    python -m deeppavlov train  config/intents/sentence-emb/all-mpnet-base-v2.json
     ```
 - goal-oriented bot model
     ```sh
-       python -m deeppavlov train  config/gobot/ai4eu-gobot.json
+    python -m deeppavlov train  config/gobot/ai4eu-gobot.json
     ```
 
 You can interact with each model using the following command
@@ -105,8 +105,8 @@ The service is currently deployed at FORTH's premises. You can make queries to t
 
 In addition you will need to install the wikidata kbqa_cq model and the bert sentence embeddigns model using the following commands
 ```sh
-    python -m deeppavlov install kbqa_cq -d
-    python -m deeppavlvo install bert_sentence_embedder -d
+python -m deeppavlov install kbqa_cq -d
+python -m deeppavlvo install bert_sentence_embedder -d
 ```
 
 
