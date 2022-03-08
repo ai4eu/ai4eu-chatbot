@@ -1,7 +1,7 @@
 # ai4eu-chatbot
 ## A user friendly chatbot for the AI4EU platform
 
-The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project.  The chatbot was developed on top of the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework and it is a multi-task goal oriented chatbot.
+The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project. The chatbot was developed using the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework, and it is a multi-task goal oriented chatbot.
 
 ## Features
 The chatbot is provided as a REST service and supports the following tasks:
@@ -37,7 +37,7 @@ The chatbot is provided as a REST service and supports the following tasks:
 
 For more information about sentence-embedding models and their performance, visit https://www.sbert.net/docs/pretrained_models.html
 
-In addition you will need to install the wikidata kbqa_cq model and the bert sentence embeddigns model using the following commands
+In addition, you will need to install the wikidata kbqa_cq model and the bert sentence embeddings model using the following commands
 ```sh
 python -m deeppavlov install kbqa_cq -d
 python -m deeppavlvo install bert_sentence_embedder -d
@@ -115,7 +115,7 @@ python -m deeppavlov interact PATH_TO_MODEL_CONFIGURATION
 ```
 
 # How to run
-To start the service at port 8000 please run:
+To start the service at port 8000 (after all models have been trained) please run:
 ```sh
 nohup python src/REST_Chatbot.py &
 ```
