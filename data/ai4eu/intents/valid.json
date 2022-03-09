@@ -1160,9 +1160,9 @@
 {"Sentence":"what is an drone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile phone?", "Intent":"qa_input"}
 {"Sentence":"what is a mobile device?", "Intent":"qa_input"}
-{"Sentence":"who is Seymour Cray?", "Answer":"qa_input"}
-{"Sentence":"who is Bill Clinton?", "Answer":"qa_input"}
-{"Sentence":"what is the capital of Greece?", "Answer":"qa_input"}
-{"Sentence":"which is the fastest car in the world?", "Answer":"qa_input"}
+{"Sentence":"who is Seymour Cray?", "Intent":"qa_input"}
+{"Sentence":"who is Bill Clinton?", "Intent":"qa_input"}
+{"Sentence":"what is the capital of Greece?", "Intent":"qa_input"}
+{"Sentence":"which is the fastest car in the world?", "Intent":"qa_input"}
 
 
