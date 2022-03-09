@@ -331,6 +331,16 @@
 {"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
 
 
+{"speaker": 1, "text": "give me containers", "dialog_acts": [{"act": "inform", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "About what?", "dialog_acts": [{"act": "about_what", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "Speech recognition", "dialog_acts": [{"act": "inform", "slots": []}]}
+{"speaker": 2, "text": "AI4EU_ASSET_SEARCH_API_CALL", "dialog_acts": [{"act": "ai4eu_asset_search_api_call", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "Can you provide a summary for this resource?", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "TELL_RESOURCE_SUMMARY", "dialog_acts": [{"act": "tell_resource_summary", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "any other option?", "dialog_acts": [{"act": "request", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 2, "text": "TELL_NEXT_IN_FOCUS", "dialog_acts": [{"act": "tell_next_in_focus", "slots": [["assetType", "docker_container"]]}]}
+{"speaker": 1, "text": "Thank you! Really helpful", "dialog_acts": [{"act": "request", "slots": []}]}
+{"speaker": 2, "text": "I am really happy for this!", "dialog_acts": [{"act": "compliment", "slots": []}]}
 
 
 
