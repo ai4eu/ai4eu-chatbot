@@ -128,7 +128,7 @@ nohup python src/REST_Chatbot.py &
 # A simple request
 The service is currently deployed at FORTH's premises. You can make queries to the chatbot using the following command:
 ```sh
-    curl -X POST "https://pangaia.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"
+    curl -X POST "https://isl.ics.forth.gr/ai4eu-chatbot/" -d "{\"query\":\"What is AI4EU?\"}"
 ```
 
 ## Development
