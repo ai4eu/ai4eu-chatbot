@@ -359,6 +359,8 @@ class AI4EUGoalOrientedBot(NNModel):
             tracker.set_mode(ChatMode.WEB)
         elif nlu_response.intent == 'ai4eu_resource_request':
             tracker.set_mode(ChatMode.ASSET)
+        elif nlu_response.intent == 'topic_switch':
+            tracker.set_mode(ChatMode.DEFAULT)
 
         # If we are just debugging do not update the state of tracker
         if nlu_response.intent == 'debug':
