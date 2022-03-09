@@ -37,14 +37,6 @@ The chatbot is provided as a REST service and supports the following tasks:
 
 For more information about sentence-embedding models and their performance, visit https://www.sbert.net/docs/pretrained_models.html
 
-In addition, you will need to install the wikidata kbqa_cq model and the bert sentence embeddings model using the following commands
-```sh
-python -m deeppavlov install kbqa_cq -d
-python -m deeppavlvo install bert_sentence_embedder -d
-```
-
-Add also -d to the above when running for the first time, so that it will  download any needed pretrained models
-
 ## Installation
 Initially create a conda environment using the following command:
 ```sh
@@ -55,7 +47,7 @@ Then enable the conda environment by running
 source ./scripts/conda-activate.sh
 ```
 
-In order to run the chatbot you will need the following packages
+In order to run the chatbot you will need the following packages:
 
 - **deeppavlov**
 
@@ -99,7 +91,9 @@ In order to run the chatbot you will need the following packages
     ```
 
 #### Building and installing the models
-Before running the chatbot you will need to train the various models over the datasets that are provided in the repository
+Before running the chatbot you will need to train the various models over the datasets that are provided in the repository,
+by running the following commands:
+
 - **QA model**
     ```sh
     python -m deeppavlov train  config/qa/sentence-emb/all-mpnet-base-v2.json
@@ -113,12 +107,21 @@ Before running the chatbot you will need to train the various models over the da
     python -m deeppavlov train  config/gobot/ai4eu-gobot.json
     ```
 
-You can interact with each model using the following command
+You can interact with each model using the following command:
 ```sh
 python -m deeppavlov train PATH_TO_MODEL_CONFIGURATION
 python -m deeppavlov evaluate PATH_TO_MODEL_CONFIGURATION
 python -m deeppavlov interact PATH_TO_MODEL_CONFIGURATION
 ```
+
+In addition, you will need to install the wikidata kbqa_cq model and the bert sentence embeddings model using the following commands.
+```sh
+python -m deeppavlov install kbqa_cq -d
+python -m deeppavlov install bert_sentence_embedder -d
+```
+
+Add also -d to the above when running for the first time, so that it will  download any needed pretrained models.
+
 
 # How to run
 To start the service at port 8000 (after all models have been trained) please run:
