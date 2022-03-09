@@ -133,7 +133,11 @@ The service is currently deployed at FORTH's premises. You can make queries to t
 
 ## Development
 
-The chatbot was developed by [Panagiotis Papadakos](mailto:papadako@ics.forth.gr). Please contact him for any questions.
+The chatbot was developed by [Panagiotis Papadakos](mailto:papadako@ics.forth.gr)
+Please contact him for any questions.
+
+[Information Systems Laboratory @ FORTH-ICS](https://www.ics.forth.gr/isl/)
+
 
 ## License
 
