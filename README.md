@@ -27,9 +27,13 @@ The chatbot is provided as a REST service and supports the following tasks:
 
   Uses a fuzzy slot mapping approach 
 
-- **Question-Answering (DL)**
+- **AI4EU / AI Question-Answering (DL)**
 
     Uses a fine-tuned model over the sentence embeddings [Microsoft mpnet-base](https://huggingface.co/microsoft/mpnet-base) model. The model configuration is provided at [config/qa/sentence-emb/all-mpnet-base-v2.json](https://github.com/ai4eu/ai4eu-chatbot/blob/main/config/qa/sentence-emb/all-mpnet-base-v2.json)
+
+- **Open-Domain Question-Answering (DL)**
+
+    Uses the pretrained deeppavlov's [Wikidata Knowledge Base kbqa_cq](http://docs.deeppavlov.ai/en/master/features/models/kbqa.html) model. The model configuration is provided at [config/kbqa/kbqa_cq.json](https://github.com/deepmipt/DeepPavlov/blob/0.17.2/deeppavlov/configs/kbqa/kbqa_cq.json)
 
 - **Intents Classifier (DL)**
 
