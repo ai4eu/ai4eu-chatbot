@@ -1,7 +1,7 @@
 # ai4eu-chatbot
 ## A user friendly chatbot for the AI4EU platform
 
-The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project. The chatbot was developed using the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework, and it is a multi-task goal oriented chatbot. The goal was to allow the users of the platform to ask questions about the project and explore the available resources using free text.
+The ai4eu-chatbot is a chatbot developed by [FORTH-ICS](https://www.ics.forth.gr/) for the [AI4EU](https://www.ai4europe.eu/) project. The chatbot was developed using the [deeppavlov](https://deeppavlov.ai/) open-source conversational AI framework, and it is a multi-task goal oriented chatbot. The goal is to allow the users of the platform to ask questions about the project and explore the available resources using free text.
 
 ## Features
 The chatbot is provided as a REST service and supports the following tasks:
@@ -17,9 +17,9 @@ The chatbot is provided as a REST service and supports the following tasks:
 
 ![ai4eu-chatbot architecture](docs/architecture.jpg?raw=true "Title")
 
-## Models used
+## Models
 
-- **Sentence Embeddings**
+- **Sentence Embeddings (DL)**
 
    Uses the [bert-sentence_multi_cased_L-12_H-768_A-12_pt](https://github.com/deepmipt/DeepPavlov/blob/master/deeppavlov/configs/embedder/bert_sentence_embedder.json) model provided by deeppavlov. We just use the pretrained model so there is no need for training
 
@@ -27,11 +27,11 @@ The chatbot is provided as a REST service and supports the following tasks:
 
   Uses a fuzzy slot mapping approach 
 
-- **Question-Answering**
+- **Question-Answering (DL)**
 
     Uses a fine-tuned model over the sentence embeddings [Microsoft mpnet-base](https://huggingface.co/microsoft/mpnet-base) model. The model configuration is provided at [config/qa/sentence-emb/all-mpnet-base-v2.json](https://github.com/ai4eu/ai4eu-chatbot/blob/main/config/qa/sentence-emb/all-mpnet-base-v2.json)
 
-- **Intents Classifier**
+- **Intents Classifier (DL)**
 
    Uses a fine-tuned model over the sentence embeddings [Microsoft mpnet-base](https://huggingface.co/microsoft/mpnet-base) model. The model configuration is provided at [config/intents/sentence-emb/all-mpnet-base-v2.json](https://github.com/ai4eu/ai4eu-chatbot/blob/main/config/intents/sentence-emb/all-mpnet-base-v2.json)
 
