@@ -17,7 +17,7 @@ The chatbot is provided as a REST service and supports the following tasks:
 
 ![ai4eu-chatbot architecture](docs/architecture.jpg?raw=true "Title")
 
-## Deep learning models used
+## Models used
 
 - **Sentence Embeddings**
 
@@ -25,7 +25,7 @@ The chatbot is provided as a REST service and supports the following tasks:
 
 - **Slot-filler**
 
-  Just uses a fuzzy slot mapping approach
+  Uses a fuzzy slot mapping approach 
 
 - **Question-Answering**
 
